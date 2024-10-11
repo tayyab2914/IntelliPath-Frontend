@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+:root {
+    --color-deep-dark: #001210; 
+    --color-dark: #383655;
+    --color-white: #ffffff;
+    --color-light-gray: #e1e3ef;
+    --color-accent: #45d2c9;
+    --color-light-accent: #e7f5f5;
+    --color-muted: #aeafbe;
   }
-}
+  
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.generic-container {
+    max-width: 1400px;       /* Default padding for small screens */
+    margin: 0 auto;     
+    padding-left: 10px; 
+    padding-right: 10px; 
   }
-  to {
-    transform: rotate(360deg);
+  
+  @media (min-width: 576px) {
+    .generic-container {
+      padding-left: 20px; 
+      padding-right: 20px; 
+    }
   }
-}
+   
+  @media (min-width: 768px) {
+    .generic-container {
+      padding-left: 30px; 
+      padding-right: 30px; 
+    }
+  }
+  @media (min-width: 992px) {
+    .generic-container {
+      padding-left: 40px; 
+      padding-right: 40px; 
+    }
+  }
+  @media (min-width: 1200px) {
+    .generic-container {
+      padding-left: 70px; 
+      padding-right: 70px; 
+    }
+  }
+  @media (min-width: 1400px) {
+    .generic-container {
+      padding-left: auto; 
+      padding-right: auto; 
+    }
+  }
+/* const alignOptions = ['flex-start', 'center', 'flex-end'];
+const justifyOptions = [ 'flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly',]; */
