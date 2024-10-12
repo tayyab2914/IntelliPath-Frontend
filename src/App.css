@@ -1,52 +1,73 @@
-
 :root {
-    --color-deep-dark: #001210; 
-    --color-dark: #383655;
-    --color-white: #ffffff;
-    --color-light-gray: #e1e3ef;
-    --color-accent: #45d2c9;
-    --color-light-accent: #e7f5f5;
-    --color-muted: #aeafbe;
-  }
-  
+  --color-deep-dark: #001210;
+  --color-dark: #383655;
+  --color-white: #ffffff;
+  --color-light-gray: #f3f3f6;
+  --color-accent: #45d2c9;
+  --color-accent-hover: #3fbdb5;
+  --color-light-accent: #e7f5f5;
+  --color-muted: #aeafbe;
+  --drop-shadow: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.075));
+}
 
+.bg-danger {
+  background-color: rgb(195, 44, 44) !important;
+}
+.bg-info {
+  background-color: rgb(39, 39, 153) !important;
+}
+.bg-warning {
+  background-color: rgb(180, 180, 45) !important;
+}
+
+.bg-success {
+  background-color: green !important;
+}
 .generic-container {
-    max-width: 1400px;       /* Default padding for small screens */
-    margin: 0 auto;     
-    padding-left: 10px; 
-    padding-right: 10px; 
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 10px;
+  height: auto;
+  padding-right: 10px;
+}
+
+@media (min-width: 576px) {
+  .generic-container {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  
-  @media (min-width: 576px) {
-    .generic-container {
-      padding-left: 20px; 
-      padding-right: 20px; 
-    }
+}
+
+@media (min-width: 768px) {
+  .generic-container {
+    padding-left: 30px;
+    padding-right: 30px;
   }
-   
-  @media (min-width: 768px) {
-    .generic-container {
-      padding-left: 30px; 
-      padding-right: 30px; 
-    }
+}
+@media (min-width: 992px) {
+  .generic-container {
+    padding-left: 40px;
+    padding-right: 40px;
   }
-  @media (min-width: 992px) {
-    .generic-container {
-      padding-left: 40px; 
-      padding-right: 40px; 
-    }
+}
+@media (min-width: 1200px) {
+  .generic-container {
+    padding-left: 70px;
+    padding-right: 70px;
   }
-  @media (min-width: 1200px) {
-    .generic-container {
-      padding-left: 70px; 
-      padding-right: 70px; 
-    }
+}
+@media (min-width: 1400px) {
+  .generic-container {
+    padding-left: auto;
+    padding-right: auto;
   }
-  @media (min-width: 1400px) {
-    .generic-container {
-      padding-left: auto; 
-      padding-right: auto; 
-    }
-  }
+}
 /* const alignOptions = ['flex-start', 'center', 'flex-end'];
 const justifyOptions = [ 'flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly',]; */
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+}

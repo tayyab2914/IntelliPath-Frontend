@@ -1,0 +1,33 @@
+.btn-filled {
+  border: transparent;
+  background-color: var(--color-accent);
+  border-radius: 8px;
+  color: white;
+}
+.btn-outlined-filled {
+  background-color: var(--color-light-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  color: var(--color-accent);
+}
+.btn-outlined {
+  background-color: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  color: white;
+}
+
+.btn-filled:hover {
+  background-color: var(--color-accent-hover);
+  cursor: pointer;
+}
+.btn-outlined:hover {
+  background-color: var(--color-accent-hover);
+  border: none;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 300;
+}
+@media screen and (max-width:768px){
+    
+}

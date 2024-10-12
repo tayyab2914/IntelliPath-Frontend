@@ -23,6 +23,10 @@ const ProjectRoutes = () => {
         <Route path="/dashboard" element={<DashboardMain />} />
         <Route path="/account" element={<AccountMain />} />
         <Route path="/courses" element={<CoursesMain />} />
+        <Route path="/about" element={<DashboardMain />} />//!----
+        <Route path="/quiz" element={<CoursesMain />} />//!----
+        <Route path="/github-integration" element={<CoursesMain />} />//!----
+        <Route path="/tribes" element={<CoursesMain />} /> //!----
         <Route path="/gamification" element={<GamificationMain />} />
         <Route path="/onboarding" element={<OnBoardingMain />} />
         <Route path="/vocal-assistance" element={<VocalAssistanceMain />} />

@@ -5,6 +5,7 @@ import CourseRecommendationImage from '../../assets/images/course_recommendation
 import Decoration1Image from '../../assets/images/decoration_1.svg';
 import Decoration2Image from '../../assets/images/decoration_2.svg';
 import EmpoweringLearnersImage from '../../assets/images/empowering_learners_through_innovation.svg';
+import GithubImage from '../../assets/images/github.svg';
 import LeaderboardImage from '../../assets/images/leaderboard.svg';
 import LogoImage from '../../assets/images/logo.svg';
 import NewEraOfLearningImage from '../../assets/images/new_era_of_learning.svg';
@@ -22,6 +23,7 @@ export const IMAGES = {
     decoration1: Decoration1Image,
     decoration2: Decoration2Image,
     empoweringLearners: EmpoweringLearnersImage,
+    github:GithubImage,
     leaderboard: LeaderboardImage,
     logo: LogoImage,
     newEraOfLearning: NewEraOfLearningImage,

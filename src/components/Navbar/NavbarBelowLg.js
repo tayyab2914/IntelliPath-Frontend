@@ -21,7 +21,7 @@ const NavbarBelowLg = ({version,navItems}) => {
     <>
         <Flex gap="middle" align="center">
             <Flex className={version === 'light' ? 'nav-main-light' : 'nav-main-dark'} justify={'space-between'} align={'center'}>
-                <MyImage type={'logo'} height={'55px'}  onClick={()=>navigate('/')}/>
+                <MyImage type={'logo'} h={'55px'}  onClick={()=>navigate('/')}/>
                 <MyIcon type={'bars'} size='lg' onClick={()=>setShowDrawer(true)}/>
             </Flex>
         </Flex>
@@ -33,7 +33,7 @@ const NavbarBelowLg = ({version,navItems}) => {
                 <LogoutBtn/>
             </span>
         </Drawer>
-        </>
+    </>
   )
 }
 

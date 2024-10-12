@@ -1,0 +1,137 @@
+/* Footer.css */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  outline: none;
+}
+
+a,
+a:active,
+a:focus {
+  color: #333;
+  text-decoration: none;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+.footer-headline {
+  color: var(--color-dark);
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 60px 0;
+}
+
+.footer-main {
+  padding-top: 40px;
+  border-top: 1px solid var(--color-muted);
+}
+
+.single_footer h4 {
+  color: var(--color-dark);
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.single_footer h4::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: var(--color-dark);
+  margin-top: 20px;
+}
+
+.single_footer p {
+  color: var(--color-dark);
+}
+
+.single_footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.single_footer ul li a {
+  color: var(--color-dark);
+  /* transition: all 0.3s ease 0s; */
+  line-height: 36px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.single_footer ul li a:hover {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.single_footer_address ul li {
+  color: var(--color-dark);
+}
+
+.single_footer_address ul li span {
+  font-weight: 400;
+  color: var(--color-dark);
+  line-height: 28px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.footer-logo {
+    width: 60%;
+}
+@media only screen and (max-width: 992px) {
+  .footer-logo {
+    width: 60%;
+    margin-bottom: 20px;
+  }
+  .single_footer h4 {
+    margin-top: 20px;
+  }
+}
+
+.copyright {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  color: var(--color-dark);
+  font-size: 15px;
+  border-top: 1px solid var(--color-muted);
+  text-align: center;
+}
+
+.copyright a {
+  color: var(--color-dark);
+  transition: all 0.2s ease 0s;
+}
+
+.copyright a:hover {
+  color: var(--color-dark);
+}

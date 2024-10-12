@@ -1,10 +1,10 @@
 import React from 'react';
 import { IMAGES } from './ImageData';
-const MyImage = ({ type, altText, width = '100%', height = 'auto',onClick,className  }) => {
+const MyImage = ({ type,  w = '100%', h= 'auto',onClick,className  }) => {
   return (
     <div>
       {IMAGES[type] ? (
-        <img  src={IMAGES[type]}  alt={altText}  style={{ width: width, height: height }}  onClick={onClick} className={className}/>
+        <img  src={IMAGES[type]}   style={{ width: w, height: h }}  onClick={onClick} className={className}/>
       ) : (
         <p>Image not found</p>
       )}
