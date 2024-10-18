@@ -1,9 +1,9 @@
 import React from 'react'
 import './styles/InnovativeTools.css'
-import { INNOVATIVE_TOOLS_DATA } from './HomeData'
 import { Col, Row } from 'antd'
 import MyIcon from '../../components/Icon/MyIcon'
 import { useNavigate } from 'react-router-dom'
+import { INNOVATIVE_TOOLS_DATA } from '../../data/HomeData'
 
 const InnovativeTools = () => {
 const navigate = useNavigate()

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Typography } from "antd";
+import { Row, Col, Typography, Divider } from "antd";
 import { useNavigate } from "react-router";
 import { IMAGES } from "../Image/ImageData";
 import "./styles/Footer.css";
@@ -24,8 +24,10 @@ const Footer = () => {
                     <div>
                         <img src={IMAGES.logo} alt="Footer Logo" className="footer-logo" style={{ display: 'block', margin: '0 auto' }} />
                     </div>
+                    <Divider/>
                     <p className="footer-headline">Intellipath.online@gmail.com</p>
                     <p className="footer-headline">+92 322 4922848</p>
+                    <Divider/>
                 </Col>
             </Row>
         </Col>

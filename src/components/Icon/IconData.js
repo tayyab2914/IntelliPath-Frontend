@@ -24,6 +24,7 @@ import IconEnvelope from '../../assets/icons/icon_envelope.svg';
 import IconFeature from '../../assets/icons/icon_feature.svg';
 import IconLeaderboard from '../../assets/icons/icon_leaderboard.svg';
 import IconLock from '../../assets/icons/icon_lock.svg';
+import IconLLM from '../../assets/icons/icon_llm.svg';
 import IconLogout from '../../assets/icons/icon_logout.svg';
 import IconMap from '../../assets/icons/icon_map.svg';
 import IconMinus from '../../assets/icons/icon_minus.svg';
@@ -72,6 +73,7 @@ export const ICONS = {
     leaderboard:IconLeaderboard,
     logout: IconLogout,
     lock: IconLock,
+    llm: IconLLM,
     map:IconMap,
     minus: IconMinus,
     people: IconPeople,

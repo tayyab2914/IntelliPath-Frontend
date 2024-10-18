@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import NavbarMain from "../../components/Navbar/NavbarMain";
-import { FEATURES_DATA } from "./FeaturesData";
 import Feature from "./Feature";
 import Footer from "../../components/Footer/Footer";
+import { FEATURES_DATA } from "../../data/FeaturesData";
 
 const FeaturesMain = () => {
     useEffect(() => {

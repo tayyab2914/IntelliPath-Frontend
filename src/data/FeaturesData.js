@@ -1,4 +1,4 @@
-import { IMAGES } from "../../components/Image/ImageData";
+import { IMAGES } from "../components/Image/ImageData";
 
 export const FEATURES_DATA = [
     {

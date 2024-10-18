@@ -14,6 +14,10 @@ import CoursesMain from '../pages/Courses/CoursesMain';
 import GamificationMain from '../pages/Gamification/GamificationMain';
 import OnBoardingMain from '../pages/OnBoarding/OnBoardingMain';
 import VocalAssistanceMain from '../pages/VocalAssistance/VocalAssistanceMain';
+import AboutMain from '../pages/About/AboutMain';
+import QuizMain from '../pages/Quiz/QuizMain';
+import GithubMain from '../pages/Github/GithubMain';
+import TribesMain from '../pages/Tribes/TribesMain';
 
 const ProjectRoutes = () => {
   return (
@@ -23,10 +27,10 @@ const ProjectRoutes = () => {
         <Route path="/dashboard" element={<DashboardMain />} />
         <Route path="/account" element={<AccountMain />} />
         <Route path="/courses" element={<CoursesMain />} />
-        <Route path="/about" element={<DashboardMain />} />//!----
-        <Route path="/quiz" element={<CoursesMain />} />//!----
-        <Route path="/github-integration" element={<CoursesMain />} />//!----
-        <Route path="/tribes" element={<CoursesMain />} /> //!----
+        <Route path="/about" element={<AboutMain />} />
+        <Route path="/quiz" element={<QuizMain />} />
+        <Route path="/github-integration" element={<GithubMain />} />
+        <Route path="/tribes" element={<TribesMain />} /> 
         <Route path="/gamification" element={<GamificationMain />} />
         <Route path="/onboarding" element={<OnBoardingMain />} />
         <Route path="/vocal-assistance" element={<VocalAssistanceMain />} />

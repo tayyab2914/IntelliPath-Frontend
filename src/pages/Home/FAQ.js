@@ -2,8 +2,8 @@ import React from 'react';
 import { Collapse, Divider } from 'antd';
 import './styles/FAQ.css';
 import { useState } from 'react';
-import { FAQ_DATA } from './HomeData';
 import MyIcon from '../../components/Icon/MyIcon';
+import { FAQ_DATA } from '../../data/HomeData';
 const { Panel } = Collapse;
 
 
@@ -33,7 +33,7 @@ const FAQ = () => {
             expandIcon={({ isActive }) => (<MyIcon type={"arrow"} className={`faq-arrow ${isActive ? 'rotate' : ''}`}/>)}
             >
                 {FAQ_DATA.map((item, index) => (
-                    <Panel  header={item.question} key={index.toString()} className={`faq-panel ${isActive(index) ? 'active' : ''}`}  data-aos="fade-right"> <p>{item.answer}</p> </Panel> ))
+                    <Panel  header={item.question} key={index.toString()} className={`faq-panel ${isActive(index) ? 'active' : ''}`} > <p>{item.answer}</p> </Panel> ))
                 }
                 <Panel style={{display:"none"}} />
         </Collapse>
