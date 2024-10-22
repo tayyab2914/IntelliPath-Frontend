@@ -1,11 +1,11 @@
 import React from 'react';
-import { ICONS } from './IconData';
-import './styles/icon.css'
+import { BADGES } from './BadgeData';
+import './styles/Badge.css'
 
-const MyIcon = ({ type, size = 'sm',onClick,className,style }) => {
+const MyBadge = ({ type, size = 'sm',onClick,className,style }) => {
  
 
-  const SelectedIcon = ICONS[type];
+  const SelectedIcon = BADGES[type];
 
   const sizeClasses = {
     sm: 'icon-sm',
@@ -20,4 +20,4 @@ const MyIcon = ({ type, size = 'sm',onClick,className,style }) => {
   return SelectedIcon ? <img src={SelectedIcon} alt={`${type} icon`} className={`${sizeClass} ${className}`} onClick={onClick} style={style}/>  : null;
 };
 
-export default MyIcon;
+export default MyBadge;

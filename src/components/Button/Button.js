@@ -15,6 +15,12 @@ const MyButton = ({ variant = "filled", text, onClick, w='100%', h = DEFAULT_BUT
           {text}
         </button>
       )}
+      
+      {variant == "outlined-dark" && (
+        <button className="btn-outlined-dark" style={{ height: h, width: w , fontSize:fs, margin:m,...style}} onClick={onClick} >
+          {text}
+        </button>
+      )}
       {variant == "outlined-filled" && (
         <button className="btn-outlined-filled" style={{ height: h, width: w, fontSize:fs, margin:m ,...style}} onClick={onClick} >
           {text}

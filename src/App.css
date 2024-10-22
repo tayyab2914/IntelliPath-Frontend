@@ -26,9 +26,9 @@
 .generic-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding-left: 10px;
+  padding-left: 15px;
   height: auto;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 @media (min-width: 576px) {

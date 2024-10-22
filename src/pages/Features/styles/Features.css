@@ -17,8 +17,8 @@
     color: var(--color-white);
   }
   
-  .two-tone-white {
-    color: var(--color-white);
+  .feature-heading .two-tone-white {
+    color: var(--color-white) !important;
   }
   
   .two-tone-accent {

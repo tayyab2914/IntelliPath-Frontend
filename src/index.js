@@ -7,7 +7,7 @@ import { ConfigProvider } from "antd";
 import store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
-import { FORM_COLORS, INPUT_COLORS } from "./utils/AntdColors";
+import { FORM_COLORS, INPUT_COLORS, NOTIFICATION_COLORS,PAGINATION_COLORS, RADIO_COLORS, SELECT_COLORS, SWITCH_COLORS, UPLOAD_COLORS } from "./utils/AntdColors";
 // import { BUTTON, INPUT, POPOVER, TOOLTIP } from "./components/Generic/Colors";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,7 +16,13 @@ root.render(
     theme={{
       components: {
         Form:FORM_COLORS,
-        Input:INPUT_COLORS
+        Input:INPUT_COLORS,
+        Notification:NOTIFICATION_COLORS,
+        Pagination:PAGINATION_COLORS,
+        Select:SELECT_COLORS,
+        Radio:RADIO_COLORS,
+        Switch:SWITCH_COLORS,
+        Upload:UPLOAD_COLORS
       },
     }}
   >

@@ -1,0 +1,48 @@
+.leaderboard-avatar {
+  margin-right: 5px;
+}
+.leaderboard-name {
+  display: flex;
+  align-items: center;
+}
+.leaderboard-table .ant-table-cell {
+  padding: 10px !important;
+}
+/* styles/Leaderboard.css */
+.leaderboard-table .ant-table-row:nth-child(odd) {
+  background-color: #f9f9f9; /* Light gray background for odd rows */
+}
+
+.leaderboard-table .ant-table-row:nth-child(even) {
+  background-color: #ffffff; /* White background for even rows */
+}
+.leaderboard-table-single .ant-table-cell {
+  padding: 10px !important;
+}
+.leaderboard-table-single {
+  margin-bottom: 20px;
+}
+.leaderboard_icon {
+  margin-left: 10px;
+}
+.leaderboard-rank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-table-cell {
+  color: var(--color-dark) !important;
+}
+.leaderboard-select {
+  margin-bottom: 20px;
+  text-align: end;
+}
+.leaderboard-select .ant-select-selector {
+  width: 250px !important;
+  text-align: center !important;
+}
+.leaderboard-title{
+    color: var(--color-accent);
+    font-size: 20px;
+    font-weight: 600;
+}

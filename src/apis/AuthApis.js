@@ -8,6 +8,7 @@ import { DOMAIN_NAME } from "../utils/GlobalSettings";
 export const API_SIGN_UP = async (
   email,
   password,
+  name,
   verificationCode,
   codeToken,
   dispatch,
@@ -18,6 +19,7 @@ export const API_SIGN_UP = async (
     const response = await axios.post(`${DOMAIN_NAME}/auth/signup/`, {
       email: email,
       password: password,
+      name: name,
       verification_code: verificationCode,
       code_token: codeToken,
     });
@@ -81,7 +83,6 @@ export const API_SEND_VERIFICATION_EMAIL = async (
     );
 
     message.success("Verification email sent");
-    console.log(response.data.code_token);
     return response.data.code_token;
   } catch (error) {
     message.error(

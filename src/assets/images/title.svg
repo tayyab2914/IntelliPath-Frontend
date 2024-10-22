@@ -1,0 +1,44 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 276.71 13.1">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-5);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-1152.43" y1="-886.09" x2="-1147.33" y2="-886.09" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d968c"/>
+      <stop offset="1" stop-color="#68c6be"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-1145.54" y1="-886.09" x2="-1135.14" y2="-886.09" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="152.15" y1="6.56" x2="276.71" y2="6.56" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="-1165.03" y1="-886.09" x2="-1154.63" y2="-886.09" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="0" y1="6.54" x2="124.56" y2="6.54" xlink:href="#linear-gradient"/>
+  </defs>
+  <g>
+    <path class="cls-1" d="M-1149.86-889.3l2.53,3.21-2.53,3.22-2.57-3.22,2.57-3.21" transform="translate(1288.44 892.63)"/>
+    <g>
+      <path class="cls-2" d="M-1140.3-890.61l3.56,4.52-3.56,4.52-3.62-4.52,3.62-4.52m0-2-1,1.24-3.62,4.52-.63.78.63.79,3.62,4.52,1,1.24,1-1.24,3.56-4.52.61-.79-.61-.78-3.56-4.52-1-1.24Z" transform="translate(1288.44 892.63)"/>
+      <polygon class="cls-3" points="276.71 6.43 152.15 5.7 152.15 7.42 276.71 6.43"/>
+    </g>
+    <g>
+      <path class="cls-4" d="M-1159.87-881.57l-3.56-4.52,3.56-4.52,3.62,4.52-3.62,4.52m0,2,1-1.24,3.62-4.52.63-.79-.63-.78-3.62-4.52-1-1.24-1,1.24-3.56,4.52-.61.78.61.79,3.56,4.52,1,1.24Z" transform="translate(1288.44 892.63)"/>
+      <polygon class="cls-5" points="0 6.67 124.56 7.39 124.56 5.68 0 6.67"/>
+    </g>
+  </g>
+</svg>

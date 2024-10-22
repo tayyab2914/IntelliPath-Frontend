@@ -17,12 +17,6 @@ const Account = () => {
     if (isLoggedIn) {
       navigate("/");
     }
-
-    // notification.info({
-    //   message: <b>Privacy Notice</b>,
-    //   description: 'Rest easy, your identity remains completely anonymous—your privacy is our priority! 😊',
-    //   placement: 'topRight',
-    // });
   }, []);
   
   useEffect(() => {

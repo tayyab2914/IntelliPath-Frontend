@@ -1,0 +1,65 @@
+.custom-steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align steps to the left */
+    width: 100%; /* Ensure the container takes full width */
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content */
+    flex-grow: 1; /* Makes each step occupy equal space */
+}
+
+.step-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 1; /* Keep circles on top of lines */
+}
+
+.step-line {
+    height: 2px;
+    background-color: #ddd;
+    flex-grow: 1; /* This will stretch the line */
+}
+
+.step-item.completed .step-circle {
+    background-color: var(--color-light-accent); /* Completed step color (green) */
+    color: white;
+    border: 3px solid var(--color-accent);
+}
+
+.step-item.processing .step-circle {
+    background-color: var(--color-light-accent); /* Completed step color (green) */
+    color: white;
+    border: 3px solid var(--color-accent);
+    
+}
+
+
+.last-step {
+    flex-grow: 0; /* Do not allow the last step to grow */
+    margin-left: auto; /* Push the last step to the right */
+    justify-content: center; /* Center the last step circle */
+}
+
+
+.ant-progress-text{
+    display: none !important;
+}
+.ant-progress-steps-item{
+    border-radius: 50% !important;
+    margin-right: 3px !important;
+}
+.ant-progress-steps-item-active{
+    background-color: var(--color-accent) !important;
+}

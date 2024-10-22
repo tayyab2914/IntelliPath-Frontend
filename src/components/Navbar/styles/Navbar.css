@@ -22,6 +22,9 @@
 .navbar-divider .ant-divider{
     margin:0px !important;
 }
+.navbar-logo{
+    cursor: pointer;
+}
 /* 
 ======================================================================
                             Nav item btns
@@ -50,7 +53,7 @@
     display: flex;
     align-items: center;
     color: var(--color-dark);
-    margin: 0px;
+    margin: 20px 0px;
 }
 .ant-divider{
     margin: 15px 0px !important;
@@ -67,12 +70,13 @@
     color: var(--color-dark);
     margin: 0px;
     width: 200px;
+    margin: 10px 0px;
 }
 .navbar-popover-item img{
     margin-right: 15px;
 }
 .ant-popover-inner{
-    padding: 20px !important;
+    padding: 10px 20px !important;
 }
 .navbar-popover-item:hover{
     font-weight: 500;

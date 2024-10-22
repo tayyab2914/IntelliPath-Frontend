@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import './styles/Account.css'
+import MyButton from "../../components/Button/Button";
 
 const AuthenticateVerification = ({ handleVerification }) => {
   const [code, setCode] = useState('');
@@ -23,9 +24,8 @@ const AuthenticateVerification = ({ handleVerification }) => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="button" className="submit-btn" onClick={onSubmit}>
-          Verify
-        </Button>
+      <MyButton variant="filled" text={'Send Code'}  onClick={onSubmit} w="100%" h="40px" m="0px"/>
+        
       </Form.Item>
     </Form>
   );

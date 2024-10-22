@@ -1,0 +1,3 @@
+const IS_ROADMAP_GENERATED = false;
+
+export { IS_ROADMAP_GENERATED };

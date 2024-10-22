@@ -2,6 +2,9 @@ export const EMAIL_RULES_REQUIRED = [
     { required: true, message: "Please input your email!" },
     { type: "email", message: "The input is not valid E-mail!" }, // Validate email format
   ];
+  export const NAME_RULES_REQUIRED = [
+    { required: true, message: "Please input your name!" },
+  ];
   
   export const PASSWORD_RULES_REQUIRED = [
     { required: true, message: "Please input your password!" },

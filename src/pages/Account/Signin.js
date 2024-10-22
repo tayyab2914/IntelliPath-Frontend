@@ -21,15 +21,7 @@ const [ShowSpinner, setShowSpinner] = useState(false);
     if(response){
         const searchParams = new URLSearchParams(location.search);
         const next = searchParams.get('next'); 
-        const leniency = searchParams.get('leniency');
-        const subjectKnowledge = searchParams.get('subjectKnowledge');
-        const gradingFairness = searchParams.get('gradingFairness');
-        const reviewText = searchParams.get('reviewText');
-        
-        //!if the user has next and liniency then it means he has to submit review 
-        if (next && leniency) {
-            navigate(`${next}?leniency=${leniency}&subjectKnowledge=${subjectKnowledge}&gradingFairness=${gradingFairness}&reviewText=${reviewText}`);
-        } else if (next)
+        if (next)
         {
                 navigate(next)
         }

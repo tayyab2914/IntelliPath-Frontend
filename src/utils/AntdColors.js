@@ -27,3 +27,47 @@ export const THEME_COLORS = {
     colorPrimaryBorder:  THEME_COLORS.colorAccent,
     colorPrimaryHover:  THEME_COLORS.colorAccent,
   };
+
+  export const NOTIFICATION_COLORS = {
+    colorInfo: THEME_COLORS.colorAccent,
+  };
+
+  
+  export const PAGINATION_COLORS = {
+    colorPrimary:THEME_COLORS.colorAccent,
+    colorPrimaryHover:THEME_COLORS.colorAccent,
+  };
+
+  
+  export const SELECT_COLORS = {
+    colorPrimary:THEME_COLORS.colorAccent,
+    colorPrimaryBorder:THEME_COLORS.colorAccent,
+    colorPrimaryHover:THEME_COLORS.colorAccent,
+    colorPrimary:THEME_COLORS.colorAccent,
+    itemSelectedBg:THEME_COLORS.colorLightAccent,
+    itemSelectedColor:THEME_COLORS.colorWhite,
+    fontFamily:"montserrat",
+    controlOutline:THEME_COLORS.colorAccent,
+    optionSelectedBg:THEME_COLORS.colorLightAccent,
+  }
+
+  
+  export const RADIO_COLORS = {
+    buttonSolidCheckedActiveBg:THEME_COLORS.colorAccent,
+    buttonSolidCheckedBg:THEME_COLORS.colorAccent,
+    colorPrimary:THEME_COLORS.colorAccent
+  };
+
+  
+  export const SWITCH_COLORS = {
+    buttonSolidCheckedActiveBg:THEME_COLORS.colorAccent,
+    buttonSolidCheckedBg:THEME_COLORS.colorAccent,
+    colorPrimary:THEME_COLORS.colorAccent,
+    colorPrimaryHover:THEME_COLORS.colorAccent,
+    colorPrimaryBorder:THEME_COLORS.colorLightAccent
+  };
+  export const UPLOAD_COLORS = {
+    colorPrimary:THEME_COLORS.colorAccent,
+    colorPrimaryHover:THEME_COLORS.colorAccent,
+    colorPrimaryBorder:THEME_COLORS.colorLightAccent
+  };

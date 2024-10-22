@@ -8,11 +8,13 @@ import MyIcon from '../Icon/MyIcon';
 import { Button, Drawer, Radio, Space } from 'antd';
 import { NAV_ITEMS_BELOW_LG } from './NavbarData';
 import LogoutBtn from './LogoutBtn';
+import { useSelector } from 'react-redux';
 
 
 const NavbarBelowLg = ({version,navItems}) => {
     const navigate = useNavigate();
     const [ShowDrawer, setShowDrawer] = useState(false);
+    const { token, isLoggedIn } = useSelector((state) => state.authToken);
     const optionClickHandler = (path)=>{
         navigate(path)
         setShowDrawer(false)
@@ -28,9 +30,9 @@ const NavbarBelowLg = ({version,navItems}) => {
         <Drawer title="Options" placement={'right'} onClose={()=>setShowDrawer(false)} open={ShowDrawer}>
             <span>
                 {NAV_ITEMS_BELOW_LG.map(({ name, path,icon }) => (
-                    <div key={name}> <p   onClick={() => optionClickHandler(path)}  className='navbar-drawer-item'> <MyIcon type={icon}/>  {name}  </p> <Divider/></div>
+                    <div key={name}> <p   onClick={() => optionClickHandler(path)}  className='navbar-drawer-item'> <MyIcon type={icon}/>  {name}  </p></div>
                 ))}
-                <LogoutBtn/>
+        {isLoggedIn &&  <div className='navbar-drawer-item'><LogoutBtn  /> </div> }
             </span>
         </Drawer>
     </>

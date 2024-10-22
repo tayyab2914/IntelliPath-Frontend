@@ -18,8 +18,10 @@ import AboutMain from '../pages/About/AboutMain';
 import QuizMain from '../pages/Quiz/QuizMain';
 import GithubMain from '../pages/Github/GithubMain';
 import TribesMain from '../pages/Tribes/TribesMain';
+import { useSelector } from 'react-redux';
 
 const ProjectRoutes = () => {
+    const { token, isLoggedIn } = useSelector((state) => state.authToken);
   return (
     <BrowserRouter>
       <Routes>
@@ -35,11 +37,14 @@ const ProjectRoutes = () => {
         <Route path="/onboarding" element={<OnBoardingMain />} />
         <Route path="/vocal-assistance" element={<VocalAssistanceMain />} />
         <Route path="/notifications" element={<NotificationsMain />} />
-        <Route path="/roadmap" element={<RoadmapMain />} />
+        <Route path="/roadmap" element={isLoggedIn ? <RoadmapMain />: <AccountMain/>} />
         <Route path="/leaderboard" element={<LeaderboardMain />} />
+        <Route path="/profile" element={isLoggedIn ? <ProfileMain /> : <AccountMain/>} />
         <Route path="/features" element={<FeaturesMain />} />
         <Route path="/documentation" element={<DocumentationMain />} />
         <Route path="/settings" element={<SettingsMain />} />
+        <Route path="/user/:id" element={<ProfileMain />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -20,12 +20,12 @@
   color: var(--color-white);
 }
 
-.two-tone-white {
-  color: var(--color-white);
+.home-dec-2-heading .two-tone-white {
+  color: var(--color-white) !important;
 }
 
-.two-tone-accent {
-  color: var(--color-accent);
+.home-dec-2-heading .two-tone-accent {
+  color: var(--color-accent) !important;
 }
 
 @media screen and (max-width: 992px) {

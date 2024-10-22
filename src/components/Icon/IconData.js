@@ -46,8 +46,6 @@ import LeaderboardThirdIcon from '../../assets/icons/leaderboard_third.svg';
 
 
 export const ICONS = {
-    plus: IconPlus,
-    avatar: AvatarIcon,
     feature_blindMode: FeatureBlindModeIcon,
     feature_courseRecommendation: FeatureCourseRecommendationIcon,
     feature_foulSpeech: FeatureFoulSpeechIcon,
@@ -58,6 +56,7 @@ export const ICONS = {
     feature_textToSpeech: FeatureTextToSpeechIcon,
     feature_threads: FeatureThreadsIcon,
     feature_tribes: FeatureTribesIcon,
+    avatar: AvatarIcon,
     arrow: IconArrow,
     bars: IconBars,
     cross: IconCross,
@@ -76,6 +75,7 @@ export const ICONS = {
     llm: IconLLM,
     map:IconMap,
     minus: IconMinus,
+    plus: IconPlus,
     people: IconPeople,
     question: IconQuestion,
     regenerate: IconRegenerate,

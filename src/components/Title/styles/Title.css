@@ -1,0 +1,19 @@
+.title-main{
+    text-align: center;
+    margin-top: 20px;
+}
+.title-main img{
+    width: 300px;
+}
+.title-title{
+    color: var(--color-accent);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0px;
+}
+.title-description{
+    font-size: 10px;
+    color :var(--color-muted);
+    margin: 0px;
+    font-weight: 500;
+}
