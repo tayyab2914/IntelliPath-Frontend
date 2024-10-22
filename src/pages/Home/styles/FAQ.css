@@ -4,6 +4,7 @@
   .ant-collapse-header-text {
     font-weight: 600;
     font-size: 16px;
+    color: var(--color-dark) !important;
   }
   .ant-collapse-content-box {
     font-size: 16px;

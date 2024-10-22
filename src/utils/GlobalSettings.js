@@ -47,12 +47,14 @@ export {  DOMAIN_NAME, GOOGLE_AUTH_URL,GOOGLE_AUTH_CLIENT_ID ,GOOGLE_AUTH_SCOPE,
 // name
 // email
 // age 
+// is_logged_in user //! this will help when we look a profile and whether we have to show profile options to user or not
 // linkedin_link
 // github_link
 // display_image
 // is_blind_mode_enables
 // roadmap_id null if roadmap not generated
 // onboarding_id null if not onboarded
+// account creation_time
 // goals = [
 //     {
 //         goal1:name,

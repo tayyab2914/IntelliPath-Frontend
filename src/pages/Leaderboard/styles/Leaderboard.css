@@ -12,7 +12,9 @@
 .leaderboard-table .ant-table-row:nth-child(odd) {
   background-color: #f9f9f9; /* Light gray background for odd rows */
 }
-
+.ant-select-selection-item{
+    color: var(--color-dark) !important;
+}
 .leaderboard-table .ant-table-row:nth-child(even) {
   background-color: #ffffff; /* White background for even rows */
 }
