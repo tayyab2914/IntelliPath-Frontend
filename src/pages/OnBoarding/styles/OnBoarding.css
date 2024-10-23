@@ -20,11 +20,28 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 20px 0px;
-  margin-bottom: 100px;
-  height: 220px;
+  margin: 20px 0px 0px 0px;
+  height: 250px;
 }
-
+.onboarding-prev-main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+  }
+.onboarding-prev{
+    rotate: 180deg;
+    margin-right: 5px;
+}
+.prev-icon{
+    rotate: 180deg;
+}
+.prev-btn{
+    display: flex;
+    align-items: center;
+    color: var(--color-muted);
+    cursor: pointer;
+}
 .onboarding-answer-outer {
   display: flex;
   justify-content: flex-end;
@@ -46,6 +63,10 @@
   .onboarding-main-inner {
     width: 500px;
   }
+  
+  .onboarding-main {
+    height: 330px;
+  }
 }
 @media screen and (max-width: 520px) {
   .onboarding-answer-main {
@@ -60,7 +81,7 @@
     word-break: break-word;
   }
   .onboarding-main {
-    height: 320px;
+    height: 380px;
   }
   
 }

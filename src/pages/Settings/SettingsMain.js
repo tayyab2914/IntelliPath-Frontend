@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import Footer from '../../components/Footer/Footer';
@@ -22,6 +22,9 @@ const SettingsMain = () => {
 
     const [SettingsData, setSettingsData] = useState(initialSettings);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     useEffect(() => {
         setSettingsData(initialSettings);
     }, []);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect ,useState} from 'react'
 import { Table, Row, Col, Select } from "antd";  // Imported Select
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import TitleMain from "../../components/Title/TitleMain";
@@ -19,6 +19,9 @@ const LeaderboardMain = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("Frontend Developer");
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
   const handleRowClick = (record) => {
     navigate(`/user/${record.user_id}`);
   };

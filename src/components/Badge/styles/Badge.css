@@ -1,24 +1,24 @@
-.icon-sm {
+.badge-sm {
   width: 18px;
   height: 18px;
 }
 
-.icon-md {
+.badge-md {
   width: 24px;
   height: 24px;
 }
 
-.icon-lg {
+.badge-lg {
   width: 32px;
   height: 32px;
 }
 
-.icon-xl {
+.badge-xl {
   width: 48px;
   height: 48px;
 }
 
-.icon-xxl {
+.badge-xxl {
   width: 60px;
   height: 60px;
 }

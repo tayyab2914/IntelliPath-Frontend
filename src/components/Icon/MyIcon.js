@@ -8,6 +8,7 @@ const MyIcon = ({ type, size = 'sm',onClick,className,style }) => {
   const SelectedIcon = ICONS[type];
 
   const sizeClasses = {
+    xs: 'icon-xs',
     sm: 'icon-sm',
     md: 'icon-md',
     lg: 'icon-lg',

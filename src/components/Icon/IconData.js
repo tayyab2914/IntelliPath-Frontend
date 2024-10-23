@@ -18,6 +18,7 @@ import IconDashboard from '../../assets/icons/icon_dashboard.svg';
 import IconDocumentation from '../../assets/icons/icon_documentation.svg';
 import IconDelete from '../../assets/icons/icon_delete.svg';
 import IconDeleteOutlined from '../../assets/icons/icon_delete_outlined.svg';
+import IconEdit from '../../assets/icons/icon_edit.svg';
 import IconEmpty from '../../assets/icons/icon_empty.svg';
 import IconElipsis from '../../assets/icons/icon_elipsis.svg';
 import IconEnvelope from '../../assets/icons/icon_envelope.svg';
@@ -67,6 +68,7 @@ export const ICONS = {
     documentation:IconDocumentation,
     empty: IconEmpty,
     elipsis: IconElipsis,
+    edit:IconEdit,
     envelope: IconEnvelope,
     feature:IconFeature,
     leaderboard:IconLeaderboard,

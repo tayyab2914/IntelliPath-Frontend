@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import { Tag } from "antd";
+import MyButton from "../../components/Button/Button";
+import MyIcon from "../../components/Icon/MyIcon";
+import { IMAGES } from "../../components/Image/ImageData";
+import { ICONS } from "../../components/Icon/IconData";
 
-const Question = ({ data, selectedGoal, onSelect, questionNum }) => {
+const Question = ({ data, selectedGoal, onSelect, questionNum,handlePreviousStep }) => {
 
   return (
+    <> 
     <div className="onboarding-main">
       <div className="onboarding-main-inner">
         <div className="onboarding-question-outer">
@@ -24,8 +29,14 @@ const Question = ({ data, selectedGoal, onSelect, questionNum }) => {
               ))}
           </div>
         </div>
-      </div>
+       </div>
+    </div><div className="onboarding-prev-main">
+    <div className="onboarding-main-inner">
+    {questionNum > 0 && <span className="prev-btn" onClick={handlePreviousStep} ><MyIcon size="xs" type={'arrow'} className={'onboarding-prev'}/> Previous</span>}
+ </div>
     </div>
+       </>
+
   );
 };
 

@@ -1,4 +1,10 @@
-.icon-sm {
+
+.icon-xs {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .icon-sm {
   width: 18px;
   height: 18px;
 }

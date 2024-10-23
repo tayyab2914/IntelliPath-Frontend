@@ -59,13 +59,15 @@ export {  DOMAIN_NAME, GOOGLE_AUTH_URL,GOOGLE_AUTH_CLIENT_ID ,GOOGLE_AUTH_SCOPE,
 //     {
 //         goal1:name,
 //         goal1:rank,
+//         engagement_prediction
 //     },
 //     {
 //         goal2:name,
 //         goal3:rank,
+//         engagement_prediction
 //     }
 //  ]
 // masteries = [
-//     mastery_name:'',
-//     mastery_name:'',
+//     '',
+//     '',
 //  ]
