@@ -5,7 +5,7 @@ import { ICONS } from "../../data/IconData";
 import MyBadge from "../../components/Badge/MyBadge";
 import MyButton from "../../components/Button/Button";
 import { SIMILAR_PROFILE_DATA } from "../../data/ProfileData";
-
+import './styles/SimilarProfile.css'
 const SimilarProfiles = () => {
   const { user_id } = useParams();
   const navigate = useNavigate()
@@ -18,7 +18,7 @@ const SimilarProfiles = () => {
       <Row gutter={[10, 10]}>
         {SimilarUsers?.map((user) => (
           <Col xs={24} sm={12} md={8} lg={6}>
-           <div className="similar-profile-card-container-outer">
+           <div className="similar-profile-card-container-outer"  onClick={()=>navigate(`/user/${user.user_id}`)}>
            <div className="similar-profile-card-container">
               <img src={user.display_image ? user.display_image : ICONS.avatar} alt="" className="similar-profile-image" />
               <div className="similar-profile-details">
@@ -29,7 +29,7 @@ const SimilarProfiles = () => {
                 </div>
               </div>
             </div>
-            <MyButton text={"View Profile"} variant="outlined-dark" onClick={()=>navigate(`/user/${user.user_id}`)}/>
+            <MyButton text={"View Profile"} variant="outlined-dark"/>
            </div>
           </Col>
         ))}

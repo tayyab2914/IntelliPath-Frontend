@@ -4,6 +4,7 @@ import MyBadge from "../../components/Badge/MyBadge";
 import MyIcon from "../../components/Icon/MyIcon";
 import UserGoalCard from "./UserGoalCard.";
 import { ICONS } from "../../data/IconData";
+import './styles/UserProfile.css'
 
 const UserProfile = ({ userData }) => {
   const [popoverVisible, setPopoverVisible] = useState(false);
@@ -37,14 +38,7 @@ const UserProfile = ({ userData }) => {
             </div>
           </Col>
           <Col xs={4} md={12} className="profile-options">
-            <Popover 
-              content={popoverContent} 
-              trigger="click" 
-              visible={popoverVisible} 
-              onVisibleChange={handleVisibleChange}
-               placement="bottomLeft"
-               
-            >
+            <Popover  content={popoverContent}  trigger="click"  visible={popoverVisible}  onVisibleChange={handleVisibleChange} placement="bottomLeft">
               <MyIcon type={"elipsis"} className="profile-options-icon" />
             </Popover>
           </Col>

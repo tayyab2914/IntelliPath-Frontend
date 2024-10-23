@@ -19,6 +19,7 @@ import QuizMain from '../pages/Quiz/QuizMain';
 import GithubMain from '../pages/Github/GithubMain';
 import TribesMain from '../pages/Tribes/TribesMain';
 import { useSelector } from 'react-redux';
+import CoursePage from '../pages/Courses/CoursePage';
 
 const ProjectRoutes = () => {
     const { token, isLoggedIn } = useSelector((state) => state.authToken);
@@ -44,6 +45,7 @@ const ProjectRoutes = () => {
         <Route path="/documentation" element={<DocumentationMain />} />
         <Route path="/settings" element={<SettingsMain />} />
         <Route path="/user/:id" element={<ProfileMain />} />
+        <Route path="/course/:id" element={<CoursePage />} />
 
       </Routes>
     </BrowserRouter>
