@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { IMAGES } from "../../components/Image/ImageData";
+import { IMAGES } from '../../data/ImageData'
 import "./styles/Decoration2.css";
 import useWindowWidth from "../../hooks/useWindowWidth";
 

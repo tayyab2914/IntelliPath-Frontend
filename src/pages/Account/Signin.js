@@ -6,14 +6,14 @@ import ForgotPassword from "./ForgotPassword";
 import { API_SIGN_IN } from "../../apis/AuthApis";
 import { useDispatch } from 'react-redux';
 import { useNavigate,useLocation } from "react-router";
-import { IMAGES } from "../../components/Image/ImageData";
+import { IMAGES } from "../../data/ImageData";
 
 const Signin = ({ toggleCurrentMode }) => {
     const location = useLocation();
     const navigate = useNavigate()
     const dispatch = useDispatch()
-const [ShowForgotPassword, setShowForgotPassword] = useState(false);
-const [ShowSpinner, setShowSpinner] = useState(false);
+    const [ShowForgotPassword, setShowForgotPassword] = useState(false);
+    const [ShowSpinner, setShowSpinner] = useState(false);
 
   
   const handleSignIn = async (email, password) => {

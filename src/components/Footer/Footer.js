@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Typography, Divider } from "antd";
 import { useNavigate } from "react-router";
-import { IMAGES } from "../Image/ImageData";
+import { IMAGES } from "../../data/ImageData";
 import "./styles/Footer.css";
 
 const { Text, Link, Title } = Typography;

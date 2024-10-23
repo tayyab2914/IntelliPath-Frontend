@@ -3,10 +3,10 @@ import NavbarMain from "../../components/Navbar/NavbarMain";
 import Footer from "../../components/Footer/Footer";
 import TitleMain from "../../components/Title/TitleMain";
 import Steps from "../../components/Steps/Steps";
-import { ONBOARDING_DATA } from "./OnBoardingData";
 import Question from "./Question";
 import { message } from "antd";
 import "./styles/OnBoarding.css";
+import { ONBOARDING_DATA } from "../../data/OnBoardingData";
 
 const OnBoardingMain = () => {
   const [CurrentStep, setCurrentStep] = useState(0);

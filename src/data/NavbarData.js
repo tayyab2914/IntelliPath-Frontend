@@ -1,5 +1,5 @@
 import { IconMap } from "antd/es/result";
-import { ICONS } from "../Icon/IconData";
+import { ICONS } from "./IconData";
 
 export const NAV_ITEMS_LG = [
   { name: "Dashboard", path: "/dashboard", icon: "dashboard" },

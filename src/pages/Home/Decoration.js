@@ -1,5 +1,5 @@
 import React from 'react'
-import { IMAGES } from '../../components/Image/ImageData'
+import { IMAGES } from '../../data/ImageData'
 
 const Decoration = () => {
   return (

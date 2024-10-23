@@ -1,4 +1,4 @@
-import { AVAILABLE_GOALS } from "../../utils/GlobalSettings";
+import { AVAILABLE_GOALS } from "../utils/GlobalSettings";
 
 export const ONBOARDING_DATA = [
   {

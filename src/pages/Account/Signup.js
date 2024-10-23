@@ -6,7 +6,7 @@ import AuthenticateVerification from "./AuthenticateVerification";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router";
 import { setLoggedIn } from "../../redux/AuthToken/Action";
-import { IMAGES } from "../../components/Image/ImageData";
+import { IMAGES } from "../../data/ImageData";
 
 const SignUp = ({ toggleCurrentMode }) => {
   const dispatch = useDispatch();

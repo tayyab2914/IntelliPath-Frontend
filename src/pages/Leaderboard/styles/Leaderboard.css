@@ -7,6 +7,7 @@
 }
 .leaderboard-table .ant-table-cell {
   padding: 10px !important;
+  cursor: pointer;
 }
 /* styles/Leaderboard.css */
 .leaderboard-table .ant-table-row:nth-child(odd) {

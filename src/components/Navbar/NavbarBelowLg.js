@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import MyImage from '../Image/Image';
 import MyIcon from '../Icon/MyIcon';
 import { Button, Drawer, Radio, Space } from 'antd';
-import { NAV_ITEMS_BELOW_LG } from './NavbarData';
+import { NAV_ITEMS_BELOW_LG } from '../../data/NavbarData';
 import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
 

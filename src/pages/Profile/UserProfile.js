@@ -3,7 +3,7 @@ import React, { useState,useEffect } from "react";
 import MyBadge from "../../components/Badge/MyBadge";
 import MyIcon from "../../components/Icon/MyIcon";
 import UserGoalCard from "./UserGoalCard.";
-import { ICONS } from "../../components/Icon/IconData";
+import { ICONS } from "../../data/IconData";
 
 const UserProfile = ({ userData }) => {
   const [popoverVisible, setPopoverVisible] = useState(false);

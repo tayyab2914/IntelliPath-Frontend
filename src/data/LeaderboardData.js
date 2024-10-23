@@ -1,5 +1,5 @@
 
-export const dataSource = [
+export const LEADERBOARD_ALL_USER_DATA = [
   {
     key: "1",
     user_id: 32,
@@ -330,7 +330,7 @@ export const dataSource = [
   },
 ];
 
-export const singleUser = [
+export const LEADERBOARD_SINGLE_USER_DATA = [
   {
     key: "8",
     user_id: 9,

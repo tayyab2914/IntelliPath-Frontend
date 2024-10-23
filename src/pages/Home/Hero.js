@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/Hero.css'
-import { IMAGES } from '../../components/Image/ImageData'
+import { IMAGES } from '../../data/ImageData'
 import MyButton from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom'
 const Hero = () => {

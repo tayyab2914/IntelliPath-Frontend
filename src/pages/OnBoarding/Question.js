@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { Tag } from "antd";
 import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
-import { IMAGES } from "../../components/Image/ImageData";
-import { ICONS } from "../../components/Icon/IconData";
 
 const Question = ({ data, selectedGoal, onSelect, questionNum,handlePreviousStep }) => {
 

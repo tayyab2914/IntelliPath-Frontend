@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICONS } from './IconData';
+import { ICONS } from '../../data/IconData';
 import './styles/icon.css'
 
 const MyIcon = ({ type, size = 'sm',onClick,className,style }) => {

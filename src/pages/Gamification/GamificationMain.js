@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import NavbarMain from "../../components/Navbar/NavbarMain";
-import { GAMIFICATION_DATA } from "./GamificationData";
 import { Col, Divider, Row } from "antd";
 import { BADGES } from "../../components/Badge/BadgeData";
 import TitleMain from "../../components/Title/TitleMain";
 import './styles/Gamification.css'
+import { GAMIFICATION_DATA } from '../../data/GamificationData';
 const GamificationMain = () => {
     useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });

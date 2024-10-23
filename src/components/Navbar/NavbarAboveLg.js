@@ -4,7 +4,7 @@ import { Flex, Popover, Drawer, Divider } from 'antd';
 import MyImage from '../Image/Image';
 import MyIcon from '../Icon/MyIcon';
 import { useNavigate } from 'react-router-dom'; 
-import { NAV_DROPDOWN_ITEMS_LG, NAV_ITEMS_LG } from './NavbarData';
+import { NAV_DROPDOWN_ITEMS_LG, NAV_ITEMS_LG } from '../../data/NavbarData';
 import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
 

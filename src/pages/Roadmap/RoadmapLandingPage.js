@@ -2,9 +2,9 @@ import React from "react";
 import { Row, Col } from "antd";
 import "./styles/Roadmap.css";
 import MyButton from "../../components/Button/Button";
-import { IMAGES } from "../../components/Image/ImageData";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import { useNavigate } from "react-router-dom";
+import { IMAGES } from "../../data/ImageData";
 
 const RoadmapLandingPage = () => {
     const navigate = useNavigate()
