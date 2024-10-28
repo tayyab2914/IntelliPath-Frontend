@@ -4,6 +4,7 @@
   border-radius: 8px;
   color: white;
   padding: 5px 15px;
+  text-align: center;
 }
 .btn-outlined-filled {
   background-color: var(--color-light-accent);
@@ -11,6 +12,7 @@
   border-radius: 8px;
   color: var(--color-accent);
   padding: 5px 15px;
+  text-align: center;
 }
 .btn-outlined-dark {
   background-color: transparent;
@@ -18,6 +20,7 @@
   border-radius: 8px;
   color: var(--color-accent);
   padding: 5px 15px;
+  text-align: center;
 }
 .btn-outlined {
   background-color: transparent;
@@ -25,6 +28,7 @@
   border-radius: 8px;
   color: white;
   padding: 5px 15px;
+  text-align: center;
 }
 
 .btn-filled:hover {

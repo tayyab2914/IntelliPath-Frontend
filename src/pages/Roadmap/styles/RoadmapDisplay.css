@@ -1,0 +1,58 @@
+.reactflow-container {
+  height: 100vh; /* Full viewport height */
+  background-color: #fbfbfb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure proper positioning */
+}
+
+.roadmap-display-image img {
+  margin-top: 10%;
+  width: 95%;
+}
+.roadmap-display-image {
+  text-align: center;
+}
+.roadmap-display-header-row {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  filter: var(--drop-shadow);
+  margin: 10px 0px;
+  padding: 15px 15px;
+}
+.roadmap-display-header-goal {
+  margin: 0px;
+  color: var(--color-accent);
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.roadmap-display-header-completion{
+    font-weight: 300;
+    color: var(--color-muted);
+}
+.roadmap-display-header-icons-col{
+    text-align: end;
+}
+.roadmap-display-header-icon-regenerate{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.roadmap-display-header-icon-delete{
+    cursor: pointer;
+}
+.ant-btn-primary{
+    background-color: var(--color-accent) !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+@media screen and (min-width:576px) and (max-width:992px){
+    
+
+.roadmap-display-image img {
+    margin-top: 0px;
+    width: 70%;
+  }
+}

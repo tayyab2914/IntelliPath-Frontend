@@ -7,9 +7,7 @@ export const LEADERBOARD_ALL_USER_DATA = [
     name: "Muhaman Ijaz",
     email: "muhaman@example.com",
     masteries: [ "badges_roadmap_completion_6", "badges_contribution_6", "badges_time_on_platform_6", ],
-    points: 768,
-    roadmap_id: null,
-    onboarded_id: 101,
+    points: 768
   },
   {
     key: "2",
@@ -19,8 +17,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "john.doe@example.com",
     masteries: ["badges_roadmap_completion_1", "badges_contribution_3"],
     points: 652,
-    roadmap_id: 201,
-    onboarded_id: null,
   },
   {
     key: "3",
@@ -30,8 +26,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "jane.smith@example.com",
     masteries: [ "badges_roadmap_completion_1", "badges_contribution_3", "badges_community_engagement_4", ],
     points: 600,
-    roadmap_id: null,
-    onboarded_id: null,
   },
   {
     key: "4",
@@ -41,8 +35,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "emily.clark@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 580,
-    roadmap_id: 204,
-    onboarded_id: 102,
   },
   {
     key: "5",
@@ -52,8 +44,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "michael.brown@example.com",
     masteries: [ "badges_achievement_1", "badges_contribution_4", "badges_time_on_platform_2", ],
     points: 570,
-    roadmap_id: null,
-    onboarded_id: 103,
   },
   {
     key: "6",
@@ -63,8 +53,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "sophia.green@example.com",
     masteries: ["badges_roadmap_completion_2", "badges_contribution_5"],
     points: 540,
-    roadmap_id: null,
-    onboarded_id: null,
   },
   {
     key: "7",
@@ -74,8 +62,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "david.white@example.com",
     masteries: ["badges_achievement_3", "badges_time_on_platform_6"],
     points: 520,
-    roadmap_id: 207,
-    onboarded_id: null,
   },
   {
     key: "8",
@@ -85,8 +71,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "olivia.miller@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 510,
-    roadmap_id: null,
-    onboarded_id: 104,
   },
   {
     key: "9",
@@ -96,8 +80,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "william.johnson@example.com",
     masteries: [ "badges_achievement_2", "badges_contribution_1", "badges_time_on_platform_3", ],
     points: 500,
-    roadmap_id: 209,
-    onboarded_id: 105,
   },
   {
     key: "10",
@@ -107,8 +89,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "ava.davis@example.com",
     masteries: [ "badges_achievement_1", "badges_contribution_1", "badges_time_on_platform_1", ],
     points: 490,
-    roadmap_id: null,
-    onboarded_id: null,
   },{
     key: "11",
     user_id: 132,
@@ -117,8 +97,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "muhaman@example.com",
     masteries: [ "badges_roadmap_completion_6", "badges_contribution_6", "badges_time_on_platform_6", ],
     points: 768,
-    roadmap_id: null,
-    onboarded_id: 101,
   },
   {
     key: "12",
@@ -128,8 +106,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "john.doe@example.com",
     masteries: ["badges_roadmap_completion_1", "badges_contribution_3"],
     points: 652,
-    roadmap_id: 201,
-    onboarded_id: null,
   },
   {
     key: "13",
@@ -139,8 +115,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "jane.smith@example.com",
     masteries: [ "badges_roadmap_completion_1", "badges_contribution_3", "badges_community_engagement_4", ],
     points: 600,
-    roadmap_id: null,
-    onboarded_id: null,
   },
   {
     key: "14",
@@ -150,8 +124,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "emily.clark@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 580,
-    roadmap_id: 204,
-    onboarded_id: 102,
   },
   {
     key: "15",
@@ -161,8 +133,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "michael.brown@example.com",
     masteries: [ "badges_achievement_1", "badges_contribution_4", "badges_time_on_platform_2", ],
     points: 570,
-    roadmap_id: null,
-    onboarded_id: 103,
   },
   {
     key: "16",
@@ -172,8 +142,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "sophia.green@example.com",
     masteries: ["badges_roadmap_completion_2", "badges_contribution_5"],
     points: 540,
-    roadmap_id: null,
-    onboarded_id: null,
   },
   {
     key: "17",
@@ -183,8 +151,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "david.white@example.com",
     masteries: ["badges_achievement_3", "badges_time_on_platform_6"],
     points: 520,
-    roadmap_id: 207,
-    onboarded_id: null,
   },
   {
     key: "18",
@@ -194,8 +160,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "olivia.miller@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 510,
-    roadmap_id: null,
-    onboarded_id: 104,
   },
   {
     key: "19",
@@ -205,8 +169,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "william.johnson@example.com",
     masteries: [ "badges_achievement_2", "badges_contribution_1", "badges_time_on_platform_3", ],
     points: 500,
-    roadmap_id: 209,
-    onboarded_id: 105,
   },
   {
     key: "20",
@@ -216,8 +178,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "ava.davis@example.com",
     masteries: [ "badges_achievement_1", "badges_contribution_1", "badges_time_on_platform_1", ],
     points: 490,
-    roadmap_id: null,
-    onboarded_id: null,
   },{
     key: "21",
     user_id: 232,
@@ -226,8 +186,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "muhaman@example.com",
     masteries: [ "badges_roadmap_completion_6", "badges_contribution_6", "badges_time_on_platform_6", ],
     points: 768,
-    roadmap_id: null,
-    onboarded_id: 101,
   },
   {
     key: "22",
@@ -237,8 +195,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "john.doe@example.com",
     masteries: ["badges_roadmap_completion_1", "badges_contribution_3"],
     points: 652,
-    roadmap_id: 201,
-    onboarded_id: null,
   },
   {
     key: "23",
@@ -248,8 +204,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "jane.smith@example.com",
     masteries: [ "badges_roadmap_completion_1", "badges_contribution_3", "badges_community_engagement_4", ],
     points: 600,
-    roadmap_id: null,
-    onboarded_id: null,
   },
   {
     key: "24",
@@ -259,8 +213,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "emily.clark@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 580,
-    roadmap_id: 204,
-    onboarded_id: 102,
   },
   {
     key: "25",
@@ -270,8 +222,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "michael.brown@example.com",
     masteries: [ "badges_achievement_1", "badges_contribution_4", "badges_time_on_platform_2", ],
     points: 570,
-    roadmap_id: null,
-    onboarded_id: 103,
   },
   {
     key: "26",
@@ -281,8 +231,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "sophia.green@example.com",
     masteries: ["badges_roadmap_completion_2", "badges_contribution_5"],
     points: 540,
-    roadmap_id: null,
-    onboarded_id: null,
   },
   {
     key: "27",
@@ -292,8 +240,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "david.white@example.com",
     masteries: ["badges_achievement_3", "badges_time_on_platform_6"],
     points: 520,
-    roadmap_id: 207,
-    onboarded_id: null,
   },
   {
     key: "28",
@@ -303,8 +249,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "olivia.miller@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 510,
-    roadmap_id: null,
-    onboarded_id: 104,
   },
   {
     key: "29",
@@ -314,8 +258,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "william.johnson@example.com",
     masteries: [ "badges_achievement_2", "badges_contribution_1", "badges_time_on_platform_3", ],
     points: 500,
-    roadmap_id: 209,
-    onboarded_id: 105,
   },
   {
     key: "30",
@@ -325,8 +267,6 @@ export const LEADERBOARD_ALL_USER_DATA = [
     email: "ava.davis@example.com",
     masteries: [ "badges_achievement_1", "badges_contribution_1", "badges_time_on_platform_1", ],
     points: 490,
-    roadmap_id: null,
-    onboarded_id: null,
   },
 ];
 
@@ -339,7 +279,5 @@ export const LEADERBOARD_SINGLE_USER_DATA = [
     email: "olivia.miller@example.com",
     masteries: [ "badges_achievement_3", "badges_contribution_3", "badges_time_on_platform_6", ],
     points: 510,
-    roadmap_id: null,
-    onboarded_id: 104,
   },
 ];

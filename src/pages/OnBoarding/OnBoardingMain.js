@@ -7,6 +7,7 @@ import Question from "./Question";
 import { message } from "antd";
 import "./styles/OnBoarding.css";
 import { ONBOARDING_DATA } from "../../data/OnBoardingData";
+import { useSelector } from "react-redux";
 
 const OnBoardingMain = () => {
   const [CurrentStep, setCurrentStep] = useState(0);

@@ -18,6 +18,7 @@ const CoursesMain = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     const searchParams = new URLSearchParams(location.search);
     const course_name = searchParams.get("course_name");
+    console.log(course_name)
     if (course_name) {
       setCourseName(course_name);
     }

@@ -36,6 +36,7 @@ import IconSettings from '../assets/icons/icon_settings.svg';
 import IconSearch from '../assets/icons/icon_search.svg';
 import IconSend from '../assets/icons/icon_send.svg';
 import IconShine from '../assets/icons/icon_shine.svg';
+import IconShineAccent from '../assets/icons/icon_shine_accent.svg';
 import IconSpeak from '../assets/icons/icon_speak.svg';
 import IconThreads from '../assets/icons/icon_threads.svg';
 import IconTick from '../assets/icons/icon_tick.svg';
@@ -85,6 +86,7 @@ export const ICONS = {
     search: IconSearch,
     send: IconSend,
     shine: IconShine,
+    shineAccent: IconShineAccent,
     speak: IconSpeak,
     threadsIcon: IconThreads,
     tick: IconTick,

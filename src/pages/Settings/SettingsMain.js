@@ -9,8 +9,10 @@ import SettingsProfile from './SettingsProfile';
 import SettingsLinked from './SettingsLinked';
 import { Divider, Button } from 'antd';
 import MyButton from '../../components/Button/Button';
+import { useSelector } from 'react-redux';
 
 const SettingsMain = () => {
+    const { token, isLoggedIn } = useSelector((state) => state.authToken);
     const initialSettings = {
         blind_mode: true,
         name: "Muhaman Ijaz",
@@ -27,10 +29,12 @@ const SettingsMain = () => {
       });
     useEffect(() => {
         setSettingsData(initialSettings);
+        console.log('isLoggedIn',isLoggedIn)
     }, []);
 
     const handleSave = () => {
         console.log("Settings saved:", SettingsData);
+
     };
 
     const handleDiscard = () => {
@@ -45,15 +49,18 @@ const SettingsMain = () => {
                 <div className="settings-main">
                     <TitleMain title="Settings" description="Manage your preferences and update your account details!" />
                     <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                    <SettingsBasicInfo setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                    <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                    <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                    {isLoggedIn && <>
+                        <SettingsBasicInfo setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                        <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                        <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} />
                     
 
                     <div className="settings-buttons">
                         <MyButton variant="filled" text={'Save'} w='170px' m='0px 10px 0px 0px' onClick={handleSave}></MyButton>
                         <MyButton variant="outlined-dark" text={'Discard'} w='170px' onClick={handleDiscard}></MyButton>
                     </div>
+                        </>
+                    }
                 </div>
             </div>
             <Footer />

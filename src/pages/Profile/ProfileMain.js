@@ -11,13 +11,13 @@ import { SINGLE_USER_DATA } from '../../data/ProfileData';
 
 const ProfileMain = () => {
     const { user_id } = useParams(); 
-    const [user_data, setUser_data] = useState(SINGLE_USER_DATA
-      );
+    const [user_data, setUser_data] = useState(SINGLE_USER_DATA);
 
       useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
       useEffect(()=>{
+        console.log(user_id)
         //call api and pass user_id to get user data and save in
         // setUser_data(api.response)
       })

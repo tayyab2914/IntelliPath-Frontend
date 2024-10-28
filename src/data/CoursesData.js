@@ -666,3 +666,65 @@ export const COURSE_DATA = [
       "instructor_name": null
     }
   ]
+
+  export const SINGLE_COURSE_DATA = {
+    "_class": "course",
+    "id": 1362070,
+    "title": "React - The Complete Guide 2024 (incl. Next.js, Redux)",
+    "url": "/course/react-the-complete-guide-incl-redux/",
+    "is_paid": true,
+    "price": "$74.99",
+    "price_detail": {
+      "amount": 74.99,
+      "currency": "USD",
+      "price_string": "$74.99",
+      "currency_symbol": "$"
+    },
+    "price_serve_tracking_id": "UN2AlgZRTnG6dTL1ilEfOw",
+    "visible_instructors": [
+      {
+        "_class": "user",
+        "title": "Academind by Maximilian Schwarzmüller",
+        "name": "Academind by Maximilian",
+        "display_name": "Academind by Maximilian Schwarzmüller",
+        "job_title": "Online Education",
+        "image_50x50": "https://img-c.udemycdn.com/user/50x50/31926668_94e7_6.jpg",
+        "image_100x100": "https://img-c.udemycdn.com/user/100x100/31926668_94e7_6.jpg",
+        "initials": "AS",
+        "url": "/user/academind/"
+      },
+      {
+        "_class": "user",
+        "title": "Maximilian Schwarzmüller",
+        "name": "Maximilian",
+        "display_name": "Maximilian Schwarzmüller",
+        "job_title": "AWS certified, Professional Web Developer and Instructor",
+        "image_50x50": "https://img-c.udemycdn.com/user/50x50/13952972_e853.jpg",
+        "image_100x100": "https://img-c.udemycdn.com/user/100x100/13952972_e853.jpg",
+        "initials": "MS",
+        "url": "/user/maximilian-schwarzmuller/"
+      }
+    ],
+    "image_125_H": "https://img-b.udemycdn.com/course/125_H/1362070_b9a1_2.jpg",
+    "image_240x135": "https://img-b.udemycdn.com/course/240x135/1362070_b9a1_2.jpg",
+    "is_practice_test_course": false,
+    "image_480x270": "https://img-b.udemycdn.com/course/480x270/1362070_b9a1_2.jpg",
+    "published_title": "react-the-complete-guide-incl-redux",
+    "tracking_id": "",
+    "locale": {
+      "_class": "locale",
+      "locale": "en_US",
+      "title": "English (US)",
+      "english_title": "English (US)",
+      "simple_english_title": "English"
+    },
+    "predictive_score": null,
+    "relevancy_score": null,
+    "input_features": null,
+    "lecture_search_result": null,
+    "curriculum_lectures": [],
+    "order_in_results": null,
+    "curriculum_items": [],
+    "headline": "Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and way more!",
+    "instructor_name": null
+  }

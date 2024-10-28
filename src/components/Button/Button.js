@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/Button.css";
 import { DEFAULT_BUTTON_HEIGHT } from "../../utils/GlobalSettings";
 
-const MyButton = ({ variant = "filled", text, onClick, w='100%', h = DEFAULT_BUTTON_HEIGHT ,fs = '16px', m='20px 0px 0px 0px',style}) => {
+const MyButton = ({ variant = "filled", text, onClick, w='100%', h = DEFAULT_BUTTON_HEIGHT ,fs = '16px', m='10px 0px 0px 0px',style}) => {
   return (
     <>
       {variant == "filled" && (

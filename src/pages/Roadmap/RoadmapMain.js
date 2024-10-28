@@ -7,7 +7,7 @@ import { notification } from "antd";
 import { ROADMAP_NOTIFICATION_BUTTON_DATA } from "./RoadmapFunctionality";
 import Footer from "../../components/Footer/Footer";
 import RoadmapLandingPage from "./RoadmapLandingPage";
-
+import RoadmapDisplay from "./RoadmapFlow/RoadmapDisplay";
 const RoadmapMain = () => {
   const navigate = useNavigate();
   const [ShowNotification, setShowNotification] = useState(false);
@@ -27,7 +27,7 @@ const RoadmapMain = () => {
       {ShowNotification && ( <GenericNotification message={"Onboarding Required"} description={ "You need to complete the onboarding process before generating your roadmap." } buttons={ROADMAP_NOTIFICATION_BUTTON_DATA(navigate)} /> )}
       {ShowNotification && <RoadmapLandingPage/>}
       {!ShowNotification && <>
-      
+      <RoadmapDisplay/>
       </>}
       <Footer/>
     </>

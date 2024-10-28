@@ -1,0 +1,56 @@
+.vocal-assistance-main {
+  background-color: var(--color-white);
+  filter: var(--drop-shadow);
+  margin: 20px 0px;
+  padding: 30px;
+  border-radius: 8px;
+}
+.vocal-assistance-divider p {
+  color: var(--color-muted) !important;
+  margin: 0px;
+  font-weight: 400;
+}
+.generate-with-ai-btn{
+    display: flex;
+    align-items: center;
+justify-content: center;
+}
+.generate-with-ai-btn img{
+    margin-right: 10px;
+}
+.generate-with-ai-icon img{
+    margin-left: 10px !important;
+}
+.vocal-assistance-upload-label {
+  font-size: 24px;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin: 0px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.vocal-assistance-ai-generator {
+    box-shadow: 0 0 30px var(--color-accent);
+    background-color: var(--color-white);
+    margin: 20px 0px;
+    padding: 30px;
+    border-radius: 8px;
+    animation: glow 2s infinite alternate; /* Apply the animation */
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 2px var(--color-accent-light), 0 0 2px var(--color-accent-light);
+    }
+    100% {
+      box-shadow: 0 0 20px var(--color-accent-light), 0 0 50px var(--color-accent-light);
+    }
+  }
+  
+
+@media screen and (max-width: 576px) {
+  .vocal-assistance-main {
+    padding: 15px 0px;
+    filter: none;
+  }
+}

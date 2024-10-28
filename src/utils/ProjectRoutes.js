@@ -33,9 +33,9 @@ const ProjectRoutes = () => {
         <Route path="/about" element={<AboutMain />} />
         <Route path="/quiz" element={<QuizMain />} />
         <Route path="/github-integration" element={<GithubMain />} />
-        <Route path="/tribes" element={<TribesMain />} /> 
+        <Route path="/tribes" element={isLoggedIn ? <TribesMain />: <AccountMain/>} /> 
         <Route path="/gamification" element={<GamificationMain />} />
-        <Route path="/onboarding" element={<OnBoardingMain />} />
+        <Route path="/onboarding" element={isLoggedIn ? <OnBoardingMain />: <AccountMain/>} />
         <Route path="/vocal-assistance" element={<VocalAssistanceMain />} />
         <Route path="/notifications" element={<NotificationsMain />} />
         <Route path="/roadmap" element={isLoggedIn ? <RoadmapMain />: <AccountMain/>} />
@@ -44,8 +44,8 @@ const ProjectRoutes = () => {
         <Route path="/features" element={<FeaturesMain />} />
         <Route path="/documentation" element={<DocumentationMain />} />
         <Route path="/settings" element={<SettingsMain />} />
-        <Route path="/user/:id" element={<ProfileMain />} />
-        <Route path="/course/:id" element={<CoursePage />} />
+        <Route path="/user/:user_id" element={<ProfileMain />} />
+        <Route path="/course/:course_id" element={<CoursePage />} />
 
       </Routes>
     </BrowserRouter>
