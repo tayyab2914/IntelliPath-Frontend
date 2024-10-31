@@ -16,6 +16,7 @@ import Roadmap2Image from '../assets/images/roadmap_2.svg';
 import TextToSpeechImage from '../assets/images/text_to_speech.svg';
 import TitleImage from '../assets/images/title.svg';
 import TribesImage from '../assets/images/tribes.svg';
+import TribesWBGImage from '../assets/images/tribes_wbg.svg';
 
 // Exporting images in an object
 export const IMAGES = {
@@ -35,5 +36,6 @@ export const IMAGES = {
     roadmap2: Roadmap2Image,
     textToSpeech: TextToSpeechImage,
     tribes: TribesImage,
+    tribesWbg:TribesWBGImage,
     title: TitleImage
 };

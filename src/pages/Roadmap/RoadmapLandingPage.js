@@ -25,7 +25,7 @@ const RoadmapLandingPage = () => {
                             <span className="two-tone-accent"> Pathways </span>
                         </p>
                         <p className="roadmap-landing-description"> Get personalized learning roadmaps tailored to your skills, goals, and pace. IntelliPath uses AI to dynamically adjust your curriculum, helping you achieve success with an efficient, customized learning path. </p>
-                        <MyButton w={`${windowWidth < 576 ? '100%':"230px"}`} text={'Proceed To Onboarding'} onClick={()=>navigate('/onboarding')}/>
+                        <MyButton w={`${windowWidth < 576 ? '100%':"230px"}`} text={'Proceed To Onboarding'} onClick={()=>navigate('/onboarding')} m="20px 0px 0px 0px"/>
                     </div>
                 </Col>
                 { windowWidth > 768 &&

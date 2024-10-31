@@ -1,0 +1,135 @@
+.tribe-cards-heading{
+    
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 7px;
+    font-size: 24px;
+  }
+  
+  
+  
+  .tribe-card-container {
+      /* border: 1px solid var(--color-light-gray); */
+      padding: 15px;
+      border-radius: 8px;
+      /* height: 330px; */
+      background-color: var(--color-white);
+      filter: var(--drop-shadow-light);
+      cursor: pointer;
+      display: flex; /* Enable flexbox */
+      flex-direction: column; /* Stack children vertically */
+      justify-content: space-between; /* Ensure spacing between children */
+    }
+    .tribe-card-container:hover{
+        
+      filter: var(--drop-shadow);
+    }
+    .tribe-cards-container {
+      margin-bottom: 20px;
+    }
+    .tribe-card-container .btn-outlined-dark {
+      margin: 0px !important;
+    }
+    .tribe-cards-image {
+      width: 100%;
+    }
+    .tribe-card-num-of-members{
+        margin-bottom: 20px;
+    }
+    .tribe-cards-pagination {
+      text-align: end;
+      margin-bottom: 20px;
+    }
+    .tribe-cards-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin: 0px;
+    }
+    .tribe-cards-button {
+      margin-top: 0px !important;
+    }
+    .tribe-cards-id {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-muted);
+      margin: 5px 0px 5px 0px;
+    }
+    .tribe-cards-description {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--color-muted);
+        margin-bottom: 10px;
+        margin-top: 0px;
+      }
+    /* @media screen and (max-width: 1350px) {
+      .tribe-card-container {
+        height: 300px;
+      }
+    }
+    @media screen and (max-width: 1100px) {
+      .tribe-card-container {
+        height: 280px;
+      }
+      .tribe-cards-id {
+        font-size: 10px;
+      }
+    }
+    @media screen and (max-width: 992px) {
+      .tribe-card-container {
+        height: 300px;
+      }
+    }
+    @media screen and (max-width: 850px) {
+      .tribe-card-container {
+        height: 290px;
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .tribe-card-container {
+        height: 320px;
+      }
+    }
+    @media screen and (max-width: 610px) {
+      .tribe-card-container {
+        height: 280px;
+      }
+    }
+    
+    @media screen and (max-width: 576px) {
+      .tribe-cards-image {
+        width: 80%;
+      }
+      .tribe-cards-image-container {
+        text-align: center;
+      }
+      .tribe-card-container {
+        height: 340px;
+      }
+    }
+    
+    @media screen and (max-width: 450px) {
+      .tribe-cards-image {
+        width: 100%;
+      }
+      .tribe-cards-image-container {
+        text-align: center;
+      }
+      .tribe-card-container {
+        height: 360px;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      .tribe-cards-image {
+        width: 100%;
+      }
+      .tribe-cards-image-container {
+        text-align: center;
+      }
+      .tribe-card-container {
+        height: 340px;
+      }
+    
+    }
+     */

@@ -1,0 +1,29 @@
+.result-description{
+    color: var(--color-muted);
+}
+.result-description-text{
+    margin-left: 10px;
+    margin-right: 20px;
+    font-weight: 500;
+}
+.result-description p{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px !important;
+}
+.ant-modal-footer{
+    margin-top: 0px !important;
+}
+.result-main{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+@media screen and (max-width:568px){
+    .result-main{
+        display: block;
+        text-align: center;
+    }
+}

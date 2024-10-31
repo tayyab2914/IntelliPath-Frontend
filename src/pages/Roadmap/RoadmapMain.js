@@ -10,7 +10,7 @@ import RoadmapLandingPage from "./RoadmapLandingPage";
 import RoadmapDisplay from "./RoadmapFlow/RoadmapDisplay";
 const RoadmapMain = () => {
   const navigate = useNavigate();
-  const [ShowNotification, setShowNotification] = useState(false);
+  const [ShowNotification, setShowNotification] = useState(true);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });

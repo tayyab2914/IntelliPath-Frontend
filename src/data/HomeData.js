@@ -50,7 +50,7 @@ export const INNOVATIVE_TOOLS_DATA = [
   },
   {
     name: "Tribes",
-    path: "/tribes",
+    path: "/tribes/explore",
     icon: "feature_threads",
     description:
       "Join discussion groups to connect with peers, share knowledge, and learn together.",

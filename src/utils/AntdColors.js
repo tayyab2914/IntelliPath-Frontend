@@ -69,3 +69,6 @@ export const POPCONFIRM_COLORS = {
     colorWarning: THEME_COLORS.colorAccent,
   };
   
+  export const PROGRESS_COLORS = {
+    defaultColor:THEME_COLORS.colorAccent
+  }

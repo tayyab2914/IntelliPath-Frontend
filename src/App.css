@@ -8,7 +8,8 @@
   --color-accent-hover: #3fbdb5;
   --color-light-accent: #e7f5f5;
   --color-muted: #aeafbe;
-  --drop-shadow: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.075));
+  --drop-shadow: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.042));
+  --drop-shadow-light: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.027));
 }
 
 .bg-danger {

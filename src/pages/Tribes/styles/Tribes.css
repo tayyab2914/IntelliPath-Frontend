@@ -1,0 +1,137 @@
+.tribes-landing-img {
+    width: 100%;
+  }
+  .tribes-landing {
+    margin: 50px 0px;
+  }
+  .tribes-landing-text-span {
+    padding: 0px 40px;
+  }
+  .tribes-landing-heading {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0px;
+  }
+  .tribes-landing-description {
+    margin: 0px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color-dark);
+  }
+  
+  .two-tone-white {
+    color: var(--color-dark);
+  }
+  
+  .two-tone-accent {
+    color: var(--color-accent);
+  }
+  
+  @media screen and (max-width: 992px) {
+    .tribes-landing-heading {
+      font-size: 28px;
+    }
+    .tribes-landing-description {
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .tribes-landing-text-span {
+      padding: 0px 0px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .tribes-landing-img {
+      width: 70%;
+    }
+  }
+
+  .roadmap-landing-img {
+  width: 100%;
+}
+.roadmap-landing {
+  margin: 120px 0px;
+}
+.roadmap-landing-text-span {
+  padding: 0px 40px;
+}
+.roadmap-landing-heading {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0px;
+}
+.roadmap-landing-description {
+  margin: 0px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-dark);
+}
+
+.two-tone-white {
+  color: var(--color-dark);
+}
+
+.two-tone-accent {
+  color: var(--color-accent);
+}
+@media screen and (max-width: 992px) {
+  .roadmap-landing-heading {
+    font-size: 28px;
+  }
+  .roadmap-landing-description {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .roadmap-landing-text-span {
+    padding: 0px 0px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .roadmap-landing-img {
+    width: 80%;
+  }
+}
+
+  
+  
+  .tribes-explore-header-row {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    filter: var(--drop-shadow);
+    margin: 10px 0px;
+    padding: 15px 15px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .tribes-explore-header-goal-col{
+    display: flex;
+    align-items: center;
+  }
+  .tribes-explore-header-goal {
+    margin: 0px;
+    color: var(--color-accent);
+    font-weight: 500;
+    font-size: 24px;
+  }
+  .tribes-explore-header-joined-tribe-btn{
+      margin-right: 10px !important;
+  }
+  .tribes-explore-header-icons-col{
+    text-align: end;
+  }
+  
+  @media screen and (max-width:375px){
+      .tribes-explore-header-goal {
+          font-size: 20px;
+        }
+  }  @media screen and (max-width:576px){
+    
+  .tribes-explore-header-row {
+    background-color: var(--color-white);
+    filter: none;
+    padding: 0px;
+  }
+}
