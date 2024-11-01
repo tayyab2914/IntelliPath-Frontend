@@ -7,6 +7,7 @@ import { Col, Row, Select, Pagination } from "antd";
 import TribeCard from "./TribeCard";
 import "../styles/TribeExplore.css";
 import { AVAILABLE_GOALS } from "../../../utils/GlobalSettings";
+import { GET_PAGINATION_DETAILS } from "../../../utils/ReusableFunctionalities";
 
 const { Option } = Select;
 
@@ -23,9 +24,7 @@ const TribesExplore = () => {
 
   const filterTribes = () => {
     if (selectedCategory) {
-      const filtered = TRIBE_EXPLORE_DATA.filter(
-        (tribe) => tribe.tribe_category === selectedCategory
-      );
+      const filtered = TRIBE_EXPLORE_DATA.filter( (tribe) => tribe.tribe_category === selectedCategory );
       setFilteredTribes(filtered);
     } else {
       setFilteredTribes(TRIBE_EXPLORE_DATA);
@@ -33,18 +32,7 @@ const TribesExplore = () => {
     setCurrentPage(1);
   };
 
-  const handleCategoryChange = (value) => {
-    setSelectedCategory(value);
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const displayedTribes = filteredTribes.slice(startIndex, endIndex);
+  const displayedTribes = GET_PAGINATION_DETAILS(currentPage,pageSize,filteredTribes)
 
   return (
     <div>
@@ -52,15 +40,14 @@ const TribesExplore = () => {
       <div className="generic-container">
         <div className="tribe-explore-main">
           <TribeHeader type={"Explore"} />
-            <Select className="tribe-explore-select" defaultValue="Select Category" style={{ width: 200, marginBottom: 20 }} onChange={handleCategoryChange} size="medium" >
+          <Select className="tribe-explore-select" defaultValue="Select Category"  onChange={(value)=>setSelectedCategory(value)} size="medium" >
               <Option value={null}>All</Option>
               {AVAILABLE_GOALS.map((goal) => ( <Option value={goal}>{goal}</Option> ))}
             </Select>
           <Row gutter={[15, 15]} className="tribe-explore-row">
             {displayedTribes.map((tribe) => ( <TribeCard tribeData={tribe} btnText={"Join Tribe"}/> ))}
           </Row>
-          
-          <Pagination current={currentPage} pageSize={pageSize} total={filteredTribes.length} onChange={handlePageChange} showSizeChanger={false} style={{ marginTop: 20 }}/>
+          <Pagination current={currentPage} pageSize={pageSize} total={filteredTribes.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} style={{ marginTop: 20 }}/>
         </div>
       </div>
       <Footer />

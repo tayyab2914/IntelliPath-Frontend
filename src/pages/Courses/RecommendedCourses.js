@@ -4,6 +4,7 @@ import MyButton from "../../components/Button/Button";
 import { COURSE_DATA } from "../../data/CoursesData";
 import { useNavigate } from "react-router-dom";
 import './styles/RecommendedCourses.css'
+import { GET_PAGINATION_DETAILS } from "../../utils/ReusableFunctionalities";
 
 const RecommendedCourses = ({ CourseName }) => {
   const [CourseData, setCourseData] = useState(COURSE_DATA);
@@ -12,18 +13,11 @@ const RecommendedCourses = ({ CourseName }) => {
   const pageSize = 6;
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     // Call API to get data when CourseName changes
   }, [CourseName]);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const displayedCourses = CourseData?.slice(startIndex, endIndex) || [];
-
+  const displayedCourses = GET_PAGINATION_DETAILS(currentPage,pageSize,CourseData)
   return  <>
   <Row gutter={[15, 15]} className="recommended-courses-container">
     {displayedCourses.map((course, index) => (
@@ -45,7 +39,7 @@ const RecommendedCourses = ({ CourseName }) => {
     ))}
   </Row>
   
-  <Pagination current={currentPage} pageSize={pageSize} total={CourseData?.length} onChange={handlePageChange} showSizeChanger={false} className="recommended-courses-pagination"/>
+  <Pagination current={currentPage} pageSize={pageSize} total={CourseData?.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} className="recommended-courses-pagination"/>
 </>;
 };
 

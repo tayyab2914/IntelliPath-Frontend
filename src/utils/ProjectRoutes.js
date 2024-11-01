@@ -22,6 +22,7 @@ import { useSelector } from 'react-redux';
 import CoursePage from '../pages/Courses/CoursePage';
 import TribesExplore from '../pages/Tribes/TribeNavigation/TribesExplore';
 import TribePage from '../pages/Tribes/TribeChat/TribeChatMain';
+import AssessmentLanding from '../pages/Assessment/AssessmentLanding';
 
 const ProjectRoutes = () => {
     const { token, isLoggedIn } = useSelector((state) => state.authToken);
@@ -33,7 +34,8 @@ const ProjectRoutes = () => {
         <Route path="/account" element={<AccountMain />} />
         <Route path="/courses" element={<CoursesMain />} />
         <Route path="/about" element={<AboutMain />} />
-        <Route path="/quiz" element={<QuizMain />} />
+        <Route path="/assessment" element={<AssessmentLanding />} />
+        <Route path="/quiz" element={isLoggedIn ? <QuizMain />: <AccountMain/>} />
         <Route path="/github-integration" element={<GithubMain />} />
         <Route path="/tribes" element={isLoggedIn ? <TribesMain />: <AccountMain/>} /> 
         <Route path="/gamification" element={<GamificationMain />} />

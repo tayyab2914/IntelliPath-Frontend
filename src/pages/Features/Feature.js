@@ -26,7 +26,7 @@ const Feature = ({data,}) => {
                             <span className="two-tone-accent">{textAccent} </span>
                         </p>
                         <p className="feature-description"> {description} </p>
-                        <MyButton variant="outlined" w={`${windowWidth < 576 ? '100%':"230px"}`} text={'Explore'} onClick={()=>navigate(path)}/>
+                        <MyButton variant="outlined" w={`${windowWidth < 576 ? '100%':"230px"}`} text={'Explore'} onClick={()=>navigate(path)} className={"feature-navigation-btn"}/>
                     </div>
                 </Col>
                 {orientation == 'right' && windowWidth > 576 &&

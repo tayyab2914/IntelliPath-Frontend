@@ -8,7 +8,7 @@ export const INNOVATIVE_TOOLS_DATA = [
   },
   {
     name: "Interactive Quizzes",
-    path: "/quiz",
+    path: "/assessment",
     icon: "feature_quiz",
     description:
       "Receive real-time feedback on quizzes to refine your skills as you learn.",

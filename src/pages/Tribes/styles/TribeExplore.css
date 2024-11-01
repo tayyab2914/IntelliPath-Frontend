@@ -5,7 +5,14 @@
 .tribe-explore-select{
     width: 250px !important;
     text-align: center !important;
+    margin-bottom: 20px;
 }
 .tribe-explore-row{
     text-align: left;
+}
+.ant-select-in-form-item{
+    margin-bottom: 0px !important;
+}
+.ant-form-item{
+    margin-bottom: 5px !important;
 }

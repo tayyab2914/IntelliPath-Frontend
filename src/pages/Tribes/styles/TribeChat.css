@@ -1,0 +1,69 @@
+.tribes-chat-header-row {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  filter: var(--drop-shadow);
+  margin: 10px 0px;
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tribes-chat-header-goal-col {
+  display: flex;
+  align-items: center;
+}
+.tribes-chat-header-goal {
+  margin: 0px;
+  color: var(--color-accent);
+  font-weight: 500;
+  font-size: 24px;
+}
+.tribes-chat-header-joined-tribe-btn {
+  margin-right: 10px !important;
+}
+.tribes-chat-header-icons-col {
+  text-align: end;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.suggested-user-icon {
+  margin-right: 10px;
+}
+.tribes-chat-select {
+  width: 200px;
+  height: 36px !important;
+  text-align: center;
+}
+.btn-outlined-dark {
+  margin-top: 0px !important;
+}
+@media screen and (max-width: 375px) {
+  .tribes-chat-header-goal {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .tribes-chat-header-row {
+    background-color: var(--color-white);
+    filter: none;
+    padding: 0px;
+  }
+  .tribes-chat-header-icons-col
+  {
+    display: block;
+  }
+  .tribes-chat-header-joined-tribe-btn{
+    
+    margin-top: 10px !important;
+  }
+  .tribes-chat-select{
+    width: 100% !important;
+    margin-top: 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .tribes-chat-header-row {
+    display: block;
+  }
+}

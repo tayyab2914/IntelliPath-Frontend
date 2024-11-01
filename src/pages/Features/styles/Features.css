@@ -16,7 +16,9 @@
     font-weight: 300;
     color: var(--color-white);
   }
-  
+  .feature-navigation-btn{
+    margin-top: 20px !important;
+  }
   .feature-heading .two-tone-white {
     color: var(--color-white) !important;
   }

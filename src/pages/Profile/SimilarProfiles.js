@@ -29,7 +29,7 @@ const SimilarProfiles = () => {
                 </div>
               </div>
             </div>
-            <MyButton text={"View Profile"} variant="outlined-dark"/>
+            <MyButton text={"View Profile"} variant="outlined-dark" className={'similar-profile-view-btn'}/>
            </div>
           </Col>
         ))}

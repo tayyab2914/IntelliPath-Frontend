@@ -40,10 +40,10 @@ justify-content: center;
   
   @keyframes glow {
     0% {
-      box-shadow: 0 0 2px var(--color-accent-light), 0 0 2px var(--color-accent-light);
+        box-shadow: 0 0 20px var(--color-accent-light), 0 0 50px var(--color-accent-light);
     }
     100% {
-      box-shadow: 0 0 20px var(--color-accent-light), 0 0 50px var(--color-accent-light);
+      box-shadow: 0 0 0px var(--color-accent-light), 0 0 0px var(--color-accent-light);
     }
   }
   
