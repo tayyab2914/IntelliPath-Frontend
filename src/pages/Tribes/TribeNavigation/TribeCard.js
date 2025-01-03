@@ -1,21 +1,41 @@
-import { Col, Tag } from 'antd'
-import React from 'react'
+import { Col, Spin, Tag } from 'antd'
+import React, { useState } from 'react'
 import MyButton from '../../../components/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import '../styles/TribesCard.css'
+import { TRUNCATE_STRING } from '../../../utils/ReusableFunctionalities'
+import { API_JOIN_TRIBE } from '../../../apis/TribeApis'
+import { useDispatch, useSelector } from 'react-redux'
+import { setRerenderTribePage } from '../../../redux/AuthToken/Action'
 
-const TribeCard = ({tribeData,btnText}) => {
+const TribeCard = ({tribeData,btnText,isInTribeExplorePage}) => {
+    const { token, rerender_tribe_page} = useSelector((state) => state.authToken);
     const navigate = useNavigate()
+    const dispatch=useDispatch()
+    const [ShowSpinner, setShowSpinner] = useState(false);
+    const clickHandler = async()=>{
+        if(isInTribeExplorePage)
+        {
+            await API_JOIN_TRIBE(token,tribeData?.id,setShowSpinner)
+            dispatch(setRerenderTribePage(!rerender_tribe_page))
+        }
+        else
+        {
+            navigate(`/tribes/${tribeData?.id}`)
+        }
+    }
   return (
     <Col xs={24} sm={12} md={8} lg={6}>
-     <div className='tribe-card-container'>
-     <p className='tribe-cards-id'> #{tribeData.tribe_id}</p>
-      <p className='tribe-cards-title'>{tribeData.tribe_name}</p>
-      <p className='tribe-cards-description'>{tribeData.tribe_description}</p>
-      <span className='tribe-card-num-of-members'><Tag color='cyan'>{tribeData.num_of_members} Members</Tag></span>
-      <MyButton variant='outlined-dark' onClick={()=>navigate(`/tribes/${tribeData.tribe_id}`)} text={btnText}/>
-  
-     </div>
+        {ShowSpinner && <Spin fullscreen/>}
+        <div className='tribe-card-container'>
+           <div className="tribe-card-inner">
+                <p className='tribe-cards-id'> #{tribeData?.id} <br/> {tribeData?.category}</p>
+                <p className='tribe-cards-title'>{tribeData?.name}</p>
+                <p className='tribe-cards-description'>{TRUNCATE_STRING(tribeData?.description,100)}</p>
+                <span className='tribe-card-num-of-members'><Tag color='cyan'>{tribeData?.member_count} Members</Tag></span>
+           </div>
+            <MyButton variant='outlined-dark' onClick={clickHandler} text={btnText}/>
+        </div>
     </Col>
   )
 }

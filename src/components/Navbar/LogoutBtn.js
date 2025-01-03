@@ -3,10 +3,12 @@ import React from "react";
 import MyIcon from "../Icon/MyIcon";
 import './styles/Navbar.css'
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../../redux/AuthToken/Action";
+import { setAuthToken, setLoggedIn } from "../../redux/AuthToken/Action";
+import { useNavigate } from "react-router-dom";
 
 const LogoutBtn = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
   return (
     <Popconfirm
       placement="rightBottom"
@@ -14,7 +16,11 @@ const LogoutBtn = () => {
       description="Are you sure you want to logout?"
       okText="Yes"
       cancelText="No"
-        onConfirm={() => dispatch(setLoggedIn(false))}
+        onConfirm={() => {
+            dispatch(setLoggedIn(false))
+            dispatch(setAuthToken(null))
+            navigate('/')
+        }}
     >
       <div style={{display:"flex",alignItems:"center"}}>
         <MyIcon type={"logout"} size="sm"/>{" "}

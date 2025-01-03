@@ -5,6 +5,7 @@
 .similar-profile-card-container {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 .similar-profile-card-container-outer{
 

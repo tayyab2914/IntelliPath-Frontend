@@ -1,6 +1,6 @@
 // src/redux/actions.js
 
-import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN } from "./Types";
+import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN, RERENDER_TRIBE_PAGE } from "./Types";
 
 export const setAuthToken = (token) => {
   return {
@@ -21,3 +21,10 @@ export const setLoggedIn = (isLoggedIn) => {
     payload: isLoggedIn,
   };
 };
+
+export const setRerenderTribePage = (rerender_tribe_page) => {
+    return {
+      type: RERENDER_TRIBE_PAGE,
+      payload: rerender_tribe_page,
+    };
+  };

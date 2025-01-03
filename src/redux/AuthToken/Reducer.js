@@ -1,6 +1,6 @@
 // src/redux/reducer.js
 
-import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN } from "./Types";
+import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN, RERENDER_TRIBE_PAGE } from "./Types";
 
 const initialState = {
   token: null,
@@ -23,7 +23,12 @@ export default function authReducer(state = initialState, action) {
       ...state,
       isLoggedIn: action.payload,
     };
-  } else {
+  } else if (action.type == RERENDER_TRIBE_PAGE) {
+    return {
+      ...state,
+      rerender_tribe_page: action.payload,
+    };
+  }else {
     return state;
   }
 }

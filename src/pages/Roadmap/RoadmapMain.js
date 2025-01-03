@@ -11,7 +11,7 @@ import LandingPage from "../../components/LandingPage/LandingPage";
 import { IMAGES } from "../../data/ImageData";
 const RoadmapMain = () => {
   const navigate = useNavigate();
-  const [ShowNotification, setShowNotification] = useState(true);
+  const [ShowNotification, setShowNotification] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });

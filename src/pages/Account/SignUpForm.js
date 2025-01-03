@@ -37,7 +37,7 @@ const SignUpForm = ({ handleSignUp, handleSignInToggle }) => {
 
     
       <Form.Item> 
-      <MyButton variant="filled" text={'SIGN IN'}  onClick={onSubmit} w="100%" h="40px" m="0px"/>
+      <MyButton variant="filled" text={'SIGN UP'}  onClick={onSubmit} w="100%" h="40px" m="0px"/>
       </Form.Item>
 
       <Divider>or</Divider>

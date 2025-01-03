@@ -23,3 +23,11 @@ export const FORMAT_TIMESTAMP = (timestamp) => {
     return `${formattedHours}:${formattedMinutes} ${ampm} ${day}/${month}/${year}`;
   };
   
+  export function TRUNCATE_STRING(str,length=30) {
+    if (str?.length <= length) {
+      return str;
+    } else {
+      return `${str?.slice(0, length)}...`;
+    }
+  }
+  

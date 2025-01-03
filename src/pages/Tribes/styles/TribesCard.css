@@ -19,6 +19,7 @@
       display: flex; /* Enable flexbox */
       flex-direction: column; /* Stack children vertically */
       justify-content: space-between; /* Ensure spacing between children */
+      height: 204px;
     }
     .tribe-card-container:hover{
         
@@ -60,7 +61,7 @@
         font-weight: 400;
         color: var(--color-muted);
         margin-bottom: 10px;
-        margin-top: 0px;
+        margin-top: 5px;
       }
     /* @media screen and (max-width: 1350px) {
       .tribe-card-container {

@@ -1,29 +1,37 @@
-import { Modal, Input, Select, Form, message } from 'antd';
+import { Modal, Input, Select, Form, message, Spin } from 'antd';
 import React, { useState } from 'react';
 import { AVAILABLE_GOALS } from '../../../utils/GlobalSettings';
+import { API_CREATE_TRIBE } from '../../../apis/TribeApis';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRerenderTribePage } from '../../../redux/AuthToken/Action';
 
 const { Option } = Select;
 const { TextArea } = Input;
 
 const CreateTribeModal = ({ visible, onClose }) => {
   const [form] = Form.useForm();
+  const [ShowSpinner, setShowSpinner] = useState(false);
+  const { token,rerender_tribe_page} = useSelector((state) => state.authToken);
+  const dispatch = useDispatch()
   
-  const submitHandler = () => {
-    form.validateFields()
-      .then(values => {
-        console.log("Form Values:", values); 
-        onClose(); 
-        form.resetFields(); 
-      })
-      .catch(info => {
-        console.log("Validation Failed:", info);
-      });
+  const submitHandler = async () => {
+    try {
+      const values = await form.validateFields();
+      await API_CREATE_TRIBE(token, values, setShowSpinner);  
+      onClose(); 
+      form.resetFields(); 
+        dispatch(setRerenderTribePage(!rerender_tribe_page))
+    } catch (info) {
+      console.log("Validation Failed:", info);
+    }
   };
   
   return (
+    <>
+    {ShowSpinner && <Spin fullscreen/>}
     <Modal  title="Start Your Path to Success"  visible={visible}  onOk={submitHandler}  onCancel={onClose} okText="Create Tribe" cancelText="Cancel" >
       <Form form={form} layout="vertical">
-        <Form.Item name="title" label="Tribe Title" rules={[{ required: true, message: 'Please enter a title for the tribe!' }]} >
+        <Form.Item name="name" label="Tribe Title" rules={[{ required: true, message: 'Please enter a title for the tribe!' }]} >
           <Input placeholder="Enter tribe title" />
         </Form.Item>
 
@@ -38,6 +46,7 @@ const CreateTribeModal = ({ visible, onClose }) => {
         </Form.Item>
       </Form>
     </Modal>
+    </>
   );
 };
 
