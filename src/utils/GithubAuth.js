@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../pages/Settings/styles/Settings.css'
+import MyButton from '../components/Button/Button';
 // Replace with your GitHub client ID
 const CLIENT_ID = 'Ov23libNcKCi2HnB4ix4'; 
 const REDIRECT_URI = 'http://localhost:3000'; // Adjust if needed
@@ -38,7 +39,8 @@ const GithubAuth = ({GithubURL}) => {
   return (
     <div className="setting-item">
       
-      <input  type="text"  id="github"  name="github"  value={GithubURL || ''}  onClick={handleGithubLogin} onChange={handleGithubLogin} className="setting-input" />
+      {/* <input  type="text"  id="github"  name="github"  value={GithubURL || ''}  onClick={handleGithubLogin} onChange={handleGithubLogin} className="setting-input" /> */}
+      <MyButton className="github-auth-btn" onClick={handleGithubLogin} text={'Login with GitHub'} w='250px'/>
       {email && <p>Your email: {email}</p>}
     </div>
   );

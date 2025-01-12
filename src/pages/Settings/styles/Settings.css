@@ -30,6 +30,14 @@
   border-radius: 4px;
   color: var(--color-dark);
 }
+.settings-buttons{
+    margin-top: 20px;
+}
+.setting-item{
+
+    display: flex;
+    align-items: center;
+}
 
 @media screen and (max-width:568px){
     .settings-buttons button{
