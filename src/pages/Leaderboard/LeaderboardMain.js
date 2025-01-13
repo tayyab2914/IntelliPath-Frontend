@@ -10,11 +10,14 @@ import {  LEADERBOARD_ALL_USER_DATA, LEADERBOARD_SINGLE_USER_DATA } from "../../
 import { useNavigate } from "react-router-dom";
 import { AVAILABLE_GOALS } from "../../utils/GlobalSettings";
 import { useSelector } from 'react-redux';
+import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
+import { LB__SELECT,LB__USER} from '../../utils/WebSpeech.js/functionalities/useSpeechText';
 
 const { Option } = Select; 
 
 const LeaderboardMain = () => {
     const { token, isLoggedIn } = useSelector((state) => state.authToken);
+    const {speakWord} = useSpeech()
   const windowWidth = useWindowWidth();
   const navigate = useNavigate();
   const columns = leaderboardColumns(windowWidth);
@@ -40,14 +43,34 @@ const LeaderboardMain = () => {
 
       <div className="generic-container">
         <div className="leaderboard-select">
-          <Select  defaultValue="Frontend Developer"  onChange={handleSelectChange} >
-            {AVAILABLE_GOALS?.map((item)=><Option value={item}>{item}</Option>)}
+          <Select  defaultValue="Frontend Developer"  onChange={handleSelectChange} onMouseEnter={() => speakWord(LB__SELECT)}>
+            {AVAILABLE_GOALS?.map((item)=><Option value={item}  onMouseEnter={() => speakWord(item)}>{item}</Option>)}
           </Select>
         </div>
 
-        {isLoggedIn && <Table dataSource={LEADERBOARD_SINGLE_USER_DATA} columns={columns} pagination={false} className="leaderboard-table-single" showHeader={false} />}
-        <p className="leaderboard-title">Goal : {selectedCategory}</p>
-        <Table dataSource={LEADERBOARD_ALL_USER_DATA} columns={columns} pagination={{ pageSize: 15, position: ["bottomRight"] }} rowKey="position" className="leaderboard-table" onRow={(record) => ({ onClick: () => handleRowClick(record), })} />
+        {isLoggedIn && 
+            <Table dataSource={LEADERBOARD_SINGLE_USER_DATA} 
+                columns={columns} 
+                pagination={false} 
+                className="leaderboard-table-single" 
+                showHeader={false} 
+                onRow={(record) => ({
+                    onClick: () => handleRowClick(record),
+                    onMouseEnter: () => speakWord(LB__USER(record?.position,record?.name,record?.points)),
+                })}/>}
+        <p className="leaderboard-title"  onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)}>Goal : {selectedCategory}</p>
+        <Table 
+            dataSource={LEADERBOARD_ALL_USER_DATA} 
+            columns={columns} 
+            pagination={{ pageSize: 15, position: ["bottomRight"] }} 
+            rowKey="position" 
+            className="leaderboard-table" 
+            onRow={(record) => ({
+                onClick: () => handleRowClick(record),
+                onMouseEnter: () => speakWord(LB__USER(record?.position,record?.name,record?.points)),
+        })}
+        />
+
       </div>
       <Footer />
     </>

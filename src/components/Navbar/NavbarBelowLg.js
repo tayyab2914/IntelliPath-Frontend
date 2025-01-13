@@ -9,10 +9,12 @@ import { Button, Drawer, Radio, Space } from 'antd';
 import { NAV_ITEMS_BELOW_LG } from '../../data/NavbarData';
 import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
+import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
 
 
 const NavbarBelowLg = ({version,navItems}) => {
     const navigate = useNavigate();
+    const {speakWord} = useSpeech()
     const [ShowDrawer, setShowDrawer] = useState(false);
     const { token, isLoggedIn } = useSelector((state) => state.authToken);
     const optionClickHandler = (path)=>{
@@ -30,9 +32,9 @@ const NavbarBelowLg = ({version,navItems}) => {
         <Drawer title="Options" placement={'right'} onClose={()=>setShowDrawer(false)} open={ShowDrawer}>
             <span>
                 {NAV_ITEMS_BELOW_LG.map(({ name, path,icon }) => (
-                    <div key={name}> <p   onClick={() => optionClickHandler(path)}  className='navbar-drawer-item'> <MyIcon type={icon}/>  {name}  </p></div>
+                    <div key={name}  onMouseEnter={()=>speakWord(name)}> <p   onClick={() => optionClickHandler(path)}  className='navbar-drawer-item'> <MyIcon type={icon}/>  {name}  </p></div>
                 ))}
-        {isLoggedIn &&  <div className='navbar-drawer-item'><LogoutBtn  /> </div> }
+        {isLoggedIn &&  <div className='navbar-drawer-item' onMouseEnter={()=>speakWord('logout')}><LogoutBtn  /> </div> }
             </span>
         </Drawer>
     </>

@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { NAV_DROPDOWN_ITEMS_LG, NAV_ITEMS_LG } from '../../data/NavbarData';
 import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
+import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
 
 const NavbarAboveLg = ({ version = 'light' }) => {
   const navigate = useNavigate();
+  const { speakWord } = useSpeech();
   const [popoverVisible, setPopoverVisible] = useState(false); 
   const { token, isLoggedIn } = useSelector((state) => state.authToken);
 
@@ -19,16 +21,16 @@ const NavbarAboveLg = ({ version = 'light' }) => {
   };
 
   const renderNavItems = () => {
-    return NAV_ITEMS_LG.map(({ name, path }) => ( <span  key={name}  className={version === 'light' ? 'nav-item-light' : 'nav-item-dark'}   onClick={() => navigate(path)} > {name} </span> ));
+    return NAV_ITEMS_LG.map(({ name, path }) => ( <span  key={name}  className={version === 'light' ? 'nav-item-light' : 'nav-item-dark'}   onClick={() => navigate(path)} onMouseEnter={()=>speakWord(name)}> {name} </span> ));
   };
 
   const renderDropdownItems = () => {
     return (
       <>
         {NAV_DROPDOWN_ITEMS_LG.map(({ name, path, icon,index  }) => (
-          <React.Fragment key={name}> <p  onClick={() => optionClickHandler(path)}  className='navbar-popover-item' > <MyIcon type={icon} /> {name} </p> </React.Fragment>
+          <React.Fragment key={name}> <p  onClick={() => optionClickHandler(path)}  className='navbar-popover-item' onMouseEnter={()=>speakWord(name)}> <MyIcon type={icon} /> {name} </p> </React.Fragment>
         ))}
-        {isLoggedIn && <div className='navbar-popover-item'><LogoutBtn  /> </div>}
+        {isLoggedIn && <div className='navbar-popover-item' onMouseEnter={()=>speakWord("Logout")}><LogoutBtn  /> </div>}
       </>
     );
   };

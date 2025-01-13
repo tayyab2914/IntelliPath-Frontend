@@ -17,11 +17,11 @@ export const NAV_DROPDOWN_ITEMS_LG = [
 ];
 
 export const NAV_ITEMS_BELOW_LG = [
-    { name: "Tribes", path: "/tribes", icon: "tribes" },
   { name: "Profile", path: "/profile", icon: "user" },
   { name: "Notifications", path: "/notifications", icon: "envelope" },
   { name: "Roadmap", path: "/roadmap", icon: "map" },
   { name: "Leaderboard", path: "/leaderboard", icon: "leaderboard" },
+  { name: "Tribes", path: "/tribes", icon: "tribes" },
   { name: "Features", path: "/features", icon: "feature" },
   { name: "Documentation", path: "/documentation", icon: "documentation" },
   { name: "Settings", path: "/settings", icon: "setting" },
