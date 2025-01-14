@@ -4,6 +4,7 @@ import { AVAILABLE_GOALS } from '../../../utils/GlobalSettings';
 import { API_CREATE_TRIBE } from '../../../apis/TribeApis';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRerenderTribePage } from '../../../redux/AuthToken/Action';
+import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -13,6 +14,7 @@ const CreateTribeModal = ({ visible, onClose }) => {
   const [ShowSpinner, setShowSpinner] = useState(false);
   const { token,rerender_tribe_page} = useSelector((state) => state.authToken);
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   
   const submitHandler = async () => {
     try {
@@ -21,6 +23,8 @@ const CreateTribeModal = ({ visible, onClose }) => {
       onClose(); 
       form.resetFields(); 
         dispatch(setRerenderTribePage(!rerender_tribe_page))
+        navigate('/tribes')
+        
     } catch (info) {
       console.log("Validation Failed:", info);
     }

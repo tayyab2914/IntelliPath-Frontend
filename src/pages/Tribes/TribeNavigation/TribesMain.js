@@ -31,7 +31,7 @@ const TribesMain = () => {
     });
   return (
     <div>
-        {ShowSpinner && <Spin fullscreen/>}
+    {ShowSpinner && <Spin fullscreen/>}
       <NavbarMain/>
       <div className="generic-container">
         <div className="tribes-main">

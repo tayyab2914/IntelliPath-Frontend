@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/TribePopoverContent.css'
 import MyIcon from '../../../components/Icon/MyIcon'
-import NewThreadModal from './NewThreadModal';
+import NewThreadModal from './AdminOptions.js/NewThreadModal';
 import { message, Popconfirm } from 'antd';
 
 const TribePopoverContent = () => {

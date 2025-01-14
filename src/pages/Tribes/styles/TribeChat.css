@@ -38,6 +38,12 @@
 .btn-outlined-dark {
   margin-top: 0px !important;
 }
+
+.tribe-chat-admin-icon{
+    padding: 0px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
 @media screen and (max-width: 375px) {
   .tribes-chat-header-goal {
     font-size: 20px;

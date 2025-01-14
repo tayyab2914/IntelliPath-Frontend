@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const IS_BLIND_MODE_ENABLED = true
+const IS_BLIND_MODE_ENABLED = false
 const useSpeech = () => {
   const [femaleVoice, setFemaleVoice] = useState(null);
 

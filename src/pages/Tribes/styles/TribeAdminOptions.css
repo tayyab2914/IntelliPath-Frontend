@@ -1,0 +1,16 @@
+.tribe-admin-options
+{
+    cursor: pointer;
+
+}
+.tribe-admin-options p{
+    margin: 0px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.tribe-admin-options p:hover{
+    background-color: var(--color-light-accent);
+}
+.tribe-admin-options .anticon{
+    margin-right: 10px;
+}
