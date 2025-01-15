@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import '../pages/Settings/styles/Settings.css'
 import MyButton from '../components/Button/Button';
+
 // Replace with your GitHub client ID
 const CLIENT_ID = 'Ov23libNcKCi2HnB4ix4'; 
-const REDIRECT_URI = 'http://localhost:3000'; // Adjust if needed
+const REDIRECT_URI = 'http://localhost:8000/auth/github_callback/?token=abc'; // Adjust if needed
 const SCOPE = 'user:email'; // Request access to the user's email address
 
 const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`;
 
-const GithubAuth = ({GithubURL}) => {
+const GithubAuth = () => {
   const [email, setEmail] = useState(null);
 
   const handleGithubLogin = () => {
@@ -17,10 +17,11 @@ const GithubAuth = ({GithubURL}) => {
 
   const fetchEmail = async () => {
     try {
-      const response = await fetch('http://localhost:8000/githubAuth/github_callback/?code=' + new URLSearchParams(window.location.search).get('code'));
+      const response = await fetch('http://localhost:8001/githubAuth/github_callback/?code=' + new URLSearchParams(window.location.search).get('code'));
       const data = await response.json();
       if (data.email) {
         setEmail(data.email);
+        console.log(data.email)
       } else {
         console.error(data.error);
       }
@@ -30,8 +31,14 @@ const GithubAuth = ({GithubURL}) => {
   };
 
   useEffect(() => {
+    console.log("RERENDERED")
+    setTimeout(() => {
+        
+    }, 2000);
     const code = new URLSearchParams(window.location.search).get('code');
+    console.log(window.location)
     if (code) {
+        console.log("CODE PROVIDED")
       fetchEmail();
     }
   });
