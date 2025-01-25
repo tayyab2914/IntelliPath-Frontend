@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './styles/Settings.css';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Divider, message, Upload } from 'antd';
+import { DOMAIN_NAME } from '../../utils/GlobalSettings';
 
 const SettingsProfile = ({ setSettingsData, SettingsData }) => {
-  const [imagePreview, setImagePreview] = useState(SettingsData.profileImage || '');
+  const [imagePreview, setImagePreview] = useState(SettingsData.profile_picture || '');
 
   const beforeUpload = (file) => {
     const isImage = file.type.startsWith('image/');
@@ -18,7 +19,7 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
     const reader = new FileReader();
     reader.onload = () => {
       setImagePreview(reader.result);
-      setSettingsData({ ...SettingsData, profileImage: reader.result, });
+      setSettingsData({ ...SettingsData, profile_picture: reader.result, });
     };
     reader.readAsDataURL(file);
   };
@@ -29,7 +30,7 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
 <Divider/>
       <div className="profile-image-container">
         {imagePreview ? (
-          <img src={imagePreview} alt="Profile" className="settings-profile-image" />
+          <img src={`${DOMAIN_NAME}${imagePreview}`} alt="Profile" className="settings-profile-image" />
         ) : (     
         <span className="setting-label">Display Image </span>
         )}

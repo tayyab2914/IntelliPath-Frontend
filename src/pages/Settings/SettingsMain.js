@@ -1,47 +1,51 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import NavbarMain from "../../components/Navbar/NavbarMain";
-import Footer from '../../components/Footer/Footer';
-import TitleMain from '../../components/Title/TitleMain';
-import SettingsAccessibility from './SettingsAccessibility';
-import SettingsBasicInfo from './SettingsBasicInfo';
-import SettingsProfile from './SettingsProfile';
-import SettingsLinked from './SettingsLinked';
-import { Divider, Button } from 'antd';
-import MyButton from '../../components/Button/Button';
-import { useSelector } from 'react-redux';
+import Footer from "../../components/Footer/Footer";
+import TitleMain from "../../components/Title/TitleMain";
+import SettingsAccessibility from "./SettingsAccessibility";
+import SettingsBasicInfo from "./SettingsBasicInfo";
+import SettingsProfile from "./SettingsProfile";
+import SettingsLinked from "./SettingsLinked";
+import { useDispatch, useSelector } from "react-redux";
+import { API_GET_USER_ATTRIBUTE, API_UPDATE_USER_ATTRIBUTE } from "../../apis/CoreApis";
+import MyButton from "../../components/Button/Button";
+import { setRerenderApp } from "../../redux/AuthToken/Action";
 
 const SettingsMain = () => {
-    const { token, isLoggedIn } = useSelector((state) => state.authToken);
-    const initialSettings = {
-        blind_mode: true,
-        name: "Muhaman Ijaz",
-        age: 18,
-        linkedin_link: "https://muhamanijaz.linkedin.com",
-        display_image: "",
-        github_link: "https://muhamanijaz.linkedin.com",
-    };
+  const { token, isLoggedIn,user_attributes,rerender_app} = useSelector((state) => state.authToken);
+const dispatch = useDispatch()
+  const [SettingsData, setSettingsData] = useState({});
+  
+  const fetchSettings = async () => {
+    const response = await API_GET_USER_ATTRIBUTE(token);
+    setSettingsData(response);
+    dispatch(setRerenderApp(!rerender_app))
+  };
 
-    const [SettingsData, setSettingsData] = useState(initialSettings);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    fetchSettings()
+  }, []);
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    useEffect(() => {
-        setSettingsData(initialSettings);
-        console.log('isLoggedIn',isLoggedIn)
-    }, []);
+  const handleSave = async () => {
+    const formData = new FormData();
+    
+    Object.keys(SettingsData).forEach((key) => {
+      if (key === "display_image" && SettingsData[key] instanceof File) {
+        formData.append(key, SettingsData[key]);
+      } else {
+        formData.append(key, SettingsData[key]);
+      }
+    });
 
-    const handleSave = () => {
-        console.log("Settings saved:", SettingsData);
-
-    };
-
-    const handleDiscard = () => {
-        setSettingsData(initialSettings);
-        console.log("Changes discarded. Reset to initial settings.");
-    };
-
+    await API_UPDATE_USER_ATTRIBUTE(token,SettingsData,null)
+    fetchSettings()
+  };
+  
+  const handleDiscard = () => {
+    fetchSettings()
+    console.log("Changes discarded. Reset to initial settings.");
+  };
     return (
         <>
             <NavbarMain />
@@ -56,8 +60,8 @@ const SettingsMain = () => {
                     
 
                     <div className="settings-buttons">
-                        <MyButton variant="filled" text={'Save'} w='170px' m='0px 10px 0px 0px' onClick={handleSave}></MyButton>
-                        <MyButton variant="outlined-dark" text={'Discard'} w='170px' onClick={handleDiscard}></MyButton>
+                        <MyButton variant="filled" text={'Save'} w='200px' m='0px 10px 0px 0px' onClick={handleSave}></MyButton>
+                        <MyButton variant="outlined-dark" text={'Discard'} w='200px' onClick={handleDiscard}></MyButton>
                     </div>
                         </>
                     }

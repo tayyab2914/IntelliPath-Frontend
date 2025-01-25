@@ -2,16 +2,27 @@ import React from "react";
 import "./styles/Settings.css";
 import { Divider, Switch } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { setBlindMode } from "../../redux/BlindMode/Action";
+import { setBlindMode } from "../../redux/AuthToken/Action";
 
 const SettingsAccessibility = ({ setSettingsData, SettingsData }) => {
-  const { token, isLoggedIn } = useSelector((state) => state.authToken);
-  const { blindMode } = useSelector((state) => state.blindMode);
   const dispatch = useDispatch();
+  
+  // Extract state from Redux
+  const { token,blind_mode, isLoggedIn } = useSelector((state) => state.authToken);
+
+  // Determine the current blind mode status
+  const currentBlindMode = isLoggedIn
+    ? SettingsData?.is_blindmode || false
+    : blind_mode;
+
+  // Handle the switch toggle
   const handleBlindModeChange = (checked) => {
-    setSettingsData({ ...SettingsData, blindMode: checked });
-    if (!isLoggedIn) {//!agr login nhi h to wrna redux wala settings set ho nhi to main me settings change hongi 
-        dispatch(setBlindMode(checked))
+    if (isLoggedIn) {
+      // Update local state for logged-in users
+      setSettingsData({ ...SettingsData, is_blindmode: checked });
+    } else {
+      // Dispatch Redux action for non-logged-in users
+      dispatch(setBlindMode(checked));
     }
   };
 
@@ -19,11 +30,10 @@ const SettingsAccessibility = ({ setSettingsData, SettingsData }) => {
     <div>
       <p className="settings-heading">Accessibility</p>
       <Divider />
-
       <div className="setting-item">
         <span className="setting-label">Enable Blind Mode</span>
         <Switch
-          checked={isLoggedIn ? (SettingsData.blindMode || false) : blindMode} //!agr login hai to settings se aya hua data ho // wrna redux wala settings show ho
+          checked={currentBlindMode}
           onChange={handleBlindModeChange}
         />
       </div>

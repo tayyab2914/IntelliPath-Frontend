@@ -16,23 +16,24 @@ const TribeChatMain = () => {
     const [availableThreads, setAvailableThreads] = useState([]);
     const [SelectedThread, setSelectedThread] = useState({});
 
+    console.log(SelectedThread)
+    
     const fetchThreadList = async () => {
         const response = await API_GET_THREADS_LIST(token, tribe_id, setShowSpinner);
-        console.log('fetchThreadList', response);
         setAvailableThreads(response);
+        const firstThread = response.threads[0];
+        setSelectedThread(firstThread); 
     };
 
-    useEffect(()=>{
-        console.log(SelectedThread)
-    })
     useEffect(() => {
         fetchThreadList();
     }, [tribe_id, rerender_tribe_page]);
 
+
     return (
         <div>
             <NavbarMain />
-            {ShowSpinner && <Spin fullscreen />}
+            {/* {ShowSpinner && <Spin fullscreen />} */}
             <div className="generic-container">
                 <div className="tribe-chat-main">
                     <TribeChatHeader

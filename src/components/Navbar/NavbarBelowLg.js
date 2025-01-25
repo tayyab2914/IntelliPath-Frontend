@@ -10,9 +10,10 @@ import { NAV_ITEMS_BELOW_LG } from '../../data/NavbarData';
 import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
 import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
+import { ICONS } from '../../data/IconData';
 
 
-const NavbarBelowLg = ({version,navItems}) => {
+const NavbarBelowLg = ({version,UserInfo}) => {
     const navigate = useNavigate();
     const {speakWord} = useSpeech()
     const [ShowDrawer, setShowDrawer] = useState(false);
@@ -31,6 +32,15 @@ const NavbarBelowLg = ({version,navItems}) => {
         </Flex>
         <Drawer title="Options" placement={'right'} onClose={()=>setShowDrawer(false)} open={ShowDrawer}>
             <span>
+                <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
+                            <img src={ICONS.avatar} alt="" />
+                            {/* <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.user} alt="" /> */}
+                            <span>
+                                <p className='navbar-first-name'>{UserInfo?.first_name}</p>
+                                <p className='navbar-email'>{UserInfo?.email}</p>
+                            </span>
+                        </div>
+                        <Divider/>
                 {NAV_ITEMS_BELOW_LG.map(({ name, path,icon }) => (
                     <div key={name}  onMouseEnter={()=>speakWord(name)}> <p   onClick={() => optionClickHandler(path)}  className='navbar-drawer-item'> <MyIcon type={icon}/>  {name}  </p></div>
                 ))}

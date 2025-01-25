@@ -42,11 +42,18 @@ const JoinedTribes = () => {
 
 
   const filterTribes = () => {
-    const filterByCategory = (tribes) => selectedCategory ? tribes.filter((tribe) => tribe.category === selectedCategory) : tribes;
-    setAdminTribes(filterByCategory(adminTribes));
-    setOtherTribes(filterByCategory(otherTribes));
+    const filterByCategory = (tribes) =>
+      selectedCategory ? tribes.filter((tribe) => tribe.category === selectedCategory) : tribes;
+  
+    // Use AllTribes to derive the filtered lists
+    const adminFiltered = filterByCategory(AllTribes.filter((tribe) => tribe.is_admin));
+    const otherFiltered = filterByCategory(AllTribes.filter((tribe) => !tribe.is_admin));
+  
+    setAdminTribes(adminFiltered);
+    setOtherTribes(otherFiltered);
     setCurrentPage(1);
   };
+  
 
   const handlePagination = (page) => {
     setCurrentPage(page);

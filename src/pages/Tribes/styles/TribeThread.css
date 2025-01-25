@@ -125,6 +125,7 @@ text-align: end;
 .t-t-input {
   flex-grow: 1;
   margin-right: 8px;
+  margin-top: 10px;
 }
 
 

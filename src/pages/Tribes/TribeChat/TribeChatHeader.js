@@ -14,13 +14,7 @@ const TribeChatHeader = ({ availableThreads, setSelectedThread,SelectedThread })
     const navigate = useNavigate();
     const windowWidth = useWindowWidth();
 
-    useEffect(() => {
-        if (threads?.length > 0) {
-            const firstThread = threads[0];
-            setDefaultThread(firstThread);
-            setSelectedThread(firstThread); 
-        }
-    }, [availableThreads]);
+    
 
     const handleThreadChange = (threadId) => {
         const selectedThread = threads.find((thread) => thread.id === threadId);
@@ -31,6 +25,7 @@ const TribeChatHeader = ({ availableThreads, setSelectedThread,SelectedThread })
         <Row className="tribes-chat-header-row">
             <Col xs={24} md={8} className="tribes-chat-header-goal-col">
                 <p className="tribes-chat-header-goal">{tribe?.name}</p>
+                {windowWidth < 768 && tribe?.is_admin && <TribeAdminOptions/>}
             </Col>
             <Col xs={24} md={16} className="tribes-chat-header-icons-col">
                 <MyButton
@@ -48,7 +43,7 @@ const TribeChatHeader = ({ availableThreads, setSelectedThread,SelectedThread })
                 >
                     {threads?.map((thread) => ( <Option key={thread.id} value={thread.id}> {thread.name} </Option>))}
                 </Select>
-                {tribe?.is_admin && <TribeAdminOptions/>}
+                {windowWidth >= 768 &&tribe?.is_admin && <TribeAdminOptions/>}
             </Col>
         </Row>
     );

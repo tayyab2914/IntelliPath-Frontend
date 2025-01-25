@@ -11,6 +11,7 @@
 .tribes-chat-header-goal-col {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .tribes-chat-header-goal {
   margin: 0px;

@@ -4,11 +4,11 @@ import { setAuthToken, setLoggedIn } from "../redux/AuthToken/Action";
 import { DOMAIN_NAME } from "../utils/GlobalSettings";
 import CheckableTag from "antd/es/tag/CheckableTag";
 
-export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
+export const API_GET_USER_ATTRIBUTE = async (token, setShowSpinner) => {
   // setShowSpinner(true);
   try {
     const response = await axios.get(
-      `${DOMAIN_NAME}/tribes/get_joined_tribes/`,
+      `${DOMAIN_NAME}/core/get_user_attributes/`,
       {
         headers: {
           Authorization: token,
@@ -18,81 +18,38 @@ export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
 
     return response.data;
   } catch (error) {
+    console.log(error)
     message.error(error.response?.data?.message);
   } finally {
     //   setShowSpinner(false);
   }
 };
-export const API_GET_ALL_TRIBES = async (token, setShowSpinner) => {
-  // setShowSpinner(true);
-  try {
-    const response = await axios.get(`${DOMAIN_NAME}/tribes/get_all_tribes/`, {
-      headers: {
-        Authorization: token,
-      },
-    });
 
-    return response.data;
-  } catch (error) {
-    message.error(error.response?.data?.message);
-  } finally {
-    //   setShowSpinner(false);
-  }
-};
-export const API_GET_THREADS_LIST = async (token, tribe_id, setShowSpinner) => {
-  try {
-    const response = await axios.get(
-      `${DOMAIN_NAME}/tribes/get_threads_list/`,
-      {
-        params: {
-          tribe_id: tribe_id,
-        },
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
-
-    return response.data;
-  } catch (error) {
-    const errorMessage =
-      error.response?.data?.message ||
-      "Something went wrong. Please try again.";
-    message.error(errorMessage);
-  } finally {
-  }
-};
-export const API_GET_MESSAGES = async (
-  token,
-  tribe_id,
-  thread_id,
-  setShowSpinner
-) => {
-    console.log(Number(thread_id),+tribe_id)
-  try {
-    const response = await axios.get(`${DOMAIN_NAME}/tribes/get_messages/`, {
-        params: {
-          tribe_id,
-          thread_id : Number(thread_id),
-        },
-        headers: {
-          Authorization: token,
-        },
-      });
-
-      console.log(response)
-    return response.data;
-  } catch (error) {
-    const errorMessage =
-      error.response?.data?.message ||
-      "Something went wrong. Please try again.";
-      console.log(error)
-    // message.error(errorMessage);
-  } finally {
-  }
-};
+export const API_UPDATE_USER_ATTRIBUTE = async (token, updatedAttributes, setShowSpinner) => {
 
 
+  
+    try {
+      const response = await axios.put(
+        `${DOMAIN_NAME}/core/update_user_attributes/`,
+        updatedAttributes,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      message.success("Settings Updated Successfully")
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      message.error(error.response?.data?.message);
+      return null;
+    } finally {
+      // setShowSpinner(false);
+    }
+  };
+  
 export const API_CREATE_TRIBE = async (token, newTribe, setShowSpinner) => {
   setShowSpinner(true);
 

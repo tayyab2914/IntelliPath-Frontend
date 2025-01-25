@@ -5,9 +5,11 @@ import MyIcon from "../../components/Icon/MyIcon";
 import UserGoalCard from "./UserGoalCard.";
 import { ICONS } from "../../data/IconData";
 import './styles/UserProfile.css'
+import { useNavigate } from "react-router-dom";
 
-const UserProfile = ({ userData }) => {
+const UserProfile = ({ UserInfo }) => {
   const [popoverVisible, setPopoverVisible] = useState(false);
+  const navigate = useNavigate()
 
   const handleVisibleChange = (visible) => {
     setPopoverVisible(visible);
@@ -17,7 +19,7 @@ const UserProfile = ({ userData }) => {
     <div className="profile-popover-content">
        <p className="profile-popover-item"><MyIcon type={'map'}/> Roadmap</p>
          <p  className="profile-popover-item">   <MyIcon type={'leaderboard'}/>Leaderboard</p>
-         <p  className="profile-popover-item">  <MyIcon type={'edit'}/> Edit Profile</p>
+         <p  className="profile-popover-item" onClick={()=>navigate('/settings')}>  <MyIcon type={'edit'}/> Edit Profile</p>
     </div>
   );
 
@@ -26,12 +28,12 @@ const UserProfile = ({ userData }) => {
       <Col xs={24} className="profile-header">
         <Row>
           <Col xs={20} md={12} className="profile-info">
-            <img src={userData.display_image ? userData.display_image : ICONS.avatar} alt="" className="profile-image" />
+            <img src={UserInfo.display_image ? UserInfo.display_image : ICONS.avatar} alt="" className="profile-image" />
             <div className="profile-details">
-              <p className="profile-name">{userData.name}</p>
-              <p className="profile-email">{userData.email}</p>
+              <p className="profile-name">{UserInfo.first_name} {UserInfo.last_name}</p>
+              <p className="profile-email">{UserInfo.email}</p>
               <div className="profile-masteries">
-                {userData?.masteries?.map((mastery, key) => (
+                {UserInfo?.masteries?.map((mastery, key) => (
                   <MyBadge type={mastery} size="md" key={key} className="profile-mastery-badge" />
                 ))}
               </div>
@@ -49,7 +51,7 @@ const UserProfile = ({ userData }) => {
         <Divider />
         <p className="profile-title">Interests</p>
         <Row className="profile-interests-goals" gutter={[10, 10]}>
-          {userData?.goals?.map((goal, key) => (
+          {UserInfo?.goals?.map((goal, key) => (
             <Col xs={24} sm={12} md={8} lg={6} key={key} className="profile-goal-card">
               <UserGoalCard GoalData={goal} GoalNum={key + 1} />
             </Col>

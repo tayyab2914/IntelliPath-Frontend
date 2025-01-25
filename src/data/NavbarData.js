@@ -13,6 +13,11 @@ export const NAV_DROPDOWN_ITEMS_LG = [
   { name: "Dashboard", path: "/dashboard", icon: "dashboard" },
   { name: "Profile", path: "/profile", icon: "user" },
   { name: "Notifications", path: "/notifications", icon: "envelope" },
+  { name: "Roadmap", path: "/roadmap", icon: "map" },
+  { name: "Leaderboard", path: "/leaderboard", icon: "leaderboard" },
+  { name: "Tribes", path: "/tribes", icon: "tribes" },
+  { name: "Features", path: "/features", icon: "feature" },
+  { name: "Documentation", path: "/documentation", icon: "documentation" },
   { name: "Settings", path: "/settings", icon: "setting" },
 ];
 
