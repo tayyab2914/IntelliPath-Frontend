@@ -15,10 +15,13 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
     chatSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       if (data.type === 'message') {
+        console.log('onmessage',data)
         const newMessage = {
           first_name: data.first_name || 'Anonymous',
           timestamp: data.timestamp || new Date().toISOString(),
           message: data.message || '',
+          profile_picture:data.profile_pic,
+          user:data.id,
         };
         setThreadData((prev) => [...prev, newMessage]);
       }
@@ -29,12 +32,16 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
   
   export const handleSendMessage = (socket, UserAttributes, newMessage, setNewMessage) => {
     if (socket && socket.readyState === WebSocket.OPEN && newMessage.trim()) {
+
       const messageData = {
         id: UserAttributes?.id,
+        user: UserAttributes?.user,
         first_name: UserAttributes?.first_name,
         timestamp: new Date().toISOString(),
+        profile_picture:UserAttributes?.profile_picture,
         message: newMessage,
       };
+      console.log('handleSendMessage',UserAttributes,messageData)
       socket.send(JSON.stringify(messageData));
       setNewMessage('');
     }

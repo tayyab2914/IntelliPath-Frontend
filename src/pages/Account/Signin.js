@@ -4,7 +4,7 @@ import { Row, Col } from "antd";
 import SigninForm from "./SigninForm";
 import ForgotPassword from "./ForgotPassword";
 import { API_SIGN_IN } from "../../apis/AuthApis";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate,useLocation } from "react-router";
 import { IMAGES } from "../../data/ImageData";
 
@@ -14,8 +14,10 @@ const Signin = ({ toggleCurrentMode }) => {
     const dispatch = useDispatch()
     const [ShowForgotPassword, setShowForgotPassword] = useState(false);
     const [ShowSpinner, setShowSpinner] = useState(false);
-
+    const { token, blind_mode, isLoggedIn, rerender_app } = useSelector((state) => state.authToken);
   
+
+  console.log('Signin',isLoggedIn)
   const handleSignIn = async (email, password) => {
     const response = await API_SIGN_IN(email, password,dispatch,navigate,setShowSpinner);
     if(response){
