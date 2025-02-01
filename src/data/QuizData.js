@@ -93,6 +93,7 @@ export const QUIZ_DATA = {
             ]
         }
     ]
+    
 };
 
 export const RESULT_DATA = {
