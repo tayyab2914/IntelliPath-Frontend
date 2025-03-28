@@ -32,6 +32,11 @@
   height: auto;
   padding-right: 15px;
 }
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .align-vertically-centered{
     display: flex;
     justify-content: center;

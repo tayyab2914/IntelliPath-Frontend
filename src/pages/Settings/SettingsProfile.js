@@ -5,7 +5,7 @@ import { Button, Divider, message, Upload } from 'antd';
 import { DOMAIN_NAME } from '../../utils/GlobalSettings';
 
 const SettingsProfile = ({ setSettingsData, SettingsData }) => {
-  const [imagePreview, setImagePreview] = useState(SettingsData.profile_picture || '');
+  const [previewImage, setPreviewImage] = useState(null);
 
   const beforeUpload = (file) => {
     const isImage = file.type.startsWith('image/');
@@ -18,22 +18,27 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
   const handlePreview = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setImagePreview(reader.result);
-      setSettingsData({ ...SettingsData, profile_picture: reader.result, });
+      setPreviewImage(reader.result); // Show instant preview
+      setSettingsData({ ...SettingsData, profile_picture: file }); // Update state with the new file
     };
     reader.readAsDataURL(file);
   };
 
+  const profileImageUrl = previewImage || (SettingsData.profile_picture instanceof File 
+    ? URL.createObjectURL(SettingsData.profile_picture) 
+    : `${DOMAIN_NAME}${SettingsData.profile_picture}`);
+
   return (
     <div>
       <p className='settings-heading'>Profile</p>
-<Divider/>
+      <Divider />
       <div className="profile-image-container">
-        {imagePreview ? (
-          <img src={`${DOMAIN_NAME}${imagePreview}`} alt="Profile" className="settings-profile-image" />
-        ) : (     
-        <span className="setting-label">Display Image </span>
+        {profileImageUrl ? (
+          <img src={profileImageUrl} alt="Profile" className="settings-profile-image" />
+        ) : (
+          <span className="setting-label">Display Image</span>
         )}
+
         <Upload
           accept="image/*"
           showUploadList={false}

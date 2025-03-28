@@ -45,9 +45,7 @@ cursor: pointer;
 }
 
 .t-t-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Makes sure it takes full height */
+  height: calc(100vh - 179px);
   background-color: var(--color-white);
   border-radius: 8px;
   filter: var(--drop-shadow);
@@ -62,13 +60,12 @@ cursor: pointer;
   margin-top: 10px;
   padding: 10px;
   overflow-y: auto;
-  min-height: 400px; /* Ensure it maintains 500px height */
-  max-height: 400px; /* Prevents it from expanding beyond 500px */
+  height: 80%;
 }
 
 .tribes-message {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   margin-bottom: 10px;
   max-width: 100%;
 
@@ -89,6 +86,7 @@ text-align: end;
 
 .t-m-avatar {
   margin: 0 10px;
+  margin-top: 20px;
 }
 .t-m-avatar img{
     height: 30px;
@@ -111,10 +109,15 @@ text-align: end;
     background-color: #f5f5f5 ;
     padding: 10px;
     border-radius: 8px;
+    max-width: 400px;
 }
 .t-m-content-time{
     font-size: 10px;
     color: var(--color-muted);
+  
+}
+.t-m-right .t-m-content-time{
+text-align: end;
 }
 
 /* .t-m-right .t-m-content {
@@ -124,7 +127,9 @@ text-align: end;
 .t-t-input-row {
   display: flex;
   margin-top: 10px;
+
 }
+
 .tribe-thread-elipsis-icon{
     cursor: pointer;
 }
@@ -132,19 +137,33 @@ text-align: end;
   flex-grow: 1;
   margin-right: 8px;
   margin-top: 10px;
+  height: 40px !important;
 }
 
 
 @media screen and (max-width: 992px) {
-    .t-t-messages-box {
+    /* .t-t-messages-box {
         min-height: 600px; 
         max-height: 600px; 
-      }
+      } */
+  }
+@media screen and (max-width: 992px) {
+    .t-t-container {
+      height: calc(100vh - 211px);
+
+    }
   }
 
   @media screen and (max-width: 576px) {
-    .t-t-messages-box {
-        min-height: 500px; 
-        max-height: 500px; 
-      }
+    .t-t-container {
+      height: calc(100vh - 231px);
+
+    }
+      .t-m-content-message{
+        max-width: 250px;
+    }
+  }  @media screen and (max-width: 420px) {
+      .t-m-content-message{
+        max-width: 200px;
+    }
   }

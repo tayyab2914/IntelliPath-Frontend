@@ -25,7 +25,7 @@ const TribeThread = ({ SelectedThread, tribeInfo }) => {
   const fetchMessages = async () => {
       const response = await API_GET_MESSAGES(token, tribe_id, SelectedThread?.id);
       setThreadData(response);
-      console.log(response)
+      console.log('API_GET_MESSAGES',response)
   };
 
   const fetchUserData = async () => {
@@ -77,8 +77,15 @@ const TribeThread = ({ SelectedThread, tribeInfo }) => {
       </Col>
 
       <Col xs={24} className="t-t-input-row">
-        <Input value={newMessage} onChange={(e) => setNewMessage(e.target.value)} placeholder="Type a message..." className="t-t-input" onPressEnter={handleSendMessage} />
-        <MyButton onClick={()=>handleSendMessage(socket,UserAttributes,newMessage,setNewMessage)} text="Send" w="150px" h="38px" />
+      <Input
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type a message..."
+            className="t-t-input"
+            onPressEnter={() => handleSendMessage(socket, UserAttributes, newMessage, setNewMessage)}
+        />
+
+        <MyButton onClick={()=>handleSendMessage(socket,UserAttributes,newMessage,setNewMessage)} text="Send" w="150px" h="40px" />
       </Col>
 
     </Row>

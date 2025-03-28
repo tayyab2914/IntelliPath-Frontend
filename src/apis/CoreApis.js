@@ -28,7 +28,12 @@ export const API_GET_USER_ATTRIBUTE = async (token, setShowSpinner) => {
 export const API_UPDATE_USER_ATTRIBUTE = async (token, updatedAttributes, setShowSpinner) => {
 
 
-  
+
+        for (let [key, value] of updatedAttributes.entries()) {
+          console.log(`${key}:`, value);
+        }
+
+      
     try {
       const response = await axios.put(
         `${DOMAIN_NAME}/core/update_user_attributes/`,

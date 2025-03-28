@@ -4,10 +4,13 @@ import { InboxOutlined } from "@ant-design/icons";
 import pdfToText from "react-pdftotext";
 import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
+import useSpeech from "../../utils/WebSpeech.js/functionalities/useSpeech";
 const { Dragger } = Upload;
 
 const ConvertText = ({ setGenerateWithAI_Enabled }) => {
   const [text, setText] = useState("");
+  const { speakWord } = useSpeech({ isInSpeechMode: true });
+
 
   const props = {
     name: "file",
@@ -43,7 +46,7 @@ const ConvertText = ({ setGenerateWithAI_Enabled }) => {
 
   const speakHandler = () => {
     if (text) {
-      console.log("Text to Speak:", text);
+        speakWord(text)
     } else {
       console.log("No text available to speak");
     }

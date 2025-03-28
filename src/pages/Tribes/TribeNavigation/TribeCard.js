@@ -18,6 +18,8 @@ const TribeCard = ({tribeData,btnText,isInTribeExplorePage}) => {
         {
             await API_JOIN_TRIBE(token,tribeData?.id,setShowSpinner)
             dispatch(setRerenderTribePage(!rerender_tribe_page))
+            navigate(`/tribes/${tribeData?.id}`)
+
         }
         else
         {

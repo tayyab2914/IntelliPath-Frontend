@@ -13,12 +13,12 @@ const SettingsBasicInfo = ({ setSettingsData, SettingsData }) => {
       <p className='settings-heading'>Basic Info</p>
       <Divider />
       <Row>
-        <Col xs={5} sm={3} lg={2}>
+        <Col xs={6} sm={6} lg={4}>
           <p className='setting-label'>Name</p>
           <p className='setting-label'>Age</p>
           <p className='setting-label'>LinkedIn</p>
         </Col>
-        <Col xs={19} sm={21} lg={22}>
+        <Col xs={18} sm={18} lg={20}>
           <div className="setting-item">
             <input type="text" id="first_name" name="first_name" value={SettingsData.first_name || ''} onChange={handleChange} className="setting-input" />
           </div>

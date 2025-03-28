@@ -31,8 +31,8 @@ const NavbarAboveLg = ({ version = 'light',UserInfo }) => {
     return (
       <div >
         <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
-            <img src={ICONS.avatar} alt="" />
-            {/* <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.user} alt="" /> */}
+            {/* <img src={ICONS.avatar} alt="" /> */}
+            <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.avatar} alt="" />
             <span>
                 <p className='navbar-first-name'>{UserInfo?.first_name}</p>
                 <p className='navbar-email'>{UserInfo?.email}</p>
@@ -58,7 +58,8 @@ const NavbarAboveLg = ({ version = 'light',UserInfo }) => {
           <MyImage type={'logo'} h={'55px'} onClick={()=>navigate('/')} className={'navbar-logo'}/>
           <span>{renderNavItems()}</span>
           <Popover placement="bottomRight" content={<div>{renderDropdownItems()}</div>} trigger="click" visible={popoverVisible} onVisibleChange={setPopoverVisible}>
-            <MyIcon type={'avatar'} size='lg' onClick={handlePopoverClick} className='navbar-avatar'/> 
+          <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.avatar} onClick={handlePopoverClick} className='navbar-avatar' />
+            {/* <MyIcon type={'avatar'} size='lg' onClick={handlePopoverClick} className='navbar-avatar'/>  */}
           </Popover>
         </Flex>
       </Flex>

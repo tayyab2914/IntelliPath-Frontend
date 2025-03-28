@@ -3,7 +3,7 @@ import "./styles/Steps.css";
 import { Progress } from "antd";
 
 const Steps = ({ currentStep }) => {
-  const totalSteps = 7; // Total number of steps
+  const totalSteps = 6; // Total number of steps
   const progressPercent = (currentStep / totalSteps) * 100;
 
   return (

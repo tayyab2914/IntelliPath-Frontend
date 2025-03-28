@@ -246,14 +246,4 @@ export const ONBOARDING_DATA = [
       "🌳 12+ Months (Slow growth, deep roots)",
     ],
   },
-  {
-     
-    HasSuboptions:false,
-    Question:
-      "Lastly, would you like to connect and collaborate with people just like you?",
-    Options: [
-      "🤝 Absolutely! I’d love to work with others",
-      "🧘 No thanks, I’m more of a solo learner",
-    ],
-  },
 ];

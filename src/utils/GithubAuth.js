@@ -43,7 +43,7 @@ const GithubAuth = () => {
 
   return (
     <div className="setting-item">
-      <MyButton className="github-auth-btn" onClick={handleGithubLogin} text={"Login with GitHub"} w="250px" />
+      <MyButton className="github-auth-btn" m={"0px"} onClick={handleGithubLogin} text={"Login with GitHub"} w="250px" />
       {email && <p>Your email: {email}</p>}
     </div>
   );

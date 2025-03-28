@@ -6,6 +6,7 @@ import UserGoalCard from "./UserGoalCard.";
 import { ICONS } from "../../data/IconData";
 import './styles/UserProfile.css'
 import { useNavigate } from "react-router-dom";
+import { DOMAIN_NAME } from "../../utils/GlobalSettings";
 
 const UserProfile = ({ UserInfo }) => {
   const [popoverVisible, setPopoverVisible] = useState(false);
@@ -28,7 +29,8 @@ const UserProfile = ({ UserInfo }) => {
       <Col xs={24} className="profile-header">
         <Row>
           <Col xs={20} md={12} className="profile-info">
-            <img src={UserInfo.display_image ? UserInfo.display_image : ICONS.avatar} alt="" className="profile-image" />
+          {/* <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.user} onClick={handlePopoverClick} className='navbar-avatar' /> */}
+            <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.avatar} alt="" className="profile-image" />
             <div className="profile-details">
               <p className="profile-name">{UserInfo.first_name} {UserInfo.last_name}</p>
               <p className="profile-email">{UserInfo.email}</p>

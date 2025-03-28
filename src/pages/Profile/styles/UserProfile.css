@@ -1,97 +1,96 @@
 .profile-info {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+}
+.profile-image {
+  height: 100px;
+  margin-right: 35px;
+  border-radius: 50%;
+}
+.profile-container {
+  margin-top: 20px;
+}
+.profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0px;
+}
+.profile-email {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0px;
+}
+.profile-mastery-badge {
+  margin-right: 5px;
+  margin-top: 7px;
+}
+.profile-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.profile-interests {
+  margin-bottom: 10px;
+}
+.profile-goal-card-container {
+  border: 1px solid var(--color-light-gray);
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.profile-popover-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-dark);
+  padding: 5px 36px 5px 0px;
+  border-radius: 4px;
+  margin: 0px;
+}
+.profile-popover-item:hover {
+  background-color: var(--color-light-accent);
+}
+.profile-popover-item img {
+  margin-right: 15px;
+}
+.profile-options-icon {
+  margin: 10px 00px 0px 0px;
+  cursor: pointer;
+}
+.profile-options {
+  text-align: end;
+}
+.profile-goal-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0px;
+}
+.profile-goal-rank {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0px;
+  margin-top: 10px;
+}
+.profile-goal-engagement {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0px;
+}
+@media screen and (max-width: 568px) {
   .profile-image {
-    height: 100px;
-    margin-right: 35px;
-  }
-  .profile-container
-  {
-      margin-top: 20px;
+    height: 80px;
+    margin-right: 20px;
   }
   .profile-name {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--color-dark);
-    margin: 0px;
+    font-size: 17px;
   }
   .profile-email {
     font-size: 10px;
-    font-weight: 400;
-    color: var(--color-muted);
-    margin: 0px;
   }
-  .profile-mastery-badge {
-    margin-right: 5px;
-    margin-top: 7px;
-  }
-  .profile-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--color-dark);
-    margin: 0px;
-    margin-bottom: 10px;
-  }
-  .profile-interests {
-    margin-bottom: 10px;
-  }
-  .profile-goal-card-container {
-    border: 1px solid var(--color-light-gray);
-    padding: 10px 15px;
-    border-radius: 8px;
-  }
-  .profile-popover-item{
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      color: var(--color-dark);
-      padding: 5px 36px 5px 0px;
-      border-radius: 4px;
-      margin: 0px;
-  }
-  .profile-popover-item:hover{
-      background-color: var(--color-light-accent);
-      
-  }
-  .profile-popover-item img{
-      margin-right: 15px;
-  }
-  .profile-options-icon {
-    margin: 10px 20px 0px 0px;
-    cursor: pointer;
-  }
-  .profile-options {
-    text-align: end;
-  }
-  .profile-goal-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-dark);
-    margin: 0px;
-  }
-  .profile-goal-rank {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--color-muted);
-    margin: 0px;
-    margin-top: 10px;
-  }
-  .profile-goal-engagement {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--color-muted);
-    margin: 0px;
-  }
-  @media screen and (max-width: 568px) {
-    .profile-image {
-      height: 80px;
-      margin-right: 20px;
-    }
-    .profile-name {
-      font-size: 16px;
-    }
-    .profile-email {
-      font-size: 8px;
-    }
-  }
+}

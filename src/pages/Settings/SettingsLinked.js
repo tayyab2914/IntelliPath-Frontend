@@ -1,15 +1,12 @@
 import React from "react";
 import "./styles/Settings.css";
-import { Col, Divider, Row } from "antd";
-import { CloseOutlined } from "@ant-design/icons"; // Import the CloseOutlined icon
+import { Col, Divider, Row, Badge } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
 import GithubAuth from "../../utils/GithubAuth";
-import MyButton from "../../components/Button/Button";
 
 const SettingsLinked = ({ setSettingsData, SettingsData }) => {
   const handleUnlink = () => {
-    // Add your unlink logic here
-    setSettingsData({ ...SettingsData, github: "" }); // Example of unlinking GitHub
-    console.log("GitHub account unlinked");
+    setSettingsData({ ...SettingsData, github: "" });
   };
 
   return (
@@ -23,10 +20,13 @@ const SettingsLinked = ({ setSettingsData, SettingsData }) => {
         <Col xs={19} sm={21} lg={22}>
           {SettingsData?.github ? (
             <span className="settings-github-link">
-              <p>https://github.com/{SettingsData.github}</p>
-              <span className="settings-github-link-btn">
-              <CloseOutlined onClick={handleUnlink}/>
-              </span>
+              <Badge
+                count={<CloseOutlined />}
+                onClick={handleUnlink} 
+                style={{ backgroundColor: "#f5222d", color: "white", cursor: "pointer", fontSize: "10px", padding:"3px", borderRadius:"50%", marginLeft:"3px" }}
+            >
+                <p>https://github.com/{SettingsData.github}</p>
+              </Badge>
             </span>
           ) : (
             <GithubAuth GithubURL={SettingsData.github_link} />

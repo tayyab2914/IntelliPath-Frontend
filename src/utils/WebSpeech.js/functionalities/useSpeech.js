@@ -2,7 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { API_GET_USER_ATTRIBUTE } from "../../../apis/CoreApis";
 
-const useSpeech = () => {
+const useSpeech = (options = {}) => {
+  const { isInSpeechMode = false } = options; // Default to false if not provided
+
   const [femaleVoice, setFemaleVoice] = useState(null);
   const { token, blind_mode, isLoggedIn, rerender_app } = useSelector((state) => state.authToken);
   const [isBlindModeEnabled, setIsBlindModeEnabled] = useState(blind_mode);
@@ -21,7 +23,6 @@ const useSpeech = () => {
 
   // Fetch blind mode settings
   const fetchSettings = useCallback(async () => {
-
     if (!isLoggedIn) return;
 
     try {
@@ -42,21 +43,65 @@ const useSpeech = () => {
 
   // Speak a word
   const speakWord = useCallback(
-    (word) => {
-        console.log(isBlindModeEnabled,isVoicesReady)
-      if (!isBlindModeEnabled || !isVoicesReady) return; // Ensure voices are ready and blind mode is enabled
-
+    (text) => {
+      console.log("Blind Mode:", isBlindModeEnabled, "Voices Ready:", isVoicesReady, "Speech Mode:", isInSpeechMode);
+  
+      if (!isInSpeechMode) {
+        if (!isBlindModeEnabled || !isVoicesReady) return;
+      }
+  
+      if (typeof text !== "string") {
+        console.error("speakWord expects a string but received:", text);
+        return;
+      }
+  
       const synth = window.speechSynthesis;
       synth.cancel(); // Cancel any ongoing speech
-
-      const utterance = new SpeechSynthesisUtterance(word);
-      if (femaleVoice) {
-        utterance.voice = femaleVoice; // Use selected voice
+  
+      console.log(text);
+  
+      const chunkSize = 100; // Maximum length per chunk
+      const words = text.split(" "); // Split by space
+      const sentences = [];
+      let currentSentence = "";
+  
+      words.forEach((word) => {
+        if ((currentSentence + word).length <= chunkSize) {
+          currentSentence += (currentSentence ? " " : "") + word;
+        } else {
+          sentences.push(currentSentence);
+          currentSentence = word;
+        }
+      });
+  
+      if (currentSentence) {
+        sentences.push(currentSentence);
       }
-      synth.speak(utterance); // Speak the word
+  
+      sentences.forEach((sentence, index) => {
+        const utterance = new SpeechSynthesisUtterance(sentence);
+        if (femaleVoice) {
+          utterance.voice = femaleVoice;
+        }
+  
+        // Queue the speech chunks in sequence
+        utterance.onend = () => {
+          if (index < sentences.length - 1) {
+            const nextUtterance = new SpeechSynthesisUtterance(sentences[index + 1]);
+            if (femaleVoice) {
+              nextUtterance.voice = femaleVoice;
+            }
+            synth.speak(nextUtterance);
+          }
+        };
+  
+        synth.speak(utterance);
+      });
     },
-    [isBlindModeEnabled, isVoicesReady, femaleVoice]
+    [isBlindModeEnabled, isVoicesReady, femaleVoice, isInSpeechMode]
   );
+  
+
 
   return { speakWord };
 };

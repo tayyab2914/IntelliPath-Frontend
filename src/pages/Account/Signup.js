@@ -55,14 +55,14 @@ const SignUp = ({ toggleCurrentMode }) => {
     <div>
       {ShowSpinner && <Spin fullscreen />}
       <Row gutter={24}>
-        <Col xs={24} md={12} className="form-container" data-aos="fade-right">
+        <Col xs={24} md={12} className="form-container" data-aos="fade-up">
           {!showVerificationComponent ? (
             <SignUpForm handleSignUp={handleSignUp} handleSignInToggle={handleSignInToggle} />
           ) : (
             <AuthenticateVerification handleVerification={handleVerification} />
           )}
         </Col>
-        <Col span={12} className="logo-container" data-aos="fade-left">
+        <Col span={12} className="logo-container" data-aos="fade-up">
           <img src={IMAGES.authentication} alt="Account Logo" />
         </Col>
       </Row>

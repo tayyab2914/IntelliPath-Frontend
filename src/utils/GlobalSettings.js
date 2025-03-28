@@ -1,4 +1,4 @@
-export const DEFAULT_BUTTON_HEIGHT = '36px'
+export const DEFAULT_BUTTON_HEIGHT = '40px'
 
 export const PRODUCTION = false;
 export const TESTING = true
