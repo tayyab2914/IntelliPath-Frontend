@@ -9,6 +9,7 @@ import "./styles/OnBoarding.css";
 import { ONBOARDING_DATA } from "../../data/OnBoardingData";
 import { useSelector } from "react-redux";
 import { API_GENERATE_ROADMAP } from "../../apis/RoadmapApis";
+import { useNavigate } from "react-router-dom";
 
 const OnBoardingMain = () => {
   const [CurrentStep, setCurrentStep] = useState(0);
@@ -16,6 +17,7 @@ const OnBoardingMain = () => {
   const [UserSelections, setUserSelections] = useState({});
   const [ShowQuestionnaire, setShowQuestionnaire] = useState(true);
   const [ShowSpinner, setShowSpinner] = useState(false);
+  const navigate = useNavigate()
   const { token, blind_mode, isLoggedIn, user_attributes, rerender_app } =
     useSelector((state) => state.authToken);
   console.log(user_attributes,token);
@@ -43,6 +45,7 @@ const OnBoardingMain = () => {
     if (CurrentStep === ONBOARDING_DATA.length - 1 && !ShowQuestionnaire) {
       await API_GENERATE_ROADMAP(token, UserSelections, false,setShowSpinner);
       message.success("Onboarding complete!");
+      navigate('/roadmap')
     }
   };
   useEffect(() => {

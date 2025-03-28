@@ -11,11 +11,11 @@ const GLOBAL_SETTINGS_DESKTOP = {
         padding: "10px 10px",
         textAlign:"center",
         background:'#fff',
-        fontSize:"14px",
+        fontSize:"24px",
         // filter: 'drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.054))',
 
         color: THEME_COLORS.colorMuted,
-        width:"150px",
+        width:"100%",
         fontWeight:"600"
     },
     edgeStyle: {
@@ -24,14 +24,14 @@ const GLOBAL_SETTINGS_DESKTOP = {
         animated: true, // Optional: Add animation to edges
     }
     ,
-    majorNodeWidth: 400, // Width of each major node
+    majorNodeWidth: 150, // Width of each major node
     majorNodeHeight: 50, // Height of each major node
-    minorNodeWidth: 150, // Width of each minor node
+    minorNodeWidth: 300, // Width of each minor node
     minorNodeHeight: 30, // Height of each minor node
     maxRowWidth: 800, // Maximum width before shifting nodes to the next line
-    leftMargin: 100, // Margin from the left edge
+    leftMargin: 0, // Margin from the left edge
     rightMargin: 100, // Margin from the right edge
-    rowHeight: 100, // Height of each row
+    rowHeight: 170, // Height of each row
     minorRowHeight: 50, // Height of each row for minor nodes
     verticalSpacing: 0, // Vertical spacing between major nodes
 };
@@ -50,7 +50,7 @@ const GLOBAL_SETTINGS_MOBILE = {
         filter: 'drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.054))',
 
         color: THEME_COLORS.colorMuted,
-        width:"150px",
+        width:"200px",
         fontWeight:"600"
     },
     edgeStyle: {
@@ -70,81 +70,98 @@ const GLOBAL_SETTINGS_MOBILE = {
     verticalSpacing: 0, // Vertical spacing between major nodes
 };
 // Function to generate nodes and edges
-export const generateNodesAndEdges = (nodes, onNodeClick) => {
+export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
+    console.log('generateNodesAndEdges', roadmapData);
+
+    if (!roadmapData || typeof roadmapData !== "object") {
+        console.error("Invalid roadmapData:", roadmapData);
+        return { nodes: [], edges: [] };
+    }
+
+    if (!roadmapData.roadmap || typeof roadmapData.roadmap !== "object") {
+        console.error("Invalid roadmap structure:", roadmapData.roadmap);
+        return { nodes: [], edges: [] };
+    }
+
+    const GLOBAL_SETTINGS = window.innerWidth < 992 ? GLOBAL_SETTINGS_MOBILE : GLOBAL_SETTINGS_DESKTOP;
     
-    const GLOBAL_SETTINGS = window.innerWidth < 992 ? GLOBAL_SETTINGS_MOBILE : GLOBAL_SETTINGS_DESKTOP
     const nodesArray = [];
     const edgesArray = [];
+    let majorNodePositions = {};
     
-    let majorNodePositions = {}; // To store positions of major nodes
-    
-    nodes.forEach((node, index) => {
-        
-        // Define positions for major nodes
+    let index = 0;
+    let prevMajorNode = null;
+
+    Object.keys(roadmapData.roadmap).forEach((category) => {
+        const majorNodeId = `major-${index + 1}`;
         let majorX, majorY;
-        let parentId = null; 
+
         if (index === 0) {
-            majorX = GLOBAL_SETTINGS.leftMargin; // Start at left margin
-            majorY = GLOBAL_SETTINGS.verticalSpacing; // Start at top margin
+            majorX = GLOBAL_SETTINGS.leftMargin;
+            majorY = GLOBAL_SETTINGS.verticalSpacing;
         } else {
-            // Calculate position based on previous major node and minor nodes
-            const previousMajorNodeId = nodes[index - 1].id;
-            const numberOfMinorNodes = nodes[index - 1].minorNodes.length;
-            majorX = majorNodePositions[previousMajorNodeId].x;
-            majorY = majorNodePositions[previousMajorNodeId].y + GLOBAL_SETTINGS.minorRowHeight * (Math.max(numberOfMinorNodes,1) + (node.minorNodes.length == 0 ? 1 : 0))+.2; // Move down
-            parentId = nodes[index - 1].id; // Set the previous major node as the parent
+            majorX = prevMajorNode.x;
+            // majorY = prevMajorNode.y + GLOBAL_SETTINGS.rowHeight;
+            majorY = prevMajorNode.y + 210;
         }
-        
-        majorNodePositions[node.id] = { x: majorX, y: majorY };
-        
+
+        prevMajorNode = { x: majorX, y: majorY };
+        majorNodePositions[majorNodeId] = prevMajorNode;
+
         nodesArray.push({
-            id: node.id,
+            id: majorNodeId,
             position: { x: majorX, y: majorY },
-            data: { 
-                label: node.label, 
-                style: {  
-                    ...GLOBAL_SETTINGS.nodeStyle,  
-                    backgroundColor: 'white',
-                    
-                },
-                onClick: () => onNodeClick(node.id),
-                parent: parentId ,
+            data: {
+                label: category,
+                style: GLOBAL_SETTINGS.nodeStyle,
+                onClick: () => onNodeClick(category),
             },
             type: 'custom',
         });
-        edgesArray.push({
-            id: `e${node.id}-${parentId}`,
-            source: `${parentId}`,  // Bottom handle of the parent node
-            target: `${node.id}`,      // Top handle of the current node
-            style: GLOBAL_SETTINGS.edgeStyle,
-            type: 'step',
-        });
-        // Connect major node to its minor nodes
-        node.minorNodes.forEach((minorNode, minorIndex) => {
-            nodesArray.push({
-                id: minorNode.id,
-                position: { x: majorX + GLOBAL_SETTINGS.majorNodeWidth, y: majorY + ((minorIndex+1) * GLOBAL_SETTINGS.minorRowHeight) },
-                data: { 
-                    label: minorNode.label, 
-                    style: {  
-                        ...GLOBAL_SETTINGS.nodeStyle,  
-                    },
-                    // onClick: () => onNodeClick(minorNode.id),
-                    parent: minorNode.parent,
-                    is_minor: minorNode.is_minor // Pass the is_major property
-                },
-                type: 'custom',
-            });
-            
+
+        if (index > 0) {
             edgesArray.push({
-                id: `e${node.id}-${minorNode.id}`,
-                source: node.id,
-                target: minorNode.id,
+                id: `e${index}-${index - 1}`,
+                source: `major-${index}`,
+                target: `major-${index + 1}`,
                 style: GLOBAL_SETTINGS.edgeStyle,
-                type: 'bezier',
+                type: 'step',
             });
-        });
+        }
+
+        let minorIndex = 0;
+        if (typeof roadmapData.roadmap[category] === "object") {
+            Object.keys(roadmapData.roadmap[category]).forEach((topic) => {
+                const minorNodeId = `minor-${index + 1}-${minorIndex + 1}`;
+                const minorX = majorX + GLOBAL_SETTINGS.majorNodeWidth + 400;
+                const minorY = majorY + (minorIndex *( GLOBAL_SETTINGS.minorRowHeight+10));
+                // const minorY = majorY + (minorIndex * GLOBAL_SETTINGS.minorRowHeight);
+
+                nodesArray.push({
+                    id: minorNodeId,
+                    position: { x: minorX, y: minorY },
+                    data: {
+                        label: topic,
+                        style: GLOBAL_SETTINGS.nodeStyle,
+                        onClick: () => onNodeClick(minorNodeId),
+                    },
+                    type: 'custom',
+                });
+
+                edgesArray.push({
+                    id: `e${majorNodeId}-${minorNodeId}`,
+                    source: majorNodeId,
+                    target: minorNodeId,
+                    style: GLOBAL_SETTINGS.edgeStyle,
+                    type: 'bezier',
+                });
+
+                minorIndex++;
+            });
+        }
+
+        index++;
     });
-    console.log(edgesArray)
+
     return { nodes: nodesArray, edges: edgesArray };
 };

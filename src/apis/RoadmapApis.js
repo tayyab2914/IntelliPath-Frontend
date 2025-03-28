@@ -38,3 +38,25 @@ export const API_GENERATE_ROADMAP = async (token, UserSelections, is_regenerate,
       setShowSpinner(false);
     }
   };
+
+  export const API_GET_ROADMAP = async (token) => {
+    // setShowSpinner(true);
+    try {
+      const response = await axios.get(
+        `${DOMAIN_NAME}/roadmap/get_roadmap/`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+  
+      return response.data;
+    } catch (error) {
+      console.log(error)
+      // message.error(error.response?.data?.message);
+      return false
+    } finally {
+      //   setShowSpinner(false);
+    }
+  };
