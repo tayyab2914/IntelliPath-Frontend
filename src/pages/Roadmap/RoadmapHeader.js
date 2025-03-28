@@ -1,22 +1,19 @@
-import { Col, Popconfirm, Row, Tag, Dropdown, Menu, Button } from 'antd';
+import { Col, Popconfirm, Row, Tag, Dropdown, Menu, Button, message, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import MyIcon from '../../components/Icon/MyIcon';
+import { API_GENERATE_ROADMAP } from '../../apis/RoadmapApis';
 
-const RoadmapHeader = ({ RoadmapData }) => {
+const RoadmapHeader = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandler }) => {
     const [suggestedProjects, setSuggestedProjects] = useState(RoadmapData?.suggested_projects);
 
+
     useEffect(() => {
-        console.log(RoadmapData)
-        setSuggestedProjects(RoadmapData?.suggested_projects)
-    }, [RoadmapData]);
+        if (RoadmapData?.suggested_projects) {
+          setSuggestedProjects(RoadmapData.suggested_projects);
+        }
+      }, [RoadmapData?.suggested_projects]);
+      
 
-    const deleteRoadmapHandler = () => {
-        console.log("DELETE ROADMAP CLICKED");
-    };
-
-    const regenerateRoadmapHandler = () => {
-        console.log("REGENERATE ROADMAP CLICKED");
-    };
 
     const suggestedProjectsMenu = (
         <Menu>
@@ -33,11 +30,17 @@ const RoadmapHeader = ({ RoadmapData }) => {
     );
 
     return (
+        <>
         <Row className="roadmap-display-header-row">
             <Col xs={18} className="roadmap-display-header-goal-col">
                 <p className="roadmap-display-header-goal">{RoadmapData?.roadmap_name}</p>
             </Col>
             <Col xs={6} className="roadmap-display-header-icons-col">
+            <Dropdown overlay={suggestedProjectsMenu} trigger={['click']}>
+                    <Button className="roadmap-dropdown-button">
+                        Suggested Projects <MyIcon type="dropdown" />
+                    </Button>
+                </Dropdown>
                 <Popconfirm 
                     title="Are you sure you want to regenerate the roadmap?" 
                     onConfirm={regenerateRoadmapHandler} 
@@ -56,13 +59,9 @@ const RoadmapHeader = ({ RoadmapData }) => {
                 </Popconfirm>
 
                 {/* Dropdown for suggested projects */}
-                <Dropdown overlay={suggestedProjectsMenu} trigger={['click']}>
-                    <Button className="roadmap-dropdown-button">
-                        Suggested Projects <MyIcon type="dropdown" />
-                    </Button>
-                </Dropdown>
+                
             </Col>
-        </Row>
+        </Row></>
     );
 };
 

@@ -12,7 +12,7 @@ import RoadmapHeader from "../RoadmapHeader";
 
 const nodeTypes = { custom: NodeWithHandles };
 
-const RoadmapDisplay = ({ RoadmapData }) => {
+const RoadmapDisplay = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandler}) => {
     const windowWidth = useWindowWidth();
     const handleNodeClick = (nodeId) => {
         alert(`Node clicked: ${nodeId}`);
@@ -45,7 +45,7 @@ const RoadmapDisplay = ({ RoadmapData }) => {
             </div>
             <div className="roadmap-display-main">
                 <div className="generic-container">
-                    <RoadmapHeader RoadmapData={RoadmapData} />
+                    <RoadmapHeader RoadmapData={RoadmapData} regenerateRoadmapHandler={regenerateRoadmapHandler} deleteRoadmapHandler={deleteRoadmapHandler}/>
 
                     <Row>
                         {windowWidth < 992 && (

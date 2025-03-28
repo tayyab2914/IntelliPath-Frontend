@@ -6,15 +6,20 @@ import { DOMAIN_NAME } from "../utils/GlobalSettings";
 export const API_GENERATE_ROADMAP = async (token, UserSelections, is_regenerate, setShowSpinner) => {
     setShowSpinner(true);
   console.log(UserSelections)
-  const OnboardingData = {
-    education: UserSelections[0],
-    goal_domain: UserSelections[1],
-    goal_skill: UserSelections[2],
-    current_skill_level: UserSelections[3],
-    time_dedication_per_week: UserSelections[4],
-    goal_completion_time: UserSelections[5],
-    is_regenerate: is_regenerate
+  let OnboardingData={}
+  if(!is_regenerate)
+  {
+        OnboardingData = {
+        education: UserSelections[0],
+        goal_domain: UserSelections[1],
+        goal_skill: UserSelections[2],
+        current_skill_level: UserSelections[3],
+        time_dedication_per_week: UserSelections[4],
+        goal_completion_time: UserSelections[5],
+        is_regenerate: is_regenerate
+      }
   }
+ 
 
   console.log(OnboardingData)
     try {
@@ -60,3 +65,33 @@ export const API_GENERATE_ROADMAP = async (token, UserSelections, is_regenerate,
       //   setShowSpinner(false);
     }
   };
+
+  export const API_DELETE_ROADMAP = async (token, setShowSpinner,navigate) => {
+
+          setShowSpinner(true);
+      
+  
+      try {
+          const response = await axios.post(
+              `${DOMAIN_NAME}/roadmap/delete_roadmap/`,
+              {}, // Empty object since it's a POST request with no body
+              {
+                  headers: {
+                      Authorization: `${token}`,
+                  },
+              }
+          );
+  
+          message.success("Roadmap Deleted Successfully");
+          navigate('/onboarding')
+          return response.data;
+      } catch (error) {
+          console.error("Error deleting roadmap:", error);
+          message.error(error.response?.data?.error || "Failed to delete roadmap. Please try again.");
+      } finally {
+              setShowSpinner(false);
+          
+      }
+  };
+  
+

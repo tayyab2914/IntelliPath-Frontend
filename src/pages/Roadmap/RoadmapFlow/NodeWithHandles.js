@@ -1,13 +1,13 @@
-import { ReactFlow, Handle } from "@xyflow/react";
+import { Dropdown, Menu, Tooltip } from "antd";
+import { Handle } from "@xyflow/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Dropdown, Menu, Button } from "antd";
 
 export const NodeWithHandles = ({ data }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const navigate = useNavigate();
-
+  
   const handleNavigate = (path) => {
     const encodedCourseName = encodeURIComponent(data.label);
     navigate(`${path}?course_name=${encodedCourseName}`);
@@ -31,18 +31,13 @@ export const NodeWithHandles = ({ data }) => {
     />
   );
 
-  return (
-    <Dropdown
-      overlay={menu}
-      trigger={["click"]}
-      open={dropdownVisible}
-      onOpenChange={(visible) => setDropdownVisible(visible)}
-    >
+  const nodeContent = (
+    <Tooltip title={data.description} placement="top">
       <div
         style={{
           ...data.style,
           backgroundColor: !data.is_minor && isHovered ? "#F3F3F3" : "white",
-          cursor: !data.is_minor && isHovered ? "pointer" : "arrow",
+          cursor: !data.is_minor && isHovered ? "pointer" : "default",
         }}
         onClick={() => !data.is_minor && setDropdownVisible(true)}
         onMouseEnter={() => setIsHovered(true)}
@@ -62,6 +57,17 @@ export const NodeWithHandles = ({ data }) => {
           <Handle type="source" position="right" style={{ background: "transparent", width: 0, height: 0, border: "none" }} />
         )}
       </div>
+    </Tooltip>
+  );
+
+  return data.is_minor ? nodeContent : (
+    <Dropdown
+      overlay={menu}
+      trigger={["click"]}
+      open={dropdownVisible}
+      onOpenChange={(visible) => setDropdownVisible(visible)}
+    >
+      {nodeContent}
     </Dropdown>
   );
 };

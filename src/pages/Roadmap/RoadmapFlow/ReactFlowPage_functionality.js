@@ -131,7 +131,7 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
 
         let minorIndex = 0;
         if (typeof roadmapData.roadmap[category] === "object") {
-            Object.keys(roadmapData.roadmap[category]).forEach((topic) => {
+            Object.entries(roadmapData.roadmap[category]).forEach(([topic, description]) => {
                 const minorNodeId = `minor-${index + 1}-${minorIndex + 1}`;
                 const minorX = majorX + GLOBAL_SETTINGS.majorNodeWidth + 400;
                 const minorY = majorY + (minorIndex *( GLOBAL_SETTINGS.minorRowHeight+10));
@@ -143,6 +143,8 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
                     data: {
                         label: topic,
                         style: GLOBAL_SETTINGS.nodeStyle,
+                        is_minor:true,
+                        description:description,
                         onClick: () => onNodeClick(minorNodeId),
                     },
                     type: 'custom',
