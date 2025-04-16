@@ -1,4 +1,4 @@
-export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose) => {
+export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose,setOnlineMembers) => {
     const socketUrl = `ws://localhost:8000/ws/tribe/${tribe_id}/thread/${thread_id}/?token=${token}`;
     const chatSocket = new WebSocket(socketUrl);
   
@@ -14,8 +14,8 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
   
     chatSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log(data)
       if (data.type === 'message') {
-        console.log('onmessage',data)
         const newMessage = {
           first_name: data.first_name || 'Anonymous',
           timestamp: data.timestamp || new Date().toISOString(),
@@ -24,6 +24,11 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
           user:data.id,
         };
         setThreadData((prev) => [...prev, newMessage]);
+      }
+      if(data.type == "online_users")
+      {
+        console.log('online_users',data)
+        setOnlineMembers(data)
       }
     };
   

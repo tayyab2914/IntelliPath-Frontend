@@ -11,7 +11,7 @@ const GLOBAL_SETTINGS_DESKTOP = {
         padding: "10px 10px",
         textAlign:"center",
         background:'#fff',
-        fontSize:"24px",
+        fontSize:"16px",
         // filter: 'drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.054))',
 
         color: THEME_COLORS.colorMuted,
@@ -71,7 +71,6 @@ const GLOBAL_SETTINGS_MOBILE = {
 };
 // Function to generate nodes and edges
 export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
-    console.log('generateNodesAndEdges', roadmapData);
 
     if (!roadmapData || typeof roadmapData !== "object") {
         console.error("Invalid roadmapData:", roadmapData);
@@ -112,7 +111,7 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
             id: majorNodeId,
             position: { x: majorX, y: majorY },
             data: {
-                label: category,
+                roadmap_module: category,
                 style: GLOBAL_SETTINGS.nodeStyle,
                 onClick: () => onNodeClick(category),
             },
@@ -141,7 +140,7 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
                     id: minorNodeId,
                     position: { x: minorX, y: minorY },
                     data: {
-                        label: topic,
+                        roadmap_module: topic,
                         style: GLOBAL_SETTINGS.nodeStyle,
                         is_minor:true,
                         description:description,

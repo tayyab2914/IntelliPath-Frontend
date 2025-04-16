@@ -46,9 +46,13 @@ import LeaderboardFirstIcon from '../assets/icons/leaderboard_first.svg';
 import LeaderboardSecondIcon from '../assets/icons/leaderboard_second.svg';
 import LeaderboardThirdIcon from '../assets/icons/leaderboard_third.svg';
 import tribes from '../assets/icons/tribes.svg';
+import online from '../assets/icons/online.svg';
+import expand_icon from '../assets/icons/expand_icon.svg';
 
 
 export const ICONS = {
+    expand_icon: expand_icon,
+    online: online,
     tribes: tribes,
     feature_blindMode: FeatureBlindModeIcon,
     feature_courseRecommendation: FeatureCourseRecommendationIcon,

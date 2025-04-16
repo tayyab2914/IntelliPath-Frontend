@@ -10,6 +10,7 @@ import { ONBOARDING_DATA } from "../../data/OnBoardingData";
 import { useSelector } from "react-redux";
 import { API_GENERATE_ROADMAP } from "../../apis/RoadmapApis";
 import { useNavigate } from "react-router-dom";
+import { API_RECOMMEND_COURSES } from "../../apis/CourseApis";
 
 const OnBoardingMain = () => {
   const [CurrentStep, setCurrentStep] = useState(0);
@@ -44,6 +45,7 @@ const OnBoardingMain = () => {
   const verifyCompletion = async () => {
     if (CurrentStep === ONBOARDING_DATA.length - 1 && !ShowQuestionnaire) {
       await API_GENERATE_ROADMAP(token, UserSelections, false,setShowSpinner);
+      await API_RECOMMEND_COURSES(token)
       message.success("Onboarding complete!");
       navigate('/roadmap')
     }

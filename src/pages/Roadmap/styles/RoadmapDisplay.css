@@ -19,6 +19,8 @@
   filter: var(--drop-shadow);
   margin: 10px 0px;
   padding: 15px 15px;
+  display: flex;
+  align-items: center;
 }
 .roadmap-display-header-goal {
   margin: 0px;
@@ -34,6 +36,14 @@
 }
 .roadmap-display-header-icons-col{
     text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+}
+.roadmap-dropdown-button{
+    margin-right: 10px;
+    font-weight: 400;
 }
 .roadmap-display-header-icon-regenerate{
     margin-right: 10px;

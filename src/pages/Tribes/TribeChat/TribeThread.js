@@ -10,8 +10,9 @@ import MyIcon from '../../../components/Icon/MyIcon';
 import MyButton from '../../../components/Button/Button';
 import { API_GET_USER_ATTRIBUTE } from '../../../apis/CoreApis';
 import { initializeWebSocket, handleSendMessage } from './WebSocketFunctionality';
+import OnlineMembersList from './OnlineMembersList';
 
-const TribeThread = ({ SelectedThread, tribeInfo }) => {
+const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
   const [ThreadData, setThreadData] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [ShowSpinner, setShowSpinner] = useState(false);
@@ -38,7 +39,7 @@ const TribeThread = ({ SelectedThread, tribeInfo }) => {
   }, []);
 
   useEffect(() => {
-    const chatSocket = initializeWebSocket( tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null) );
+    const chatSocket = initializeWebSocket( tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers);
     fetchMessages();
     return () => {
       if (chatSocket) chatSocket.close();
@@ -64,9 +65,11 @@ const TribeThread = ({ SelectedThread, tribeInfo }) => {
 
       <Col xs={24} className="t-t-header-col">
         <p className="t-t-header-goal">{SelectedThread?.name} Thread</p>
+        <span>
         {tribeInfo?.is_admin && (
           <Popconfirm title="Are you sure you want to delete this thread?" onConfirm={handleDeleteThread} okText="Yes" cancelText="No" > <MyIcon type="delete" className="t-t-delete-thread-icon" /> </Popconfirm>
         )}
+        </span>
       </Col>
 
       <Col xs={24} className="t-t-header-description">{SelectedThread?.description}</Col>

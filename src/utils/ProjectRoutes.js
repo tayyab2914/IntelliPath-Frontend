@@ -7,7 +7,7 @@ import ProfileMain from '../pages/Profile/ProfileMain';
 import NotificationsMain from '../pages/Notifications/NotificationsMain';
 import RoadmapMain from '../pages/Roadmap/RoadmapMain';
 import LeaderboardMain from '../pages/Leaderboard/LeaderboardMain';
-import DocumentationMain from '../pages/Documentation/DocumentationMain';
+import ManualMain from '../pages/Manual/ManualMain';
 import SettingsMain from '../pages/Settings/SettingsMain';
 import AccountMain from '../pages/Account/AccountMain';
 import CoursesMain from '../pages/Courses/CoursesMain';
@@ -46,7 +46,7 @@ const ProjectRoutes = () => {
         <Route path="/leaderboard" element={<LeaderboardMain />} />
         <Route path="/profile" element={isLoggedIn ? <ProfileMain /> : <AccountMain/>} />
         <Route path="/features" element={<FeaturesMain />} />
-        <Route path="/documentation" element={<DocumentationMain />} />
+        <Route path="/manual" element={<ManualMain />} />
         <Route path="/settings" element={<SettingsMain />} />
         <Route path="/user/:user_id" element={<ProfileMain />} />
         <Route path="/course/:course_id" element={<CoursePage />} />

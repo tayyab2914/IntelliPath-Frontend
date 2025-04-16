@@ -24,7 +24,6 @@ const RoadmapMain = () => {
 
   const getRoadmap = async()=>{
     const response = await API_GET_ROADMAP(token)
-    console.log(response)
     setRoadmapData(response?.roadmap_data)
     if (!response?.roadmap_data) {
         setShowNotification(true);
@@ -44,7 +43,7 @@ const deleteRoadmapHandler = async()=>{
 
   return (
     <>
-        {ShowSpinner && <Spin fullscreen/>}
+        {/* {ShowSpinner && <Spin fullscreen/>} */}
       <NavbarMain />
       {ShowNotification && ( <GenericNotification message={"Onboarding Required"} description={ "You need to complete the onboarding process before generating your roadmap." } buttons={ROADMAP_NOTIFICATION_BUTTON_DATA(navigate)} /> )}
       {ShowNotification && <LandingPage imageSrc={IMAGES.roadmap2} whiteText={"AI Generated"} accentText={"Pathways"} btnText={"Proceed To Onboarding"} onClick={()=>navigate('/onboarding')} description={" Get personalized learning roadmaps tailored to your skills, goals, and pace. IntelliPath uses AI to dynamically adjust your curriculum, helping you achieve success with an efficient, customized learning path."}/>}

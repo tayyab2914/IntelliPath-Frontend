@@ -19,10 +19,12 @@ import TextToSpeechImage from '../assets/images/text_to_speech.svg';
 import TitleImage from '../assets/images/title.svg';
 import TribesImage from '../assets/images/tribes.svg';
 import TribesWBGImage from '../assets/images/tribes_wbg.svg';
+import course_placeholder from '../assets/images/course_placeholder.svg';
 
 // Exporting images in an object
 export const IMAGES = {
     authentication: AuthenticationImage,
+    course_placeholder: course_placeholder,
     blindMode: BlindModeImage,
     courseRecommendation: CourseRecommendationImage,
     decoration1: Decoration1Image,

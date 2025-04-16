@@ -4,7 +4,7 @@ import { Col, Divider, Row, Tag } from 'antd'
 import { COURSE_DATA } from '../../data/CoursesData';
 import MyButton from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
-const SimilarCourses = ({course_id}) => {
+const SimilarCourses = ({course_name}) => {
     const [CourseData, setCourseData] = useState(COURSE_DATA.slice(0,4));
     const navigate = useNavigate()
 

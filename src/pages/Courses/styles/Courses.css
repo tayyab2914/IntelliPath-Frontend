@@ -2,11 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .courses-current-tech {
   color: var(--color-muted);
   font-family: 12px;
   padding: 0px;
+  margin: 0px;
 }
 
 .courses-seach-bar {

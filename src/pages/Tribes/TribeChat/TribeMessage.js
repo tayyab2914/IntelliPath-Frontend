@@ -2,12 +2,18 @@ import React from 'react'
 import { DOMAIN_NAME } from '../../../utils/GlobalSettings'
 import { FORMAT_TIMESTAMP } from '../../../utils/ReusableFunctionalities'
 import MyIcon from '../../../components/Icon/MyIcon'
+import { useNavigate } from 'react-router-dom'
 
 const TribeMessage = ({msg,currentUserID}) => {
     console.log('TribeMessage',msg,currentUserID)
+    const navigate = useNavigate()
+
+    const profileClickHandler = ()=>{
+        navigate(`/user/${currentUserID}`)
+    }
   return (
       <div className={`tribes-message ${msg.user === currentUserID ? 't-m-right' : 't-m-left'}`} >
-        <div className="t-m-avatar">
+        <div className="t-m-avatar" onClick={profileClickHandler}>
             
             {msg.profile_picture ? <img src={`${DOMAIN_NAME}${msg.profile_picture}` } alt="" />:
             <MyIcon type={'user'} style={{height:"20px"}}/>}

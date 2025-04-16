@@ -44,8 +44,6 @@ const useSpeech = (options = {}) => {
   // Speak a word
   const speakWord = useCallback(
     (text) => {
-      console.log("Blind Mode:", isBlindModeEnabled, "Voices Ready:", isVoicesReady, "Speech Mode:", isInSpeechMode);
-  
       if (!isInSpeechMode) {
         if (!isBlindModeEnabled || !isVoicesReady) return;
       }
@@ -57,8 +55,6 @@ const useSpeech = (options = {}) => {
   
       const synth = window.speechSynthesis;
       synth.cancel(); // Cancel any ongoing speech
-  
-      console.log(text);
   
       const chunkSize = 100; // Maximum length per chunk
       const words = text.split(" "); // Split by space

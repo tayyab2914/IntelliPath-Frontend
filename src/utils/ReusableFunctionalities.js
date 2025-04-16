@@ -1,4 +1,6 @@
 export const GET_PAGINATION_DETAILS = (currentPage, pageSize, filteredData) => {
+    if(!filteredData)
+        return
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const displayedData = filteredData?.slice(startIndex, endIndex);

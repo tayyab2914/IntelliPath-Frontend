@@ -5,32 +5,46 @@ import { COURSE_DATA } from "../../data/CoursesData";
 import { useNavigate } from "react-router-dom";
 import './styles/RecommendedCourses.css'
 import { GET_PAGINATION_DETAILS } from "../../utils/ReusableFunctionalities";
+import { EXTRACT_COURSES_FROM_RESPONSE } from "./CoursesFunctionality";
+import { IMAGES } from "../../data/ImageData";
+import AutoTextCropper from "../../components/AutoTextCropper/AutoTextCropper";
 
-const RecommendedCourses = ({ CourseName }) => {
-  const [CourseData, setCourseData] = useState(COURSE_DATA);
+const RecommendedCourses = ({ CoursesData }) => {
+  const [Courses, setCourses] = useState(CoursesData);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const pageSize = 6;
+  const pageSize = 15;
+  const [displayedCourses, setdisplayedCourses] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    // Call API to get data when CourseName changes
-  }, [CourseName]);
+  }, [CoursesData]);
+  
+  useEffect(() => {
+    if (CoursesData?.length > 0) {
+      const pagination_details = GET_PAGINATION_DETAILS(currentPage, pageSize, CoursesData);
+      setdisplayedCourses(pagination_details);
+    }
+  }, [currentPage, CoursesData]);
+  
+  
 
-  const displayedCourses = GET_PAGINATION_DETAILS(currentPage,pageSize,CourseData)
   return  <>
   <Row gutter={[15, 15]} className="recommended-courses-container">
-    {displayedCourses.map((course, index) => (
+    {displayedCourses?.map((course, index) => (
       <Col xs={24} sm={12} md={8} lg={6} key={index}>
         <div className="recommended-course-container"onClick={()=>navigate(`/course/${course.id}`)}>
           <div className="recommended-courses-data">
             <div className="recommended-courses-image-container">
-              <img src={course.image_480x270} alt="" className="recommended-courses-image" />
+              <img 
+            //   src={course?.image || IMAGES?.course_placeholder} 
+              src={IMAGES?.course_placeholder} 
+               className="recommended-courses-image" />
             </div>
-            <p className="recommended-courses-title">{course.title}</p>
-            <p className="recommended-courses-instructor">{course.visible_instructors[0]?.display_name}</p>
+            <p className="recommended-courses-title"><AutoTextCropper text={course.title} numOfLines={2} textStyles={{fontSize:"16px"}}/></p>
+            <p className="recommended-courses-instructor"><img src={course.instructor_details?.image_50x50} />{course.instructor_details?.display_name}</p>
             <Tag color="cyan" className="recommended-courses-tag">
-              {course.is_paid ? course.price_detail.price_string : "Free"}
+              {course?.duration}
             </Tag>
           </div>
           <MyButton text={"View Course"} variant="outlined-dark" onClick={()=>navigate(`/course/${course.id}`)} className="recommended-courses-button" />
@@ -39,7 +53,7 @@ const RecommendedCourses = ({ CourseName }) => {
     ))}
   </Row>
   
-  <Pagination current={currentPage} pageSize={pageSize} total={CourseData?.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} className="recommended-courses-pagination"/>
+  <Pagination current={currentPage} pageSize={pageSize} total={CoursesData?.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} className="recommended-courses-pagination"/>
 </>;
 };
 

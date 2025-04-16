@@ -6,7 +6,7 @@ export const NAV_ITEMS_LG = [
   { name: "Leaderboard", path: "/leaderboard", icon: "leaderboard" },
   { name: "Tribes", path: "/tribes", icon: "tribes" },
   { name: "Features", path: "/features", icon: "feature" },
-  { name: "Documentation", path: "/documentation", icon: "documentation" },
+  { name: "Manual", path: "/manual", icon: "documentation" },
 ];
 
 export const NAV_DROPDOWN_ITEMS_LG = [
@@ -17,7 +17,7 @@ export const NAV_DROPDOWN_ITEMS_LG = [
   { name: "Leaderboard", path: "/leaderboard", icon: "leaderboard" },
   { name: "Tribes", path: "/tribes", icon: "tribes" },
   { name: "Features", path: "/features", icon: "feature" },
-  { name: "Documentation", path: "/documentation", icon: "documentation" },
+  { name: "Manual", path: "/manual", icon: "documentation" },
   { name: "Settings", path: "/settings", icon: "setting" },
 ];
 
@@ -28,6 +28,6 @@ export const NAV_ITEMS_BELOW_LG = [
   { name: "Leaderboard", path: "/leaderboard", icon: "leaderboard" },
   { name: "Tribes", path: "/tribes", icon: "tribes" },
   { name: "Features", path: "/features", icon: "feature" },
-  { name: "Documentation", path: "/documentation", icon: "documentation" },
+  { name: "Manual", path: "/manual", icon: "documentation" },
   { name: "Settings", path: "/settings", icon: "setting" },
 ];

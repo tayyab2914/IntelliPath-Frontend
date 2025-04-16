@@ -18,8 +18,8 @@ const UserProfile = ({ UserInfo }) => {
 
   const popoverContent = (
     <div className="profile-popover-content">
-       <p className="profile-popover-item"><MyIcon type={'map'}/> Roadmap</p>
-         <p  className="profile-popover-item">   <MyIcon type={'leaderboard'}/>Leaderboard</p>
+       <p className="profile-popover-item" onClick={()=>navigate("/roadmap")}><MyIcon type={'map'}/> Roadmap</p>
+         <p  className="profile-popover-item" onClick={()=>navigate("/leaderboard")}>   <MyIcon type={'leaderboard'}/>Leaderboard</p>
          <p  className="profile-popover-item" onClick={()=>navigate('/settings')}>  <MyIcon type={'edit'}/> Edit Profile</p>
     </div>
   );

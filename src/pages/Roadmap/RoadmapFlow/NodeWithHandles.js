@@ -9,10 +9,12 @@ export const NodeWithHandles = ({ data }) => {
   const navigate = useNavigate();
   
   const handleNavigate = (path) => {
-    const encodedCourseName = encodeURIComponent(data.label);
-    navigate(`${path}?course_name=${encodedCourseName}`);
+    const encodedCourseName = encodeURIComponent(data.roadmap_module);
+  
+    navigate(`${path}?roadmap_module=${encodedCourseName}`);
     setDropdownVisible(false);
   };
+  
 
   const menu = (
     <Menu
@@ -49,7 +51,7 @@ export const NodeWithHandles = ({ data }) => {
           <Handle type="target" position="left" style={{ background: "transparent", width: 0, height: 0, border: "none" }} />
         )}
 
-        {data.label}
+        {data.roadmap_module}
 
         {!data.is_minor ? (
           <Handle type="source" position="bottom" style={{ background: "transparent", width: 0, height: 0, border: "none" }} />
