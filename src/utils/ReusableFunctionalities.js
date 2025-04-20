@@ -33,3 +33,4 @@ export const FORMAT_TIMESTAMP = (timestamp) => {
     }
   }
   
+ export const CAPITALIZE_STRING =(str)=> str.replace(/\b\w/g, char => char.toUpperCase());

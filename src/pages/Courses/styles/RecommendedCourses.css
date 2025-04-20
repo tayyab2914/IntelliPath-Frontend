@@ -3,7 +3,7 @@
     border: 1px solid var(--color-light-gray);
     padding: 10px;
     border-radius: 8px;
-    height: 330px;
+    height: 370px;
     background-color: var(--color-white);
     cursor: pointer;
     display: flex; /* Enable flexbox */
@@ -22,6 +22,7 @@
   }
   .recommended-courses-image {
     width: 100%;
+    border-radius: 8px;
   }
   .recommended-courses-pagination {
     text-align: end;
@@ -50,15 +51,23 @@
     border-radius: 50%;
     margin-right: 5px;
   }
-
+  .recommended-courses-rating{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0px;
+    
+}
   @media screen and (max-width: 1350px) {
-    .recommended-course-container {
-      height: 300px;
+    .recommended-courses-rating{
+        flex-direction: column;
+        align-items: start;
+        
     }
   }
   @media screen and (max-width: 1100px) {
     .recommended-course-container {
-      height: 280px;
+      height: 350px;
     }
     .recommended-courses-instructor {
       font-size: 10px;
@@ -66,27 +75,42 @@
   }
   @media screen and (max-width: 992px) {
     .recommended-course-container {
-      height: 300px;
+      height: 370px;
     }
   }
   @media screen and (max-width: 850px) {
     .recommended-course-container {
-      height: 290px;
+      height: 350px;
     }
   }
   
   @media screen and (max-width: 768px) {
+    .recommended-courses-rating{
+        flex-direction: row;
+        align-items: center;
+        
+    }
     .recommended-course-container {
-      height: 320px;
+      height: 370px;
     }
   }
   @media screen and (max-width: 610px) {
+    .recommended-courses-rating{
+        flex-direction: column;
+        align-items: start;
+        
+    }
     .recommended-course-container {
-      height: 280px;
+      height: 370px;
     }
   }
   
   @media screen and (max-width: 576px) {
+    .recommended-courses-rating{
+        flex-direction: row;
+        align-items: center;
+        
+    }
     .recommended-courses-image {
       width: 80%;
     }
@@ -94,7 +118,7 @@
       text-align: center;
     }
     .recommended-course-container {
-      height: 340px;
+      height: 400px;
     }
   }
   
@@ -105,9 +129,6 @@
     .recommended-courses-image-container {
       text-align: center;
     }
-    .recommended-course-container {
-      height: 360px;
-    }
   }
   @media screen and (max-width: 400px) {
     .recommended-courses-image {
@@ -117,7 +138,7 @@
       text-align: center;
     }
     .recommended-course-container {
-      height: 340px;
+      height: 370px;
     }
   
   }

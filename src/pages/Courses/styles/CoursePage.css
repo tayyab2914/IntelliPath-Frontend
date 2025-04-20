@@ -62,6 +62,19 @@
     margin: 0px 0px 0px 10px;
     color: var(--color-muted);
   }
+  .single-course-rating
+  {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0px;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+  .single-course-instructor-navigation_btn{
+    margin: 0px 0px 0px 10px;
+    color: rgb(126, 126, 255);
+  }
 @media screen and (min-width:992px){
     .single-course-image{
         width: 90%;

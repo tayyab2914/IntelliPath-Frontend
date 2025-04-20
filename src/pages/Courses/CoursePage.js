@@ -9,16 +9,24 @@ import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 import CourseInfo from "./CourseInfo";
 import SimilarCourses from "./SimilarCourses";
+import { API_GET_COURSE_INFO } from "../../apis/CourseApis";
+import { useSelector } from "react-redux";
 
 const CoursePage = () => {
   const { course_id } = useParams();
   const navigate = useNavigate();
-  const [course_data, setCourse_data] = useState(SINGLE_COURSE_DATA);
+  const [course_data, setCourse_data] = useState({});
+  const { token } =useSelector((state) => state.authToken);
+
+const getCourseInfo = async()=>{
+    const response = await API_GET_COURSE_INFO(token,course_id)
+    setCourse_data(response)
+    console.log(response)
+}
+
   useEffect(() => {
-    console.log(course_id);
-    //call api and pass course_id to get course data and save in
-    // setUser_data(api.response)
-  });
+    getCourseInfo()
+  },[course_id]);
   return (
     <>
       <NavbarMain />

@@ -18,29 +18,31 @@ const GithubAuth = () => {
 
   const fetchEmail = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8001/githubAuth/github_callback/?code=" +
-          new URLSearchParams(window.location.search).get("code")
-      );
+      const response = await fetch('http://localhost:8001/githubAuth/github_callback/?code=' + new URLSearchParams(window.location.search).get('code'));
       const data = await response.json();
       if (data.email) {
         setEmail(data.email);
+        console.log(data.email)
       } else {
         console.error(data.error);
       }
     } catch (error) {
-      console.error("Error fetching email:", error);
+      console.error('Error fetching email:', error);
     }
   };
 
   useEffect(() => {
-    setTimeout(() => {}, 2000);
-    const code = new URLSearchParams(window.location.search).get("code");
+    console.log("RERENDERED")
+    setTimeout(() => {
+        
+    }, 2000);
+    const code = new URLSearchParams(window.location.search).get('code');
+    console.log(window.location)
     if (code) {
+        console.log("CODE PROVIDED")
       fetchEmail();
     }
   });
-
   return (
     <div className="setting-item">
       <MyButton className="github-auth-btn" m={"0px"} onClick={handleGithubLogin} text={"Login with GitHub"} w="250px" />

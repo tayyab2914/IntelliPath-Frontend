@@ -48,7 +48,7 @@ const ProjectRoutes = () => {
         <Route path="/features" element={<FeaturesMain />} />
         <Route path="/manual" element={<ManualMain />} />
         <Route path="/settings" element={<SettingsMain />} />
-        <Route path="/user/:user_id" element={<ProfileMain />} />
+        <Route path="/profile/:user_id" element={<ProfileMain />} />
         <Route path="/course/:course_id" element={<CoursePage />} />
         <Route path="/tribes/:tribe_id" element={isLoggedIn ? <TribePage />: <AccountMain/>} />
         <Route path="/tribes/explore" element={isLoggedIn ? <TribesExplore />: <AccountMain/>} />

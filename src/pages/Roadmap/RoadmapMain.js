@@ -31,7 +31,7 @@ const RoadmapMain = () => {
   }
   const regenerateRoadmapHandler = async() => {
     await API_GENERATE_ROADMAP(token, null, true, setShowSpinner);
-    message.success("Roadmap Regenerated SUccessfully!");
+    message.success("Roadmap Regenerated Successfully!");
     getRoadmap()
 };
 const deleteRoadmapHandler = async()=>{

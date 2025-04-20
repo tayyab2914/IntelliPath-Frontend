@@ -19,11 +19,11 @@ export const NodeWithHandles = ({ data }) => {
   const menu = (
     <Menu
       items={[
-        {
-          key: "view",
-          label: "View Course",
-          onClick: () => handleNavigate("/courses"),
-        },
+        // {
+        //   key: "view",
+        //   label: "View Course",
+        //   onClick: () => navigate("/courses"),
+        // },
         {
           key: "quiz",
           label: "Attempt Quiz",

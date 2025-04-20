@@ -24,6 +24,23 @@ cursor: pointer;
     font-weight: 400;
     color: var( --color-muted);
 }
+.t-t-header-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    cursor: pointer;
+}
+.tribe-member-list-item
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: var( --color-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
 @media screen and (max-width: 375px) {
   .t-t-header-goal {
     font-size: 20px;

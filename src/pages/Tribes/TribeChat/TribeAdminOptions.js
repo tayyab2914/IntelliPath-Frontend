@@ -7,7 +7,7 @@ import { setRerenderTribePage } from '../../../redux/AuthToken/Action';
 import { API_DELETE_TRIBE } from '../../../apis/TribeApis';
 import { useNavigate, useParams } from 'react-router-dom';
 import EditTribeModal from './AdminOptions.js/EditTribeModal';
-import ViewMembersModal from './AdminOptions.js/ViewMembersModal';
+import ViewMembersModal from './AdminOptions.js/TribeMembersDropdownContent';
 import NewThreadModal from './AdminOptions.js/NewThreadModal';
 
 const TribeAdminOptions = () => {
@@ -18,7 +18,6 @@ const TribeAdminOptions = () => {
     // State for modals
     const [ShowSpinner, setShowSpinner] = useState(false);
     const [isEditModalVisible, setEditModalVisible] = useState(false);
-    const [isMembersModalVisible, setMembersModalVisible] = useState(false);
     const [isCreateThreadModalVisible, setCreateThreadModalVisible] = useState(false);
     const [popoverVisible, setPopoverVisible] = useState(false);
 
@@ -26,17 +25,13 @@ const TribeAdminOptions = () => {
         setEditModalVisible(true);
         setPopoverVisible(false); 
     };
-    const showMembersModal = () => {
-        setMembersModalVisible(true);
-        setPopoverVisible(false);
-    };
+   
     const showCreateThreadModal = () => {
         setCreateThreadModalVisible(true);
         setPopoverVisible(false); 
     };
     const handleCancel = () => {
         setEditModalVisible(false);
-        setMembersModalVisible(false);
         setCreateThreadModalVisible(false);
     };
 
@@ -51,7 +46,7 @@ const TribeAdminOptions = () => {
             <Popconfirm placement="rightBottom" title="Delete Tribe" description="Are you sure you delete this tribe?" okText="Yes" cancelText="No" onConfirm={deleteTribeHandler}>
                 <p><DeleteOutlined /> Delete Tribe</p>
             </Popconfirm>
-            <p onClick={showMembersModal}><TeamOutlined /> View Members</p>
+            
             <p onClick={showCreateThreadModal}><PlusOutlined /> Create Thread</p>
             
         </div>
@@ -65,7 +60,7 @@ const TribeAdminOptions = () => {
             </Popover>
 
             <EditTribeModal visible={isEditModalVisible} onClose={handleCancel}/>
-            <ViewMembersModal visible={isMembersModalVisible} onClose={handleCancel}/>
+           
             <NewThreadModal visible={isCreateThreadModalVisible} onClose={handleCancel}/>
 
         </div>

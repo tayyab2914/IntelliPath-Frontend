@@ -45,6 +45,9 @@
   .similar-courses-button {
     margin-top: 0px !important;
   }
+  .single-course-image-col img{
+    border-radius: 8px;
+  }
   .similar-courses-instructor {
     font-size: 12px;
     font-weight: 400;

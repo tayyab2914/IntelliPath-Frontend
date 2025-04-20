@@ -10,6 +10,7 @@ import RecommendedCourses from "./RecommendedCourses";
 import { API_GET_COURSES, API_RECOMMEND_COURSES } from "../../apis/CourseApis";
 import { useSelector } from "react-redux";
 import { EXTRACT_COURSES_FROM_RESPONSE } from "./CoursesFunctionality";
+import { CAPITALIZE_STRING } from "../../utils/ReusableFunctionalities";
 const { Search } = Input; 
 
 const CoursesMain = () => {
@@ -19,27 +20,31 @@ const CoursesMain = () => {
   const { token } = useSelector((state) => state.authToken);
   const [CoursesData, setCoursesData] = useState({});
 
-  // Fetch courses based on course name
-  const getCourses = async (roadmap_module) => {
-    const response = await API_GET_COURSES(token, roadmap_module);
+  const getCourses = async () => {
+    const response = await API_GET_COURSES(token);
     const flattenedCourses = EXTRACT_COURSES_FROM_RESPONSE(response)
     setCoursesData(flattenedCourses)
   };
 
-  // On mount and whenever URL or CourseName changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const searchParams = new URLSearchParams(location.search);
-    const roadmap_module = searchParams.get("roadmap_module");
+    const roadmap = searchParams.get("roadmap");
 
-    const finalName = roadmap_module || CourseName;
-    setCourseName(finalName);
-    getCourses(roadmap_module);
+    if(roadmap)
+    {
+        setCourseName("Suggested Courses");
+        getCourses()
+    }
+    else
+    {
+        onSearch("Django")
+    }
   }, [location.search]);
 
   const onSearch = async (value) => {
-    const newName = value.trim() === "" ? "ReactJS" : value;
+    const newName = value.trim() === "" ? "Django" : value;
     const response = await API_RECOMMEND_COURSES(token,newName)
     console.log(response)
     setCoursesData(response?.courses)
@@ -62,7 +67,7 @@ const CoursesMain = () => {
             onSearch={onSearch}
             className="courses-seach-bar"
           />
-          {windowWidth <= 568 && <p className="courses-current-tech">Showing results for : {CourseName}</p>}
+          {windowWidth <= 568 && <p className="courses-current-tech">Showing results for : {CAPITALIZE_STRING(CourseName)}</p>}
         </div>
         <RecommendedCourses CoursesData={CoursesData} />
       </div>

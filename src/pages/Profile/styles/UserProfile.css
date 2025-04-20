@@ -82,6 +82,18 @@
   color: var(--color-muted);
   margin: 0px;
 }
+.user-profile-stats .ant-statistic-content-value {
+  font-size: 16px;
+}
+.user-profile-career-goals .ant-statistic-content-value {
+  font-size: 16px;
+}
+.user-profile-stats .ant-statistic-title {
+  font-weight: 500;
+}
+.user-profile-career-goals .ant-statistic-title {
+  font-weight: 500;
+}
 @media screen and (max-width: 568px) {
   .profile-image {
     height: 80px;

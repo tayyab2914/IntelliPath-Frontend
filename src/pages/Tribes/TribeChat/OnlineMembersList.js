@@ -4,13 +4,19 @@ import MyIcon from "../../../components/Icon/MyIcon";
 import "./../styles/OnlineMembers.css";
 import { DOMAIN_NAME } from "../../../utils/GlobalSettings";
 import { ICONS } from "../../../data/IconData";
+import { useNavigate } from "react-router-dom";
 
 const { Panel } = Collapse;
 
 const OnlineMembersList = ({ OnlineMembers }) => {
+    const navigate = useNavigate()
   useEffect(() => {
   }, [OnlineMembers]);
 
+
+  const memberClickHandler = (member_id)=>{
+    navigate(`/profile/${member_id}`)
+  }
   return (
     <Collapse 
       defaultActiveKey={['1']} 
@@ -32,18 +38,12 @@ const OnlineMembersList = ({ OnlineMembers }) => {
           className="online-members-list"
           dataSource={OnlineMembers?.users || []}
           renderItem={(userEmail, index) => (
-            <List.Item className="online-member-item">
+            <List.Item className="online-member-item" onClick={()=>memberClickHandler(OnlineMembers?.ids?.[index] )}>
               <List.Item.Meta
                 avatar={
-                  <Avatar 
-                    src={
-                      OnlineMembers?.profile_pictures?.[index] 
-                        ? `${DOMAIN_NAME}${OnlineMembers.profile_pictures[index]}`
-                        : ICONS.avatar
-                    } 
-                  />
+                  <Avatar  src={ OnlineMembers?.profile_pictures?.[index]  ? `${DOMAIN_NAME}${OnlineMembers.profile_pictures[index]}`  : ICONS.avatar }  />
                 }
-                title={<span className="email">{userEmail}</span>}
+                title={<span className="email">{OnlineMembers?.names?.[index]}</span>}
               />
             </List.Item>
           )}

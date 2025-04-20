@@ -91,6 +91,28 @@ export const API_GET_MESSAGES = async (
   } finally {
   }
 };
+export const API_GET_TRIBE_MEMBERS = async (
+  token,
+  tribe_id,
+) => {
+    console.log(tribe_id)
+  try {
+    const response = await axios.get(`${DOMAIN_NAME}/tribes/get_tribe_members/${tribe_id}/`, {
+
+        headers: {
+          Authorization: token,
+        },
+      });
+    return response.data;
+  } catch (error) {
+    const errorMessage =
+      error.response?.data?.message ||
+      "Something went wrong. Please try again.";
+      console.log(error)
+    // message.error(errorMessage);
+  } finally {
+  }
+};
 
 
 export const API_CREATE_TRIBE = async (token, newTribe, setShowSpinner) => {

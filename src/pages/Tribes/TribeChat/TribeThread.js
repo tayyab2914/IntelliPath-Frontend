@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import '../styles/TribeThread.css';
-import { Col, Row, Input, Spin, Popconfirm } from 'antd';
+import { Col, Row, Input, Spin, Popconfirm, Dropdown } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setRerenderTribePage } from '../../../redux/AuthToken/Action';
@@ -11,6 +11,9 @@ import MyButton from '../../../components/Button/Button';
 import { API_GET_USER_ATTRIBUTE } from '../../../apis/CoreApis';
 import { initializeWebSocket, handleSendMessage } from './WebSocketFunctionality';
 import OnlineMembersList from './OnlineMembersList';
+import { TeamOutlined } from '@ant-design/icons';
+import ViewMembersModal, { TribeMembersOverlayContent } from './AdminOptions.js/TribeMembersDropdownContent';
+import TribeMembersDropdownContent from './AdminOptions.js/TribeMembersDropdownContent';
 
 const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
   const [ThreadData, setThreadData] = useState([]);
@@ -20,6 +23,7 @@ const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
   const [UserAttributes, setUserAttributes] = useState();
   const messagesEndRef = useRef(null);
   const { tribe_id } = useParams();
+  const [isMembersModalVisible, setMembersModalVisible] = useState(false);
   const { token, rerender_tribe_page } = useSelector((state) => state.authToken);
   const dispatch = useDispatch();
 
@@ -65,11 +69,12 @@ const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
 
       <Col xs={24} className="t-t-header-col">
         <p className="t-t-header-goal">{SelectedThread?.name} Thread</p>
-        <span>
-        {tribeInfo?.is_admin && (
-          <Popconfirm title="Are you sure you want to delete this thread?" onConfirm={handleDeleteThread} okText="Yes" cancelText="No" > <MyIcon type="delete" className="t-t-delete-thread-icon" /> </Popconfirm>
-        )}
+        <span className="t-t-header-options"> 
+        <TribeMembersDropdownContent tribeId={tribe_id}/>
+
+            {tribeInfo?.is_admin && ( <Popconfirm title="Are you sure you want to delete this thread?" onConfirm={handleDeleteThread} okText="Yes" cancelText="No" > <MyIcon type="delete" className="t-t-delete-thread-icon" /> </Popconfirm> )}
         </span>
+
       </Col>
 
       <Col xs={24} className="t-t-header-description">{SelectedThread?.description}</Col>
@@ -80,7 +85,7 @@ const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
       </Col>
 
       <Col xs={24} className="t-t-input-row">
-      <Input
+        <Input
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder="Type a message..."
@@ -90,7 +95,7 @@ const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
 
         <MyButton onClick={()=>handleSendMessage(socket,UserAttributes,newMessage,setNewMessage)} text="Send" w="150px" h="40px" />
       </Col>
-
+      {/* <ViewMembersModal visible={isMembersModalVisible} onClose={()=>setMembersModalVisible(false)} tribeId={tribe_id} /> */}
     </Row>
   );
 };
