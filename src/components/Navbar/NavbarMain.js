@@ -8,6 +8,7 @@ import { API_GET_USER_ATTRIBUTE } from '../../apis/CoreApis';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_TEST_TOKEN } from '../../apis/AuthApis';
 import { useNavigate } from 'react-router-dom';
+import { setUserAttributes } from '../../redux/AuthToken/Action';
 
 const NavbarMain = ({ version = 'light' }) => {
   const windowWidth = useWindowWidth();
@@ -24,6 +25,7 @@ const NavbarMain = ({ version = 'light' }) => {
     }
     const fetchSettings = async () => {
       const response = await API_GET_USER_ATTRIBUTE(token);
+      dispatch(setUserAttributes(response))
       setUserInfo(response);
     };
   

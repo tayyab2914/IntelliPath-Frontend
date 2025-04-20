@@ -7,7 +7,6 @@ import './styles/Quiz.css'
 export const GetTags = ({ level }) => {
   return (
     <>
-    {console.log(level)}
     {level == "Beginner" && <span className="quiz-header-tag-component">
       <Tag color="blue"><LoadingOutlined className="quiz-header-tag-icon"/>Beginner</Tag>
       <Tag color="green"><LockOutlined className="quiz-header-tag-icon"/>Intermediate</Tag>
@@ -30,24 +29,51 @@ export const GetTags = ({ level }) => {
   );
 };
 
-export const getPercentages = (correct_answer,incorrect_answer)=>{
-    
-  const total = correct_answer + incorrect_answer;
+export const getPercentages = (correct_answer,quizData)=>{
+  const total = quizData?.questions?.length;
   const correctPercentage = ((correct_answer / total) * 100).toFixed(2);
-  const incorrectPercentage = ((incorrect_answer / total) * 100).toFixed(2);
+
+  const incorrectPercentage = 100 - correctPercentage
   return {total,correctPercentage,incorrectPercentage}
 }
 
-export const SubmitAndVerifyAnswers = (answers,questionRefs,setShowResultModal,setShowResultBtn) => {
-    const firstUnansweredIndex = answers.findIndex((answer) => answer === null);
-
-    if (firstUnansweredIndex !== -1) {
-      questionRefs?.current[firstUnansweredIndex]?.current?.scrollIntoView({ behavior: "smooth" });
-      message.error("Please answer all questions before submitting.");
-    } else {
-      setShowResultModal(true);
-      setShowResultBtn(true)
-      console.log("Selected Answers:", answers);
-      message.success(`Your answers: ${JSON.stringify(answers)}`);
+export const calculateQuizMarks = (quizData, answers, setResult, setShowResultBtn, setShowResultModal) => {
+    console.log(quizData, answers)
+    if (!quizData || !quizData?.questions) return -1;
+  
+    // Check for unanswered questions
+    const anyUnanswered = answers.some(answer => answer === null);
+    if (anyUnanswered) {
+      message.error("Please attempt all questions before submitting!");
+      return -1;
     }
+  
+    let score = 0;
+  
+    quizData.questions.forEach((question, index) => {
+      if (question.options[answers[index]] === question.answer) {
+        score += 1;
+      }
+    });
+  
+  
+    const totalQuestions = quizData.questions.length;
+    const correct_answers = score;
+    const incorrect_answers = totalQuestions - score;
+  
+    setResult({ correct_answers, incorrect_answers });
+  
+    setShowResultBtn(true);
+    setShowResultModal(true);
+    message.success("Quiz submitted successfully!");
+    return score;
   };
+  
+
+
+  export const GET_CURRENT_LEVEL_AND_QUIZ = (quizData)=>{
+    if (!quizData || !quizData.questions) return null;
+  
+    return quizData.questions.find(level => !level.is_completed) || null;
+  }
+  

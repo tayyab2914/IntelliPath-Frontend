@@ -29,7 +29,7 @@ const SettingsLinked = ({ setSettingsData, SettingsData }) => {
               </Badge>
             </span>
           ) : (
-            <GithubAuth GithubURL={SettingsData.github_link} />
+            <GithubAuth />
           )}
         </Col>
       </Row>

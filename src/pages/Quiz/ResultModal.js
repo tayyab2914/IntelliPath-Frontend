@@ -6,8 +6,8 @@ import MyIcon from "../../components/Icon/MyIcon";
 import { RESULT_DATA } from '../../data/QuizData'; 
 import { getPercentages } from "./Quizfunctionality";
 
-const ResultModal = ({ visible, onClose, onProceed, quizData }) => {
-const {total,correctPercentage,incorrectPercentage} = getPercentages(RESULT_DATA.correct_answers,RESULT_DATA.incorrect_answers)
+const ResultModal = ({ visible, onClose, onProceed, quizData,correct_answer }) => {
+const {total,correctPercentage,incorrectPercentage} = getPercentages(correct_answer,quizData)
 
   const retakeQuizHandler = ()=>{
     message.info('retakeQuizHandler clicked')
@@ -17,10 +17,10 @@ const {total,correctPercentage,incorrectPercentage} = getPercentages(RESULT_DATA
     <Modal title="Overall Performance" visible={visible} onOk={onProceed} onCancel={onClose}
       footer={
         [ 
-            <MyButton text={"Retake"} onClick={retakeQuizHandler} variant="outlined-dark"/>
-            ,quizData?.level !== "Advanced" && <Popconfirm title="Are you sure you want to proceed, you want be able to retake quiz of current level?" onConfirm={onProceed} okText="Yes" cancelText="No" className='roadmap-popconfirm' placement="topRight">
-                <MyButton key="proceed"  text="Proceed to Next Level" />
-            </Popconfirm>
+            // <MyButton text={"Retake"} onClick={retakeQuizHandler} variant="outlined-dark"/>
+            // ,quizData?.level !== "Advanced" && <Popconfirm title="Are you sure you want to proceed, you want be able to retake quiz of current level?" onConfirm={onProceed} okText="Yes" cancelText="No" className='roadmap-popconfirm' placement="topRight">
+                <MyButton key="proceed"  text="Proceed to Next Level" onClick={onProceed}/>
+            // </Popconfirm>
             
         ]}
     >

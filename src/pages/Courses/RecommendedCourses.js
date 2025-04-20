@@ -14,7 +14,7 @@ const RecommendedCourses = ({ CoursesData }) => {
   const [Courses, setCourses] = useState(CoursesData);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const pageSize = 15;
+  const pageSize = 16;
   const [displayedCourses, setdisplayedCourses] = useState([]);
 
   useEffect(() => {

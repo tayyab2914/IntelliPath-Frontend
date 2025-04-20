@@ -46,7 +46,6 @@ const CoursesMain = () => {
   const onSearch = async (value) => {
     const newName = value.trim() === "" ? "Django" : value;
     const response = await API_RECOMMEND_COURSES(token,newName)
-    console.log(response)
     setCoursesData(response?.courses)
     setCourseName(response?.suggested_keyword);
   };
