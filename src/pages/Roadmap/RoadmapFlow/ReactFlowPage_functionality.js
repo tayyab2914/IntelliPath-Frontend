@@ -5,7 +5,6 @@ import { THEME_COLORS } from "../../../utils/AntdColors";
 const GLOBAL_SETTINGS_DESKTOP = {
     nodeStyle: {
         border: '2px solid', // Set a solid border as a fallback
-        borderImage: `linear-gradient(90deg, ${THEME_COLORS.colorAccentHover}, ${THEME_COLORS.colorAccent}) 3`, // Gradient for the border
        
         borderRadius: "8px",
         padding: "10px 10px",
@@ -19,8 +18,7 @@ const GLOBAL_SETTINGS_DESKTOP = {
         fontWeight:"600"
     },
     edgeStyle: {
-        stroke:"#a7f8fb",
-        strokeWidth: 1,
+        strokeWidth: 2,
         animated: true, // Optional: Add animation to edges
     }
     ,
@@ -40,7 +38,7 @@ const GLOBAL_SETTINGS_DESKTOP = {
 const GLOBAL_SETTINGS_MOBILE = {
     nodeStyle: {
         border: '2px solid', // Set a solid border as a fallback
-        borderImage: `linear-gradient(90deg, ${THEME_COLORS.colorAccentHover}, ${THEME_COLORS.colorAccent}) 3`, // Gradient for the border
+        borderImage: `linear-gradient(90deg, ${THEME_COLORS.colorAccentHover}, ${THEME_COLORS.colorAccent}) 3`,
        
         borderRadius: "4px",
         background:'#fff',
@@ -54,8 +52,7 @@ const GLOBAL_SETTINGS_MOBILE = {
         fontWeight:"600"
     },
     edgeStyle: {
-        stroke: THEME_COLORS.colorAccent, // Edge color
-        strokeWidth: 1,
+        strokeWidth: 2,
         animated: true, // Optional: Add animation to edges
     },
     majorNodeWidth: 230, // Width of each major node
@@ -69,7 +66,25 @@ const GLOBAL_SETTINGS_MOBILE = {
     minorRowHeight: 50, // Height of each row for minor nodes
     verticalSpacing: 0, // Vertical spacing between major nodes
 };
-// Function to generate nodes and edges
+export const GET_BORDER_COLOR = (roadmapData, category)=>{
+       
+            if (roadmapData?.completed_modules?.includes(category)) {
+                return 'linear-gradient(90deg, #50ff19, #50ff19) 3';
+              } else {
+                return `linear-gradient(90deg, ${THEME_COLORS.colorAccent}, ${THEME_COLORS.colorAccent}) 3`;
+              }
+        
+}
+export const GET_STROKE_COLOR = (roadmapData, category)=>{
+       
+            if (roadmapData?.completed_modules?.includes(category)) {
+                return 'rgb(51, 221, 0)';
+              } else {
+                return `${THEME_COLORS.colorAccentHover}`;
+              }
+        
+}
+
 export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
 
     if (!roadmapData || typeof roadmapData !== "object") {
@@ -106,24 +121,31 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
 
         prevMajorNode = { x: majorX, y: majorY };
         majorNodePositions[majorNodeId] = prevMajorNode;
-
+        
+        GET_BORDER_COLOR(roadmapData,category)
         nodesArray.push({
             id: majorNodeId,
             position: { x: majorX, y: majorY },
             data: {
                 roadmap_module: category,
-                style: GLOBAL_SETTINGS.nodeStyle,
+                style: {
+                    ...GLOBAL_SETTINGS.nodeStyle,
+                    borderImage: GET_BORDER_COLOR(roadmapData, category),
+                },
                 onClick: () => onNodeClick(category),
+                roadmapData:roadmapData,
             },
             type: 'custom',
         });
-
         if (index > 0) {
             edgesArray.push({
                 id: `e${index}-${index - 1}`,
                 source: `major-${index}`,
                 target: `major-${index + 1}`,
-                style: GLOBAL_SETTINGS.edgeStyle,
+                style: {
+                    ...GLOBAL_SETTINGS.edgeStyle,
+                    stroke: GET_STROKE_COLOR(roadmapData, category),
+                },
                 type: 'step',
             });
         }
@@ -141,7 +163,10 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
                     position: { x: minorX, y: minorY },
                     data: {
                         roadmap_module: topic,
-                        style: GLOBAL_SETTINGS.nodeStyle,
+                        style: {
+                            ...GLOBAL_SETTINGS.nodeStyle,
+                            borderImage: GET_BORDER_COLOR(roadmapData, category),
+                        },
                         is_minor:true,
                         description:description,
                         onClick: () => onNodeClick(minorNodeId),
@@ -153,7 +178,10 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
                     id: `e${majorNodeId}-${minorNodeId}`,
                     source: majorNodeId,
                     target: minorNodeId,
-                    style: GLOBAL_SETTINGS.edgeStyle,
+                    style: {
+                        ...GLOBAL_SETTINGS.edgeStyle,
+                        stroke: GET_STROKE_COLOR(roadmapData, category),
+                    },
                     type: 'bezier',
                 });
 

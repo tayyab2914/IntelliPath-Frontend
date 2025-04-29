@@ -10,7 +10,7 @@ import { IMAGES } from "../../data/ImageData";
 import AutoTextCropper from "../../components/AutoTextCropper/AutoTextCropper";
 import { ICONS } from "../../data/IconData";
 
-const RecommendedCourses = ({ CoursesData }) => {
+const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
   const [Courses, setCourses] = useState(CoursesData);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ const RecommendedCourses = ({ CoursesData }) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    console.log(CoursesData)
   }, [CoursesData]);
   
   useEffect(() => {
@@ -32,7 +33,7 @@ const RecommendedCourses = ({ CoursesData }) => {
   return  <>
   <Row gutter={[15, 15]} className="recommended-courses-container">
     {displayedCourses?.map((course, index) => (
-      <Col xs={24} sm={12} md={8} lg={6} key={index} onClick={()=>navigate(`/course/${course.id}`)}>
+      <Col xs={24} sm={12} md={8} lg={6} key={index} onClick={()=>navigate(`/course/${course.id}?current-query-name=${CurrentQueryName}`)}>
         <div className="recommended-course-container">
           <div className="recommended-courses-data">
             <div className="recommended-courses-image-container">

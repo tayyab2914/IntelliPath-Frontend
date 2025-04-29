@@ -1,4 +1,4 @@
-import { Dropdown, Menu, Tooltip } from "antd";
+import { Dropdown, Menu, message, Tooltip } from "antd";
 import { Handle } from "@xyflow/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +9,13 @@ export const NodeWithHandles = ({ data }) => {
   const navigate = useNavigate();
   
   const handleNavigate = (path) => {
+    console.log(data)
     const encodedCourseName = encodeURIComponent(data.roadmap_module);
-  
+    if(data?.roadmapData?.completed_modules?.includes(data.roadmap_module))
+    {
+        message.success(`All Quiz attempted for ${data.roadmap_module}`)
+        return
+    }
     navigate(`${path}?roadmap_module=${encodedCourseName}`);
     setDropdownVisible(false);
   };

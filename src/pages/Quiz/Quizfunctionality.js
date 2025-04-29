@@ -72,7 +72,7 @@ export const calculateQuizMarks = (quizData, answers, setResult, setShowResultBt
 
 
   export const GET_CURRENT_LEVEL_AND_QUIZ = (quizData)=>{
-    if (!quizData || !quizData.questions) return null;
+    if (!quizData || !quizData.questions) return 404;
   
     return quizData.questions.find(level => !level.is_completed) || null;
   }

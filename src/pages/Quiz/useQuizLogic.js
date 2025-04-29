@@ -20,19 +20,21 @@ const useQuizLogic = () => {
   const questionRefs = useRef([]);
 
   const getQuizData = async (roadmap_module) => {
-    setRoadmapModule(roadmap_module)
+    setRoadmapModule(roadmap_module);
     const response = await API_GET_QUIZ(token, roadmap_module);
-    console.log('API_GET_QUIZz',response)
-    if(response?.quiz_data?.is_completed)
-    {
-        setShowGithubModal(true)
-        return
+    console.log("API_GET_QUIZz", response);
+    if (response?.quiz_data?.is_completed) {
+      setShowGithubModal(true);
+      return;
     }
     const quizCurrentLevel = GET_CURRENT_LEVEL_AND_QUIZ(response?.quiz_data);
-    if (quizCurrentLevel) {
+    if (quizCurrentLevel == 404) {
+      message.error("Quiz not found!");
+      navigate("/roadmap");
+    } else if (quizCurrentLevel) {
       setQuizData(quizCurrentLevel);
     } else {
-      message.success(`All quizzes attempted for ${roadmap_module}`);
+        message.success(`All quizzes attempted for ${roadmap_module}`);
       navigate("/roadmap");
     }
   };

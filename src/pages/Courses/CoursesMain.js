@@ -68,7 +68,7 @@ const CoursesMain = () => {
           />
           {windowWidth <= 568 && <p className="courses-current-tech">Showing results for : {CAPITALIZE_STRING(CourseName)}</p>}
         </div>
-        <RecommendedCourses CoursesData={CoursesData} />
+        <RecommendedCourses CoursesData={CoursesData} CurrentQueryName={CourseName}/>
       </div>
       <Footer />
     </>

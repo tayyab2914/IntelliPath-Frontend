@@ -93,9 +93,9 @@ const CourseInfo = ({ course_data }) => {
             </div>
 
             {/* Score */}
-            <Tag color="gold" className="single-course-score" style={{ marginTop: '10px' }}>
+           {score && <Tag color="gold" className="single-course-score" style={{ marginTop: '10px' }}>
               Score: {score?.toFixed(1)}
-            </Tag>
+            </Tag>}
 
             {/* Dates */}
             

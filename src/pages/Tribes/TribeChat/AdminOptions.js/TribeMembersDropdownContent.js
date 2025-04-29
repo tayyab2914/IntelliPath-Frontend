@@ -18,6 +18,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
     setLoading(true);
     try {
       const response = await API_GET_TRIBE_MEMBERS(token, tribeId);
+      console.log('API_GET_TRIBE_MEMBERS',response)
       setTribeMembers(response.members || []);
     } catch (err) {
       console.error("Failed to fetch tribe members", err);
@@ -36,7 +37,9 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
   }
   // Overlay content (List of members)
   const overlayContent = (
-    <div>
+    <div className="tribe-member-list">
+        <p className="title">All Members</p>
+        <Divider/>
         {tribeMembers?.map((member) => (
           <>
           <div key={member?.id} className="tribe-member-list-item" onClick={()=>memberClickHandler(member?.id)}>
@@ -44,7 +47,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
               src={member?.profile_photo ? `${DOMAIN_NAME}${member?.profile_photo}` : ICONS.avatar}
               size="small"
             />
-            <span style={{ marginLeft: "10px" }}>{member?.email}</span>
+            <span style={{ marginLeft: "10px" }}>{member?.first_name} {member?.last_name}</span>
             
           </div>
           </>
@@ -58,6 +61,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
       trigger={["click"]}
       placement="bottomRight"
       className="tribe-members-dropdown"
+      
     >
       <span style={{ cursor: "pointer" }}>
         <MyIcon type={"tribes"} />

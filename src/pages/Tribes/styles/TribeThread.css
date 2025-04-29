@@ -60,7 +60,17 @@ cursor: pointer;
     margin-top: 10px;
   }
 }
-
+.tribe-member-list{
+    min-width: 170px;
+}
+.tribe-member-list .ant-divider{
+    margin: 5px 0px !important;
+}
+.tribe-member-list .title{
+    margin: 0px;
+    font-weight: 600;
+    color: var(--color-dark);
+}
 .t-t-container {
   height: calc(100vh - 100px);
   background-color: var(--color-white);

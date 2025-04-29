@@ -22,7 +22,6 @@ const OnBoardingMain = () => {
   const navigate = useNavigate()
   const { token, blind_mode, isLoggedIn, user_attributes, rerender_app } =
     useSelector((state) => state.authToken);
-  console.log(user_attributes,token);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -4,9 +4,11 @@ import MyIcon from '../../components/Icon/MyIcon';
 import { API_GENERATE_ROADMAP } from '../../apis/RoadmapApis';
 import './styles/RoadmapDisplay.css'
 import { useNavigate } from 'react-router-dom';
+import { GET_ROADMAP_PROGRESS } from './RoadmapFunctionality';
 const RoadmapHeader = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandler }) => {
     const [suggestedProjects, setSuggestedProjects] = useState(RoadmapData?.suggested_projects);
     const [LearningApproach, setLearningApproach] = useState(RoadmapData?.learning_approach);
+    const [RoadmapProgress, setRoadmapProgress] = useState({});
     const navigate = useNavigate()
     useEffect(() => {
         if (RoadmapData?.suggested_projects) {
@@ -15,7 +17,8 @@ const RoadmapHeader = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandl
         if (RoadmapData?.learning_approach) {
             setLearningApproach(RoadmapData.learning_approach);
         }
-      }, [RoadmapData?.suggested_projects,RoadmapData?.learning_approach]);
+        setRoadmapProgress(GET_ROADMAP_PROGRESS(RoadmapData))
+    }, [RoadmapData?.suggested_projects,RoadmapData?.learning_approach]);
       
 
 
@@ -68,10 +71,14 @@ const coursesHandler =()=>{
                     <MyIcon type="delete" className="roadmap-display-header-icon-delete" />
                 </Popconfirm>
 
-                {/* Dropdown for suggested projects */}
                 
             </Col>
-        </Row></>
+            <Col xs={24} className='roadmap-display-header-progress'>
+                <Tag color="cyan"> {`${RoadmapProgress?.progressPercentage || 0}% Completed`} </Tag>
+                <span>{`${RoadmapProgress?.completedModules || 0 } of ${RoadmapProgress?.totalModules} Done`}</span>
+            </Col>
+        </Row>
+        </>
     );
 };
 
