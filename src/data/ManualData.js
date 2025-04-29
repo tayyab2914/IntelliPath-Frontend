@@ -55,7 +55,7 @@ export const MANUAL_FEATURES = [
     ),
   },
   {
-    title: "Foul Speech Detection & Auto-Moderation",
+    title: "Foul Speech Detection",
     icon: <SafetyOutlined />,
     description: (
       <>

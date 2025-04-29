@@ -2,3 +2,27 @@
     background-color: white !important;
     margin-bottom: 10px !important;
 }
+.manual-title-item{
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+}
+.manual-title-list .ant-card-body{
+    padding: 0px !important;
+}
+.manual-row-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.manual-row{
+    width: 100%;
+    max-width: 1200px;
+}
+.manual-detail-card{
+
+    color: var(--color-muted) !important;
+}
+.manual-detail-card .ant-typography {
+    margin-top: 0px !important;
+}
