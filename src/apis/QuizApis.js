@@ -2,7 +2,7 @@ import axios from "axios";
 import { message } from "antd";
 import { DOMAIN_NAME } from "../utils/GlobalSettings";
 
-export const API_GET_QUIZ = async (token, roadmap_module,setShowSpinner) => {
+export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowSpinner) => {
   console.log(roadmap_module);
   setShowSpinner(true)
   try {

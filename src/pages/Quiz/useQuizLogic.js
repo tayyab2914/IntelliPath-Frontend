@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { API_COMPLETE_QUIZ, API_GET_QUIZ } from "../../apis/QuizApis";
+import { API_COMPLETE_QUIZ, API_GENERATE_QUIZ_BY_MODULE } from "../../apis/QuizApis";
 import {
   GET_CURRENT_LEVEL_AND_QUIZ,
   calculateQuizMarks,
@@ -25,8 +25,8 @@ const useQuizLogic = () => {
 
   const getQuizData = async (roadmap_module) => {
     setRoadmapModule(roadmap_module);
-    const response = await API_GET_QUIZ(token, roadmap_module, setShowSpinner);
-
+    const response = await API_GENERATE_QUIZ_BY_MODULE(token, roadmap_module, setShowSpinner);
+    console.log(response)
     if (response?.quiz_data?.is_completed) {
       setShowGithubModal(true);
       return;

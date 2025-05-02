@@ -17,7 +17,7 @@ const QuizPage = ({ quizData, answers,ShowSpinner, handleAnswerChange, handleSub
         <TitleMain title="Exam system" description="Challenge Yourself with a Variety of Quizzes Across Different Levels" />
         { !quizData?.is_completed &&<QuizHeader quizData={quizData} />}
 
-        {quizData?.question?.map((question, index) => (
+        {quizData?.quiz?.map((question, index) => (
           <QuizQuestion key={index} question={question} questionIndex={index} questionRefs={questionRefs} handleAnswerChange={handleAnswerChange} answers={answers} />
         ))}
 

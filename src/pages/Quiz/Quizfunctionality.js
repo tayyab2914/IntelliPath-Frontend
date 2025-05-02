@@ -63,8 +63,11 @@ export const calculateQuizMarks = (quizData, answers) => {
 
 
   export const GET_CURRENT_LEVEL_AND_QUIZ = (quizData)=>{
-    if (!quizData || !quizData.question) return 404;
-  
-    return quizData.question.find(level => !level.is_completed) || null;
+    console.log(quizData)
+    if (!quizData || !quizData.level) return 404;
+    
+    console.log(quizData.level.find(level => !level.is_completed) || null)
+
+    return quizData.level.find(level => !level.is_completed) || null;
   }
   
