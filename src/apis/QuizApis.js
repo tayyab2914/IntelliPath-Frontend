@@ -17,6 +17,7 @@ export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowS
         },
       }
     );
+      
     console.log("API_GET_QUIZ", response);
     return response.data;
   } catch (error) {

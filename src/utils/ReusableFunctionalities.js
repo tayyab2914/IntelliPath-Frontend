@@ -34,3 +34,16 @@ export const FORMAT_TIMESTAMP = (timestamp) => {
   }
   
  export const CAPITALIZE_STRING =(str)=> str.replace(/\b\w/g, char => char.toUpperCase());
+
+
+
+ 
+ function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
+ export async function waitForSeconds(sec=2) {
+    console.log("Waiting for 2 seconds...");
+    await sleep(sec*1000);
+    console.log("Done waiting!");
+  }

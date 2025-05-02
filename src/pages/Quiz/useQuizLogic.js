@@ -25,8 +25,18 @@ const useQuizLogic = () => {
 
   const getQuizData = async (roadmap_module) => {
     setRoadmapModule(roadmap_module);
-    const response = await API_GENERATE_QUIZ_BY_MODULE(token, roadmap_module, setShowSpinner);
-    console.log(response)
+    let response;
+    let retries = 0;
+    const MAX_RETRIES = 3;
+    do {
+        response = await API_GENERATE_QUIZ_BY_MODULE(token, roadmap_module,setShowSpinner);
+        console.log('retries',retries)
+        retries++;
+    } while(response?.quiz_data?.error && retries < MAX_RETRIES && !ShowSpinner)
+
+    console.log('API_GENERATE_QUIZ_BY_MODULE',response)
+   
+
     if (response?.quiz_data?.is_completed) {
       setShowGithubModal(true);
       return;

@@ -30,7 +30,8 @@ export const GetTags = ({ level }) => {
 };
 
 export const getPercentages = (correct_answer,quizData)=>{
-  const total = quizData?.question?.length;
+    console.log('getPercentages',quizData,correct_answer)
+  const total = quizData?.quiz?.length;
   const correctPercentage = ((correct_answer / total) * 100).toFixed(2);
 
   const incorrectPercentage = 100 - correctPercentage
@@ -38,7 +39,7 @@ export const getPercentages = (correct_answer,quizData)=>{
 }
 
 export const calculateQuizMarks = (quizData, answers) => {
-    if (!quizData || !quizData?.question) return -1;
+    if (!quizData || !quizData?.quiz) return -1;
   
     // Check for unanswered questions
     const anyUnanswered = answers.some(answer => answer === null);
@@ -49,7 +50,7 @@ export const calculateQuizMarks = (quizData, answers) => {
   
     let score = 0;
   
-    quizData.question.forEach((question, index) => {
+    quizData.quiz.forEach((question, index) => {
       if (question.options[answers[index]] === question.answer) {
         score += 1;
       }
