@@ -19,7 +19,6 @@ const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log(CoursesData)
   }, [CoursesData]);
   
   useEffect(() => {

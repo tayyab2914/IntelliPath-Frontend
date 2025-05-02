@@ -2,32 +2,38 @@ import axios from "axios";
 import { message } from "antd";
 import { DOMAIN_NAME } from "../utils/GlobalSettings";
 
-export const API_GET_QUIZ = async (token, roadmap_module) => {
-    console.log(roadmap_module)
+export const API_GET_QUIZ = async (token, roadmap_module,setShowSpinner) => {
+  console.log(roadmap_module);
+  setShowSpinner(true)
   try {
-    const response = await axios.get(`${DOMAIN_NAME}/quiz/get_quiz/`, {
-      params: {
-        roadmap_module: roadmap_module
-      },
-      headers: {
-        Authorization: token,
-      },
-    });
-    console.log('API_GET_QUIZ',response)
+    const response = await axios.post(
+      `${DOMAIN_NAME}/quiz/generate_quiz_by_module/`,
+      {
+        roadmap_module_name: roadmap_module,
+      }, // empty body
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    console.log("API_GET_QUIZ", response);
     return response.data;
   } catch (error) {
     console.log(error);
     // message.error(error.response?.data?.message);
     return false;
+  }finally{
+    setShowSpinner(false)
   }
 };
 
-export const API_GENERATE_QUIZZES = async (token,user_id) => {
+export const API_GENERATE_QUIZZES = async (token, user_id) => {
   try {
     const response = await axios.post(
       `${DOMAIN_NAME}/quiz/generate_quizzes/`,
       {
-        user_id:user_id
+        user_id: user_id,
       }, // empty body
       {
         headers: {
@@ -43,15 +49,20 @@ export const API_GENERATE_QUIZZES = async (token,user_id) => {
     return false;
   }
 };
-export const API_COMPLETE_QUIZ = async (token,roadmap_module,level,score) => {
-    console.log(token,roadmap_module,level,score)
+export const API_COMPLETE_QUIZ = async (
+  token,
+  roadmap_module,
+  level,
+  score
+) => {
+  console.log(token, roadmap_module, level, score);
   try {
     const response = await axios.post(
       `${DOMAIN_NAME}/quiz/complete_quiz/`,
       {
-        roadmap_module:roadmap_module,
-        level:level,
-        score:score
+        roadmap_module: roadmap_module,
+        level: level,
+        score: score,
       },
       {
         headers: {

@@ -35,8 +35,8 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
               className="profile-image" 
             />
             <div className="profile-details">
-              <p className="profile-name">{UserInfo.first_name} {UserInfo.last_name}</p>
-              <p className="profile-email">{UserInfo.email}</p>
+              <p className="profile-name">{UserInfo?.first_name} {UserInfo?.last_name}</p>
+              <p className="profile-email">{UserInfo?.email}</p>
               <div className="profile-masteries">
                 {UserInfo?.masteries?.map((mastery, key) => (
                   <MyBadge type={mastery} size="md" key={key} className="profile-mastery-badge" />
@@ -56,10 +56,10 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
       <Col xs={24} lg={12}  className="user-profile-career-goals">
         <Card title="🎯 Career Goal" >
           <Descriptions column={1} layout="horizontal">
-            <Descriptions.Item label="Domain">{UserInfo.goal_domain}</Descriptions.Item>
-            <Descriptions.Item label="Skill">{UserInfo.goal_skill}</Descriptions.Item>
-            <Descriptions.Item label="Completion Time">{UserInfo.goal_completion_time}</Descriptions.Item>
-            <Descriptions.Item label="Weekly Hours">{UserInfo.time_dedication_per_week}</Descriptions.Item>
+            <Descriptions.Item label="Domain">{UserInfo?.goal_domain || " "}</Descriptions.Item>
+            <Descriptions.Item label="Skill">{UserInfo?.goal_skill || " "}</Descriptions.Item>
+            <Descriptions.Item label="Completion Time">{UserInfo?.goal_completion_time || " "}</Descriptions.Item>
+            <Descriptions.Item label="Weekly Hours">{UserInfo?.time_dedication_per_week || " "}</Descriptions.Item>
           </Descriptions>
         </Card>
       </Col>
@@ -69,13 +69,13 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
         <Card title="📊 Stats" >
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={8}>
-              <Statistic title="Current Level" value={UserInfo.current_skill_level} />
+              <Statistic title="Current Level" value={UserInfo?.current_skill_level || " "} />
             </Col>
             <Col xs={24} sm={8}>
-              <Statistic title="Age" value={UserInfo.age} />
+              <Statistic title="Age" value={UserInfo?.age || " "} />
             </Col>
             <Col xs={24} sm={8}>
-              <Statistic title="Education" value={UserInfo.education} />
+              <Statistic title="Education" value={UserInfo?.education || " "} />
             </Col>
           </Row>
         </Card>

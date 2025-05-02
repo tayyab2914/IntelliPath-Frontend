@@ -25,7 +25,6 @@ const RoadmapMain = () => {
 
   const getRoadmap = async()=>{
     const response = await API_GET_ROADMAP(token)
-    console.log(response)
     setRoadmapData(response?.roadmap_data)
     if (!response?.roadmap_data) {
         setShowNotification(true);

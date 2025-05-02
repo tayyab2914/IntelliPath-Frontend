@@ -14,9 +14,7 @@ const Account = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('Account',isLoggedIn)
     if (isLoggedIn) {
-        console.log("HELLO")
       navigate("/");
     }
   }, []);

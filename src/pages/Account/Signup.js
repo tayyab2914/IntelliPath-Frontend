@@ -22,7 +22,6 @@ const SignUp = ({ toggleCurrentMode }) => {
   const [ShowSpinner, setShowSpinner] = useState(false);
   const { token, isLoggedIn } = useSelector((state) => state.authToken);
 
-  console.log(token, isLoggedIn);
 
   const handleSignUp = async (email, password, name) => {
     setEmail(email);

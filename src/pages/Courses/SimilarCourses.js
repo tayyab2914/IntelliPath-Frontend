@@ -20,7 +20,6 @@ const SimilarCourses = ({course_name}) => {
     const newName = value?.trim() === "" ? "Django" : value;
     const response = await API_RECOMMEND_COURSES(token,newName)
     setCoursesData(response?.courses)
-    console.log(response)
   };
     useEffect(()=>{
 
@@ -28,7 +27,6 @@ const SimilarCourses = ({course_name}) => {
         const currentQueryName = searchParams.get("current-query-name")
         onSearch(currentQueryName)
         setCurrentQueryName(currentQueryName)
-        console.log('currentQueryName,',currentQueryName)
     },[])
   return (
     <div>
@@ -36,7 +34,6 @@ const SimilarCourses = ({course_name}) => {
       <p className="similar-courses-heading">Similar Courses</p>
       <Row gutter={[15, 15]} className="similar-courses-container">
     {CourseData?.sort(() => Math.random() - 0.5).slice(0, 4)?.map((course, index) => {
-        console.log(course)
         return <>
          <Col xs={24} sm={12} md={8} lg={6} key={index} onClick={()=>navigate(`/course/${course.id}?current-query-name=${CurrentQueryName}`)}>
         <div className="recommended-course-container">

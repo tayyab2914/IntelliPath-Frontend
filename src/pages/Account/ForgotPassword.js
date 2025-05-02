@@ -33,7 +33,6 @@ const ForgotPassword = ({setShowForgotPassword}) => {
   };
   const onNewPasswordSubmit = async (newPassword) => {
     setNewPassword(newPassword);
-    console.log('newPassword',newPassword)
     await API_SET_NEW_PASSWORD( email, newPassword, verificationCode, codeToken, setShowSpinner,setShowForgotPassword );
     
   };

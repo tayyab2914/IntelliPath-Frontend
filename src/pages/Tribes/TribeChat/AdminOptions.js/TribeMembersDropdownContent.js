@@ -18,7 +18,6 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
     setLoading(true);
     try {
       const response = await API_GET_TRIBE_MEMBERS(token, tribeId);
-      console.log('API_GET_TRIBE_MEMBERS',response)
       setTribeMembers(response.members || []);
     } catch (err) {
       console.error("Failed to fetch tribe members", err);

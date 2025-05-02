@@ -19,7 +19,6 @@ const TribeChatMain = () => {
   const [SelectedThread, setSelectedThread] = useState({});
     const [OnlineMembers, setOnlineMembers] = useState([]);
 
-  console.log(SelectedThread);
 
   const fetchThreadList = async () => {
     const response = await API_GET_THREADS_LIST(
@@ -43,7 +42,7 @@ const TribeChatMain = () => {
       <div className="generic-container">
         <div className="tribe-chat-main">
           <Row gutter={[10,10]}>
-            <Col lg={7}>
+            <Col xs={24} lg={7}>
               <TribeChatHeader
                 availableThreads={availableThreads}
                 setSelectedThread={setSelectedThread}
@@ -51,7 +50,7 @@ const TribeChatMain = () => {
                  OnlineMembers={OnlineMembers}
               />
             </Col>
-            <Col lg={17}>
+            <Col xs={24} lg={17}>
               {SelectedThread && (
                 <TribeThread
                   SelectedThread={SelectedThread}

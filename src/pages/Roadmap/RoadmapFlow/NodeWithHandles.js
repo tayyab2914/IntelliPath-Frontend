@@ -9,7 +9,6 @@ export const NodeWithHandles = ({ data }) => {
   const navigate = useNavigate();
   
   const handleNavigate = (path) => {
-    console.log(data)
     const encodedCourseName = encodeURIComponent(data.roadmap_module);
     if(data?.roadmapData?.completed_modules?.includes(data.roadmap_module))
     {

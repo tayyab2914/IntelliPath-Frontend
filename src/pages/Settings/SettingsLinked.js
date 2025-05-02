@@ -25,7 +25,7 @@ const SettingsLinked = ({ setSettingsData, SettingsData }) => {
                 onClick={handleUnlink} 
                 style={{ backgroundColor: "#f5222d", color: "white", cursor: "pointer", fontSize: "10px", padding:"3px", borderRadius:"50%", marginLeft:"3px" }}
             >
-                <p>https://github.com/{SettingsData.github}</p>
+                <p>https://github.com/{SettingsData?.github}</p>
               </Badge>
             </span>
           ) : (

@@ -8,8 +8,6 @@ export const ROADMAP_NOTIFICATION_BUTTON_DATA = (navigate) => [
   },
 ];
 export const GET_ROADMAP_PROGRESS = (RoadmapData) => {
-    console.log("GET_ROADMAP_PROGRESS", RoadmapData);
-  
     const roadmap = RoadmapData?.roadmap || {}; // safe fallback to empty object
     const totalModules = Object.keys(roadmap).length;
     

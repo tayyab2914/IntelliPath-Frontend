@@ -9,7 +9,6 @@ const QuizGithubModal = ({ visible, onClose, quizData}) => {
   const [repoName, setRepoName] = useState("");
   const [repoURL, setRepoURL] = useState("");
 
-  console.log(quizData)
   useEffect(() => {
     if (user_attributes?.github) {
       setGithubAuthenticated(true);
@@ -29,7 +28,6 @@ const QuizGithubModal = ({ visible, onClose, quizData}) => {
   };
 
   const confirmSubmission = () => {
-    console.log("Final Repo URL submitted:", repoURL);
     message.success("Repository submitted successfully!");
     onClose();
   };

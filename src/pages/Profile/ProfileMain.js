@@ -20,7 +20,6 @@ const ProfileMain = () => {
   const fetchUserInfo = async () => {
     if (user_id) {
       const response = await API_GET_USER_INFO(token,user_id)
-      console.log(response)
       setisUsersOwnProfile(false)
       setUserInfo(response?.user_data);
     } else {

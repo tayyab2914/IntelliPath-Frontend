@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 .tribes-chat-header-goal {
   margin: 0px;
@@ -71,6 +72,10 @@
 @media screen and (max-width: 768px) {
   .tribes-chat-header-row {
     display: block;
+  }
+  .t-t-messages-box
+  {
+    padding: 0px !important;
   }
 }
 

@@ -49,7 +49,6 @@ const SettingsMain = () => {
 
   const handleDiscard = () => {
     fetchSettings();
-    console.log("Changes discarded. Reset to initial settings.");
   };
   return (
     <>

@@ -14,7 +14,6 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
   
     chatSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data)
       if (data.type === 'message') {
         const newMessage = {
           first_name: data.first_name || 'Anonymous',
@@ -27,7 +26,6 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
       }
       if(data.type == "online_users")
       {
-        console.log('online_users',data)
         setOnlineMembers(data)
       }
     };

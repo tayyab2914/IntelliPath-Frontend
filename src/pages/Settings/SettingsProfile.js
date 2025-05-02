@@ -24,9 +24,9 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
     reader.readAsDataURL(file);
   };
 
-  const profileImageUrl = previewImage || (SettingsData.profile_picture instanceof File 
-    ? URL.createObjectURL(SettingsData.profile_picture) 
-    : `${DOMAIN_NAME}${SettingsData.profile_picture}`);
+  const profileImageUrl = previewImage || (SettingsData?.profile_picture instanceof File 
+    ? URL.createObjectURL(SettingsData?.profile_picture) 
+    : `${DOMAIN_NAME}${SettingsData?.profile_picture}`);
 
   return (
     <div>

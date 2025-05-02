@@ -5,18 +5,19 @@ import QuizQuestion from "./QuizQuestion";
 import ResultModal from "./ResultModal";
 import QuizGithubModal from "./QuizGithubModal";
 import MyButton from "../../components/Button/Button";
-import { Row, Col } from "antd";
+import { Row, Col, Spin } from "antd";
 import useWindowWidth from "../../hooks/useWindowWidth";
 
-const QuizPage = ({ quizData, answers, handleAnswerChange, handleSubmit, proceedHandler, result, showResultModal, setShowResultModal, showGithubModal, setShowGithubModal, showResultBtn, questionRefs }) => {
+const QuizPage = ({ quizData, answers,ShowSpinner, handleAnswerChange, handleSubmit, proceedHandler, result, showResultModal, setShowResultModal, showGithubModal, setShowGithubModal, showResultBtn, questionRefs }) => {
   const windowWidth = useWindowWidth();
 
   return (
       <div className="quiz-page-main">
+        {ShowSpinner && <Spin fullscreen tip="Generating Quiz"/>}
         <TitleMain title="Exam system" description="Challenge Yourself with a Variety of Quizzes Across Different Levels" />
         { !quizData?.is_completed &&<QuizHeader quizData={quizData} />}
 
-        {quizData?.questions?.map((question, index) => (
+        {quizData?.question?.map((question, index) => (
           <QuizQuestion key={index} question={question} questionIndex={index} questionRefs={questionRefs} handleAnswerChange={handleAnswerChange} answers={answers} />
         ))}
 

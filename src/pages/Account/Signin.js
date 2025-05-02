@@ -16,8 +16,6 @@ const Signin = ({ toggleCurrentMode }) => {
     const [ShowSpinner, setShowSpinner] = useState(false);
     const { token, blind_mode, isLoggedIn, rerender_app } = useSelector((state) => state.authToken);
   
-
-  console.log('Signin',isLoggedIn)
   const handleSignIn = async (email, password) => {
     const response = await API_SIGN_IN(email, password,dispatch,navigate,setShowSpinner);
     if(response){
