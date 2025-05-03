@@ -3,7 +3,6 @@ import { message } from "antd";
 import { DOMAIN_NAME } from "../utils/GlobalSettings";
 
 export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowSpinner) => {
-  console.log(roadmap_module);
   setShowSpinner(true)
   try {
     const response = await axios.post(
@@ -18,7 +17,6 @@ export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowS
       }
     );
       
-    console.log("API_GET_QUIZ", response);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -56,7 +54,6 @@ export const API_COMPLETE_QUIZ = async (
   level,
   score
 ) => {
-  console.log(token, roadmap_module, level, score);
   try {
     const response = await axios.post(
       `${DOMAIN_NAME}/quiz/complete_quiz/`,

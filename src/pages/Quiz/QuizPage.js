@@ -22,7 +22,7 @@ const QuizPage = ({ quizData, answers,ShowSpinner, handleAnswerChange, handleSub
         ))}
 
         {showResultModal && (
-          <ResultModal correct_answer={result} visible={showResultModal} onClose={() => setShowResultModal(false)} quizData={quizData} onProceed={proceedHandler} />
+          <ResultModal result={result} visible={showResultModal} onClose={() => setShowResultModal(false)} quizData={quizData} onProceed={proceedHandler} />
         )}
 
         {showGithubModal && <QuizGithubModal visible={showGithubModal} onClose={() => setShowGithubModal(false)} quizData={quizData}/>}

@@ -32,13 +32,14 @@ const useQuizLogic = () => {
         response = await API_GENERATE_QUIZ_BY_MODULE(token, roadmap_module,setShowSpinner);
         console.log('retries',retries)
         retries++;
-    } while(response?.quiz_data?.error && retries < MAX_RETRIES && !ShowSpinner)
+    } while((response?.quiz_data?.error || !response) && retries < MAX_RETRIES && !ShowSpinner)
 
     console.log('API_GENERATE_QUIZ_BY_MODULE',response)
    
 
     if (response?.quiz_data?.is_completed) {
-      setShowGithubModal(true);
+      message.success(`All quizzes attempted for ${roadmap_module}`);
+      navigate("/roadmap");
       return;
     }
 
@@ -49,9 +50,6 @@ const useQuizLogic = () => {
       navigate("/roadmap");
     } else if (quizCurrentLevel) {
       setQuizData(quizCurrentLevel);
-    } else {
-      message.success(`All quizzes attempted for ${roadmap_module}`);
-      navigate("/roadmap");
     }
   };
 
@@ -73,6 +71,7 @@ const useQuizLogic = () => {
         setShowResultBtn(true);
         setShowResultModal(true);
         message.success("Quiz submitted successfully!");
+        setAnswers([])
       }
     }
   };

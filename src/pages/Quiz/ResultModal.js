@@ -6,8 +6,8 @@ import MyIcon from "../../components/Icon/MyIcon";
 import { RESULT_DATA } from '../../data/QuizData'; 
 import { getPercentages } from "./Quizfunctionality";
 
-const ResultModal = ({ visible, onClose, onProceed, quizData,correct_answer }) => {
-const {total,correctPercentage,incorrectPercentage} = getPercentages(correct_answer,quizData)
+const ResultModal = ({ visible, onClose, onProceed, quizData,result }) => {
+const {total,correctPercentage,incorrectPercentage} = getPercentages(result,quizData)
 
   const retakeQuizHandler = ()=>{
     message.info('retakeQuizHandler clicked')

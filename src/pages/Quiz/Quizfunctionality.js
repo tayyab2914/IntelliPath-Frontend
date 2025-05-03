@@ -29,10 +29,9 @@ export const GetTags = ({ level }) => {
   );
 };
 
-export const getPercentages = (correct_answer,quizData)=>{
-    console.log('getPercentages',quizData,correct_answer)
+export const getPercentages = (result,quizData)=>{
   const total = quizData?.quiz?.length;
-  const correctPercentage = ((correct_answer / total) * 100).toFixed(2);
+  const correctPercentage = ((result?.correct_answers / total) * 100).toFixed(2);
 
   const incorrectPercentage = 100 - correctPercentage
   return {total,correctPercentage,incorrectPercentage}
@@ -47,27 +46,23 @@ export const calculateQuizMarks = (quizData, answers) => {
       message.error("Please attempt all questions before submitting!");
       return -1;
     }
-  
     let score = 0;
   
-    quizData.quiz.forEach((question, index) => {
-      if (question.options[answers[index]] === question.answer) {
+    quizData?.quiz?.forEach((question, index) => {
+      if (question?.options[answers[index]] === question?.answer) {
         score += 1;
       }
     });
   
-  
-    const totalQuestions = quizData.question.length;
+    const totalQuestions = quizData?.quiz?.length;
     return {totalQuestions:totalQuestions, score:score};
   };
   
 
 
   export const GET_CURRENT_LEVEL_AND_QUIZ = (quizData)=>{
-    console.log(quizData)
     if (!quizData || !quizData.level) return 404;
     
-    console.log(quizData.level.find(level => !level.is_completed) || null)
 
     return quizData.level.find(level => !level.is_completed) || null;
   }

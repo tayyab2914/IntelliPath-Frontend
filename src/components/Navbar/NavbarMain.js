@@ -25,7 +25,6 @@ const NavbarMain = ({ version = 'light' }) => {
     }
     const fetchSettings = async () => {
       const response = await API_GET_USER_ATTRIBUTE(token);
-      console.log(response)
       dispatch(setUserAttributes(response))
       setUserInfo(response);
     };

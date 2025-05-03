@@ -67,7 +67,6 @@ const GLOBAL_SETTINGS_MOBILE = {
     verticalSpacing: 0, // Vertical spacing between major nodes
 };
 export const GET_BORDER_COLOR = (roadmapData, category)=>{
-       
             if (roadmapData?.completed_modules?.includes(category)) {
                 return 'linear-gradient(90deg, #50ff19, #50ff19) 3';
               } else {
