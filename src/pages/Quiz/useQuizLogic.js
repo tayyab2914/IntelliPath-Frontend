@@ -2,10 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { API_COMPLETE_QUIZ, API_GENERATE_QUIZ_BY_MODULE } from "../../apis/QuizApis";
-import {
-  GET_CURRENT_LEVEL_AND_QUIZ,
-  calculateQuizMarks,
-} from "./Quizfunctionality";
+import { GET_CURRENT_LEVEL_AND_QUIZ, calculateQuizMarks } from "./Quizfunctionality";
 import { message } from "antd";
 
 const useQuizLogic = () => {
@@ -13,7 +10,6 @@ const useQuizLogic = () => {
   const [answers, setAnswers] = useState([]);
   const [result, setResult] = useState({});
   const [showResultModal, setShowResultModal] = useState(false);
-  const [showGithubModal, setShowGithubModal] = useState(false);
   const [showResultBtn, setShowResultBtn] = useState(false);
   const [RoadmapModule, setRoadmapModule] = useState("");
   const [ShowSpinner, setShowSpinner] = useState(false);
@@ -29,13 +25,17 @@ const useQuizLogic = () => {
     let retries = 0;
     const MAX_RETRIES = 3;
     do {
-        response = await API_GENERATE_QUIZ_BY_MODULE(token, roadmap_module,setShowSpinner);
-        console.log('retries',retries)
-        retries++;
-    } while((response?.quiz_data?.error || !response) && retries < MAX_RETRIES && !ShowSpinner)
-
-    console.log('API_GENERATE_QUIZ_BY_MODULE',response)
-   
+      response = await API_GENERATE_QUIZ_BY_MODULE(
+        token,
+        roadmap_module,
+        setShowSpinner
+      );
+      retries++;
+    } while (
+      (response?.quiz_data?.error || !response) &&
+      retries < MAX_RETRIES &&
+      !ShowSpinner
+    );
 
     if (response?.quiz_data?.is_completed) {
       message.success(`All quizzes attempted for ${roadmap_module}`);
@@ -51,6 +51,7 @@ const useQuizLogic = () => {
     } else if (quizCurrentLevel) {
       setQuizData(quizCurrentLevel);
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleAnswerChange = (questionIndex, optionIndex) => {
@@ -60,9 +61,14 @@ const useQuizLogic = () => {
   };
 
   const handleSubmit = async () => {
-    const { score, totalQuestions } = calculateQuizMarks( quizData, answers );
+    const { score, totalQuestions } = calculateQuizMarks(quizData, answers);
     if (score != -1) {
-      const response = await API_COMPLETE_QUIZ( token, RoadmapModule, quizData?.quiz_level, score );
+      const response = await API_COMPLETE_QUIZ(
+        token,
+        RoadmapModule,
+        quizData?.quiz_level,
+        score
+      );
       if (response) {
         const correct_answers = score;
         const incorrect_answers = totalQuestions - score;
@@ -71,7 +77,7 @@ const useQuizLogic = () => {
         setShowResultBtn(true);
         setShowResultModal(true);
         message.success("Quiz submitted successfully!");
-        setAnswers([])
+        setAnswers([]);
       }
     }
   };
@@ -93,8 +99,8 @@ const useQuizLogic = () => {
       setAnswers(Array(quizData.question.length).fill(null));
     }
   }, [quizData]);
+  return { quizData, ShowSpinner, answers, handleAnswerChange, handleSubmit, proceedHandler, result, showResultModal, setShowResultModal,   showResultBtn, questionRefs, };
 
-  return { quizData, ShowSpinner, answers, handleAnswerChange, handleSubmit, proceedHandler, result, showResultModal, setShowResultModal, showGithubModal, setShowGithubModal, showResultBtn, questionRefs, };
 };
 
 export default useQuizLogic;

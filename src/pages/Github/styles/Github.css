@@ -1,0 +1,75 @@
+.repo-report-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.repo-report-container {
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.repo-report-col .ant-statistic-content-value {
+  font-size: 16px !important;
+  /* font-weight: 500 !important; */
+}
+.repo-report-heading {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+.repo-report-breakdown-card-title {
+  margin: 0px;
+  font-weight: 600 !important;
+}
+.repo-report-progress-span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+}
+.repo-report-repo-health {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 5px 10px;
+  color: var(--color-muted);
+}
+.repo-report-col {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px; */
+  /* height: 100%; */
+}
+.github-connect-notice {
+  margin: 0px;
+  color: var(--color-muted);
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.repo-report-breakdown-card-title {
+  border-bottom: 1px solid #e8e8e8;
+}
+.repo-report-breakdown{
+    display: flex;
+    align-items: center;
+
+    padding: 10px 10px;
+}
+.repo-report-col p {
+  margin: 0px;
+  padding: 5px 10px;
+}
+.select-repo-btn {
+  width: 100%;
+  height: 40px;
+}
+.repo-report-col .ant-statistic-title {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 5px 10px;
+  display: flex !important;
+  align-items: center !important;
+}
+.repo-report-col .ant-statistic-content {
+  padding: 5px 10px;
+  display: flex !important;
+  align-items: center !important;
+}

@@ -11,7 +11,8 @@ import { useSelector } from "react-redux";
 import { API_GENERATE_ROADMAP } from "../../apis/RoadmapApis";
 import { useNavigate } from "react-router-dom";
 import { API_RECOMMEND_COURSES } from "../../apis/CourseApis";
-import { API_GENERATE_QUIZZES } from "../../apis/QuizApis";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
+import { GENERATING_ROADMAP_MESSAGES } from "../../components/Loader/SpinnerMessages";
 
 const OnBoardingMain = () => {
   const [CurrentStep, setCurrentStep] = useState(0);
@@ -46,7 +47,6 @@ const OnBoardingMain = () => {
     if (CurrentStep === ONBOARDING_DATA.length - 1 && !ShowQuestionnaire) {
       await API_GENERATE_ROADMAP(token, UserSelections, false,setShowSpinner);
       API_RECOMMEND_COURSES(token)
-      API_GENERATE_QUIZZES(token,user_attributes?.id)
       message.success("Onboarding complete!");
       navigate('/roadmap')
     }
@@ -57,7 +57,7 @@ const OnBoardingMain = () => {
 
   return (
     <>
-    {ShowSpinner && <Spin fullscreen/>}
+    {ShowSpinner && <CustomSpinner fullscreen={true} messages={GENERATING_ROADMAP_MESSAGES}/>}
       <NavbarMain />
       <TitleMain
         title={"Onboarding"}

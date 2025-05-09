@@ -1,0 +1,44 @@
+/* From Uiverse.io by mrhyddenn */
+.spinner {
+  width: 20px;
+  height: 20px;
+  cursor: not-allowed;
+  border-radius: 8px;
+  background-color: transparent;
+  /* border: 2px solid #444; */
+  box-shadow: -10px -10px 10px #6fffe9,
+    /* soft aqua */ 0px -10px 10px 0px #5eead4,
+    /* teal-200 */ 10px -10px 10px #3cd5f3, /* sky blue */ 10px 0 10px #0bceff,
+    /* strong cyan */ 10px 10px 10px 0px #00e0ff,
+    /* electric cyan */ 0 10px 10px 0px #57f2e0,
+    /* minty teal */ -10px 10px 10px 0px #00ffe0; /* light cyan */
+
+  animation: rot55 1.5s linear infinite;
+}
+.fullscreen-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: 9999;
+}
+.fullscreen-spinner .spinner {
+  width: 40px;
+  height: 40px;
+}
+@keyframes rot55 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.custom-spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  flex-direction: column;
+}

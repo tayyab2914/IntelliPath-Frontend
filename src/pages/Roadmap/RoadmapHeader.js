@@ -5,10 +5,12 @@ import { API_GENERATE_ROADMAP } from '../../apis/RoadmapApis';
 import './styles/RoadmapDisplay.css'
 import { useNavigate } from 'react-router-dom';
 import { GET_ROADMAP_PROGRESS } from './RoadmapFunctionality';
+import useWindowWidth from '../../hooks/useWindowWidth';
 const RoadmapHeader = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandler }) => {
     const [suggestedProjects, setSuggestedProjects] = useState(RoadmapData?.suggested_projects);
     const [LearningApproach, setLearningApproach] = useState(RoadmapData?.learning_approach);
     const [RoadmapProgress, setRoadmapProgress] = useState({});
+    const windowWidth = useWindowWidth()
     const navigate = useNavigate()
     useEffect(() => {
         if (RoadmapData?.suggested_projects) {
@@ -40,17 +42,31 @@ const RoadmapHeader = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandl
                 ))}
         </Menu>
       );
-      
+      const  headerIcons = ()=>{
+
+        return <span className='roadmap-display-header-icons'>
+        <Popconfirm  title="Are you sure you want to regenerate the roadmap?"  onConfirm={regenerateRoadmapHandler}  okText="Yes"  cancelText="No"  >
+            <MyIcon type="regenerate" className="roadmap-display-header-icon-regenerate" />
+        </Popconfirm>
+        <Popconfirm  title="Are you sure you want to delete the roadmap?"  onConfirm={deleteRoadmapHandler}  okText="Yes"  cancelText="No"  >
+            <MyIcon type="delete" className="roadmap-display-header-icon-delete" />
+        </Popconfirm>
+        </span>
+      }
+
+
 const coursesHandler =()=>{
     navigate("/courses?roadmap=true")
 }
     return (
         <>
         <Row className="roadmap-display-header-row">
-            <Col xs={18} className="roadmap-display-header-goal-col">
+            <Col xs={24} xl={14} className="roadmap-display-header-goal-col">
                 <p className="roadmap-display-header-goal">{RoadmapData?.roadmap_name}</p>
+                
+                {windowWidth<= 576 && headerIcons()}
             </Col>
-            <Col xs={6} className="roadmap-display-header-icons-col">
+            <Col xs={24} xl={10} className="roadmap-display-header-icons-col">
             {suggestedProjects?.length>0 && <Dropdown overlay={suggestedProjectsMenu} trigger={['click']}>
                     <Button className="roadmap-dropdown-button">
                         Suggested Projects <MyIcon type="dropdown" />
@@ -64,12 +80,7 @@ const coursesHandler =()=>{
             <Button className="roadmap-dropdown-button" onClick={coursesHandler}>
                         Courses <MyIcon type="dropdown" />
                     </Button>
-                <Popconfirm  title="Are you sure you want to regenerate the roadmap?"  onConfirm={regenerateRoadmapHandler}  okText="Yes"  cancelText="No"  >
-                    <MyIcon type="regenerate" className="roadmap-display-header-icon-regenerate" />
-                </Popconfirm>
-                <Popconfirm  title="Are you sure you want to delete the roadmap?"  onConfirm={deleteRoadmapHandler}  okText="Yes"  cancelText="No"  >
-                    <MyIcon type="delete" className="roadmap-display-header-icon-delete" />
-                </Popconfirm>
+            {windowWidth> 576 && headerIcons()}
 
                 
             </Col>

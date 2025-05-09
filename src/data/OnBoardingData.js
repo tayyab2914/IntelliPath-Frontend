@@ -27,8 +27,8 @@ export const ONBOARDING_DATA = [
     Question: "Awesome! Now, which specific skills would you like to focus on?",
     Options: {
       "Frontend Developer": [
-        "React.js",
-        "Vue.js",
+        "React",
+        "Vue",
         "Angular",
         "Svelte",
         "Ember",

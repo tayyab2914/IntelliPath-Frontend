@@ -72,7 +72,9 @@ const TribeThread = ({ SelectedThread, tribeInfo,setOnlineMembers}) => {
         <span className="t-t-header-options"> 
         <TribeMembersDropdownContent tribeId={tribe_id}/>
 
-            {tribeInfo?.is_admin && ( <Popconfirm title="Are you sure you want to delete this thread?" onConfirm={handleDeleteThread} okText="Yes" cancelText="No" > <MyIcon type="delete" className="t-t-delete-thread-icon" /> </Popconfirm> )}
+            {tribeInfo?.is_admin && ( <Popconfirm title="Are you sure you want to delete this thread?" onConfirm={handleDeleteThread} okText="Yes" cancelText="No" placement='bottomRight'> 
+                    <MyIcon type="delete" className="t-t-delete-thread-icon" /> 
+                </Popconfirm> )}
         </span>
 
       </Col>

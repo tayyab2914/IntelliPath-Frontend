@@ -18,3 +18,7 @@
     padding: 0px;
     padding-left: 5px;
 }
+.tribe-admin-options p{
+color: var(--color-dark);
+font-weight: 500;
+}

@@ -139,7 +139,7 @@ export const API_CREATE_TRIBE = async (token, newTribe, setShowSpinner) => {
   }
 };
 export const API_CREATE_THREAD = async (token, newThread, setShowSpinner) => {
-    setShowSpinner(true);
+    // setShowSpinner(true);
   
     try {
       const response = await axios.post(
@@ -158,7 +158,7 @@ export const API_CREATE_THREAD = async (token, newThread, setShowSpinner) => {
       console.log(error.response);
       return null;
     } finally {
-      setShowSpinner(false);
+    //   setShowSpinner(false);
     }
 };
   
