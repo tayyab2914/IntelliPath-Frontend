@@ -32,9 +32,9 @@ const Signin = ({ toggleCurrentMode }) => {
   };
 
   return (
-    <div data-aos="fade-up">
+    <div >
       <Row gutter={24}>
-        <Col xs={24} lg={12} className="form-container" data-aos="fade-up">
+        <Col xs={24} lg={12} className="form-container">
           {!ShowForgotPassword ? (
             <SigninForm
               handleSignIn={handleSignIn}

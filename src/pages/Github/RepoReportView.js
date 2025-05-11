@@ -107,7 +107,7 @@ const RepoReportView = ({ report }) => {
 
       <p className="repo-report-heading">Breakdown</p>
       <Row gutter={[16, 16]} className="repo-report-row">
-        <Col xs={12} lg={6} xl={4}>
+        <Col xs={12} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">Collaborators</p>{" "}
             <div className="repo-report-breakdown">
@@ -124,7 +124,7 @@ const RepoReportView = ({ report }) => {
             </div>
           </div>
         </Col>
-        <Col xs={12} lg={6} xl={4}>
+        <Col xs={12} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">Commits</p>{" "}
             <div className="repo-report-breakdown">
@@ -139,7 +139,7 @@ const RepoReportView = ({ report }) => {
             </div>
           </div>
         </Col>
-        <Col xs={12} lg={6} xl={4}>
+        <Col xs={12} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">Forks</p>{" "}
             <div className="repo-report-breakdown">
@@ -154,7 +154,7 @@ const RepoReportView = ({ report }) => {
             </div>
           </div>
         </Col>
-        <Col xs={12} lg={6} xl={4}>
+        <Col xs={12} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">Issues</p>{" "}
             <div className="repo-report-breakdown">
@@ -169,7 +169,7 @@ const RepoReportView = ({ report }) => {
             </div>
           </div>
         </Col>
-        <Col xs={12} lg={6} xl={4}>
+        <Col xs={12} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">Stars</p>{" "}
             <div className="repo-report-breakdown">
@@ -184,7 +184,7 @@ const RepoReportView = ({ report }) => {
             </div>
           </div>
         </Col>
-        <Col xs={12} lg={6} xl={4}>
+        <Col xs={12} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">Watchers</p>
             <div className="repo-report-breakdown">
@@ -217,7 +217,7 @@ const RepoReportView = ({ report }) => {
 
       <p className="repo-report-heading">Repository Details</p>
       <Row gutter={[16, 16]} className="repo-report-row">
-        <Col xs={8} lg={6} xl={4}>
+        <Col xs={8} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">
               <StarOutlined /> Stars
@@ -225,7 +225,7 @@ const RepoReportView = ({ report }) => {
             <p>{repository_details.stars}</p>
           </div>
         </Col>
-        <Col xs={8} lg={6} xl={4}>
+        <Col xs={8} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">
               <ForkOutlined /> Forks
@@ -233,7 +233,7 @@ const RepoReportView = ({ report }) => {
             <p>{repository_details.forks}</p>
           </div>
         </Col>
-        <Col xs={8} lg={6} xl={4}>
+        <Col xs={8} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">
               <EyeOutlined /> Watchers
@@ -241,7 +241,7 @@ const RepoReportView = ({ report }) => {
             <p>{repository_details.watchers}</p>
           </div>
         </Col>
-        <Col xs={8} lg={6} xl={4}>
+        <Col xs={8} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">
               <ExclamationCircleOutlined /> Open Issues
@@ -249,7 +249,7 @@ const RepoReportView = ({ report }) => {
             <p>{repository_details.open_issues}</p>
           </div>
         </Col>
-        <Col xs={8} lg={6} xl={4}>
+        <Col xs={8} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">
               <FileProtectOutlined /> Archived
@@ -257,7 +257,7 @@ const RepoReportView = ({ report }) => {
             <p>{repository_details.archived ? "True" : "False"}</p>
           </div>
         </Col>
-        <Col xs={8} lg={6} xl={4}>
+        <Col xs={8} lg={6} >
           <div className="repo-report-col">
             <p className="repo-report-breakdown-card-title">
               <TeamOutlined /> Collaborators

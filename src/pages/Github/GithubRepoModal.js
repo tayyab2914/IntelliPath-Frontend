@@ -65,7 +65,7 @@ const GithubRepoModal = ({ visible, onClose }) => {
   }, [user_attributes?.github]);
 
   return (
-    <Modal open={visible} onCancel={onClose} footer={null} centered title="Time to get some bonus points" width={repoReport ? 800 : 500} >
+    <Modal open={visible} onCancel={onClose} footer={null} centered title="Bonus Points Opportunity" width={repoReport ? 800 : 500} >
       {!user_attributes?.github ? (
         <GithubConnectNotice />
       ) :loading ? (
