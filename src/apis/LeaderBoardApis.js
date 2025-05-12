@@ -56,3 +56,21 @@ export const API_GET_SIMILAR_USERS = async (token, user_id) => {
       // message.error(error.response?.data?.message);
     }
   };
+export const API_GET_SIMILAR_USERS_TRIBE = async (token, user_id,goalDomain) => {
+
+    try {
+      const response = await axios.get(
+        `${DOMAIN_NAME}/leaderboard/get_similar_users/?user_id=${user_id}&goal_domain=${goalDomain}`,
+        { 
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+  
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      // message.error(error.response?.data?.message);
+    }
+  };

@@ -51,7 +51,7 @@ const TribeChatHeader = ({
         </Select>
         
       </Col>
-      <Col xs={24}>
+      <Col xs={24} style={{marginTop:"5px"}}>
        <OnlineMembersList OnlineMembers={OnlineMembers} />
       </Col>
     </Row>

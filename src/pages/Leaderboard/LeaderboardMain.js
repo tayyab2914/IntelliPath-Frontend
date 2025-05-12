@@ -25,41 +25,48 @@ const LeaderboardMain = () => {
   const [userScoreCard, setUserScoreCard] = useState([]);
   const [otherUsersScoreCards, setOtherUsersScoreCards] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Frontend Developer");
+const [rawData, setRawData] = useState(null);
 
-  const getScoreCard = async () => {
-    const response = await API_GET_SCORE_CARD(token);
-console.log(response)
-    const user = response?.user_scorecard;
-    const others = response?.other_users_scorecards || [];
+const getScoreCard = async () => {
+  const response = await API_GET_SCORE_CARD(token);
+  console.log(response)
+  const user = response?.user_scorecard;
+  const others = (response?.other_users_scorecards || []).filter(
+    (item) => item.user_id !== user?.user_id
+  );
 
-    // Convert user scorecard to array with selected category points
-    const mappedUser = {
-      user_id: user?.user_id,
-      name: user?.full_name,
-      email: user?.email,
-      profile_picture: user?.profile_picture,
-      points: user?.data?.[selectedCategory] || 0,
-      position: 1,
-    };
+  // Combine current user and others without duplication
+  const combined = [user, ...others];
 
-    // Convert others to array with selected category points
-    const mappedOthers = others.map((item, index) => ({
-      user_id: item?.user_id,
-      name: item?.full_name,
-      email: item?.email,
-      profile_picture: item?.profile_picture,
-      points: item?.data?.[selectedCategory] || 0,
-      position: index+1,
-    }));
+  // Normalize, sort, and assign position
+  const mappedUsers = combined.map((item) => ({
+    user_id: item?.user_id,
+    name: item?.full_name,
+    email: item?.email,
+    profile_picture: item?.profile_picture,
+    points: item?.data?.[selectedCategory] || 0,
+    masteries: Object.keys(item?.data || {}),
+  }));
 
-    setUserScoreCard([mappedUser]);
-    setOtherUsersScoreCards(mappedOthers);
-  };
+  const sorted = mappedUsers.sort((a, b) => b.points - a.points);
+  const final = sorted.map((item, index) => ({
+    ...item,
+    position: index + 1,
+  }));
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    getScoreCard();
-  }, [selectedCategory]);
+  const currentUser = final.find((item) => item.user_id === user?.user_id);
+
+  setUserScoreCard([currentUser]);
+  setOtherUsersScoreCards(final);
+};
+
+
+
+useEffect(() => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  getScoreCard();
+}, [selectedCategory]);
+
 
   const handleRowClick = (record) => {
     navigate(`/profile/${record.user_id}`, { state: { user_id: record.user_id } });
