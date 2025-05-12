@@ -281,3 +281,4 @@ export const LEADERBOARD_SINGLE_USER_DATA = [
     points: 510,
   },
 ];
+

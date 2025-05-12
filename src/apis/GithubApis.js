@@ -55,7 +55,8 @@ export const API_GET_REPO_REPORT = async (token) => {
       );
       return response.data;
     } catch (error) {
-      message.error(error.response?.data?.message);
+        console.log(error)
+      message.error(error.response?.data?.error);
       return null;
     } finally {
       setShowSpinner(false);

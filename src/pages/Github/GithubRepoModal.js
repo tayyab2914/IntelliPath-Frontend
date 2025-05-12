@@ -44,7 +44,7 @@ const GithubRepoModal = ({ visible, onClose }) => {
     if (!selectedRepo) return;
     setLoadingMessage(GITHUB_REPO_EVALUATE_MESSAGES)
     const response = await API_SET_AND_EVALUATE_REPO(token, selectedRepo, setLoading);
-    if (response) setRepoReport(response);
+    if (response) getRepoReport();
   };
 
   const getRepoReport = async () => {

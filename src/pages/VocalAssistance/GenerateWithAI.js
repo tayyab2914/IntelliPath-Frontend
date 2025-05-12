@@ -2,25 +2,116 @@ import { Divider, Input } from "antd";
 import React, { useState } from "react";
 import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
+import { API_GENERATE_ON_DEMAND_CONTENT } from "../../apis/ContentGenApis";
+import { useSelector } from "react-redux";
+import useSpeech from "../../utils/WebSpeech.js/functionalities/useSpeech";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
 
-const GenerateWithAI = ({setGenerateWithAI_Enabled}) => {
-    const [text, setText] = useState("");
-    const speakHandler = () => {
-      // Implement text-to-speech functionality here
-      console.log(text)
-      console.log("Text-to-Speech triggered");
-    };
+const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
+  // Redux token
+  const { token } = useSelector((state) => state.authToken);
+
+  // Hooks
+  const { speakWord } = useSpeech({ isInSpeechMode: true });
+
+  // State
+  const [text, setText] = useState("");
+  const [AIResponse, setAIResponse] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Handlers
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const generateHandler = async () => {
+    if (!text.trim()) return;
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await API_GENERATE_ON_DEMAND_CONTENT(token, text);
+      setAIResponse(response?.response || "No response from AI.");
+    } catch (err) {
+      setError("Failed to generate response. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cleanText = (text) => {
+    return text.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").trim();
+  };
+  const speakHandler = () => {
+    if (AIResponse) speakWord(cleanText(AIResponse));
+  };
+
   return (
-    <div data-aos="fade-right" className="vocal-assistance-ai-generator" >
-      <p className="vocal-assistance-upload-label"><span className="generate-with-ai-btn"><MyIcon type={'shineAccent'} /> Generate Using AI</span></p>
-        <Input.TextArea placeholder="Search something..." className="vocal-assistance-text-input" value={text} rows={4} onChange={(e) => setText(e.target.value)} />
+    <div data-aos="fade-right" className="vocal-assistance-ai-generator">
+      <p className="vocal-assistance-upload-label">
+        <span className="generate-with-ai-btn">
+          <MyIcon type="shineAccent" /> Generate Using AI
+        </span>
+      </p>
+      {loading && (
+        // <span style={{ display: "flex" }}>
+        //   <span className="chat-loader"></span>
+        // </span>
+        <CustomSpinner />
+      )}
+      {!loading && AIResponse && (
+        <div className="vocal-assistance-response">
+          <Divider />
+          <p>{AIResponse}</p>
+        </div>
+      )}
+      <Input
+        placeholder="Search something..."
+        className="vocal-assistance-text-input"
+        value={text}
+        onChange={handleTextChange}
+        //   suffix={<MyIcon type="shineAccent" className="suggested-user-icon" />}
+        addonAfter={
+          <button
+            className="inline-generate-btn"
+            onClick={generateHandler}
+            disabled={loading}
+            
+          >
+            {loading ? <span className="chat-loader"></span> : "Generate"}
+          </button>
+        }
+      />
+
+      {error && <p className="error-message">{error}</p>}
+
+        <MyButton
+          text="Start Speaking"
+          onClick={speakHandler}
+          className="vocal-assistance-speak-button"
+          disabled={!AIResponse}
+        />
       <Divider className="vocal-assistance-divider">
         <p>or</p>
       </Divider>
 
-      <MyButton text={"Upload Text"} variant="outlined-dark" onClick={() => setGenerateWithAI_Enabled(false)} className="vocal-assistance-ai-button" />
+      <div className="vocal-assistance-btn-group">
+        <MyButton
+          text="Upload Text"
+          variant="outlined-dark"
+          onClick={() => setGenerateWithAI_Enabled(false)}
+          style={{ marginBottom: "5px" }}
+        />
 
-      <MyButton text={"Start Speaking"} onClick={speakHandler} className="vocal-assistance-speak-button" />
+        {/* <MyButton
+          text={loading ? "Generating..." : "Generate"}
+          variant="outlined-dark"
+          onClick={generateHandler}
+          className="vocal-assistance-ai-button"
+          disabled={loading}
+        /> */}
+      </div>
     </div>
   );
 };

@@ -56,7 +56,7 @@ const ConvertText = ({ setGenerateWithAI_Enabled }) => {
     <div className="vocal-assistance-main" data-aos="fade-right">
       <p className="vocal-assistance-upload-label">Upload Text</p>
       <div>
-        <Input.TextArea placeholder="Type or paste your text here" className="vocal-assistance-text-input" rows={7} value={text} onChange={(e) => setText(e.target.value)} />
+        <Input.TextArea placeholder="Type or paste your text here" className="vocal-assistance-text-input" rows={3} value={text} onChange={(e) => setText(e.target.value)} />
       </div>
 
       <Divider className="vocal-assistance-divider"> <p>or</p> </Divider>
@@ -66,11 +66,11 @@ const ConvertText = ({ setGenerateWithAI_Enabled }) => {
         <p className="ant-upload-text">Click or drag file to this area to upload</p>
         <p className="ant-upload-hint"> Support for single PDF upload. Strictly prohibited from uploading company data or other banned files. </p>
       </Dragger>
-
+  <MyButton text={"Start Speaking"} onClick={speakHandler} className="vocal-assistance-speak-button" />
       <Divider className="vocal-assistance-divider"> <p>or</p> </Divider>
 
       <MyButton text={<span className="generate-with-ai-btn"><MyIcon type={'shineAccent'} />Generate with AI</span>} variant="outlined-dark" onClick={() => setGenerateWithAI_Enabled(true)} className="vocal-assistance-ai-button" />
-      <MyButton text={"Start Speaking"} onClick={speakHandler} className="vocal-assistance-speak-button" />
+    
     </div>
   );
 };

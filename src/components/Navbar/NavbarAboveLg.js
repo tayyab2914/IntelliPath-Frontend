@@ -55,7 +55,7 @@ const NavbarAboveLg = ({ version = 'light',UserInfo }) => {
     <div>
       <Flex gap="middle" align="center">
         <Flex className={version === 'light' ? 'nav-main-light' : 'nav-main-dark'} justify={'space-between'} align={'center'}>
-          <MyImage type={'logo'} h={'55px'} onClick={()=>navigate('/')} className={'navbar-logo'}/>
+          <MyImage type={'logo'} h={'55px'} w={'55px'} onClick={()=>navigate('/')} className={'navbar-logo'}/>
           <span>{renderNavItems()}</span>
           <Popover placement="bottomRight" content={<div>{renderDropdownItems()}</div>} trigger="click" visible={popoverVisible} onVisibleChange={setPopoverVisible}>
           <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.avatar} onClick={handlePopoverClick} className='navbar-avatar' />

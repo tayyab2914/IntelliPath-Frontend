@@ -9,7 +9,7 @@ import SimilarProfiles from "./SimilarProfiles";
 import { SINGLE_USER_DATA } from "../../data/ProfileData";
 import { useSelector } from "react-redux";
 import { API_GET_USER_ATTRIBUTE } from "../../apis/CoreApis";
-import { API_GET_USER_INFO } from "../../apis/LeaderBoard";
+import { API_GET_USER_INFO } from "../../apis/LeaderBoardApis";
 
 const ProfileMain = () => {
   const { user_id } = useParams();
@@ -18,10 +18,11 @@ const ProfileMain = () => {
   const [isUsersOwnProfile, setisUsersOwnProfile] = useState(false);
 
   const fetchUserInfo = async () => {
+    console.log(user_id)
     if (user_id) {
       const response = await API_GET_USER_INFO(token,user_id)
       setisUsersOwnProfile(false)
-      setUserInfo(response?.user_data);
+      setUserInfo({...response?.user_data,id:+user_id});
     } else {
       const response = await API_GET_USER_ATTRIBUTE(token);
       setisUsersOwnProfile(true)
@@ -31,7 +32,7 @@ const ProfileMain = () => {
 
   useEffect(() => {
     fetchUserInfo();
-  }, []);
+  }, [user_id]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

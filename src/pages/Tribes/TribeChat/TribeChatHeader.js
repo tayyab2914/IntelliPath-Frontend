@@ -7,6 +7,7 @@ import useWindowWidth from "../../../hooks/useWindowWidth";
 import "../styles/TribeChat.css";
 import TribeAdminOptions from "./TribeAdminOptions";
 import OnlineMembersList from "./OnlineMembersList";
+import SuggestedUsersBtn from "../SuggestedUsersBtn";
 const { Option } = Select;
 
 const TribeChatHeader = ({
@@ -19,7 +20,6 @@ const TribeChatHeader = ({
   const [defaultThread, setDefaultThread] = useState(null);
   const navigate = useNavigate();
   const windowWidth = useWindowWidth();
-
   const handleThreadChange = (threadId) => {
     const selectedThread = threads.find((thread) => thread.id === threadId);
     setSelectedThread(selectedThread);
@@ -32,18 +32,7 @@ const TribeChatHeader = ({
         { tribe?.is_admin && <TribeAdminOptions />}
       </Col>
       <Col xs={24} className="tribes-chat-header-icons-col">
-        <MyButton
-          w={"100%" }
-          className="tribes-chat-header-joined-tribe-btn"
-          variant="outlined-dark"
-          text={
-            <span className="align-vertically-centered">
-              <MyIcon type="shineAccent" className="suggested-user-icon" />{" "}
-              Suggested Users
-            </span>
-          }
-          onClick={() => navigate("/user/46")}
-        />
+        <SuggestedUsersBtn tribeGoalDomain = {tribe?.category}/>
       </Col>
       <Col xs={24}>
         <Select
