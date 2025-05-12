@@ -54,7 +54,7 @@
 
 
 .ant-progress-text{
-    display: none !important;
+    /* display: none !important; */
 }
 .ant-progress-steps-item{
     border-radius: 50% !important;

@@ -63,12 +63,7 @@ const useQuizLogic = () => {
   const handleSubmit = async () => {
     const { score, totalQuestions } = calculateQuizMarks(quizData, answers);
     if (score != -1) {
-      const response = await API_COMPLETE_QUIZ(
-        token,
-        RoadmapModule,
-        quizData?.quiz_level,
-        score
-      );
+      const response = await API_COMPLETE_QUIZ( token, RoadmapModule, quizData?.quiz_level, score );
       if (response) {
         const correct_answers = score;
         const incorrect_answers = totalQuestions - score;
@@ -77,7 +72,6 @@ const useQuizLogic = () => {
         setShowResultBtn(true);
         setShowResultModal(true);
         message.success("Quiz submitted successfully!");
-        setAnswers([]);
       }
     }
   };
@@ -86,6 +80,7 @@ const useQuizLogic = () => {
     getQuizData(RoadmapModule);
     setShowResultModal(false);
     setShowResultBtn(false);
+    setAnswers([]);
   };
 
   useEffect(() => {

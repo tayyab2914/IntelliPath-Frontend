@@ -32,6 +32,7 @@ const TribeCard = ({tribeData,btnText,isInTribeExplorePage}) => {
         {ShowSpinner && <Spin fullscreen/>}
         <div className='tribe-card-container'>
            <div className="tribe-card-inner">
+            
                 <p className='tribe-cards-id'> #{tribeData?.id} <br/> {tribeData?.category}</p>
                 <p className='tribe-cards-title'>
                     <AutoTextCropper text={tribeData?.name} numOfLines={1} TooltipTitle={tribeData?.name}/>

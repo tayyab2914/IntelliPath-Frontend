@@ -17,7 +17,7 @@ const CoursesMain = () => {
   const [CourseName, setCourseName] = useState("");
   const windowWidth = useWindowWidth();
   const location = useLocation();
-  const { token } = useSelector((state) => state.authToken);
+  const { token,user_attributes } = useSelector((state) => state.authToken);
   const [CoursesData, setCoursesData] = useState({});
 
   const getCourses = async () => {
@@ -39,12 +39,12 @@ const CoursesMain = () => {
     }
     else
     {
-        onSearch("Django")
+        onSearch(user_attributes?.goal_skill || "Django")
     }
   }, [location.search]);
 
   const onSearch = async (value) => {
-    const newName = value.trim() === "" ? "Django" : value;
+    const newName = value.trim() === "" ? (user_attributes?.goal_skill || "Django") : value;
     const response = await API_RECOMMEND_COURSES(token,newName)
     setCoursesData(response?.courses)
     setCourseName(response?.suggested_keyword);

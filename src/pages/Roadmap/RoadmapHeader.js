@@ -1,4 +1,4 @@
-import { Col, Popconfirm, Row, Tag, Dropdown, Menu, Button, message, Spin } from 'antd';
+import { Col, Popconfirm, Row, Tag, Dropdown, Menu, Button, message, Spin, Tooltip } from 'antd';
 import React, { useEffect, useState } from 'react';
 import MyIcon from '../../components/Icon/MyIcon';
 import { API_GENERATE_ROADMAP } from '../../apis/RoadmapApis';
@@ -42,17 +42,34 @@ const RoadmapHeader = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHandl
                 ))}
         </Menu>
       );
-      const  headerIcons = ()=>{
+  const headerIcons = () => {
+  return (
+    <span className="roadmap-display-header-icons">
+      <Tooltip title="Regenerate Roadmap">
+        <Popconfirm
+          title="Are you sure you want to regenerate the roadmap?"
+          onConfirm={regenerateRoadmapHandler}
+          okText="Yes"
+          cancelText="No"
+        >
+          <MyIcon type="regenerate" className="roadmap-display-header-icon-regenerate" />{" "}
+        </Popconfirm>
+      </Tooltip>
 
-        return <span className='roadmap-display-header-icons'>
-        <Popconfirm  title="Are you sure you want to regenerate the roadmap?"  onConfirm={regenerateRoadmapHandler}  okText="Yes"  cancelText="No"  >
-            <MyIcon type="regenerate" className="roadmap-display-header-icon-regenerate" />
+      <Tooltip title="Delete Roadmap">
+        <Popconfirm
+          title="Are you sure you want to delete the roadmap?"
+          onConfirm={deleteRoadmapHandler}
+          okText="Yes"
+          cancelText="No"
+        >
+          <MyIcon type="delete" className="roadmap-display-header-icon-delete" />{" "}
         </Popconfirm>
-        <Popconfirm  title="Are you sure you want to delete the roadmap?"  onConfirm={deleteRoadmapHandler}  okText="Yes"  cancelText="No"  >
-            <MyIcon type="delete" className="roadmap-display-header-icon-delete" />
-        </Popconfirm>
-        </span>
-      }
+      </Tooltip>
+    </span>
+  );
+};
+
 
 
 const coursesHandler =()=>{

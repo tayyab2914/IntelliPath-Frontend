@@ -9,7 +9,6 @@ export const API_GENERATE_ROADMAP = async (
   setShowSpinner
 ) => {
   setShowSpinner(true);
-  console.log(UserSelections);
   let OnboardingData = {};
   if (!is_regenerate) {
     OnboardingData = {
@@ -23,18 +22,22 @@ export const API_GENERATE_ROADMAP = async (
     };
   }
 
-  console.log(OnboardingData);
+  let response;
+  let retries = 0;
+  const MAX_RETRIES = 3;
   try {
-    const response = await axios.post(
-      `${DOMAIN_NAME}/roadmap/generate_roadmap/`,
-      OnboardingData,
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
-    console.log(response);
+    do {
+      response = await axios.post(
+        `${DOMAIN_NAME}/roadmap/generate_roadmap/`,
+        OnboardingData,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      retries++;
+    } while ((response?.data?.error || !response) && retries < MAX_RETRIES);
     message.success("Roadmap Generated successfully!");
     return response.data;
   } catch (error) {

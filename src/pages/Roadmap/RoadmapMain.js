@@ -15,6 +15,8 @@ import { API_GENERATE_QUIZZES } from "../../apis/QuizApis";
 import { API_RECOMMEND_COURSES } from "../../apis/CourseApis";
 import GithubRepoModal from "../Github/GithubRepoModal";
 import { isEligibleForGithubRepo } from "../Github/GithubFunctionality";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
+import { GENERATING_ROADMAP_MESSAGES } from "../../components/Loader/SpinnerMessages";
 const RoadmapMain = () => {
   const navigate = useNavigate();
   const [ShowNotification, setShowNotification] = useState(false);
@@ -29,14 +31,12 @@ const RoadmapMain = () => {
   const getRoadmap = async()=>{
     const response = await API_GET_ROADMAP(token)
     setRoadmapData(response?.roadmap_data)
-    
     if(response?.roadmap_data?.error)
     {
         message.error("Roadmap Generation Failed! Please try again later.")
         return
     }
-
-    if (response?.roadmap_data?.completed_modules?.length == Object.keys(response?.roadmap_data?.roadmap)?.length) {
+    if (response?.roadmap_data &&(response?.roadmap_data?.completed_modules?.length == Object.keys(response?.roadmap_data?.roadmap)?.length)) {
         const eligibility = isEligibleForGithubRepo(user_attributes)
         setShowGithubModal(eligibility)
     }
@@ -62,6 +62,7 @@ const deleteRoadmapHandler = async()=>{
     <>
         {/* {ShowSpinner && <Spin fullscreen/>} */}
       <NavbarMain />
+       {ShowSpinner && <CustomSpinner fullscreen={true} messages={GENERATING_ROADMAP_MESSAGES}/>}
       {ShowNotification && ( <GenericNotification message={"Onboarding Required"} description={ "You need to complete the onboarding process before generating your roadmap." } buttons={ROADMAP_NOTIFICATION_BUTTON_DATA(navigate)} /> )}
       {ShowNotification && <LandingPage imageSrc={IMAGES.roadmap2} whiteText={"AI Generated"} accentText={"Pathways"} btnText={"Proceed To Onboarding"} onClick={()=>navigate('/onboarding')} description={" Get personalized learning roadmaps tailored to your skills, goals, and pace. IntelliPath uses AI to dynamically adjust your curriculum, helping you achieve success with an efficient, customized learning path."}/>}
       {!ShowNotification && <>

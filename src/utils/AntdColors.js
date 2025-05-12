@@ -70,7 +70,7 @@ export const POPCONFIRM_COLORS = {
   };
   
   export const PROGRESS_COLORS = {
-    defaultColor:THEME_COLORS.colorAccent
+    defaultColor:THEME_COLORS.colorAccent,
   }
   
   export const BUTTON_COLORS = {

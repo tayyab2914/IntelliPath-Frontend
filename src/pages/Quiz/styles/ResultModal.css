@@ -14,6 +14,11 @@
 .ant-modal-footer{
     margin-top: 0px !important;
 }
+.result-details{
+    height: 500px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
 .result-main{
     display: flex;
     align-items: center;
@@ -21,9 +26,20 @@
     margin-top: 30px;
     margin-bottom: 20px;
 }
+
 @media screen and (max-width:568px){
     .result-main{
         display: block;
         text-align: center;
     }
+}
+.result-main .ant-progress-text
+{
+    font-weight: 600 !important;
+    color: var(--color-muted) !important;
+}
+
+.option-item{
+    margin-top: 5px ;
+    margin-bottom: 0px;
 }

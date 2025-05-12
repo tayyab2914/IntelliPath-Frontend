@@ -12,7 +12,7 @@ const Steps = ({ currentStep }) => {
         steps={totalSteps}
         percent={progressPercent}
         size={[10, 10]}
-        format={() => `${currentStep} / ${totalSteps}`} 
+        format={() => ` `} 
       />
     </div>
   );

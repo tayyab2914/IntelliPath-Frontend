@@ -33,7 +33,7 @@ const RepoReportView = ({ report }) => {
     commit_insights,
     repository_details,
   } = report;
-  const { Collaborators, Commits, Forks, Issues, Stars, Watchers } = breakdown;
+  const { Collaborators, Commits, Forks, Issues, Stars, Watchers } = breakdown || {}
 
   console.log(report);
 
@@ -72,7 +72,7 @@ const RepoReportView = ({ report }) => {
                 type="circle"
                 percent={score_percentage?.toFixed(0)}
                 strokeColor={getStatusColor(score_percentage)}
-                format={(percent) => `${percent}%`}
+                // format={(percent) => `${percent}%`}
                 size={30}
                 className="repo-report-progress"
               />
@@ -113,14 +113,14 @@ const RepoReportView = ({ report }) => {
             <div className="repo-report-breakdown">
               <Progress
                 type="circle"
-                percent={getProgressPercentage(Collaborators, 20).toFixed(0)}
+                percent={getProgressPercentage(Collaborators, 20)?.toFixed(0)}
                 size={30}
                 strokeColor={getStatusColor(
                   getProgressPercentage(Collaborators, 20)
                 )}
                 showInfo={false}
               />
-              <p>{Collaborators.toFixed(0)}/20</p>
+              <p>{Collaborators?.toFixed(0)}/20</p>
             </div>
           </div>
         </Col>
@@ -130,12 +130,12 @@ const RepoReportView = ({ report }) => {
             <div className="repo-report-breakdown">
               <Progress
                 type="circle"
-                percent={getProgressPercentage(Commits, 10).toFixed(0)}
+                percent={getProgressPercentage(Commits, 10)?.toFixed(0)}
                 size={30}
                 strokeColor={getStatusColor(getProgressPercentage(Commits, 10))}
                 showInfo={false}
               />
-              <p>{Commits.toFixed(0)}/10</p>
+              <p>{Commits?.toFixed(0)}/10</p>
             </div>
           </div>
         </Col>
@@ -145,12 +145,12 @@ const RepoReportView = ({ report }) => {
             <div className="repo-report-breakdown">
               <Progress
                 type="circle"
-                percent={getProgressPercentage(Forks, 15).toFixed(0)}
+                percent={getProgressPercentage(Forks, 15)?.toFixed(0)}
                 size={30}
                 strokeColor={getStatusColor(getProgressPercentage(Forks, 15))}
                 showInfo={false}
               />
-              <p>{Forks.toFixed(0)}/15</p>
+              <p>{Forks?.toFixed(0)}/15</p>
             </div>
           </div>
         </Col>
@@ -160,12 +160,12 @@ const RepoReportView = ({ report }) => {
             <div className="repo-report-breakdown">
               <Progress
                 type="circle"
-                percent={getProgressPercentage(Issues, 15).toFixed(0)}
+                percent={getProgressPercentage(Issues, 15)?.toFixed(0)}
                 size={30}
                 strokeColor={getStatusColor(getProgressPercentage(Issues, 15))}
                 showInfo={false}
               />
-              <p>{Issues.toFixed(0)}/15</p>
+              <p>{Issues?.toFixed(0)}/15</p>
             </div>
           </div>
         </Col>
@@ -175,12 +175,12 @@ const RepoReportView = ({ report }) => {
             <div className="repo-report-breakdown">
               <Progress
                 type="circle"
-                percent={getProgressPercentage(Stars, 30).toFixed(0)}
+                percent={getProgressPercentage(Stars, 30)?.toFixed(0)}
                 size={30}
                 strokeColor={getStatusColor(getProgressPercentage(Stars, 30))}
                 showInfo={false}
               />
-              <p>{Stars.toFixed(0)}/30</p>
+              <p>{Stars?.toFixed(0)}/30</p>
             </div>
           </div>
         </Col>
@@ -190,14 +190,14 @@ const RepoReportView = ({ report }) => {
             <div className="repo-report-breakdown">
               <Progress
                 type="circle"
-                percent={getProgressPercentage(Watchers, 10).toFixed(0)}
+                percent={getProgressPercentage(Watchers, 10)?.toFixed(0)}
                 size={30}
                 strokeColor={getStatusColor(
                   getProgressPercentage(Watchers, 10)
                 )}
                 showInfo={false}
               />
-              <span>{Watchers.toFixed(0)}/10</span>
+              <span>{Watchers?.toFixed(0)}/10</span>
             </div>
           </div>
         </Col>
@@ -210,7 +210,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               {"Total Commits"}
             </p>
-            <p>{commit_insights.total_commits.toFixed(0)}</p>
+            <p>{commit_insights?.total_commits?.toFixed(0)}</p>
           </div>
         </Col>
       </Row>
@@ -222,7 +222,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               <StarOutlined /> Stars
             </p>
-            <p>{repository_details.stars}</p>
+            <p>{repository_details?.stars}</p>
           </div>
         </Col>
         <Col xs={8} lg={6} >
@@ -230,7 +230,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               <ForkOutlined /> Forks
             </p>
-            <p>{repository_details.forks}</p>
+            <p>{repository_details?.forks}</p>
           </div>
         </Col>
         <Col xs={8} lg={6} >
@@ -238,7 +238,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               <EyeOutlined /> Watchers
             </p>
-            <p>{repository_details.watchers}</p>
+            <p>{repository_details?.watchers}</p>
           </div>
         </Col>
         <Col xs={8} lg={6} >
@@ -246,7 +246,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               <ExclamationCircleOutlined /> Open Issues
             </p>
-            <p>{repository_details.open_issues}</p>
+            <p>{repository_details?.open_issues}</p>
           </div>
         </Col>
         <Col xs={8} lg={6} >
@@ -254,7 +254,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               <FileProtectOutlined /> Archived
             </p>
-            <p>{repository_details.archived ? "True" : "False"}</p>
+            <p>{repository_details?.archived ? "True" : "False"}</p>
           </div>
         </Col>
         <Col xs={8} lg={6} >
@@ -262,7 +262,7 @@ const RepoReportView = ({ report }) => {
             <p className="repo-report-breakdown-card-title">
               <TeamOutlined /> Collaborators
             </p>
-            <p>{repository_details.collaborators}</p>
+            <p>{repository_details?.collaborators}</p>
           </div>
         </Col>
       </Row>
