@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spin, List, Avatar, Popover } from "antd";
+import { Spin, List, Avatar, Popover, Tag } from "antd";
 import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 import { useSelector } from "react-redux";
@@ -70,7 +70,10 @@ const SuggestedUsersBtn = ({ tribeGoalDomain }) => {
                   />
                 }
                 title={user.full_name}
-                description={user.email}
+                description={<div>
+                    <div>{user.email}</div>
+                    <Tag color="cyan" style={{marginTop:"5px"}}>{user.goal_domain}</Tag>
+                </div>}
               />
             </List.Item>
           )}

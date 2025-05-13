@@ -28,6 +28,7 @@ const ProfileMain = () => {
       setisUsersOwnProfile(true)
       setUserInfo(response);
     }
+    
   };
 
   useEffect(() => {

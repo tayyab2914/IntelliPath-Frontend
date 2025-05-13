@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Row, Col, Select } from "antd";
+import { Table, Select } from "antd";
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import TitleMain from "../../components/Title/TitleMain";
 import "./styles/Leaderboard.css";
@@ -25,48 +25,47 @@ const LeaderboardMain = () => {
   const [userScoreCard, setUserScoreCard] = useState([]);
   const [otherUsersScoreCards, setOtherUsersScoreCards] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Frontend Developer");
-const [rawData, setRawData] = useState(null);
 
-const getScoreCard = async () => {
-  const response = await API_GET_SCORE_CARD(token);
-  console.log(response)
-  const user = response?.user_scorecard;
-  const others = (response?.other_users_scorecards || []).filter(
-    (item) => item.user_id !== user?.user_id
-  );
+  const getScoreCard = async () => {
+    try {
+      const response = await API_GET_SCORE_CARD(token);
+      console.log(response)
+      const user = response?.user_scorecard;
+      const others = (response?.other_users_scorecards || []).filter(
+        (item) => item.user_id !== user?.user_id
+      );
 
-  // Combine current user and others without duplication
-  const combined = [user, ...others];
+      // Combine and normalize data
+      const allUsers = [user, ...others].map((item) => ({
+        user_id: item?.user_id,
+        name: item?.full_name,
+        email: item?.email,
+        profile_picture: item?.profile_picture,
+        points: item?.data?.[selectedCategory] || 0,
+        masteries: Object.keys(item?.data || {}),
+      }));
 
-  // Normalize, sort, and assign position
-  const mappedUsers = combined.map((item) => ({
-    user_id: item?.user_id,
-    name: item?.full_name,
-    email: item?.email,
-    profile_picture: item?.profile_picture,
-    points: item?.data?.[selectedCategory] || 0,
-    masteries: Object.keys(item?.data || {}),
-  }));
+      // Sort and assign rank
+      const sorted = allUsers.sort((a, b) => b.points - a.points);
+      const final = sorted.map((item, index) => ({
+        ...item,
+        position: index + 1,
+      }));
 
-  const sorted = mappedUsers.sort((a, b) => b.points - a.points);
-  const final = sorted.map((item, index) => ({
-    ...item,
-    position: index + 1,
-  }));
+      const currentUser = final.find((item) => item.user_id === user?.user_id);
+      const restUsers = final.filter((item) => item.user_id !== user?.user_id);
 
-  const currentUser = final.find((item) => item.user_id === user?.user_id);
+      setUserScoreCard(currentUser ? [currentUser] : []);
+      setOtherUsersScoreCards(restUsers);
+    } catch (error) {
+      console.error("Error fetching leaderboard:", error);
+    }
+  };
 
-  setUserScoreCard([currentUser]);
-  setOtherUsersScoreCards(final);
-};
-
-
-
-useEffect(() => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  getScoreCard();
-}, [selectedCategory]);
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    getScoreCard();
+  }, [selectedCategory]);
 
   const handleRowClick = (record) => {
     navigate(`/profile/${record.user_id}`, { state: { user_id: record.user_id } });
@@ -74,7 +73,6 @@ useEffect(() => {
 
   const handleSelectChange = (value) => {
     setSelectedCategory(value);
-    console.log("Selected category:", value);
   };
 
   return (
@@ -86,20 +84,26 @@ useEffect(() => {
       />
 
       <div className="generic-container">
+        {/* Category Selector */}
         <div className="leaderboard-select">
           <Select
-            defaultValue="Frontend Developer"
+            defaultValue={selectedCategory}
             onChange={handleSelectChange}
             onMouseEnter={() => speakWord(LB__SELECT)}
           >
             {AVAILABLE_GOALS?.map((item) => (
-              <Option key={item} value={item} onMouseEnter={() => speakWord(item)}>
+              <Option
+                key={item}
+                value={item}
+                onMouseEnter={() => speakWord(item)}
+              >
                 {item}
               </Option>
             ))}
           </Select>
         </div>
 
+        {/* Current User */}
         {isLoggedIn && userScoreCard.length > 0 && (
           <Table
             dataSource={userScoreCard}
@@ -116,6 +120,7 @@ useEffect(() => {
           />
         )}
 
+        {/* Leaderboard Title */}
         <p
           className="leaderboard-title"
           onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)}
@@ -123,10 +128,16 @@ useEffect(() => {
           Goal : {selectedCategory}
         </p>
 
+        {/* All Other Users */}
         <Table
           dataSource={otherUsersScoreCards}
           columns={columns}
-          pagination={{ pageSize: 15, position: ["bottomRight"] }}
+          pagination={{
+            pageSize: 15,
+            showSizeChanger: true,
+            pageSizeOptions: ["15", "30", "50", "100"],
+            position: ["bottomRight"],
+          }}
           rowKey="user_id"
           className="leaderboard-table"
           onRow={(record) => ({
@@ -136,6 +147,7 @@ useEffect(() => {
           })}
         />
       </div>
+
       <Footer />
     </>
   );

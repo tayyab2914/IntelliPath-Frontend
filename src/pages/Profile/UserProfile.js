@@ -29,11 +29,8 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
       <Col xs={24} className="profile-header">
         <Row>
           <Col xs={20} md={12} className="profile-info">
-            <img 
-              src={UserInfo?.profile_picture ? `${DOMAIN_NAME}${UserInfo?.profile_picture}` : ICONS.avatar} 
-              alt="" 
-              className="profile-image" 
-            />
+            <img src={`${DOMAIN_NAME}${UserInfo?.profile_picture}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="profile-image" />
+    
             <div className="profile-details">
               <p className="profile-name">{UserInfo?.first_name} {UserInfo?.last_name}</p>
               <p className="profile-email">{UserInfo?.email}</p>

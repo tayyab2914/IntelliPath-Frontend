@@ -1,4 +1,4 @@
-import { Col, Divider, Row } from "antd";
+import { Col, Divider, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ICONS } from "../../data/IconData";
@@ -17,9 +17,12 @@ const SimilarProfiles = ({UserInfo}) => {
 
   const getSimilarUsers = async()=>{
     console.log('SimilarProfiles',UserInfo)
-    const response= await API_GET_SIMILAR_USERS(token,UserInfo?.id)
-    setSimilarUsers(response?.similar_users)
+    if(UserInfo?.id)
+    {
+        const response= await API_GET_SIMILAR_USERS(token,UserInfo?.id)
+        setSimilarUsers(response?.similar_users)
     console.log(response)
+    }
   }
   useEffect(()=>{
     getSimilarUsers()
@@ -33,10 +36,12 @@ const SimilarProfiles = ({UserInfo}) => {
           <Col xs={24} sm={12} md={8} lg={6}>
            <div className="similar-profile-card-container-outer"  onClick={()=>navigate(`/profile/${user?.user_id}`)}>
            <div className="similar-profile-card-container">
-              <img src={user?.profile_picture_url ? `${DOMAIN_NAME}${user?.profile_picture_url}` : ICONS.avatar} alt="" className="similar-profile-image" />
+             <img src={`${DOMAIN_NAME}${user?.profile_picture_url}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="similar-profile-image" />
               <div className="similar-profile-details">
                 <p className="similar-profile-name">{user?.full_name}</p>
                 <p className="similar-profile-email">{user?.email}</p>
+                {/* <p className="similar-profile-email"></p> */}
+                <Tag color="cyan" style={{marginTop:"5px"}}>{user?.goal_domain}</Tag>
                 <div className="similar-profile-masteries">
                   {/* {user?.masteries?.map((mastery, key) => ( <MyBadge type={mastery} size="md" key={key} className="similar-profile-mastery-badge" /> ))} */}
                 </div>
