@@ -34,7 +34,9 @@ const GoogleLoginBtn = () => {
   }, []);
 
   const fetchEmail = async () => {
+
     const code = new URLSearchParams(window.location.search).get("code");
+    console.log(code)
     API_GOOGLE_SIGN_IN(code, dispatch, navigate, setShowSpinner);
   };
 

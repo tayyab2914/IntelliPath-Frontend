@@ -3,16 +3,17 @@ export const DEFAULT_BUTTON_HEIGHT = '40px'
 export const PRODUCTION = false;
 export const TESTING = true
 
-let REDIRECT_URI
-REDIRECT_URI = PRODUCTION ? 'https://studentspace.online/account':'http://localhost:3000/account'
 
 export const FRONTEND_DOMAIN_NAME =  process.env.REACT_APP_FRONTEND_DOMAIN
 export const DOMAIN_NAME = process.env.REACT_APP_BACKEND_DOMAIN
 export const WEB_SOCKET_DOMAIN_NAME = process.env.REACT_APP_WEBSOCKET_DOMAIN
 
-const GOOGLE_AUTH_URL = process.env.GOOGLE_AUTH_URL
-const GOOGLE_AUTH_CLIENT_ID = process.env.GOOGLE_AUTH_CLIENT_ID
+const GOOGLE_AUTH_URL = process.env.REACT_APP_GOOGLE_AUTH_URL;
+const GOOGLE_AUTH_CLIENT_ID = process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID;
+let REDIRECT_URI = process.env.REACT_APP_GOOGLE_REDIRECT_URI
+
 const GOOGLE_AUTH_SCOPE = [ "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile",  ].join(" ");
+
 
 const AVAILABLE_GOALS = [
     "Data Scientist",

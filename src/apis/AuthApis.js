@@ -162,7 +162,8 @@ export const API_GOOGLE_SIGN_IN = async (authCode,dispatch,navigate, setShowSpin
     message.success("Google sign-in successful");
     return response.data;
   } catch (error) {
-    // message.error("Google sign-in failed");
+    console.log(error)
+    message.error("Google sign-in failed");
   } finally {
     setShowSpinner(false);
   }
