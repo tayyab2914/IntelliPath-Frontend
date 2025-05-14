@@ -39,7 +39,7 @@ export const API_GET_SCORE_CARD = async (token, user_id) => {
     }
   };
 export const API_GET_SIMILAR_USERS = async (token, user_id) => {
-    console.log(user_id)
+    console.log('API_GET_SIMILAR_USERS',user_id)
     try {
       const response = await axios.get(
         `${DOMAIN_NAME}/leaderboard/get_similar_users/?user_id=${user_id}`,

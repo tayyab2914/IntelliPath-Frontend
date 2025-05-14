@@ -1,5 +1,8 @@
+import { WEB_SOCKET_DOMAIN_NAME } from "../../../utils/GlobalSettings";
+
 export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose,setOnlineMembers) => {
-    const socketUrl = `ws://localhost:8000/ws/tribe/${tribe_id}/thread/${thread_id}/?token=${token}`;
+    const socketUrl = `${WEB_SOCKET_DOMAIN_NAME}/ws/tribe/${tribe_id}/thread/${thread_id}/?token=${token}`;
+  
     const chatSocket = new WebSocket(socketUrl);
   
     chatSocket.onopen = () => {

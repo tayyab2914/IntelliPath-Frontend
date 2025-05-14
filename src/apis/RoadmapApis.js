@@ -2,16 +2,16 @@ import axios from "axios";
 import { message } from "antd";
 import { DOMAIN_NAME } from "../utils/GlobalSettings";
 
-export const API_GENERATE_ROADMAP = async (
-  token,
-  UserSelections,
-  is_regenerate,
-  setShowSpinner
-) => {
+export const API_GENERATE_ROADMAP = async (token,UserSelections,is_regenerate,setShowSpinner) => {
   setShowSpinner(true);
   let OnboardingData = {};
-  if (!is_regenerate) {
+  if (is_regenerate) {
     OnboardingData = {
+        is_regenerate: is_regenerate
+     }
+  }
+  else{
+      OnboardingData = {
       education: UserSelections[0],
       goal_domain: UserSelections[1],
       goal_skill: UserSelections[2],
