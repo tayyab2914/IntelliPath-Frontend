@@ -49,7 +49,7 @@ export const API_GENERATE_ROADMAP = async (token,UserSelections,is_regenerate,se
   }
 };
 
-export const API_GET_ROADMAP = async (token) => {
+export const API_GET_ROADMAP = async (token,setShowSpinner) => {
   // setShowSpinner(true);
   try {
     const response = await axios.get(`${DOMAIN_NAME}/roadmap/get_roadmap/`, {

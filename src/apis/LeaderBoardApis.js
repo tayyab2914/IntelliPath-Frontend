@@ -21,7 +21,8 @@ export const API_GET_USER_INFO = async (token, user_id) => {
   };
   
 
-export const API_GET_SCORE_CARD = async (token, user_id) => {
+export const API_GET_SCORE_CARD = async (token, setShowSpinner) => {
+    setShowSpinner(true)
     try {
       const response = await axios.get(
         `${DOMAIN_NAME}/leaderboard/get_scorecard/`,
@@ -36,6 +37,9 @@ export const API_GET_SCORE_CARD = async (token, user_id) => {
     } catch (error) {
       console.log(error);
       // message.error(error.response?.data?.message);
+    }
+    finally{
+        setShowSpinner(false)
     }
   };
 export const API_GET_SIMILAR_USERS = async (token, user_id) => {

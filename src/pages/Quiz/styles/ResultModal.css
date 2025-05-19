@@ -26,6 +26,15 @@
     margin-top: 30px;
     margin-bottom: 20px;
 }
+.option-item.correct {
+  background-color: #d4eded; /* Green background */
+  color: #22968e; /* Dark green text */
+}
+
+.option-item.incorrect {
+  background-color: #f8d7da; /* Red background */
+  color: #721c24; /* Dark red text */
+}
 
 @media screen and (max-width:568px){
     .result-main{

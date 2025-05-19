@@ -65,6 +65,9 @@ const RoadmapDisplay = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHand
                                     zoomOnScroll={false}
                                     zoomOnPinch={false}
                                     fitView
+                                    nodesDraggable={false}      // Disable dragging nodes
+//   panOnDrag={false}           // Disable panning by dragging
+//   selectNodesOnDrag={false}
                                 />
                             </div>
                         </Col>

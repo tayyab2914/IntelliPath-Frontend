@@ -21,15 +21,6 @@
   border-radius: 6px;
 }
 
-.option-item.correct {
-  background-color: #d4edda; /* Green background */
-  color: #155724; /* Dark green text */
-}
-
-.option-item.incorrect {
-  background-color: #f8d7da; /* Red background */
-  color: #721c24; /* Dark red text */
-}
 
 .roadmap-display-header-row {
   background-color: var(--color-white);
