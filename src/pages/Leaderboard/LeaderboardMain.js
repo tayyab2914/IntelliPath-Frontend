@@ -27,13 +27,11 @@ const LeaderboardMain = () => {
   const [userScoreCard, setUserScoreCard] = useState([]);
   const [otherUsersScoreCards, setOtherUsersScoreCards] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [AllData, setAllData] = useState({});
 
-  const getScoreCard = async () => {
-    try {
-      const response = await API_GET_SCORE_CARD(token,setShowSpinner);
-      console.log(response);
-      const user = response?.user_scorecard;
-      const others = (response?.other_users_scorecards || []).filter(
+const sortAndSetLeaderboard = (data)=>{
+const user = data?.user_scorecard;
+      const others = (data?.other_users_scorecards || []).filter(
         (item) => item.user_id !== user?.user_id
       );
 
@@ -63,15 +61,23 @@ const LeaderboardMain = () => {
 
       setUserScoreCard(currentUser ? [currentUser] : []);
       setOtherUsersScoreCards(restUsers);
-    } catch (error) {
-      console.error("Error fetching leaderboard:", error);
-    }
+}
+
+  const getScoreCard = async () => {
+      const response = await API_GET_SCORE_CARD(token,setShowSpinner);
+      setAllData(response)
+      sortAndSetLeaderboard(response)
   };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     getScoreCard();
+  }, []);
+
+  useEffect(() => {
+    sortAndSetLeaderboard(AllData);
   }, [selectedCategory]);
+
 
   const handleRowClick = (record) => {
     navigate(`/profile/${record.user_id}`, { state: { user_id: record.user_id } });
@@ -83,13 +89,16 @@ const LeaderboardMain = () => {
 
   return (
     <>
-     {ShowSpinner && <CustomSpinner fullscreen={true}/>}
       <NavbarMain />
       <TitleMain
         title="Leaderboard"
         description="Showcasing top achievers and their accomplishments!"
       />
 
+    {ShowSpinner ? 
+      <div className="tribe-explore-spinner-wrapper">
+        <CustomSpinner/>
+      </div>:
       <div className="generic-container">
         {/* Category Selector */}
         <div className="leaderboard-select">
@@ -157,7 +166,7 @@ const LeaderboardMain = () => {
               speakWord(LB__USER(record?.position, record?.name, record?.points)),
           })}
         />
-      </div>
+      </div>}
 
       <Footer />
     </>

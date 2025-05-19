@@ -29,7 +29,7 @@ const TribeCard = ({tribeData,btnText,isInTribeExplorePage}) => {
     }
   return (
     <Col xs={24} sm={12} md={8} lg={6}>
-        {ShowSpinner && <Spin fullscreen/>}
+        {/* {ShowSpinner && <Spin fullscreen/>} */}
         <div className='tribe-card-container'>
            <div className="tribe-card-inner">
             

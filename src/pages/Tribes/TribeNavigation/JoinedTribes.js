@@ -7,6 +7,7 @@ import { AVAILABLE_GOALS } from "../../../utils/GlobalSettings";
 import { GET_PAGINATION_DETAILS } from "../../../utils/ReusableFunctionalities";
 import { API_GET_JOINED_TRIBES } from "../../../apis/TribeApis";
 import { useSelector } from "react-redux";
+import CustomSpinner from "../../../components/Loader/CustomSpinner";
 
 const { Option } = Select;
 
@@ -61,7 +62,7 @@ const JoinedTribes = () => {
 
   return (
     <div>
-      {ShowSpinner && <Spin fullscreen />}
+      
       <div className="tribe-explore-main">
         <TribeHeader type={"Joined"} />
         <Select
@@ -77,12 +78,16 @@ const JoinedTribes = () => {
             </Option>
           ))}
         </Select>
+        {ShowSpinner ? 
+      <div className="tribe-explore-spinner-wrapper">
+        <CustomSpinner/>
+      </div>:
         <Row gutter={[15, 15]} className="tribe-explore-row">
             {adminTribes.length>0 && <Col xs={24}> <p className="tribe-explore-heading">Administered Tribes</p> </Col>}
             {adminTribes.map((tribe) => (
                 <TribeCard key={tribe.id} tribeData={tribe} btnText={"View Tribe"} />
             ))}
-        </Row>
+        </Row>}
         {adminTribes.length > 0 && otherTribes.length > 0 && <Divider />}
         <Row gutter={[15, 15]} className="tribe-explore-row">
             {otherTribes.length>0 && <Col xs={24}> <p className="tribe-explore-heading">Other Joined Tribes</p> </Col>}

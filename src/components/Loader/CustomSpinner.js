@@ -18,7 +18,7 @@ const CustomSpinner = ({ messages = [], intervalMs = 3000, fullscreen = false })
   }, [messages, intervalMs]);
 
   return (
-    <div className={`custom-spinner-wrapper ${fullscreen ? 'fullscreen-spinner' : ''}`}>
+    <div className={`custom-spinner-wrapper ${fullscreen ? 'fullscreen-spinner' : ''} `} >
       <div className="spinner" />
       {messages?.length > 0 && (
         <div style={{ marginTop: "2rem" }}>

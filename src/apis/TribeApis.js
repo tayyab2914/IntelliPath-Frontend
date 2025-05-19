@@ -5,7 +5,7 @@ import { DOMAIN_NAME } from "../utils/GlobalSettings";
 import CheckableTag from "antd/es/tag/CheckableTag";
 
 export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
-  // setShowSpinner(true);
+  setShowSpinner(true);
   try {
     const response = await axios.get(
       `${DOMAIN_NAME}/tribes/get_joined_tribes/`,
@@ -20,11 +20,11 @@ export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
   } catch (error) {
     message.error(error.response?.data?.message);
   } finally {
-    //   setShowSpinner(false);
+      setShowSpinner(false);
   }
 };
 export const API_GET_ALL_TRIBES = async (token, setShowSpinner) => {
-  // setShowSpinner(true);
+  setShowSpinner(true);
   try {
     const response = await axios.get(`${DOMAIN_NAME}/tribes/get_all_tribes/`, {
       headers: {
@@ -36,7 +36,7 @@ export const API_GET_ALL_TRIBES = async (token, setShowSpinner) => {
   } catch (error) {
     message.error(error.response?.data?.message);
   } finally {
-    //   setShowSpinner(false);
+      setShowSpinner(false);
   }
 };
 export const API_GET_THREADS_LIST = async (token, tribe_id, setShowSpinner) => {
