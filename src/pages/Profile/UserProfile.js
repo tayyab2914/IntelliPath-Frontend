@@ -20,6 +20,7 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
       <p className="profile-popover-item" onClick={() => navigate("/roadmap")}><MyIcon type={'map'} /> Roadmap</p>
       <p className="profile-popover-item" onClick={() => navigate("/leaderboard")}><MyIcon type={'leaderboard'} /> Leaderboard</p>
       <p className="profile-popover-item" onClick={() => navigate('/settings')}><MyIcon type={'edit'} /> Edit Profile</p>
+      <p className="profile-popover-item" onClick={() => navigate('/settings')}><MyIcon type={'setting'} /> Settings</p>
     </div>
   );
 

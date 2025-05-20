@@ -40,9 +40,10 @@ const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
     }
   };
 
-  const cleanText = (text) => {
-    return text.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").trim();
-  };
+const cleanText = (text) => {
+  return text.replace(/[^\w\s.]/g, "").replace(/\s+/g, " ").trim(); // Keep the period (.)
+};
+
   const speakHandler = () => {
     if (AIResponse) speakWord(cleanText(AIResponse));
   };

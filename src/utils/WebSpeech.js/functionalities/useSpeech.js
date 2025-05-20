@@ -14,6 +14,13 @@ const useSpeech = (options = {}) => {
   const fetchVoices = useCallback(() => {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
+    
+    // If voices are not ready, wait for the onvoiceschanged event to trigger
+    if (voices.length === 0) {
+      synth.onvoiceschanged = () => fetchVoices();
+      return;
+    }
+
     const femaleVoices = voices.filter((voice) =>
       voice.name.toLowerCase().includes("female")
     );
@@ -36,10 +43,17 @@ const useSpeech = (options = {}) => {
   // Initialize voices and settings
   useEffect(() => {
     fetchVoices();
-    window.speechSynthesis.onvoiceschanged = fetchVoices;
-
     fetchSettings(); // Fetch blind mode settings only when logged in
   }, [fetchVoices, fetchSettings]);
+
+  // Function to break large text into smaller chunks at each period.
+  const chunkText = (text) => {
+    // Split text at each period (.) followed by a space to separate sentences
+    console.log(text)
+    const sentences = text.split(".").map(sentence => sentence.trim()).filter(Boolean);
+    console.log(sentences)
+    return sentences;
+  };
 
   // Speak a word
   const speakWord = useCallback(
@@ -47,57 +61,39 @@ const useSpeech = (options = {}) => {
       if (!isInSpeechMode) {
         if (!isBlindModeEnabled || !isVoicesReady) return;
       }
-  
+
       if (typeof text !== "string") {
         console.error("speakWord expects a string but received:", text);
         return;
       }
-  
+
       const synth = window.speechSynthesis;
       synth.cancel(); // Cancel any ongoing speech
-  
-      const chunkSize = 100; // Maximum length per chunk
-      const words = text.split(" "); // Split by space
-      const sentences = [];
-      let currentSentence = "";
-  
-      words.forEach((word) => {
-        if ((currentSentence + word).length <= chunkSize) {
-          currentSentence += (currentSentence ? " " : "") + word;
-        } else {
-          sentences.push(currentSentence);
-          currentSentence = word;
-        }
-      });
-  
-      if (currentSentence) {
-        sentences.push(currentSentence);
-      }
-  
+
+      const sentences = chunkText(text); // Split text into sentences
+
       sentences.forEach((sentence, index) => {
-        const utterance = new SpeechSynthesisUtterance(sentence);
+        const utterance = new SpeechSynthesisUtterance(sentence + "."); // Add the period back to each chunk
         if (femaleVoice) {
           utterance.voice = femaleVoice;
         }
-  
+
         // Queue the speech chunks in sequence
         utterance.onend = () => {
           if (index < sentences.length - 1) {
-            const nextUtterance = new SpeechSynthesisUtterance(sentences[index + 1]);
+            const nextUtterance = new SpeechSynthesisUtterance(sentences[index + 1] + ".");
             if (femaleVoice) {
               nextUtterance.voice = femaleVoice;
             }
             synth.speak(nextUtterance);
           }
         };
-  
+
         synth.speak(utterance);
       });
     },
     [isBlindModeEnabled, isVoicesReady, femaleVoice, isInSpeechMode]
   );
-  
-
 
   return { speakWord };
 };
