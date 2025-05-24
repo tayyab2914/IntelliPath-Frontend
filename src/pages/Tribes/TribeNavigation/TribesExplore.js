@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TribeHeader from "./TribeHeader";
 import { TRIBE_EXPLORE_DATA } from "../../../data/TribesData";
-import { Col, Row, Select, Pagination, Spin } from "antd";
+import { Col, Row, Select, Pagination, Spin, Empty } from "antd";
 import TribeCard from "./TribeCard";
 import "../styles/TribeExplore.css";
 import { AVAILABLE_GOALS } from "../../../utils/GlobalSettings";
@@ -71,7 +71,11 @@ const TribesExplore = () => {
         <CustomSpinner/>
       </div>:
           <Row gutter={[15, 15]} className="tribe-explore-row">
-            {displayedTribes.map((tribe) => ( <TribeCard isInTribeExplorePage={true} tribeData={tribe} btnText={"Join Tribe"}/> ))}
+            {displayedTribes?.length>0  ? displayedTribes.map((tribe) => ( <TribeCard isInTribeExplorePage={true} tribeData={tribe} btnText={"Join Tribe"}/> ))
+            :
+            <div className="tribe-row-empty">
+                <Empty description="No Tribes to Show."/>
+            </div>}
           </Row>}
           <Pagination current={currentPage} pageSize={pageSize} total={filteredTribes.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} style={{ marginTop: 20 }}/>
         </div>

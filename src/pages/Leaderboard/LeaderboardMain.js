@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Select } from "antd";
+import { Table, Select, Empty } from "antd";
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import TitleMain from "../../components/Title/TitleMain";
 import "./styles/Leaderboard.css";
@@ -145,12 +145,13 @@ const user = data?.user_scorecard;
                 showSizeChanger: true,
                 pageSizeOptions: ["15", "30", "50", "100"],
                 onChange: (page, size) => {
-                setCurrentPage(page);
-                setPageSize(size);
+                    setCurrentPage(page);
+                    setPageSize(size);
                 },
                 position: ["bottomRight"],
             }}
             rowKey="user_id"
+            locale={{ emptyText: ( <Empty description="No user ranked in this domain"/> ), }}
             className="leaderboard-table"
             onRow={(record) => ({
                 onClick: () => handleRowClick(record),

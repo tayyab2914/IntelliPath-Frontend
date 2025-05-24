@@ -28,3 +28,10 @@
     align-items: center;
     justify-content: center;
 }
+.tribe-row-empty{
+    height: 250px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
