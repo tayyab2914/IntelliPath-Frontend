@@ -25,8 +25,8 @@ const JoinedTribes = () => {
     const response = await API_GET_JOINED_TRIBES(token, setShowSpinner);
 
     setAllTribes(response);
-    const adminTribes = response.filter((tribe) => tribe.is_admin);
-    const otherTribes = response.filter((tribe) => !tribe.is_admin);
+    const adminTribes = response?.filter((tribe) => tribe.is_admin);
+    const otherTribes = response?.filter((tribe) => !tribe.is_admin);
 
     setAdminTribes(adminTribes);
     setOtherTribes(otherTribes);
@@ -47,8 +47,8 @@ const JoinedTribes = () => {
       selectedCategory ? tribes.filter((tribe) => tribe.category === selectedCategory) : tribes;
   
     // Use AllTribes to derive the filtered lists
-    const adminFiltered = filterByCategory(AllTribes.filter((tribe) => tribe.is_admin));
-    const otherFiltered = filterByCategory(AllTribes.filter((tribe) => !tribe.is_admin));
+    const adminFiltered = filterByCategory(AllTribes?.filter((tribe) => tribe.is_admin));
+    const otherFiltered = filterByCategory(AllTribes?.filter((tribe) => !tribe.is_admin));
   
     setAdminTribes(adminFiltered);
     setOtherTribes(otherFiltered);
@@ -83,22 +83,22 @@ const JoinedTribes = () => {
         <CustomSpinner/>
       </div>:
         <Row gutter={[15, 15]} className="tribe-explore-row">
-            {adminTribes.length>0 && <Col xs={24}> <p className="tribe-explore-heading">Administered Tribes</p> </Col>}
-            {adminTribes.map((tribe) => (
+            {adminTribes?.length>0 && <Col xs={24}> <p className="tribe-explore-heading">Administered Tribes</p> </Col>}
+            {adminTribes?.map((tribe) => (
                 <TribeCard key={tribe.id} tribeData={tribe} btnText={"View Tribe"} />
             ))}
         </Row>}
-        {adminTribes.length > 0 && otherTribes.length > 0 && <Divider />}
+        {adminTribes?.length > 0 && otherTribes?.length > 0 && <Divider />}
         <Row gutter={[15, 15]} className="tribe-explore-row">
-            {otherTribes.length>0 && <Col xs={24}> <p className="tribe-explore-heading">Other Joined Tribes</p> </Col>}
-            {otherTribes.map((tribe) => (
+            {otherTribes?.length>0 && <Col xs={24}> <p className="tribe-explore-heading">Other Joined Tribes</p> </Col>}
+            {otherTribes?.map((tribe) => (
                 <TribeCard key={tribe.id} tribeData={tribe} btnText={"View Tribe"} />
             ))}
         </Row>
         <Pagination
           current={currentPage}
           pageSize={pageSize}
-          total={adminTribes.length + otherTribes.length}
+          total={adminTribes?.length + otherTribes?.length}
           onChange={handlePagination}
           showSizeChanger={false}
           style={{ marginTop: 20 }}

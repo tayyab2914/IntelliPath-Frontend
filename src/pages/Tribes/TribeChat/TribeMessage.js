@@ -5,7 +5,6 @@ import MyIcon from '../../../components/Icon/MyIcon';
 import { useNavigate } from 'react-router-dom';
 
 const TribeMessage = ({ msg, currentUserID, showRight }) => {
-    console.log(msg)
   const navigate = useNavigate();
 
   const profileClickHandler = () => {

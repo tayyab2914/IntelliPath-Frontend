@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import '../styles/TribeThread.css';
-import { Col, Row, Input, Popconfirm } from 'antd';
+import { Col, Row, Input, Popconfirm, Tag } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setRerenderTribePage } from '../../../redux/AuthToken/Action';
@@ -20,22 +20,18 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
   const { token, rerender_tribe_page,user_attributes } = useSelector((state) => state.authToken);
   const dispatch = useDispatch();
 
+const bannedUntil = tribeInfo?.banned_upto_time ? new Date(tribeInfo.banned_upto_time) : null;
+const isBanned = bannedUntil && bannedUntil > new Date();
+
   const fetchMessages = async () => {
     const response = await API_GET_MESSAGES(token, tribe_id, SelectedThread?.id);
-    
-    console.log(response)
-    const updatedMessages = response?.map(msg => ({
-      ...msg,
-      is_main_user: msg.user === user_attributes?.id,
-
-    }));
-
-    console.log(updatedMessages)
+    const updatedMessages = response?.map(msg => ({ ...msg, is_main_user: msg.user === user_attributes?.id, }));
     setThreadData(updatedMessages);
   };
 
+  
   useEffect(() => {
-    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers,user_attributes?.id);
+    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers,user_attributes?.id,dispatch,rerender_tribe_page);
     fetchMessages();
     return () => {
       if (chatSocket) chatSocket.close();
@@ -65,13 +61,7 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
           <TribeMembersDropdownContent tribeId={tribe_id} />
 
           {tribeInfo?.is_admin && (
-            <Popconfirm
-              title="Are you sure you want to delete this thread?"
-              onConfirm={handleDeleteThread}
-              okText="Yes"
-              cancelText="No"
-              placement="bottomRight"
-            >
+            <Popconfirm title="Are you sure you want to delete this thread?" onConfirm={handleDeleteThread} okText="Yes" cancelText="No" placement="bottomRight" >
               <MyIcon type="delete" className="t-t-delete-thread-icon" />
             </Popconfirm>
           )}
@@ -84,36 +74,22 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
 
       <Col xs={24} className="t-t-messages-box">
         {ThreadData?.map((msg, index) => (
-          <TribeMessage
-            key={index}
-            msg={msg}
-            currentUserID={user_attributes?.id}
-            showRight={msg.is_main_user}  // Use the is_main_user attribute
-          />
+          <TribeMessage  key={index}  msg={msg}  currentUserID={user_attributes?.id}  showRight={msg.is_main_user}  />
         ))}
         <div ref={messagesEndRef} />
       </Col>
 
-      <Col xs={24} className="t-t-input-row">
-        <Input
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="Type a message..."
-          className="t-t-input"
-          onPressEnter={() =>
-            handleSendMessage(socket, user_attributes, newMessage, setNewMessage)
-          }
-        />
+      {isBanned ? <Col xs={24} className="t-t-input-row">
+       <Tag color='red' className='t-t-ban-tag'>
+            {"You are currently banned from messaging until "} <strong>{bannedUntil.toLocaleString()}</strong>.
+      </Tag>
 
-        <MyButton
-          onClick={() =>
-            handleSendMessage(socket, user_attributes, newMessage, setNewMessage)
-          }
-          text="Send"
-          w="150px"
-          h="40px"
-        />
-      </Col>
+      </Col>:
+      <Col xs={24} className="t-t-input-row">
+        <Input value={newMessage} onChange={(e) => setNewMessage(e.target.value)} placeholder="Type a message..." className="t-t-input" onPressEnter={() =>  handleSendMessage(socket, user_attributes, newMessage, setNewMessage) } />
+
+        <MyButton onClick={() => handleSendMessage(socket, user_attributes, newMessage, setNewMessage) } text="Send" w="150px" h="40px" />
+      </Col>}
     </Row>
   );
 };

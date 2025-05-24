@@ -68,7 +68,6 @@ export const API_GET_MESSAGES = async (
   thread_id,
   setShowSpinner
 ) => {
-    console.log(Number(thread_id),+tribe_id)
   try {
     const response = await axios.get(`${DOMAIN_NAME}/tribes/get_messages/`, {
         params: {
