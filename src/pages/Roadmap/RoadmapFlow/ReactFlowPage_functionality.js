@@ -149,7 +149,7 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
                     ...GLOBAL_SETTINGS.edgeStyle,
                     stroke: GET_STROKE_COLOR(roadmapData, category),
                 },
-                type: 'step',
+                // type: 'step',
             });
         }
 
