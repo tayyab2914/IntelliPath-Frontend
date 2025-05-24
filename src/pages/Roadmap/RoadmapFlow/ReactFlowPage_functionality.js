@@ -117,10 +117,6 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
             // majorY = prevMajorNode.y + GLOBAL_SETTINGS.rowHeight;
             majorY = prevMajorNode.y ;
         }
-        console.log("CATEGORY",category)
-        console.log(Object.entries(roadmapData.roadmap[category]))
-        console.log( Object.entries(roadmapData.roadmap[category]).length * 70)
-        console.log('\n\n')
 
         prevMajorNode = { x: majorX, y: majorY + Object.entries(roadmapData.roadmap[category]).length * 70 };
         majorNodePositions[majorNodeId] = prevMajorNode;

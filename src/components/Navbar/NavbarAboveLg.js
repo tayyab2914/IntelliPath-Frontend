@@ -28,7 +28,6 @@ const NavbarAboveLg = ({ version = 'light' }) => {
   };
 
   useEffect(()=>{
-console.log('NavbarAboveLg',user_attributes)
   },[user_attributes])
   const renderDropdownItems = () => {
     
