@@ -26,7 +26,8 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
     console.log(response)
     const updatedMessages = response?.map(msg => ({
       ...msg,
-      is_main_user: msg.user === user_attributes?.id 
+      is_main_user: msg.user === user_attributes?.id,
+
     }));
 
     console.log(updatedMessages)
@@ -34,7 +35,7 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
   };
 
   useEffect(() => {
-    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers);
+    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers,user_attributes?.id);
     fetchMessages();
     return () => {
       if (chatSocket) chatSocket.close();

@@ -23,7 +23,8 @@ const LeaderboardMain = () => {
   const windowWidth = useWindowWidth();
   const navigate = useNavigate();
   const columns = leaderboardColumns(windowWidth);
-
+  const [pageSize, setPageSize] = useState(15);
+  const [currentPage, setCurrentPage] = useState(1);
   const [userScoreCard, setUserScoreCard] = useState([]);
   const [otherUsersScoreCards, setOtherUsersScoreCards] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -34,8 +35,6 @@ const user = data?.user_scorecard;
       const others = (data?.other_users_scorecards || []).filter(
         (item) => item.user_id !== user?.user_id
       );
-
-      // Combine and normalize data
       const allUsers = [user, ...others].map((item) => ({
         user_id: item?.user_id,
         name: item?.full_name,
@@ -43,13 +42,12 @@ const user = data?.user_scorecard;
         profile_picture: item?.profile_picture,
         points: selectedCategory === "All" ? item?.total_score : item?.data?.[selectedCategory] || 0,
         masteries: Object.keys(item?.data || {}),
-        total_score: item?.total_score, // Store the total score for "All Fields"
+        total_score: item?.total_score, 
       }));
 
-      // If "All Fields" is selected, use total_score for sorting
       const sorted = selectedCategory === "All"
-        ? allUsers.sort((a, b) => b.total_score - a.total_score)  // Sort by total score
-        : allUsers.sort((a, b) => b.points - a.points);  // Sort by selected category points
+        ? allUsers.sort((a, b) => b.total_score - a.total_score) 
+        : allUsers.sort((a, b) => b.points - a.points);  
 
       const final = sorted.map((item, index) => ({
         ...item,
@@ -57,7 +55,7 @@ const user = data?.user_scorecard;
       }));
 
       const currentUser = final.find((item) => item.user_id === user?.user_id);
-      const restUsers = final;
+      const restUsers = final.filter((item) => item.points > 0);
 
       setUserScoreCard(currentUser ? [currentUser] : []);
       setOtherUsersScoreCards(restUsers);
@@ -102,20 +100,12 @@ const user = data?.user_scorecard;
       <div className="generic-container">
         {/* Category Selector */}
         <div className="leaderboard-select">
-          <Select
-            defaultValue={selectedCategory}
-            onChange={handleSelectChange}
-            onMouseEnter={() => speakWord(LB__SELECT)}
-          >
+          <Select  defaultValue={selectedCategory}  onChange={handleSelectChange}  onMouseEnter={() => speakWord(LB__SELECT)}  >
             <Option value="All" onMouseEnter={() => speakWord("All")}>
               All
             </Option>
             {AVAILABLE_GOALS?.map((item) => (
-              <Option
-                key={item}
-                value={item}
-                onMouseEnter={() => speakWord(item)}
-              >
+              <Option key={item} value={item} onMouseEnter={() => speakWord(item)} >
                 {item}
               </Option>
             ))}
@@ -141,31 +131,35 @@ const user = data?.user_scorecard;
         )}
 
         {/* Leaderboard Title */}
-        <p
-          className="leaderboard-title"
-          onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)}
-        >
+        <p className="leaderboard-title" onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)} >
           Goal : {selectedCategory}
         </p>
 
         {/* All Other Users */}
         <Table
-          dataSource={otherUsersScoreCards}
-          columns={columns}
-          pagination={{
-            pageSize: 15,
-            showSizeChanger: true,
-            pageSizeOptions: ["15", "30", "50", "100"],
-            position: ["bottomRight"],
-          }}
-          rowKey="user_id"
-          className="leaderboard-table"
-          onRow={(record) => ({
-            onClick: () => handleRowClick(record),
-            onMouseEnter: () =>
-              speakWord(LB__USER(record?.position, record?.name, record?.points)),
-          })}
+            dataSource={otherUsersScoreCards}
+            columns={columns}
+            pagination={{
+                current: currentPage,
+                pageSize: pageSize,
+                showSizeChanger: true,
+                pageSizeOptions: ["15", "30", "50", "100"],
+                onChange: (page, size) => {
+                setCurrentPage(page);
+                setPageSize(size);
+                },
+                position: ["bottomRight"],
+            }}
+            rowKey="user_id"
+            className="leaderboard-table"
+            onRow={(record) => ({
+                onClick: () => handleRowClick(record),
+                onMouseEnter: () =>
+                speakWord(LB__USER(record?.position, record?.name, record?.points)),
+            })}
         />
+
+
       </div>}
 
       <Footer />

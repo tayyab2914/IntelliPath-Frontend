@@ -1,6 +1,6 @@
 import { WEB_SOCKET_DOMAIN_NAME } from "../../../utils/GlobalSettings";
 
-export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose,setOnlineMembers) => {
+export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose,setOnlineMembers,userId) => {
     const socketUrl = `${WEB_SOCKET_DOMAIN_NAME}/ws/tribe/${tribe_id}/thread/${thread_id}/?token=${token}`;
   
     const chatSocket = new WebSocket(socketUrl);
@@ -24,6 +24,7 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
           message: data.message || '',
           profile_picture:data.profile_pic,
           user:data.id,
+          is_main_user:data.id == userId
         };
         setThreadData((prev) => [...prev, newMessage]);
       }

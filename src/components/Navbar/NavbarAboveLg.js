@@ -12,11 +12,11 @@ import { IMAGES } from '../../data/ImageData';
 import { ICONS } from '../../data/IconData';
 import { DOMAIN_NAME } from '../../utils/GlobalSettings';
 
-const NavbarAboveLg = ({ version = 'light',UserInfo }) => {
+const NavbarAboveLg = ({ version = 'light' }) => {
   const navigate = useNavigate();
   const { speakWord } = useSpeech();
   const [popoverVisible, setPopoverVisible] = useState(false); 
-  const { token, isLoggedIn } = useSelector((state) => state.authToken);
+  const { token, isLoggedIn,user_attributes } = useSelector((state) => state.authToken);
 
   const optionClickHandler = (path) => {
     navigate(path);
@@ -27,15 +27,19 @@ const NavbarAboveLg = ({ version = 'light',UserInfo }) => {
     return NAV_ITEMS_LG.map(({ name, path }) => ( <span  key={name}  className={version === 'light' ? 'nav-item-light' : 'nav-item-dark'}   onClick={() => navigate(path)} onMouseEnter={()=>speakWord(name)}> {name} </span> ));
   };
 
+  useEffect(()=>{
+console.log('NavbarAboveLg',user_attributes)
+  },[user_attributes])
   const renderDropdownItems = () => {
+    
     return (
       <div >
         <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
             {/* <img src={ICONS.avatar} alt="" /> */}
-            <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.avatar} alt="" />
+            <img src={user_attributes?.profile_picture? `${DOMAIN_NAME}${user_attributes?.profile_picture}`: ICONS.avatar} alt="" />
             <span>
-                <p className='navbar-first-name'>{UserInfo?.first_name}</p>
-                <p className='navbar-email'>{UserInfo?.email}</p>
+                <p className='navbar-first-name'>{user_attributes?.first_name}</p>
+                <p className='navbar-email'>{user_attributes?.email}</p>
             </span>
         </div>
         <Divider/>
@@ -58,7 +62,7 @@ const NavbarAboveLg = ({ version = 'light',UserInfo }) => {
           <MyImage type={'logo'} h={'55px'} w={'55px'} onClick={()=>navigate('/')} className={'navbar-logo'}/>
           <span>{renderNavItems()}</span>
           <Popover placement="bottomRight" content={<div>{renderDropdownItems()}</div>} trigger="click" visible={popoverVisible} onVisibleChange={setPopoverVisible}>
-          <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.avatar} onClick={handlePopoverClick} className='navbar-avatar' />
+          <img src={user_attributes?.profile_picture? `${DOMAIN_NAME}${user_attributes?.profile_picture}`: ICONS.avatar} onClick={handlePopoverClick} className='navbar-avatar' />
             {/* <MyIcon type={'avatar'} size='lg' onClick={handlePopoverClick} className='navbar-avatar'/>  */}
           </Popover>
         </Flex>

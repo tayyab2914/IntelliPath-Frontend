@@ -48,7 +48,6 @@ const RoadmapMain = () => {
   const regenerateRoadmapHandler = async() => {
     await API_GENERATE_ROADMAP(token, null, true, setShowSpinner);
     API_RECOMMEND_COURSES(token)
-    message.success("Roadmap Regenerated Successfully!");
     getRoadmap()
 };
 const deleteRoadmapHandler = async()=>{

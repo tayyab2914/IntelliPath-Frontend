@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/Settings.css';
-import { Col, Divider, Row } from 'antd';
+import { Col, Divider, message, Row } from 'antd';
 
 const SettingsBasicInfo = ({ setSettingsData, SettingsData }) => {
   const handleChange = (event) => {
@@ -24,8 +24,30 @@ const SettingsBasicInfo = ({ setSettingsData, SettingsData }) => {
           </div>
 
           <div className="setting-item">
-            <input type="number" id="age" name="age" value={SettingsData?.age || ''} onChange={handleChange} className="setting-input"/>
-          </div>
+  <input
+    type="number"
+    id="age"
+    name="age"
+    value={SettingsData?.age || ''}
+    onChange={(e) => {
+      const value = e.target.value;
+      if (/^\d{0,3}$/.test(value)) {
+        handleChange(e); // Allow digits or empty string
+      }
+    }}
+    onBlur={(e) => {
+      const value = parseInt(e.target.value, 10);
+      if (isNaN(value) || value < 10 || value > 100) {
+        message.error("Please enter a valid age between 10 and 100.");
+        setSettingsData({ ...SettingsData, age: '' });
+      }
+    }}
+    className="setting-input"
+    placeholder="Enter age (10-100)"
+  />
+</div>
+
+
 
           <div className="setting-item">
             <input type="url" id="linkedin" name="linkedin" value={SettingsData?.linkedin || ''} onChange={handleChange} className="setting-input"/>

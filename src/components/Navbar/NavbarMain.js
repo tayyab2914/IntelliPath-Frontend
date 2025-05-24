@@ -15,7 +15,7 @@ const NavbarMain = ({ version = 'light' }) => {
     const [UserInfo, setUserInfo] = useState({});
       const dispatch = useDispatch();
       const navigate = useNavigate()
-    const { token, blind_mode, isLoggedIn, user_attributes } = useSelector((state) => state.authToken);
+    const { token, blind_mode,rerender_app, isLoggedIn, user_attributes } = useSelector((state) => state.authToken);
   
     const testToken = async()=>{
       if(isLoggedIn)
@@ -33,13 +33,13 @@ const NavbarMain = ({ version = 'light' }) => {
     useEffect(()=>{
         fetchSettings()
         testToken()
-    },[])
+    },[rerender_app])
 
   return (
     <div className={`${version == 'dark' && 'bg-deep-dark'} navbar`}>
         <div className='generic-container'>
-            {windowWidth > 992 && <NavbarAboveLg version={version} UserInfo={user_attributes}/>}
-            {windowWidth <= 992 && <NavbarBelowLg version={version} UserInfo={user_attributes}/>}
+            {windowWidth > 992 && <NavbarAboveLg version={version} />}
+            {windowWidth <= 992 && <NavbarBelowLg version={version} />}
         </div>
         <div className='navbar-divider'>
         <Divider style={{margin:'0px !important'}} />

@@ -1,5 +1,5 @@
 import { Divider, Input } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 import { API_GENERATE_ON_DEMAND_CONTENT } from "../../apis/ContentGenApis";
@@ -8,19 +8,12 @@ import useSpeech from "../../utils/WebSpeech.js/functionalities/useSpeech";
 import CustomSpinner from "../../components/Loader/CustomSpinner";
 
 const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
-  // Redux token
   const { token } = useSelector((state) => state.authToken);
-
-  // Hooks
   const { speakWord } = useSpeech({ isInSpeechMode: true });
-
-  // State
   const [text, setText] = useState("");
   const [AIResponse, setAIResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // Handlers
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
@@ -44,6 +37,7 @@ const cleanText = (text) => {
   return text.replace(/[^\w\s.]/g, "").replace(/\s+/g, " ").trim(); // Keep the period (.)
 };
 
+
   const speakHandler = () => {
     if (AIResponse) speakWord(cleanText(AIResponse));
   };
@@ -56,9 +50,6 @@ const cleanText = (text) => {
         </span>
       </p>
       {loading && (
-        // <span style={{ display: "flex" }}>
-        //   <span className="chat-loader"></span>
-        // </span>
         <CustomSpinner />
       )}
       {!loading && AIResponse && (
@@ -72,7 +63,6 @@ const cleanText = (text) => {
         className="vocal-assistance-text-input"
         value={text}
         onChange={handleTextChange}
-        //   suffix={<MyIcon type="shineAccent" className="suggested-user-icon" />}
         addonAfter={
           <button
             className="inline-generate-btn"
@@ -105,13 +95,6 @@ const cleanText = (text) => {
           style={{ marginBottom: "5px" }}
         />
 
-        {/* <MyButton
-          text={loading ? "Generating..." : "Generate"}
-          variant="outlined-dark"
-          onClick={generateHandler}
-          className="vocal-assistance-ai-button"
-          disabled={loading}
-        /> */}
       </div>
     </div>
   );

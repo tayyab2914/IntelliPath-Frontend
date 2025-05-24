@@ -39,12 +39,15 @@ const useSpeech = (options = {}) => {
       console.error("Failed to fetch user settings:", error);
     }
   }, [isLoggedIn, token, rerender_app]);
+useEffect(() => {
+  fetchVoices();
+  fetchSettings();
 
-  // Initialize voices and settings
-  useEffect(() => {
-    fetchVoices();
-    fetchSettings(); // Fetch blind mode settings only when logged in
-  }, [fetchVoices, fetchSettings]);
+  return () => {
+    window.speechSynthesis.cancel(); // Stop speaking on unmount
+  };
+}, [fetchVoices, fetchSettings]);
+
 
   // Function to break large text into smaller chunks at each period.
   const chunkText = (text) => {

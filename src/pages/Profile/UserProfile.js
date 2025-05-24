@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { DOMAIN_NAME } from "../../utils/GlobalSettings";
 
 const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
+    console.log(UserInfo)
   const [popoverVisible, setPopoverVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -75,6 +76,12 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
             <Col xs={24} sm={8}>
               <Statistic title="Education" value={UserInfo?.education || " "} />
             </Col>
+          {UserInfo?.linkedin && (
+              <Col xs={24} sm={8} onClick={() => { window.open( `https://www.linkedin.com/in/${UserInfo.linkedin}`, "_blank" ); }} >
+                <Statistic title="LinkedIn" value={UserInfo?.linkedin || "N/A"} style={{ cursor: "pointer", }} />
+              </Col>
+            )}
+
           </Row>
         </Card>
       </Col>

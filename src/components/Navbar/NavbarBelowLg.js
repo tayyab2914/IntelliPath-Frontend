@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './styles/Navbar.css';
 import { Divider, Flex } from 'antd';
@@ -13,15 +13,19 @@ import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
 import { ICONS } from '../../data/IconData';
 
 
-const NavbarBelowLg = ({version,UserInfo}) => {
+const NavbarBelowLg = ({version}) => {
     const navigate = useNavigate();
     const {speakWord} = useSpeech()
     const [ShowDrawer, setShowDrawer] = useState(false);
-    const { token, isLoggedIn } = useSelector((state) => state.authToken);
+    const { token, isLoggedIn ,user_attributes} = useSelector((state) => state.authToken);
     const optionClickHandler = (path)=>{
         navigate(path)
         setShowDrawer(false)
     }
+    
+      useEffect(()=>{
+    
+      },[user_attributes])
   return (
     <>
         <Flex gap="middle" align="center">
@@ -34,10 +38,10 @@ const NavbarBelowLg = ({version,UserInfo}) => {
             <span>
                 <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
                             <img src={ICONS.avatar} alt="" />
-                            {/* <img src={UserInfo?.profile_picture? `${DOMAIN_NAME}${UserInfo?.profile_picture}`: ICONS.user} alt="" /> */}
+                            {/* <img src={user_attributes?.profile_picture? `${DOMAIN_NAME}${user_attributes?.profile_picture}`: ICONS.user} alt="" /> */}
                             <span>
-                                <p className='navbar-first-name'>{UserInfo?.first_name}</p>
-                                <p className='navbar-email'>{UserInfo?.email}</p>
+                                <p className='navbar-first-name'>{user_attributes?.first_name}</p>
+                                <p className='navbar-email'>{user_attributes?.email}</p>
                             </span>
                         </div>
                         <Divider/>

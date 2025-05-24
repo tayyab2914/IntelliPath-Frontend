@@ -60,7 +60,7 @@ const GLOBAL_SETTINGS_MOBILE = {
     minorNodeWidth: 100, // Width of each minor node
     minorNodeHeight: 50, // Height of each minor node
     maxRowWidth: 800, // Maximum width before shifting nodes to the next line
-    leftMargin: 20, // Margin from the left edge
+    leftMargin: 0, // Margin from the left edge
     rightMargin: 100, // Margin from the right edge
     rowHeight: 100, // Height of each row
     minorRowHeight: 50, // Height of each row for minor nodes
@@ -115,10 +115,14 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
         } else {
             majorX = prevMajorNode.x;
             // majorY = prevMajorNode.y + GLOBAL_SETTINGS.rowHeight;
-            majorY = prevMajorNode.y + 210;
+            majorY = prevMajorNode.y ;
         }
+        console.log("CATEGORY",category)
+        console.log(Object.entries(roadmapData.roadmap[category]))
+        console.log( Object.entries(roadmapData.roadmap[category]).length * 70)
+        console.log('\n\n')
 
-        prevMajorNode = { x: majorX, y: majorY };
+        prevMajorNode = { x: majorX, y: majorY + Object.entries(roadmapData.roadmap[category]).length * 70 };
         majorNodePositions[majorNodeId] = prevMajorNode;
         
         GET_BORDER_COLOR(roadmapData,category)

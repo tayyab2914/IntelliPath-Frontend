@@ -43,7 +43,7 @@ const ProjectRoutes = () => {
         <Route path="/vocal-assistance" element={<VocalAssistanceMain />} />
         <Route path="/notifications" element={<NotificationsMain />} />
         <Route path="/roadmap" element={isLoggedIn ? <RoadmapMain />: <AccountMain/>} />
-        <Route path="/leaderboard" element={<LeaderboardMain />} />
+        <Route path="/leaderboard" element={isLoggedIn ?<LeaderboardMain />: <AccountMain/>} />
         <Route path="/profile" element={isLoggedIn ? <ProfileMain /> : <AccountMain/>} />
         <Route path="/features" element={<FeaturesMain />} />
         <Route path="/manual" element={<ManualMain />} />
