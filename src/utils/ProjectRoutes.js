@@ -32,7 +32,7 @@ const ProjectRoutes = () => {
         <Route path="/" element={<HomeMain />} />
         <Route path="/dashboard" element={<DashboardMain />} />
         <Route path="/account" element={<AccountMain />} />
-        <Route path="/courses" element={<CoursesMain />} />
+        <Route path="/courses" element={isLoggedIn ? <CoursesMain />: <AccountMain/>} />
         <Route path="/about" element={<AboutMain />} />
         <Route path="/assessment" element={<AssessmentLanding />} />
         <Route path="/quiz" element={isLoggedIn ? <QuizMain />: <AccountMain/>} />
@@ -40,7 +40,7 @@ const ProjectRoutes = () => {
         <Route path="/tribes" element={isLoggedIn ? <TribesMain />: <AccountMain/>} /> 
         <Route path="/gamification" element={<GamificationMain />} />
         <Route path="/onboarding" element={isLoggedIn ? <OnBoardingMain />: <AccountMain/>} />
-        <Route path="/vocal-assistance" element={<VocalAssistanceMain />} />
+        <Route path="/vocal-assistance" element={isLoggedIn ?<VocalAssistanceMain />: <AccountMain/>} />
         <Route path="/notifications" element={<NotificationsMain />} />
         <Route path="/roadmap" element={isLoggedIn ? <RoadmapMain />: <AccountMain/>} />
         <Route path="/leaderboard" element={isLoggedIn ?<LeaderboardMain />: <AccountMain/>} />

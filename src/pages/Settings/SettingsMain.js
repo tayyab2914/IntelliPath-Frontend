@@ -32,7 +32,7 @@ const SettingsMain = () => {
   const handleSave = async () => {
     const formData = new FormData();
     Object.keys(SettingsData).forEach((key) => {
-      let value = SettingsData[key] ?? "0";
+      let value = SettingsData[key] ?? null;
 
       if (key === "profile_picture" && value instanceof File) {
         formData.append(key, value);

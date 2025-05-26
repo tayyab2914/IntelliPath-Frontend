@@ -167,13 +167,19 @@
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.t-t-ban-tag{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 2px;
+.t-t-ban-tag {
+  display: flex;
+  flex-wrap: wrap; /* Allows content to wrap if needed */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 4px;
+  height: auto !important;
+  white-space: normal; /* Make sure text can wrap */
+  text-align: center;
+  padding: 8px; /* Optional: Adds better spacing */
 }
+
 .t-m-right .t-m-content-time {
   text-align: end;
 }

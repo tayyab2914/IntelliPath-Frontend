@@ -14,9 +14,9 @@ const Footer = () => {
   const pages = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Dashboard", path: "/dashboard" },
+    // { name: "Dashboard", path: "/dashboard" },
     { name: "Features", path: "/features" },
-    { name: "Documentation", path: "/documentation" },
+    { name: "Manual", path: "/manual" },
     { name: "Settings", path: "/settings" },
   ];
 

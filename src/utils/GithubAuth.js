@@ -64,7 +64,7 @@ const GithubAuth = () => {
           cursor: "pointer",
         }}
       >
-        Login with Github
+        Connect Github
       </span>
     </div>
   );

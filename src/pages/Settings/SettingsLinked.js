@@ -20,13 +20,10 @@ const SettingsLinked = ({ setSettingsData, SettingsData }) => {
         <Col xs={19} sm={21} lg={22}>
           {SettingsData?.github ? (
             <span className="settings-github-link">
-              <Badge
-                count={<CloseOutlined />}
-                onClick={handleUnlink} 
-                style={{ backgroundColor: "#f5222d", color: "white", cursor: "pointer", fontSize: "10px", padding:"3px", borderRadius:"50%", marginLeft:"3px" }}
-            >
+              <Badge  count={  <CloseOutlined onClick={handleUnlink} style={{ backgroundColor: "#f5222d", color: "white", cursor: "pointer", fontSize: "10px", padding: "3px", borderRadius: "50%", }} />  }  >
                 <p>https://github.com/{SettingsData?.github}</p>
-              </Badge>
+                </Badge>
+
             </span>
           ) : (
             <GithubAuth />

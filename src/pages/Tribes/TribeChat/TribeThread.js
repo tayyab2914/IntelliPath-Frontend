@@ -81,7 +81,7 @@ const isBanned = bannedUntil && bannedUntil > new Date();
 
       {isBanned ? <Col xs={24} className="t-t-input-row">
        <Tag color='red' className='t-t-ban-tag'>
-            {"You are currently banned from messaging until "} <strong>{bannedUntil.toLocaleString()}</strong>.
+            {"You are currently banned from messaging until "} <strong>{bannedUntil.toLocaleString()}</strong> {"due to messaging against community guidelines."}
       </Tag>
 
       </Col>:
