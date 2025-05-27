@@ -56,7 +56,6 @@ export const API_GENERATE_ROADMAP = async (
 };
 
 export const API_GET_ROADMAP = async (token, setShowSpinner) => {
-  // setShowSpinner(true);
   try {
     const response = await axios.get(`${DOMAIN_NAME}/roadmap/get_roadmap/`, {
       headers: {
@@ -69,11 +68,9 @@ export const API_GET_ROADMAP = async (token, setShowSpinner) => {
     {
       SHOW_API_ERRORS && console.log(error);
     }
-    // message.error(error.response?.data?.message);
+   
     return false;
-  } finally {
-    //   setShowSpinner(false);
-  }
+  } 
 };
 
 export const API_DELETE_ROADMAP = async (token, setShowSpinner, navigate) => {
@@ -82,7 +79,7 @@ export const API_DELETE_ROADMAP = async (token, setShowSpinner, navigate) => {
   try {
     const response = await axios.post(
       `${DOMAIN_NAME}/roadmap/delete_roadmap/`,
-      {}, // Empty object since it's a POST request with no body
+      {}, 
       {
         headers: {
           Authorization: `${token}`,

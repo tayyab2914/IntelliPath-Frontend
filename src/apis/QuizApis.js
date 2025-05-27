@@ -2,28 +2,33 @@ import axios from "axios";
 import { message } from "antd";
 import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 
-export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowSpinner) => {
-  setShowSpinner(true)
+export const API_GENERATE_QUIZ_BY_MODULE = async (
+  token,
+  roadmap_module,
+  setShowSpinner
+) => {
+  setShowSpinner(true);
   try {
     const response = await axios.post(
       `${DOMAIN_NAME}/quiz/generate_quiz_by_module/`,
       {
         roadmap_module_name: roadmap_module,
-      }, // empty body
+      },
       {
         headers: {
           Authorization: token,
         },
       }
     );
-      
+
     return response.data;
   } catch (error) {
-          {SHOW_API_ERRORS && console.log(error);}
-    // message.error(error.response?.data?.message);
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     return false;
-  }finally{
-    setShowSpinner(false)
+  } finally {
+    setShowSpinner(false);
   }
 };
 
@@ -33,7 +38,7 @@ export const API_GENERATE_QUIZZES = async (token, user_id) => {
       `${DOMAIN_NAME}/quiz/generate_quizzes/`,
       {
         user_id: user_id,
-      }, // empty body
+      },
       {
         headers: {
           Authorization: token,
@@ -42,9 +47,10 @@ export const API_GENERATE_QUIZZES = async (token, user_id) => {
     );
     return response.data;
   } catch (error) {
-          {SHOW_API_ERRORS && console.log(error);}
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
 
-    // message.error(error.response?.data?.message);
     return false;
   }
 };
@@ -70,9 +76,9 @@ export const API_COMPLETE_QUIZ = async (
     );
     return response.data;
   } catch (error) {
-          {SHOW_API_ERRORS && console.log(error);}
-
-    // message.error(error.response?.data?.message);
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     return false;
   }
 };
