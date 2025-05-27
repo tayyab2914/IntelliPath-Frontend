@@ -87,12 +87,10 @@ export const GET_STROKE_COLOR = (roadmapData, category)=>{
 export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
 
     if (!roadmapData || typeof roadmapData !== "object") {
-        console.error("Invalid roadmapData:", roadmapData);
         return { nodes: [], edges: [] };
     }
 
     if (!roadmapData.roadmap || typeof roadmapData.roadmap !== "object") {
-        console.error("Invalid roadmap structure:", roadmapData.roadmap);
         return { nodes: [], edges: [] };
     }
 

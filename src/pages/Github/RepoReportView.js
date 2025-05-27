@@ -35,7 +35,6 @@ const RepoReportView = ({ report }) => {
   } = report;
   const { Collaborators, Commits, Forks, Issues, Stars, Watchers } = breakdown || {}
 
-  console.log(report);
 
   const getStatusColor = (score) => {
     if (score > 75) return "#2aff39";

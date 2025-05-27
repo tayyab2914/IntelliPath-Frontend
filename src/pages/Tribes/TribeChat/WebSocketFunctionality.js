@@ -19,7 +19,6 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
   
     chatSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data)
       if (data.type === 'message') {
         if(data?.is_banned)
         {

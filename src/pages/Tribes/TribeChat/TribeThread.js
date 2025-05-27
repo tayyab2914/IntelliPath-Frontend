@@ -10,6 +10,7 @@ import MyIcon from '../../../components/Icon/MyIcon';
 import MyButton from '../../../components/Button/Button';
 import { initializeWebSocket, handleSendMessage } from './WebSocketFunctionality';
 import TribeMembersDropdownContent from './AdminOptions.js/TribeMembersDropdownContent';
+import AutoTextCropper from '../../../components/AutoTextCropper/AutoTextCropper';
 
 const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
   const [ThreadData, setThreadData] = useState([]);
@@ -56,7 +57,7 @@ const isBanned = bannedUntil && bannedUntil > new Date();
   return (
     <Row className="t-t-container">
       <Col xs={24} className="t-t-header-col">
-        <p className="t-t-header-goal">{SelectedThread?.name} Thread</p>
+        <p className="t-t-header-goal"><AutoTextCropper text={`${SelectedThread?.name} Thread`} TooltipTitle={`${SelectedThread?.name} Thread`} textStyles={{fontSize:"20px"}}/></p>
         <span className="t-t-header-options">
           <TribeMembersDropdownContent tribeId={tribe_id} />
 

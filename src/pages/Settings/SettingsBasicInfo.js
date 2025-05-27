@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Col, Divider, Form, Input, InputNumber, Row } from 'antd';
 import './styles/Settings.css';
 
-const SettingsBasicInfo = ({ setSettingsData, SettingsData }) => {
-  const [form] = Form.useForm();
+const SettingsBasicInfo = ({ form, setSettingsData, SettingsData }) => {
+//   const [form] = Form.useForm();
 
   // Keep form in sync with SettingsData
   useEffect(() => {
@@ -61,14 +61,9 @@ const SettingsBasicInfo = ({ setSettingsData, SettingsData }) => {
             <Form.Item
               label="LinkedIn"
               name="linkedin"
-              rules={[
-                {
-                  type: 'url',
-                  message: 'Please enter a valid URL',
-                },
-              ]}
+             
             >
-              <Input className="setting-input" placeholder="https://linkedin.com/in/..." />
+              <Input className="setting-input" placeholder="Linkedin Username" />
             </Form.Item>
           </Col>
         </Row>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DOMAIN_NAME } from "../utils/GlobalSettings";
+import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 
 export const API_GET_USER_INFO = async (token, user_id) => {
     try {
@@ -15,7 +15,7 @@ export const API_GET_USER_INFO = async (token, user_id) => {
   
       return response.data;
     } catch (error) {
-      console.log(error);
+            {SHOW_API_ERRORS && console.log(error);}
       // message.error(error.response?.data?.message);
     }
   };
@@ -35,7 +35,7 @@ export const API_GET_SCORE_CARD = async (token, setShowSpinner) => {
   
       return response.data;
     } catch (error) {
-      console.log(error);
+            {SHOW_API_ERRORS && console.log(error);}
       // message.error(error.response?.data?.message);
     }
     finally{
@@ -43,7 +43,6 @@ export const API_GET_SCORE_CARD = async (token, setShowSpinner) => {
     }
   };
 export const API_GET_SIMILAR_USERS = async (token, user_id) => {
-    console.log('API_GET_SIMILAR_USERS',user_id)
     try {
       const response = await axios.get(
         `${DOMAIN_NAME}/leaderboard/get_similar_users/?user_id=${user_id}`,
@@ -56,7 +55,7 @@ export const API_GET_SIMILAR_USERS = async (token, user_id) => {
   
       return response.data;
     } catch (error) {
-      console.log(error);
+            {SHOW_API_ERRORS && console.log(error);}
       // message.error(error.response?.data?.message);
     }
   };
@@ -74,7 +73,7 @@ export const API_GET_SIMILAR_USERS_TRIBE = async (token, user_id,goalDomain) => 
   
       return response.data;
     } catch (error) {
-      console.log(error);
+        {SHOW_API_ERRORS && console.log(error);}
       // message.error(error.response?.data?.message);
     }
   };

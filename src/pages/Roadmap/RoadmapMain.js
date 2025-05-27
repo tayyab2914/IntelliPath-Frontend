@@ -29,6 +29,7 @@ const RoadmapMain = () => {
   });
 
   const getRoadmap = async()=>{
+    
     const response = await API_GET_ROADMAP(token)
     setRoadmapData(response?.roadmap_data)
     if(response?.roadmap_data?.error)

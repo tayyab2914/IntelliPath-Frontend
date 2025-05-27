@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { DOMAIN_NAME } from "../../utils/GlobalSettings";
 
 const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
-    console.log(UserInfo)
   const [popoverVisible, setPopoverVisible] = useState(false);
   const navigate = useNavigate();
 

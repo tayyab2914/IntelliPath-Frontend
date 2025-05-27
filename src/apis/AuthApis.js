@@ -3,7 +3,7 @@ import { message } from "antd";
 
 import { setAuthToken, setLoggedIn } from "../redux/AuthToken/Action";
 
-import { DOMAIN_NAME } from "../utils/GlobalSettings";
+import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 
 export const API_SIGN_UP = async (
   email,
@@ -24,14 +24,15 @@ export const API_SIGN_UP = async (
       code_token: codeToken,
     });
 
-    // Assuming you want to set the token in redux store or local storage
     dispatch(setAuthToken(response.data.token));
     dispatch(setLoggedIn(true));
 
-    console.log(response.data.token);
     message.success("User signed up successfully");
     return response.data;
   } catch (error) {
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     message.error(error.response?.data?.message || "Signup failed");
   } finally {
     setShowSpinner(false);
@@ -46,22 +47,20 @@ export const API_SIGN_IN = async (
   setShowSpinner
 ) => {
   setShowSpinner(true);
-  console.log('API_SIGN_IN',email,password)
   try {
     const response = await axios.post(`${DOMAIN_NAME}/auth/signin/`, {
       email: email,
       password: password,
     });
 
-    // Handle login token
     dispatch(setAuthToken(response.data.token));
     dispatch(setLoggedIn(true));
-    navigate('/');
+    navigate("/");
     message.success("Signed in successfully");
     return response.data;
   } catch (error) {
     message.error(error.response?.data?.message || "Wrong credentials");
-    return false
+    return false;
   } finally {
     setShowSpinner(false);
   }
@@ -70,7 +69,7 @@ export const API_SIGN_IN = async (
 export const API_SEND_VERIFICATION_EMAIL = async (
   email,
   forgotPassword = false,
-  setShowSpinner,
+  setShowSpinner
 ) => {
   setShowSpinner(true);
   try {
@@ -85,10 +84,13 @@ export const API_SEND_VERIFICATION_EMAIL = async (
     message.success("Verification email sent");
     return response.data.code_token;
   } catch (error) {
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     message.error(
       error.response?.data?.message || "Failed to send verification email"
     );
-    return false
+    return false;
   } finally {
     setShowSpinner(false);
   }
@@ -112,6 +114,9 @@ export const API_AUTHENTICATE_CODE = async (
     message.success("Verification code is correct");
     return response.data;
   } catch (error) {
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     message.error(error.response?.data?.message || "Wrong verification code");
   } finally {
     setShowSpinner(false);
@@ -137,40 +142,51 @@ export const API_SET_NEW_PASSWORD = async (
     });
 
     message.success("Password reset successful");
-    setShowForgotPassword(false)
+    setShowForgotPassword(false);
     return response.data;
   } catch (error) {
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     message.error(error.response?.data?.message || "Failed to reset password");
   } finally {
     setShowSpinner(false);
   }
 };
 
-export const API_GOOGLE_SIGN_IN = async (authCode,dispatch,navigate, setShowSpinner,redirect_uri) => {
+export const API_GOOGLE_SIGN_IN = async (
+  authCode,
+  dispatch,
+  navigate,
+  setShowSpinner,
+  redirect_uri
+) => {
   setShowSpinner(true);
   try {
     const response = await axios.get(`${DOMAIN_NAME}/auth/google_signin/`, {
       params: {
         code: authCode,
-        redirect_uri:redirect_uri
+        redirect_uri: redirect_uri,
       },
     });
 
     dispatch(setAuthToken(response.data.token));
     dispatch(setLoggedIn(true));
-    navigate('/');
+    navigate("/");
     message.success("Google sign-in successful");
     return response.data;
   } catch (error) {
-    console.log(error)
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     message.error("Google sign-in failed");
   } finally {
     setShowSpinner(false);
   }
 };
 
-export const API_TEST_TOKEN = async (token, dispatch,navigate) => {
-//   setShowSpinner(true);
+export const API_TEST_TOKEN = async (token, dispatch, navigate) => {
+  //   setShowSpinner(true);
   try {
     const response = await axios.get(`${DOMAIN_NAME}/auth/test_token/`, {
       headers: {
@@ -180,10 +196,12 @@ export const API_TEST_TOKEN = async (token, dispatch,navigate) => {
 
     return response.data;
   } catch (error) {
-    
-        dispatch(setLoggedIn(false))
-        dispatch(setAuthToken(null))
-        navigate('/')
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
+    dispatch(setLoggedIn(false));
+    dispatch(setAuthToken(null));
+    navigate("/");
   } finally {
     // setShowSpinner(false);
   }

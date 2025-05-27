@@ -14,7 +14,7 @@ export const API_GET_REPO_LIST = async (token) => {
   
       return response.data;
     } catch (error) {
-      console.log(error);
+            {SHOW_API_ERRORS && console.log(error);}
       // message.error(error.response?.data?.message);
       return false;
     } finally {
@@ -32,7 +32,7 @@ export const API_GET_REPO_REPORT = async (token) => {
   
       return response.data;
     } catch (error) {
-      console.log(error);
+            {SHOW_API_ERRORS && console.log(error);}
       // message.error(error.response?.data?.message);
       return false;
     } finally {
@@ -55,7 +55,7 @@ export const API_GET_REPO_REPORT = async (token) => {
       );
       return response.data;
     } catch (error) {
-        console.log(error)
+            {SHOW_API_ERRORS && console.log(error);}
       message.error(error.response?.data?.error);
       return null;
     } finally {

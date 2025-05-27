@@ -1,6 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
-import { DOMAIN_NAME } from "../utils/GlobalSettings";
+import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 
 export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowSpinner) => {
   setShowSpinner(true)
@@ -19,7 +19,7 @@ export const API_GENERATE_QUIZ_BY_MODULE = async (token, roadmap_module,setShowS
       
     return response.data;
   } catch (error) {
-    console.log(error);
+          {SHOW_API_ERRORS && console.log(error);}
     // message.error(error.response?.data?.message);
     return false;
   }finally{
@@ -42,7 +42,7 @@ export const API_GENERATE_QUIZZES = async (token, user_id) => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+          {SHOW_API_ERRORS && console.log(error);}
 
     // message.error(error.response?.data?.message);
     return false;
@@ -70,7 +70,7 @@ export const API_COMPLETE_QUIZ = async (
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+          {SHOW_API_ERRORS && console.log(error);}
 
     // message.error(error.response?.data?.message);
     return false;

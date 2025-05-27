@@ -10,18 +10,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { API_GET_USER_ATTRIBUTE, API_UPDATE_USER_ATTRIBUTE } from "../../apis/CoreApis";
 import MyButton from "../../components/Button/Button";
 import { setRerenderApp } from "../../redux/AuthToken/Action";
-import { Col, message, Row } from "antd";
+import { Col, Form, message, Row } from "antd";
 import { DEFAULT_BUTTON_HEIGHT } from "../../utils/GlobalSettings";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
 
 const SettingsMain = () => {
   const { token, isLoggedIn, user_attributes, rerender_app } = useSelector( (state) => state.authToken );
   const dispatch = useDispatch();
   const [SettingsData, setSettingsData] = useState({});
+  const [form] = Form.useForm(); 
+const [ShowSpinner, setShowSpinner] = useState(false);
 
   const fetchSettings = async () => {
+    setShowSpinner(true)
     const response = await API_GET_USER_ATTRIBUTE(token);
     setSettingsData(response);
     dispatch(setRerenderApp(!rerender_app));
+    setShowSpinner(false)
   };
 
   useEffect(() => {
@@ -30,9 +35,12 @@ const SettingsMain = () => {
   }, []);
 
   const handleSave = async () => {
+  try {
+    await form.validateFields(); // ✅ Validate form first
+
     const formData = new FormData();
     Object.keys(SettingsData).forEach((key) => {
-      let value = SettingsData[key] ?? null;
+      let value = SettingsData[key] ?? "";
 
       if (key === "profile_picture" && value instanceof File) {
         formData.append(key, value);
@@ -45,7 +53,11 @@ const SettingsMain = () => {
 
     await API_UPDATE_USER_ATTRIBUTE(token, formData, null);
     fetchSettings();
-  };
+  } catch (error) {
+    message.error("Please fix validation errors before saving.");
+  }
+};
+
 
   const handleDiscard = () => {
     fetchSettings();
@@ -53,6 +65,7 @@ const SettingsMain = () => {
   return (
     <>
       <NavbarMain />
+      {ShowSpinner && <CustomSpinner fullscreen={true}/>}
       <div className="generic-container">
         <div className="settings-wrapper">
           <div className="settings-main">
@@ -60,7 +73,8 @@ const SettingsMain = () => {
             <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} />
             {isLoggedIn && (
               <>
-                <SettingsBasicInfo setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                <SettingsBasicInfo form={form} setSettingsData={setSettingsData} SettingsData={SettingsData} />
+
                 <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
                 <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} />
 

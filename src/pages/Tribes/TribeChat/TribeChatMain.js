@@ -26,7 +26,6 @@ const TribeChatMain = () => {
       tribe_id,
       setShowSpinner
     );
-    console.log('API_GET_THREADS_LIST',response)
     setAvailableThreads(response);
     const firstThread = response.threads[0];
     setSelectedThread(firstThread);

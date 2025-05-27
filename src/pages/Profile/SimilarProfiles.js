@@ -1,10 +1,8 @@
 import { Col, Divider, Row, Tag } from "antd";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ICONS } from "../../data/IconData";
-import MyBadge from "../../components/Badge/MyBadge";
 import MyButton from "../../components/Button/Button";
-import { SIMILAR_PROFILE_DATA } from "../../data/ProfileData";
 import './styles/SimilarProfile.css'
 import { API_GET_SIMILAR_USERS } from "../../apis/LeaderBoardApis";
 import { useSelector } from "react-redux";
@@ -16,12 +14,10 @@ const SimilarProfiles = ({UserInfo}) => {
 
 
   const getSimilarUsers = async()=>{
-    console.log('SimilarProfiles',UserInfo)
     if(UserInfo?.id)
     {
         const response= await API_GET_SIMILAR_USERS(token,UserInfo?.id)
         setSimilarUsers(response?.similar_users)
-    console.log(response)
     }
   }
   useEffect(()=>{

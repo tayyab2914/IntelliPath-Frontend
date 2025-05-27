@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 import { setAuthToken, setLoggedIn } from "../redux/AuthToken/Action";
-import { DOMAIN_NAME } from "../utils/GlobalSettings";
+import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 import CheckableTag from "antd/es/tag/CheckableTag";
 
 export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
@@ -18,6 +18,7 @@ export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
 
     return response.data;
   } catch (error) {
+          {SHOW_API_ERRORS && console.log(error);}
     message.error(error.response?.data?.message);
   } finally {
       setShowSpinner(false);
@@ -34,6 +35,7 @@ export const API_GET_ALL_TRIBES = async (token, setShowSpinner) => {
 
     return response.data;
   } catch (error) {
+        {SHOW_API_ERRORS && console.log(error);}
     message.error(error.response?.data?.message);
   } finally {
       setShowSpinner(false);
@@ -55,6 +57,7 @@ export const API_GET_THREADS_LIST = async (token, tribe_id, setShowSpinner) => {
 
     return response.data;
   } catch (error) {
+        {SHOW_API_ERRORS && console.log(error);}
     const errorMessage =
       error.response?.data?.message ||
       "Something went wrong. Please try again.";
@@ -79,13 +82,9 @@ export const API_GET_MESSAGES = async (
         },
       });
 
-      console.log(response)
     return response.data;
   } catch (error) {
-    const errorMessage =
-      error.response?.data?.message ||
-      "Something went wrong. Please try again.";
-      console.log(error)
+        {SHOW_API_ERRORS && console.log(error);}
     // message.error(errorMessage);
   } finally {
   }
@@ -104,10 +103,7 @@ export const API_GET_TRIBE_MEMBERS = async (
       });
     return response.data;
   } catch (error) {
-    const errorMessage =
-      error.response?.data?.message ||
-      "Something went wrong. Please try again.";
-      console.log(error)
+        {SHOW_API_ERRORS && console.log(error);}
     // message.error(errorMessage);
   } finally {
   }
@@ -131,7 +127,7 @@ export const API_CREATE_TRIBE = async (token, newTribe, setShowSpinner) => {
     return response.data;
   } catch (error) {
     message.error(error.response?.data?.message);
-    console.log(error.response);
+        {SHOW_API_ERRORS && console.log(error);}
     return null;
   } finally {
     setShowSpinner(false);
@@ -154,7 +150,7 @@ export const API_CREATE_THREAD = async (token, newThread, setShowSpinner) => {
       return response.data;
     } catch (error) {
       message.error(error.response?.data?.message);
-      console.log(error.response);
+        {SHOW_API_ERRORS && console.log(error);}
       return null;
     } finally {
     //   setShowSpinner(false);
@@ -163,8 +159,7 @@ export const API_CREATE_THREAD = async (token, newThread, setShowSpinner) => {
   
 
 export const API_EDIT_TRIBE = async (token, updatedTribe, setShowSpinner) => {
-  // setShowSpinner(true);
-  console.log(updatedTribe);
+
 
   try {
     const response = await axios.put(
@@ -179,7 +174,7 @@ export const API_EDIT_TRIBE = async (token, updatedTribe, setShowSpinner) => {
     message.success("Tribe updated successfully!");
     return response.data;
   } catch (error) {
-    console.log(error);
+        {SHOW_API_ERRORS && console.log(error);}
     message.error(error.response?.data?.message);
     return null;
   } finally {
@@ -190,7 +185,7 @@ export const API_EDIT_TRIBE = async (token, updatedTribe, setShowSpinner) => {
 
 export const API_DELETE_TRIBE = async (token, id, setShowSpinner) => {
     //   setShowSpinner(true);
-    console.log("id", id);
+
     try {
       const response = await axios.delete(`${DOMAIN_NAME}/tribes/delete_tribe/`, {
         params: {
@@ -204,13 +199,13 @@ export const API_DELETE_TRIBE = async (token, id, setShowSpinner) => {
       message.success("Tribe Deleted Successfully");
       return response.data;
     } catch (error) {
+        {SHOW_API_ERRORS && console.log(error);}
     } finally {
       // setShowSpinner(false);
     }
 };
 export const API_DELETE_THREAD = async (token, id, setShowSpinner) => {
     //   setShowSpinner(true);
-    console.log("id", id);
     try {
       const response = await axios.delete(
         `${DOMAIN_NAME}/tribes/delete_thread/`,
@@ -227,6 +222,7 @@ export const API_DELETE_THREAD = async (token, id, setShowSpinner) => {
       message.success("Tribe Deleted Successfully");
       return response.data;
     } catch (error) {
+        {SHOW_API_ERRORS && console.log(error);}
     } finally {
       // setShowSpinner(false);
     }
@@ -249,6 +245,7 @@ export const API_JOIN_TRIBE = async (token, tribe_id, setShowSpinner) => {
       message.success("Tribe joined successfully!");
       return response.data;
     } catch (error) {
+        {SHOW_API_ERRORS && console.log(error);}
       message.error(error.response?.data?.message);
       return null;
     } finally {

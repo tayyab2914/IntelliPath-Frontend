@@ -15,7 +15,7 @@ export const API_GET_COURSES = async (token, roadmap_module) => {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+          {SHOW_API_ERRORS && console.log(error);}
     // message.error(error.response?.data?.message);
     return false;
   }
@@ -33,7 +33,7 @@ export const API_GET_COURSE_INFO = async (token, course_id) => {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+          {SHOW_API_ERRORS && console.log(error);}
     // message.error(error.response?.data?.message);
     return false;
   }
@@ -53,8 +53,7 @@ export const API_RECOMMEND_COURSES = async (token,keyword) => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
-
+          {SHOW_API_ERRORS && console.log(error);}
     // message.error(error.response?.data?.message);
     return false;
   }

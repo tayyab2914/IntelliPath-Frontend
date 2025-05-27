@@ -9,7 +9,6 @@ import ResultDetailsModal from "./ResultDetailsModal";
 const ResultModal = ({ visible, onClose, onProceed, quizData, result,answers }) => {
   const [showResult, setShowResult] = useState(false);
   const { total, correctPercentage, incorrectPercentage } = getPercentages(result, quizData);
-console.log(answers)
   return (
     <Modal
       title="Overall Performance"
