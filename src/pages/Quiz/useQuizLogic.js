@@ -86,7 +86,13 @@ const useQuizLogic = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const roadmap_module = searchParams.get("roadmap_module");
-    if (roadmap_module) getQuizData(roadmap_module);
+    if (roadmap_module) {
+        getQuizData(roadmap_module)
+    }
+    else
+    {
+        navigate("/roadmap")
+    }
   }, [location.search]);
 
   useEffect(() => {
