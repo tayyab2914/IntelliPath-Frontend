@@ -33,7 +33,7 @@ const AboutMain = () => {
                   <img
                     alt="Muhaman Ijaz"
                     src={IMAGES.muhaman}
-                    style={{ height: 250, objectFit: "cover" }}
+                    style={{ height: 300, objectFit: "contain" }}
                   />
                 }
               >
@@ -47,8 +47,8 @@ const AboutMain = () => {
                 cover={
                   <img
                     alt="Tayyab Ur Rehman"
-                    src="/images/members/tayyab.jpg"
-                    style={{ height: 250, objectFit: "cover" }}
+                    src={IMAGES.tayyab}
+                    style={{ height: 300, objectFit: "contain" }}
                   />
                 }
               >
@@ -63,7 +63,7 @@ const AboutMain = () => {
                   <img
                     alt="Abdullah Mujahid"
                     src="/images/members/abdullah.jpg"
-                    style={{ height: 250, objectFit: "cover" }}
+                    style={{ hheight: 300, objectFit: "contain" }}
                   />
                 }
               >
