@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Typography, Row, Col, Card, Divider } from "antd";
+import { Typography, Row, Col, Card, Divider, Tag } from "antd";
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import { IMAGES } from "../../data/ImageData";
+import './styles/About.css'
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -11,150 +12,142 @@ const AboutMain = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+    <div className="about-container">
       <NavbarMain />
 
-      <div
-        style={{ padding: "40px 20px", maxWidth: "1200px", margin: "0 auto" }}
-      >
+      <div className="about-content">
         <Typography>
-          <Title level={2} style={{ textAlign: "center" }}>
+          <Title level={2} className="about-title">
             About IntelliPath
           </Title>
           <Divider />
-          <Title level={3} style={{ textAlign: "left" }}>
+          <Title level={3} className="about-subtitle">
             Project Members
           </Title>
 
-          <Row gutter={[16, 16]} justify="center" style={{ marginTop: "20px" }}>
+          <Row gutter={[16, 16]} justify="center" className="about-members-row">
             <Col xs={24} sm={12} md={8}>
               <Card
+                className="about-member-card"
                 cover={
                   <img
                     alt="Muhaman Ijaz"
                     src={IMAGES.muhaman}
-                    style={{ height: 300, objectFit: "contain" }}
+                    className="about-member-image"
                   />
                 }
               >
                 <Title level={4}>Muhaman Ijaz</Title>
                 <Paragraph>Reg No: L1F21BSCS0850</Paragraph>
+                <Tag color="cyan">Frontend Development</Tag>
               </Card>
             </Col>
 
             <Col xs={24} sm={12} md={8}>
               <Card
+                className="about-member-card"
                 cover={
                   <img
                     alt="Tayyab Ur Rehman"
                     src={IMAGES.tayyab}
-                    style={{ height: 300, objectFit: "contain" }}
+                    className="about-member-image"
                   />
                 }
               >
                 <Title level={4}>Tayyab Ur Rehman</Title>
                 <Paragraph>Reg No: L1F21BSCS0369</Paragraph>
+                <Tag color="cyan">Backend Development</Tag>
               </Card>
             </Col>
 
             <Col xs={24} sm={12} md={8}>
               <Card
+                className="about-member-card"
                 cover={
                   <img
                     alt="Abdullah Mujahid"
-                    src="/images/members/abdullah.jpg"
-                    style={{ hheight: 300, objectFit: "contain" }}
+                    src={IMAGES.abdullah}
+                    className="about-member-image"
                   />
                 }
               >
                 <Title level={4}>Abdullah Mujahid</Title>
                 <Paragraph>Reg No: L1F21BSCS0178</Paragraph>
+                <Tag color="cyan">Software Testing</Tag>
               </Card>
             </Col>
           </Row>
+
           <Divider />
-          <Paragraph>
-            <strong>IntelliPath</strong> is an AI-driven personalized learning
-            platform that adapts to the unique educational needs of each
-            learner. It generates dynamic learning roadmaps based on individual
-            goals, skills, and interests—ensuring a targeted and effective
-            journey towards knowledge and career growth.
+          <Paragraph className="about-description">
+            <strong>IntelliPath</strong> is an AI-driven personalized learning platform that adapts to
+            the unique educational needs of each learner. It generates dynamic learning
+            roadmaps based on individual goals, skills, and interests—ensuring a targeted and
+            effective journey towards knowledge and career growth.
           </Paragraph>
 
-          <Row gutter={[16, 16]}>
+          <Row gutter={[16, 16]} className="about-features-row">
             <Col xs={24} md={12}>
-              <Card title="Personalized Learning Roadmaps" bordered={false}>
+              <Card title="Personalized Learning Roadmaps" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  Learners receive custom-tailored paths, selecting the right
-                  technologies and resources based on their goals and
-                  background.
+                  Learners receive custom-tailored paths, selecting the right technologies and
+                  resources based on their goals and background.
                 </Paragraph>
               </Card>
             </Col>
 
             <Col xs={24} md={12}>
-              <Card title="GitHub Integration" bordered={false}>
+              <Card title="GitHub Integration" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  Track your real-world coding progress. IntelliPath awards
-                  points based on your GitHub contributions—helping you build a
-                  professional portfolio.
+                  Track your real-world coding progress. IntelliPath awards points based on your GitHub contributions—helping you build a professional portfolio.
                 </Paragraph>
               </Card>
             </Col>
 
             <Col xs={24} md={12}>
-              <Card title="AI-Powered Quizzes" bordered={false}>
+              <Card title="AI-Powered Quizzes" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  Practice smarter with AI-generated quizzes that adjust based
-                  on your strengths and weaknesses. Get instant feedback to
-                  improve continuously.
+                  Practice smarter with AI-generated quizzes that adjust based on your strengths and weaknesses. Get instant feedback to improve continuously.
                 </Paragraph>
               </Card>
             </Col>
 
             <Col xs={24} md={12}>
-              <Card title="Vocal Assistance" bordered={false}>
+              <Card title="Vocal Assistance" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  IntelliPath makes learning accessible. Visually impaired users
-                  can hear on-screen content using text-to-speech technology.
+                  IntelliPath makes learning accessible. Visually impaired users can hear on-screen content using text-to-speech technology.
                 </Paragraph>
               </Card>
             </Col>
 
             <Col xs={24} md={12}>
-              <Card title="Tribes & Community" bordered={false}>
+              <Card title="Tribes & Community" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  Join or create tribes to collaborate, share resources, and
-                  grow together. AI moderation ensures a respectful environment
-                  by banning foul speech.
+                  Join or create tribes to collaborate, share resources, and grow together. AI moderation ensures a respectful environment by banning foul speech.
                 </Paragraph>
               </Card>
             </Col>
 
             <Col xs={24} md={12}>
-              <Card title="Gamified Experience" bordered={false}>
+              <Card title="Gamified Experience" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  Compete on leaderboards, earn achievements, and stay motivated
-                  through a reward-based learning system.
+                  Compete on leaderboards, earn achievements, and stay motivated through a reward-based learning system.
                 </Paragraph>
               </Card>
             </Col>
 
             <Col span={24}>
-              <Card title="Smart Networking" bordered={false}>
+              <Card title="Smart Networking" bordered={false} className="about-feature-card">
                 <Paragraph>
-                  IntelliPath connects you with learners who share similar
-                  profiles and goals using AI-based Profile Similarity and
-                  Engagement Prediction.
+                  IntelliPath connects you with learners who share similar profiles and goals using AI-based Profile Similarity and Engagement Prediction.
                 </Paragraph>
               </Card>
             </Col>
           </Row>
 
           <Divider />
-          <Paragraph style={{ textAlign: "center", fontStyle: "italic" }}>
-            IntelliPath is built by students of the University of Central Punjab
-            as their BSCS Final Year Project, under the supervision of{" "}
+          <Paragraph className="about-footer">
+            IntelliPath is built by students of the University of Central Punjab as their BSCS Final Year Project, under the supervision of{" "}
             <Text strong>Mr. Muhammad Zulkifl Hasan</Text>.
           </Paragraph>
         </Typography>
