@@ -55,7 +55,7 @@ const AboutMain = () => {
                 }
               >
                 <Title level={4}>Tayyab Ur Rehman</Title>
-                <Paragraph>Reg No: L1F21BSCS0369</Paragraph>
+                <Paragraph><b>Reg No:</b> L1F21BSCS0369</Paragraph>
                 <Tag color="cyan">Backend Development</Tag>
               </Card>
             </Col>

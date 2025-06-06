@@ -217,13 +217,13 @@
 }
 @media screen and (max-width: 992px) {
   .t-t-container {
-    height: calc(100vh - 211px);
+    height: calc(100vh - 300px);
   }
 }
 
 @media screen and (max-width: 576px) {
   .t-t-container {
-    height: calc(100vh - 231px);
+    height: calc(100vh - 300px);
   }
   .t-m-content-message {
     max-width: 250px;

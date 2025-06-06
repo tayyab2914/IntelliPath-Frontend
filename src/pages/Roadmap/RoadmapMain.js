@@ -32,6 +32,7 @@ const RoadmapMain = () => {
     
     const response = await API_GET_ROADMAP(token)
     setRoadmapData(response?.roadmap_data)
+    console.log(response)
     if(response?.roadmap_data?.error)
     {
         message.error("Roadmap Generation Failed! Please try again later.")

@@ -4,6 +4,7 @@ import { FORMAT_TIMESTAMP } from '../../../utils/ReusableFunctionalities';
 import MyIcon from '../../../components/Icon/MyIcon';
 import { useNavigate } from 'react-router-dom';
 import { Tag } from 'antd';
+import { ICONS } from '../../../data/IconData';
 
 const TribeMessage = ({ msg, currentUserID, showRight }) => {
   const navigate = useNavigate();
@@ -17,11 +18,8 @@ const TribeMessage = ({ msg, currentUserID, showRight }) => {
   return (
     <div className={`tribes-message ${msg?.is_main_user ? 't-m-right' : 't-m-left'}`}>
       <div className="t-m-avatar" onClick={profileClickHandler}>
-        {msg.profile_picture ? (
-          <img src={`${DOMAIN_NAME}${msg.profile_picture}`} alt="user" />
-        ) : (
-          <MyIcon type={'user'} style={{ height: '20px' }} />
-        )}
+        
+           <img src={`${DOMAIN_NAME}${msg.profile_picture}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}  />
       </div>
       <div className="t-m-content">
         <p className="t-m-content-member_name">

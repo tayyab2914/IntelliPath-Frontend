@@ -32,7 +32,7 @@ const isBanned = bannedUntil && bannedUntil > new Date();
 
   
   useEffect(() => {
-    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers,user_attributes?.id,dispatch,rerender_tribe_page);
+    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers,user_attributes,dispatch,rerender_tribe_page);
     fetchMessages();
     return () => {
       if (chatSocket) chatSocket.close();

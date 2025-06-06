@@ -5,10 +5,12 @@ import "./../styles/OnlineMembers.css";
 import { DOMAIN_NAME } from "../../../utils/GlobalSettings";
 import { ICONS } from "../../../data/IconData";
 import { useNavigate } from "react-router-dom";
+import useWindowWidth from "../../../hooks/useWindowWidth";
 
 const { Panel } = Collapse;
 
 const OnlineMembersList = ({ OnlineMembers }) => {
+    const windowWidth = useWindowWidth()
     const navigate = useNavigate()
   useEffect(() => {
   }, [OnlineMembers]);
@@ -19,7 +21,7 @@ const OnlineMembersList = ({ OnlineMembers }) => {
   }
   return (
     <Collapse 
-      defaultActiveKey={['1']} 
+      defaultActiveKey={[windowWidth > 992 ?"1":'0']} 
       expandIconPosition="end" 
       className="online-member-collapse" 
       expandIcon={({ isActive }) => ( <MyIcon type="expand_icon" className={`collapse-arrow ${isActive ? 'expanded' : ''}`} /> )}

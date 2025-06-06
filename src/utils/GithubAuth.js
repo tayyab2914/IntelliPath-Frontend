@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI } from "./GlobalSettings";
 
 const GithubAuth = () => {
   const { token } = useSelector((state) => state.authToken);
-  const CLIENT_ID = "Ov23libNcKCi2HnB4ix4";
-  const REDIRECT_URI = `http://localhost:3000/settings/`;
   const SCOPE = "user:email repo"; // Request access to the user's email address
-  const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`;
+  const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${GITHUB_REDIRECT_URI}&scope=${SCOPE}`;
 
   const handleGithubLogin = () => {
     window.location.href = GITHUB_AUTH_URL;

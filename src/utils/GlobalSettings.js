@@ -12,6 +12,9 @@ const GOOGLE_AUTH_URL = process.env.REACT_APP_GOOGLE_AUTH_URL;
 const GOOGLE_AUTH_CLIENT_ID = process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID;
 let REDIRECT_URI = process.env.REACT_APP_GOOGLE_REDIRECT_URI
 
+export const GITHUB_REDIRECT_URI=process.env.REACT_APP_GITHUB_REDIRECT_URI
+export const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID
+
 const GOOGLE_AUTH_SCOPE = [ "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile",  ].join(" ");
 
 
