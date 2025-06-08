@@ -21,6 +21,7 @@ const GithubAuth = () => {
         console.error("Authorization code is missing in the URL.");
         return;
       }
+      
 
       const bodyData = {
         code: code,
