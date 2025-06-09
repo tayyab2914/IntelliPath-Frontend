@@ -148,7 +148,7 @@ export const API_SET_NEW_PASSWORD = async (
     {
       SHOW_API_ERRORS && console.log(error);
     }
-    message.error(error.response?.data?.message || "Failed to reset password");
+    message.error(error.response?.data?.message);
   } finally {
     setShowSpinner(false);
   }

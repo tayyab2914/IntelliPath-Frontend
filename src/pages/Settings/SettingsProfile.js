@@ -13,7 +13,7 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
     if (!isImage) {
       message.error('You can only upload image files!');
     }
-    return isImage || Upload.LIST_IGNORE; // prevent invalid files from triggering `customRequest`
+    return isImage || Upload.LIST_IGNORE; 
   };
 
   const handlePreview = (file) => {
@@ -25,7 +25,6 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
     reader.readAsDataURL(file);
   };
 
-  // Sync preview when `SettingsData.profile_picture` changes
   useEffect(() => {
     if (!SettingsData?.profile_picture) {
       setPreviewImage(null);
@@ -33,7 +32,7 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
       const objectUrl = URL.createObjectURL(SettingsData.profile_picture);
       setPreviewImage(objectUrl);
 
-      return () => URL.revokeObjectURL(objectUrl); // cleanup
+      return () => URL.revokeObjectURL(objectUrl); 
     } else {
       setPreviewImage(`${MEDIA_URL}${SettingsData.profile_picture}`);
     }
@@ -45,9 +44,9 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
       <Divider />
       <div className="profile-image-container">
         {previewImage ? (
-          <img src={previewImage} alt={ICONS.avatar} className="settings-profile-image" />
+          <img src={previewImage} className="settings-profile-image" onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}/>
         ) : (
-          <img src={ICONS.avatar}  className="settings-profile-image" />
+          <img src={ICONS.avatar}  className="settings-profile-image" onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}/>
         )}
 
         <Upload

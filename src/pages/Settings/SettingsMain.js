@@ -59,18 +59,18 @@ const [ShowSpinner, setShowSpinner] = useState(false);
 };
 
 
-  const handleDiscard = () => {
-    fetchSettings();
+  const handleDiscard = () => { 
+    fetchSettings();    
   };
-  return (
-    <>
-      <NavbarMain />
-      {ShowSpinner && <CustomSpinner fullscreen={true}/>}
+  return (  
+    <>  
+      <NavbarMain />    
+      {ShowSpinner && <CustomSpinner fullscreen={true}/>}       
       <div className="generic-container">
         <div className="settings-wrapper">
           <div className="settings-main">
             <TitleMain title="Settings" description="Manage your preferences and update your account details!" />
-            <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} />
+            <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} /> 
             {isLoggedIn && (
               <>
                 <SettingsBasicInfo form={form} setSettingsData={setSettingsData} SettingsData={SettingsData} />

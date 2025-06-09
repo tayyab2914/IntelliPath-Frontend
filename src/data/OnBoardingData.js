@@ -7,11 +7,11 @@ export const ONBOARDING_DATA = [
     Question:
       "Hey there! Let's kick things off—what’s your current education level?",
     Options: [
-      "PhD / Doctorate",
-      "Master’s Degree",
       "High school",
       "Undergraduate",
       "Graduate",
+      "Master’s Degree",
+      "PhD / Doctorate",
       "Self-Taught",
     ],
   },

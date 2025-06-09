@@ -76,7 +76,6 @@ const OnBoardingMain = () => {
           handlePreviousStep={handlePreviousStep}
         />
       )}
-      <Footer />
     </>
   );
 };
