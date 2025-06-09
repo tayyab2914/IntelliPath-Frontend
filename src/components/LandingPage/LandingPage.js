@@ -4,7 +4,6 @@ import "./styles/LandingPage.css";
 import MyButton from "../../components/Button/Button";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import { useNavigate } from "react-router-dom";
-import { IMAGES } from "../../data/ImageData";
 
 const LandingPage = ({imageSrc,whiteText,accentText,description,btnText,onClick}) => {
     const navigate = useNavigate()

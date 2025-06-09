@@ -31,7 +31,7 @@ const NavbarBelowLg = ({version}) => {
     <>
         <div className={version === 'light' ? 'nav-main-light' : 'nav-main-dark'}>
             <MyImage type={'logo'} h={'40px'}  onClick={()=>navigate('/')} />
-            <MyIcon type={'bars'} size='lg' onClick={()=>setShowDrawer(true)}/>
+            <MyIcon type={'bars'} size='lg' onClick={()=>setShowDrawer(true)} style={{cursor:'pointer'}}/>
                 
         </div>
           
@@ -39,7 +39,7 @@ const NavbarBelowLg = ({version}) => {
             <span>
                 <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
                             {/* <img src={ICONS.avatar} alt="" /> */}
-                            <img src={user_attributes?.profile_picture? `${MEDIA_URL}${user_attributes?.profile_picture}`: ICONS.user} alt="" />
+                            <img src={user_attributes?.profile_picture? `${MEDIA_URL}${user_attributes?.profile_picture}`: ICONS.avatar} alt="" />
                             <span>
                                 <p className='navbar-first-name'>{user_attributes?.first_name}</p>
                                 <p className='navbar-email'>{user_attributes?.email}</p>

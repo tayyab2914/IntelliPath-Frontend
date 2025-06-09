@@ -18,24 +18,47 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
   const [socket, setSocket] = useState(null);
   const messagesEndRef = useRef(null);
   const { tribe_id } = useParams();
-  const { token, rerender_tribe_page,user_attributes } = useSelector((state) => state.authToken);
+  const { token, rerender_tribe_page, user_attributes } = useSelector((state) => state.authToken);
   const dispatch = useDispatch();
+  const socketRef = useRef(null);
 
-const bannedUntil = tribeInfo?.banned_upto_time ? new Date(tribeInfo.banned_upto_time) : null;
-const isBanned = bannedUntil && bannedUntil > new Date();
+  const bannedUntil = tribeInfo?.banned_upto_time ? new Date(tribeInfo.banned_upto_time) : null;
+  const isBanned = bannedUntil && bannedUntil > new Date();
 
   const fetchMessages = async () => {
     const response = await API_GET_MESSAGES(token, tribe_id, SelectedThread?.id);
-    const updatedMessages = response?.map(msg => ({ ...msg, is_main_user: msg.user === user_attributes?.id, }));
+    const updatedMessages = response?.map(msg => ({ ...msg, is_main_user: msg.user === user_attributes?.id }));
     setThreadData(updatedMessages);
   };
 
-  
+  const initializeSocket = () => {
+    if (socketRef.current) {
+      socketRef.current.close();
+    }
+    const chatSocket = initializeWebSocket( tribe_id, SelectedThread?.id, token, setThreadData, (socket) => { setSocket(socket); socketRef.current = socket; },  () => { setSocket(null); socketRef.current = null; }, setOnlineMembers, user_attributes, dispatch, rerender_tribe_page );
+    return chatSocket;
+  };
+
   useEffect(() => {
-    const chatSocket = initializeWebSocket(tribe_id, SelectedThread?.id, token, setThreadData, (socket) => setSocket(socket), () => setSocket(null), setOnlineMembers,user_attributes,dispatch,rerender_tribe_page);
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        if (!socket || socket.readyState !== WebSocket.OPEN) {
+          initializeSocket();
+          fetchMessages();
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    initializeSocket();
     fetchMessages();
+
     return () => {
-      if (chatSocket) chatSocket.close();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      if (socketRef.current) {
+        socketRef.current.close();
+      }
     };
   }, [SelectedThread, initializeWebSocket]);
 

@@ -45,6 +45,11 @@
       margin-bottom: 40px;
     }
     .landing-page-img {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .landing-page-img {
       width: 80%;
     }
   }

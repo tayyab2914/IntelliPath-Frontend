@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import FeaturesMain from '../pages/Features/FeaturesMain';
-import HomeMain from '../pages/Home/HomeMain';
 import DashboardMain from '../pages/Dashboard/DashboardMain';
 import ProfileMain from '../pages/Profile/ProfileMain';
 import NotificationsMain from '../pages/Notifications/NotificationsMain';
@@ -23,9 +22,10 @@ import CoursePage from '../pages/Courses/CoursePage';
 import TribesExplore from '../pages/Tribes/TribeNavigation/TribesExplore';
 import TribePage from '../pages/Tribes/TribeChat/TribeChatMain';
 import AssessmentLanding from '../pages/Assessment/AssessmentLanding';
+import HomeMain from '../pages/Home/HomeMain';
 
 const ProjectRoutes = () => {
-    const { token, isLoggedIn } = useSelector((state) => state.authToken);
+    const {  isLoggedIn } = useSelector((state) => state.authToken);
   return (
     <BrowserRouter>
       <Routes>

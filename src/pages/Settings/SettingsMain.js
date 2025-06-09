@@ -8,14 +8,13 @@ import SettingsProfile from "./SettingsProfile";
 import SettingsLinked from "./SettingsLinked";
 import { useDispatch, useSelector } from "react-redux";
 import { API_GET_USER_ATTRIBUTE, API_UPDATE_USER_ATTRIBUTE } from "../../apis/CoreApis";
-import MyButton from "../../components/Button/Button";
 import { setRerenderApp } from "../../redux/AuthToken/Action";
 import { Col, Form, message, Row } from "antd";
 import { DEFAULT_BUTTON_HEIGHT } from "../../utils/GlobalSettings";
 import CustomSpinner from "../../components/Loader/CustomSpinner";
 
 const SettingsMain = () => {
-  const { token, isLoggedIn, user_attributes, rerender_app } = useSelector( (state) => state.authToken );
+  const { token, isLoggedIn, rerender_app } = useSelector( (state) => state.authToken );
   const dispatch = useDispatch();
   const [SettingsData, setSettingsData] = useState({});
   const [form] = Form.useForm(); 
@@ -36,7 +35,7 @@ const [ShowSpinner, setShowSpinner] = useState(false);
 
   const handleSave = async () => {
   try {
-    await form.validateFields(); // ✅ Validate form first
+    await form.validateFields();    
 
     const formData = new FormData();
     Object.keys(SettingsData).forEach((key) => {
@@ -59,8 +58,8 @@ const [ShowSpinner, setShowSpinner] = useState(false);
 };
 
 
-  const handleDiscard = () => { 
-    fetchSettings();    
+  const handleDiscard = () => {     
+    fetchSettings();        
   };
   return (  
     <>  
