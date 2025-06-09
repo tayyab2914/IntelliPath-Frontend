@@ -11,6 +11,7 @@ import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
 import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
 import { ICONS } from '../../data/IconData';
+import { MEDIA_URL } from '../../utils/GlobalSettings';
 
 
 const NavbarBelowLg = ({version}) => {
@@ -37,8 +38,8 @@ const NavbarBelowLg = ({version}) => {
         <Drawer title="Options" placement={'right'} onClose={()=>setShowDrawer(false)} open={ShowDrawer}>
             <span>
                 <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
-                            <img src={ICONS.avatar} alt="" />
-                            {/* <img src={user_attributes?.profile_picture? `${DOMAIN_NAME}${user_attributes?.profile_picture}`: ICONS.user} alt="" /> */}
+                            {/* <img src={ICONS.avatar} alt="" /> */}
+                            <img src={user_attributes?.profile_picture? `${MEDIA_URL}${user_attributes?.profile_picture}`: ICONS.user} alt="" />
                             <span>
                                 <p className='navbar-first-name'>{user_attributes?.first_name}</p>
                                 <p className='navbar-email'>{user_attributes?.email}</p>

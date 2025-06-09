@@ -31,7 +31,7 @@ const LeaderboardMain = () => {
   const [AllData, setAllData] = useState({});
 
 const sortAndSetLeaderboard = (data)=>{
-const user = data?.user_scorecard;
+      const user = data?.user_scorecard;
       const others = (data?.other_users_scorecards || []).filter(
         (item) => item.user_id !== user?.user_id
       );
@@ -45,14 +45,9 @@ const user = data?.user_scorecard;
         total_score: item?.total_score, 
       }));
 
-      const sorted = selectedCategory === "All"
-        ? allUsers.sort((a, b) => b.total_score - a.total_score) 
-        : allUsers.sort((a, b) => b.points - a.points);  
+      const sorted = selectedCategory === "All" ? allUsers.sort((a, b) => b.total_score - a.total_score)  : allUsers.sort((a, b) => b.points - a.points);  
 
-      const final = sorted.map((item, index) => ({
-        ...item,
-        position: index + 1,
-      }));
+      const final = sorted.map((item, index) => ({ ...item, position: index + 1,  }));
 
       const currentUser = final.find((item) => item.user_id === user?.user_id);
       const restUsers = final.filter((item) => item.points > 0);
@@ -88,17 +83,13 @@ const user = data?.user_scorecard;
   return (
     <>
       <NavbarMain />
-      <TitleMain
-        title="Leaderboard"
-        description="Showcasing top achievers and their accomplishments!"
-      />
+      <TitleMain title="Leaderboard" description="Showcasing top achievers and their accomplishments!" />
 
     {ShowSpinner ? 
       <div className="tribe-explore-spinner-wrapper">
         <CustomSpinner/>
       </div>:
       <div className="generic-container">
-        {/* Category Selector */}
         <div className="leaderboard-select">
           <Select  defaultValue={selectedCategory}  onChange={handleSelectChange}  onMouseEnter={() => speakWord(LB__SELECT)}  >
             <Option value="All" onMouseEnter={() => speakWord("All")}>
@@ -109,11 +100,9 @@ const user = data?.user_scorecard;
                 {item}
               </Option>
             ))}
-            {/* Add All Fields option */}
           </Select>
         </div>
 
-        {/* Current User */}
         {isLoggedIn && userScoreCard.length > 0 && (
           <Table
             dataSource={userScoreCard}
@@ -130,12 +119,10 @@ const user = data?.user_scorecard;
           />
         )}
 
-        {/* Leaderboard Title */}
         <p className="leaderboard-title" onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)} >
           Goal : {selectedCategory}
         </p>
 
-        {/* All Other Users */}
         <Table
             dataSource={otherUsersScoreCards}
             columns={columns}

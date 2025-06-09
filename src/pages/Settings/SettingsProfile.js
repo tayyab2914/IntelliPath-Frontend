@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles/Settings.css';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Divider, message, Upload } from 'antd';
-import { DOMAIN_NAME } from '../../utils/GlobalSettings';
+import {  MEDIA_URL } from '../../utils/GlobalSettings';
 import { ICONS } from '../../data/IconData';
 
 const SettingsProfile = ({ setSettingsData, SettingsData }) => {
@@ -35,7 +35,7 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
 
       return () => URL.revokeObjectURL(objectUrl); // cleanup
     } else {
-      setPreviewImage(`${DOMAIN_NAME}${SettingsData.profile_picture}`);
+      setPreviewImage(`${MEDIA_URL}${SettingsData.profile_picture}`);
     }
   }, [SettingsData?.profile_picture]);
 

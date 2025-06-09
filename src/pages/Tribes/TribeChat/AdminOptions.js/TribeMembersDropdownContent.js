@@ -2,7 +2,7 @@ import { Avatar, Divider, Popover } from "antd";
 import React, { useEffect, useState } from "react";
 import { API_GET_TRIBE_MEMBERS } from "../../../../apis/TribeApis";
 import { useSelector } from "react-redux";
-import { DOMAIN_NAME } from "../../../../utils/GlobalSettings";
+import { DOMAIN_NAME, MEDIA_URL } from "../../../../utils/GlobalSettings";
 import { ICONS } from "../../../../data/IconData";
 import MyIcon from "../../../../components/Icon/MyIcon";
 import './../../styles/TribeThread.css'
@@ -43,7 +43,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
           <>
           <div key={member?.id} className="tribe-member-list-item" onClick={()=>memberClickHandler(member?.id)}>
             <Avatar
-              src={member?.profile_photo ? `${DOMAIN_NAME}${member?.profile_photo}` : ICONS.avatar}
+              src={member?.profile_photo ? `${MEDIA_URL}${member?.profile_photo}` : ICONS.avatar}
               size="small"
             />
             <span style={{ marginLeft: "10px" }}>{member?.first_name} {member?.last_name}</span>

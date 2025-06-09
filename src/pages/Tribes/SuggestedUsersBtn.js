@@ -4,7 +4,7 @@ import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 import { useSelector } from "react-redux";
 import { API_GET_SIMILAR_USERS_TRIBE } from "../../apis/LeaderBoardApis";
-import { DOMAIN_NAME } from "../../utils/GlobalSettings";
+import {  MEDIA_URL } from "../../utils/GlobalSettings";
 import { ICONS } from "../../data/IconData";
 import { useNavigate } from "react-router-dom";
 import './styles/SuggestedUsers.css'
@@ -63,7 +63,7 @@ const SuggestedUsersBtn = ({ tribeGoalDomain }) => {
               <List.Item.Meta
                 avatar={
                   <Avatar>
-                          <img src={`${DOMAIN_NAME}${user?.profile_picture_url}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}/>
+                          <img src={`${MEDIA_URL}${user?.profile_picture_url}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}/>
     
                   </Avatar>
                 }

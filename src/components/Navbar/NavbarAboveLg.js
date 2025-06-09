@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import useSpeech from '../../utils/WebSpeech.js/functionalities/useSpeech';
 import { IMAGES } from '../../data/ImageData';
 import { ICONS } from '../../data/IconData';
-import { DOMAIN_NAME } from '../../utils/GlobalSettings';
+import {  MEDIA_URL } from '../../utils/GlobalSettings';
 
 const NavbarAboveLg = ({ version = 'light' }) => {
   const navigate = useNavigate();
@@ -34,8 +34,8 @@ const NavbarAboveLg = ({ version = 'light' }) => {
     return (
       <div >
         <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>
-            {/* <img src={ICONS.avatar} alt="" /> */}
-            <img src={user_attributes?.profile_picture? `${DOMAIN_NAME}${user_attributes?.profile_picture}`: ICONS.avatar} alt="" />
+            <img src={user_attributes?.profile_picture? `${MEDIA_URL}${user_attributes?.profile_picture}`: ICONS.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}/>
+            
             <span>
                 <p className='navbar-first-name'>{user_attributes?.first_name}</p>
                 <p className='navbar-email'>{user_attributes?.email}</p>
@@ -61,7 +61,7 @@ const NavbarAboveLg = ({ version = 'light' }) => {
           <MyImage type={'logo'} h={'55px'} w={'55px'} onClick={()=>navigate('/')} className={'navbar-logo'}/>
           <span>{renderNavItems()}</span>
           <Popover placement="bottomRight" content={<div>{renderDropdownItems()}</div>} trigger="click" visible={popoverVisible} onVisibleChange={setPopoverVisible}>
-          <img src={user_attributes?.profile_picture? `${DOMAIN_NAME}${user_attributes?.profile_picture}`: ICONS.avatar} onClick={handlePopoverClick} className='navbar-avatar' />
+          <img src={user_attributes?.profile_picture? `${MEDIA_URL}${user_attributes?.profile_picture}`: ICONS.avatar} onClick={handlePopoverClick} className='navbar-avatar' onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} />
             {/* <MyIcon type={'avatar'} size='lg' onClick={handlePopoverClick} className='navbar-avatar'/>  */}
           </Popover>
         </Flex>

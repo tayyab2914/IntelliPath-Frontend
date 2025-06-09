@@ -50,7 +50,7 @@ const GithubAuth = () => {
     if (code) {
       fetchEmail();
     }
-  });
+  },[]);
   return (
     <div className="setting-item">
       <span

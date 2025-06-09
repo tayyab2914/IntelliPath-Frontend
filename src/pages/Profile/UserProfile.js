@@ -5,7 +5,7 @@ import MyIcon from "../../components/Icon/MyIcon";
 import { ICONS } from "../../data/IconData";
 import './styles/UserProfile.css';
 import { useNavigate } from "react-router-dom";
-import { DOMAIN_NAME } from "../../utils/GlobalSettings";
+import { MEDIA_URL } from "../../utils/GlobalSettings";
 
 const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
   const [popoverVisible, setPopoverVisible] = useState(false);
@@ -30,7 +30,7 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
       <Col xs={24} className="profile-header">
         <Row>
           <Col xs={20} md={12} className="profile-info">
-            <img src={`${DOMAIN_NAME}${UserInfo?.profile_picture}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="profile-image" />
+            <img src={`${MEDIA_URL}${UserInfo?.profile_picture}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="profile-image" />
     
             <div className="profile-details">
               <p className="profile-name">{UserInfo?.first_name} {UserInfo?.last_name}</p>

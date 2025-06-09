@@ -1,7 +1,5 @@
-import React from "react";
 import MyIcon from "../../components/Icon/MyIcon";
-import MyBadge from "../../components/Badge/MyBadge";
-import { DOMAIN_NAME } from "../../utils/GlobalSettings";
+import {  MEDIA_URL } from "../../utils/GlobalSettings";
 import { ICONS } from "../../data/IconData";
 
 export const leaderboardColumns = (windowWidth) =>
@@ -35,7 +33,7 @@ export const leaderboardColumns = (windowWidth) =>
         </span>
       ),
       width: windowWidth < 850 ? "20%" : "10%",
-      sorter: (a, b) => a.position - b.position, // Sorting by Position
+      sorter: (a, b) => a.position - b.position,
     },
     {
       title: "Learner",
@@ -44,7 +42,7 @@ export const leaderboardColumns = (windowWidth) =>
       render: (_, record) => (
         <span className="leaderboard-name">
           <img
-            src={`${DOMAIN_NAME}${record.profile_picture}` || ICONS?.avatar}
+            src={`${MEDIA_URL}${record.profile_picture}` || ICONS?.avatar}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = ICONS?.avatar;
@@ -55,7 +53,7 @@ export const leaderboardColumns = (windowWidth) =>
         </span>
       ),
       width: "60%",
-      sorter: (a, b) => a.name.localeCompare(b.name), // Sorting by Learner Name
+      sorter: (a, b) => a.name.localeCompare(b.name), 
     },
     {
       title: "Points",
@@ -63,6 +61,6 @@ export const leaderboardColumns = (windowWidth) =>
       key: "points",
       align: "center",
       width: "10%",
-      sorter: (a, b) => a.points - b.points, // Sorting by Points
+      sorter: (a, b) => a.points - b.points,
     },
   ].filter(Boolean);
