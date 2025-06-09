@@ -24,31 +24,34 @@ const SimilarProfiles = ({UserInfo}) => {
     getSimilarUsers()
   },[UserInfo])
   return (
-    <div className="similar-profile-main">
-      <Divider />
-      <p className="profile-title">Similar Profiles</p>
-      <Row gutter={[10, 10]}>
-        {SimilarUsers?.map((user) => (
-          <Col xs={24} sm={12} md={8} lg={6}>
-           <div className="similar-profile-card-container-outer"  onClick={()=>navigate(`/profile/${user?.user_id}`)}>
-           <div className="similar-profile-card-container">
-             <img src={`${DOMAIN_NAME}${user?.profile_picture_url}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="similar-profile-image" />
-              <div className="similar-profile-details">
-                <p className="similar-profile-name">{user?.full_name}</p>
-                <p className="similar-profile-email">{user?.email}</p>
-                {/* <p className="similar-profile-email"></p> */}
-                <Tag color="cyan" style={{marginTop:"5px"}}>{user?.goal_domain}</Tag>
-                <div className="similar-profile-masteries">
-                  {/* {user?.masteries?.map((mastery, key) => ( <MyBadge type={mastery} size="md" key={key} className="similar-profile-mastery-badge" /> ))} */}
-                </div>
-              </div>
-            </div>
-            <MyButton text={"View Profile"} variant="outlined-dark" className={'similar-profile-view-btn'} onClick={()=>navigate(`/profile/${user?.id}`)}/>
-           </div>
-          </Col>
-        ))}
-      </Row>
-    </div>
+    <>
+        {SimilarUsers && <div className="similar-profile-main">
+            <Divider />
+            <p className="profile-title">Similar Profiles</p>
+            <Row gutter={[10, 10]}>
+                {SimilarUsers?.map((user) => (
+                <Col xs={24} sm={12} md={8} lg={6}>
+                    <div className="similar-profile-card-container-outer"  onClick={()=>navigate(`/profile/${user?.user_id}`)}>
+                        <div className="similar-profile-card-container">
+                            <img src={`${DOMAIN_NAME}${user?.profile_picture_url}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="similar-profile-image" />
+                            <div className="similar-profile-details">
+                                <p className="similar-profile-name">{user?.full_name}</p>
+                                <p className="similar-profile-email">{user?.email}</p>
+                                {/* <p className="similar-profile-email"></p> */}
+                                <Tag color="cyan" style={{marginTop:"5px"}}>{user?.goal_domain}</Tag>
+                                <div className="similar-profile-masteries">
+                                {/* {user?.masteries?.map((mastery, key) => ( <MyBadge type={mastery} size="md" key={key} className="similar-profile-mastery-badge" /> ))} */}
+                                </div>
+                            </div>
+                        </div>
+                        <MyButton text={"View Profile"} variant="outlined-dark" className={'similar-profile-view-btn'} onClick={()=>navigate(`/profile/${user?.id}`)}/>
+                    </div>
+                </Col>
+                ))}
+            </Row>
+        </div>
+    }
+    </>
   );
 };
 

@@ -12,6 +12,9 @@
   border-radius: 6;
   padding-top: 10px;
   padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .nav-main-light {
   background-color: var(--color-white);

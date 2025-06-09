@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router";
 import { setLoggedIn } from "../../redux/AuthToken/Action";
 import { IMAGES } from "../../data/ImageData";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
 
 const SignUp = ({ toggleCurrentMode }) => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const SignUp = ({ toggleCurrentMode }) => {
 
   return (
     <div>
-      {ShowSpinner && <Spin fullscreen />}
+      {ShowSpinner && <CustomSpinner fullscreen={true} />}
       <Row gutter={24}>
         <Col xs={24} md={12} className="form-container" data-aos="fade-up">
           {!showVerificationComponent ? (

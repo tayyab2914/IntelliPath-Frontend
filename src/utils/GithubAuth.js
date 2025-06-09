@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI } from "./GlobalSettings";
+import { DOMAIN_NAME, GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI } from "./GlobalSettings";
 
 const GithubAuth = () => {
   const { token } = useSelector((state) => state.authToken);
@@ -28,7 +28,7 @@ const GithubAuth = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:8000/github/auth_callback/",
+        `${DOMAIN_NAME}/github/auth_callback/`,
         bodyData,
         {
           headers: {
@@ -40,8 +40,7 @@ const GithubAuth = () => {
 
     } catch (error) {
       console.error(
-        "Error fetching email:",
-        error.response ? error.response.data : error.message
+        error
       );
     }
   };

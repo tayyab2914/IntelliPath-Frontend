@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { API_GET_THREADS_LIST } from "../../../apis/TribeApis";
 import { useSelector } from "react-redux";
 import { Col, Row, Spin } from "antd";
+import CustomSpinner from "../../../components/Loader/CustomSpinner";
 
 const TribeChatMain = () => {
   const [ShowSpinner, setShowSpinner] = useState(false);
@@ -21,11 +22,7 @@ const TribeChatMain = () => {
 
 
   const fetchThreadList = async () => {
-    const response = await API_GET_THREADS_LIST(
-      token,
-      tribe_id,
-      setShowSpinner
-    );
+    const response = await API_GET_THREADS_LIST( token, tribe_id, setShowSpinner );
     setAvailableThreads(response);
     const firstThread = response.threads[0];
     setSelectedThread(firstThread);
@@ -38,7 +35,7 @@ const TribeChatMain = () => {
   return (
     <div>
       <NavbarMain />
-      {/* {ShowSpinner && <Spin fullscreen />} */}
+      {ShowSpinner && <CustomSpinner fullscreen={true} />}
       <div className="generic-container">
         <div className="tribe-chat-main">
           <Row gutter={[10,10]}>

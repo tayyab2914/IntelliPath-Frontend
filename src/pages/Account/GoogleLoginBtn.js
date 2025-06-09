@@ -6,6 +6,7 @@ import { Spin } from "antd";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { GOOGLE_AUTH_CLIENT_ID, GOOGLE_AUTH_SCOPE, GOOGLE_AUTH_URL, REDIRECT_URI } from "../../utils/GlobalSettings";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
 const onGoogleLoginSuccess = () => {
   const params = {
     response_type: "code",
@@ -41,7 +42,7 @@ const GoogleLoginBtn = () => {
 
   return (
     <>
-      {ShowSpinner && <Spin fullscreen />}
+      {ShowSpinner && <CustomSpinner fullscreen={true} />}
       <GoogleButton
         onClick={onGoogleLoginSuccess}
         label="Sign in with Google"

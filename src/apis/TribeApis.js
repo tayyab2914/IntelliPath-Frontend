@@ -44,6 +44,7 @@ export const API_GET_ALL_TRIBES = async (token, setShowSpinner) => {
   }
 };
 export const API_GET_THREADS_LIST = async (token, tribe_id, setShowSpinner) => {
+    setShowSpinner(true)
   try {
     const response = await axios.get(
       `${DOMAIN_NAME}/tribes/get_threads_list/`,
@@ -67,7 +68,9 @@ export const API_GET_THREADS_LIST = async (token, tribe_id, setShowSpinner) => {
       "Something went wrong. Please try again.";
     message.error(errorMessage);
   } finally {
+    setShowSpinner(false)
   }
+
 };
 export const API_GET_MESSAGES = async (
   token,

@@ -1,0 +1,170 @@
+{
+  "level": [
+    {
+      "quiz": [
+        {
+          "answer": "To test individual components in isolation",
+          "options": [
+            "To verify the entire application functionality",
+            "To test individual components in isolation",
+            "To test integration between components",
+            "To perform performance testing"
+          ],
+          "question": "What is the purpose of unit testing in React?",
+          "is_completed": false
+        },
+        {
+          "answer": "Jest",
+          "options": ["Cypress", "React Testing Library", "Jest", "Mocha"],
+          "question": "Which testing library is commonly used for unit testing React components?",
+          "is_completed": false
+        },
+        {
+          "answer": "Testing the interactions between components",
+          "options": [
+            "Verifying individual components in isolation",
+            "Testing the interactions between components",
+            "Ensuring the entire application functions correctly",
+            "Optimizing performance"
+          ],
+          "question": "What is the primary focus of integration testing in React?",
+          "is_completed": false
+        },
+        {
+          "answer": "Ensuring the entire application flows correctly",
+          "options": [
+            "Testing components in isolation",
+            "Ensuring the entire application flows correctly",
+            "Improving the performance of components",
+            "Verifying integrations between components"
+          ],
+          "question": "What does end-to-end testing aim to achieve?",
+          "is_completed": false
+        },
+        {
+          "answer": "Cypress",
+          "options": ["Jest", "React Testing Library", "Cypress", "Mocha"],
+          "question": "Which of the following is a popular tool for end-to-end testing?",
+          "is_completed": false
+        }
+      ],
+      "quiz_level": "Beginner",
+      "is_completed": false
+    },
+    {
+      "quiz": [
+        {
+          "answer": "Using React Testing Library",
+          "options": [
+            "By directly modifying the DOM",
+            "Using React Testing Library",
+            "By making actual API calls",
+            "Using Jest mocks"
+          ],
+          "question": "How do you simulate user interactions in React unit tests?",
+          "is_completed": false
+        },
+        {
+          "answer": "To handle asynchronous code",
+          "options": [
+            "To handle asynchronous code",
+            "To create new components",
+            "To simulate user interactions",
+            "To update the state of components"
+          ],
+          "question": "What is the purpose of using `act()` in React testing?",
+          "is_completed": false
+        },
+        {
+          "answer": "render",
+          "options": ["render", "renderComponent", "mount", "shallow"],
+          "question": "Which function is used to render a component in React Testing Library?",
+          "is_completed": false
+        },
+        {
+          "answer": "queryByText",
+          "options": [
+            "querySelector",
+            "getByText",
+            "findByText",
+            "queryByText"
+          ],
+          "question": "Which API does React Testing Library use to query elements in the DOM?",
+          "is_completed": false
+        },
+        {
+          "answer": "By testing the rendered output and user interactions",
+          "options": [
+            "By testing implementation details",
+            "By testing the rendered output and user interactions",
+            "By testing the component's internal state",
+            "By testing the virtual DOM"
+          ],
+          "question": "How does React Testing Library encourage testing a component?",
+          "is_completed": false
+        }
+      ],
+      "quiz_level": "Intermediate",
+      "is_completed": false
+    },
+    {
+      "quiz": [
+        {
+          "answer": "All of the above",
+          "options": [
+            "Supports parallel test execution",
+            "Interacts with the DOM seamlessly",
+            "Enables snapshot testing and mocking",
+            "All of the above"
+          ],
+          "question": "What is the primary benefit of using Jest as a testing framework?",
+          "is_completed": false
+        },
+        {
+          "answer": "Using jest.mock()",
+          "options": [
+            "Using jest.fn()",
+            "Using jest.mock()",
+            "Using jest.spyOn()",
+            "Using jest.stub()"
+          ],
+          "question": "How can you mock a module in Jest?",
+          "is_completed": false
+        },
+        {
+          "answer": "To capture the component's output and compare it to a saved version",
+          "options": [
+            "To capture the component's output and compare it to a saved version",
+            "To track the performance of tests over time",
+            "To run tests in a headless browser",
+            "To generate test reports automatically"
+          ],
+          "question": "What is the purpose of snapshot testing in Jest?",
+          "is_completed": false
+        },
+        {
+          "answer": "All of the above",
+          "options": [
+            "Use `async` and `await`",
+            "Use `then` and `catch`",
+            "Use `done` callback",
+            "All of the above"
+          ],
+          "question": "How do you handle async code in Jest?",
+          "is_completed": false
+        },
+        {
+          "answer": "All of the above",
+          "options": ["Jest CLI", "Coveralls", "Istanbul", "All of the above"],
+          "question": "Which tool can be used to generate a code coverage report in Jest?",
+          "is_completed": false
+        }
+      ],
+      "quiz_level": "Advanced",
+      "is_completed": false
+    }
+  ],
+  "quiz_topic": "React Testing",
+  "is_completed": false,
+  "roadmap_module": "Testing"
+}

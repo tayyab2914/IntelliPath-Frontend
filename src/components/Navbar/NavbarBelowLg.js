@@ -28,12 +28,12 @@ const NavbarBelowLg = ({version}) => {
       },[user_attributes])
   return (
     <>
-        <Flex gap="middle" align="center">
-            <Flex className={version === 'light' ? 'nav-main-light' : 'nav-main-dark'} justify={'space-between'} align={'center'}>
-                <MyImage type={'logo'} h={'55px'}  onClick={()=>navigate('/')}/>
-                <MyIcon type={'bars'} size='lg' onClick={()=>setShowDrawer(true)}/>
-            </Flex>
-        </Flex>
+        <div className={version === 'light' ? 'nav-main-light' : 'nav-main-dark'}>
+            <MyImage type={'logo'} h={'40px'}  onClick={()=>navigate('/')} />
+            <MyIcon type={'bars'} size='lg' onClick={()=>setShowDrawer(true)}/>
+                
+        </div>
+          
         <Drawer title="Options" placement={'right'} onClose={()=>setShowDrawer(false)} open={ShowDrawer}>
             <span>
                 <div className='navbar-profile-info' onClick={()=>navigate('/profile')}>

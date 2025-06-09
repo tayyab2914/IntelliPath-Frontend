@@ -35,7 +35,7 @@ const NavbarMain = ({ version = 'light' }) => {
     },[rerender_app])
 
   return (
-    <div className={`${version == 'dark' && 'bg-deep-dark'} navbar`}>
+    <div className={`${version == 'dark' && 'bg-deep-dark'}`}>
         <div className='generic-container'>
             {windowWidth > 992 && <NavbarAboveLg version={version} />}
             {windowWidth <= 992 && <NavbarBelowLg version={version} />}

@@ -76,6 +76,7 @@ const TribesExplore = () => {
             <div className="tribe-row-empty">
                 <Empty description="No Tribes to Show."/>
             </div>}
+            
           </Row>}
           <Pagination current={currentPage} pageSize={pageSize} total={filteredTribes.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} style={{ marginTop: 20 }}/>
         </div>
