@@ -35,8 +35,8 @@
 
 .setting-label {
   color: var(--color-muted);
-  margin: 8px 0px;
-  margin-right: 10px;
+  /* margin: 8px 0px; */
+  /* margin-right: 10px; */
   font-size: 16px;
 }
 .setting-input {

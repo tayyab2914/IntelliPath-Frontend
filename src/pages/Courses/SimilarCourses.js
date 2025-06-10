@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './styles/SimilarCourses.css'
 import { Col, Divider, Rate, Row, Tag } from 'antd'
-import { COURSE_DATA } from '../../data/CoursesData';
 import MyButton from '../../components/Button/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { API_RECOMMEND_COURSES } from '../../apis/CourseApis';
@@ -10,7 +9,7 @@ import AutoTextCropper from '../../components/AutoTextCropper/AutoTextCropper';
 import { IMAGES } from '../../data/ImageData';
 import { ICONS } from '../../data/IconData';
 const SimilarCourses = ({course_name}) => {
-    const [CourseData, setCoursesData] = useState(COURSE_DATA.slice(0,4));
+    const [CourseData, setCoursesData] = useState([]);
     const navigate = useNavigate()
       const location = useLocation();
     const { token } = useSelector((state) => state.authToken);

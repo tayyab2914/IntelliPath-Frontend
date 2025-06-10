@@ -69,13 +69,20 @@ const [ShowSpinner, setShowSpinner] = useState(false);
         <div className="settings-wrapper">
           <div className="settings-main">
             <TitleMain title="Settings" description="Manage your preferences and update your account details!" />
-            <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} /> 
+            
             {isLoggedIn && (
               <>
-                <SettingsBasicInfo form={form} setSettingsData={setSettingsData} SettingsData={SettingsData} />
-
-                <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} fetchSettings={fetchSettings} />
+              <Row>
+                <Col xs={24} md={12}>
+                  <SettingsBasicInfo form={form} setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                </Col>
+                <Col xs={24} md={12}>
+                  <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} /> 
+                  <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                  <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} fetchSettings={fetchSettings} />
+                </Col>
+              </Row>
+                
 
                 <div id="settings-buttons">
                   <Row style={{width:"100%"}} gutter={[10,10]}>

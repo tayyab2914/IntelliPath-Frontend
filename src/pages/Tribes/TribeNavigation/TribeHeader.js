@@ -1,9 +1,7 @@
 
 
-import { Col, Modal, Popconfirm, Row, Tag } from 'antd'
+import { Col, Row } from 'antd'
 import React, { useState } from 'react'
-import MyIcon from '../../../components/Icon/MyIcon'
-import { ROADMAP_DATA } from '../../../data/RoadmapData'
 import MyButton from '../../../components/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import { PlusOutlined   } from "@ant-design/icons";

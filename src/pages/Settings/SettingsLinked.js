@@ -11,13 +11,11 @@ const SettingsLinked = ({ setSettingsData, SettingsData, fetchSettings }) => {
 
   return (
     <div>
-      <p className="settings-heading">Linked</p>
+      <p className="settings-heading">Github</p>
       <Divider />
       <Row className="setting-linked-row">
-        <Col xs={5} sm={3} lg={2}>
-          <p className="setting-label">GitHub</p>
-        </Col>
-        <Col xs={19} sm={21} lg={22}>
+
+        <Col xs={24}>
           {SettingsData?.github ? (
             <span className="settings-github-link">
               <Badge  count={  <CloseOutlined onClick={handleUnlink} style={{ backgroundColor: "#f5222d", color: "white", cursor: "pointer", fontSize: "10px", padding: "3px", borderRadius: "50%", }} />  }  >

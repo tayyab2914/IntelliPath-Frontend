@@ -10,7 +10,6 @@ import ManualMain from '../pages/Manual/ManualMain';
 import SettingsMain from '../pages/Settings/SettingsMain';
 import AccountMain from '../pages/Account/AccountMain';
 import CoursesMain from '../pages/Courses/CoursesMain';
-import GamificationMain from '../pages/Gamification/GamificationMain';
 import OnBoardingMain from '../pages/OnBoarding/OnBoardingMain';
 import VocalAssistanceMain from '../pages/VocalAssistance/VocalAssistanceMain';
 import AboutMain from '../pages/About/AboutMain';
@@ -29,7 +28,7 @@ const ProjectRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomeMain />} />
+        <Route path="/" element={<HomeMain />} />   
         <Route path="/dashboard" element={<DashboardMain />} />
         <Route path="/account" element={<AccountMain />} />
         <Route path="/courses" element={isLoggedIn ? <CoursesMain />: <AccountMain/>} />
@@ -38,7 +37,6 @@ const ProjectRoutes = () => {
         <Route path="/quiz" element={isLoggedIn ? <QuizMain />: <AccountMain/>} />
         <Route path="/github-integration" element={<GithubMain />} />
         <Route path="/tribes" element={isLoggedIn ? <TribesMain />: <AccountMain/>} /> 
-        <Route path="/gamification" element={<GamificationMain />} />
         <Route path="/onboarding" element={isLoggedIn ? <OnBoardingMain />: <AccountMain/>} />
         <Route path="/vocal-assistance" element={isLoggedIn ?<VocalAssistanceMain />: <AccountMain/>} />
         <Route path="/notifications" element={<NotificationsMain />} />

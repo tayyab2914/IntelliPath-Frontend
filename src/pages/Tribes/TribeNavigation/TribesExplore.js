@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import TribeHeader from "./TribeHeader";
-import { TRIBE_EXPLORE_DATA } from "../../../data/TribesData";
-import { Col, Row, Select, Pagination, Spin, Empty } from "antd";
+import { Row, Select, Pagination, Empty } from "antd";
 import TribeCard from "./TribeCard";
 import "../styles/TribeExplore.css";
 import { AVAILABLE_GOALS } from "../../../utils/GlobalSettings";
 import { GET_PAGINATION_DETAILS } from "../../../utils/ReusableFunctionalities";
-import { API_GET_ALL_TRIBES, API_GET_JOINED_TRIBES } from "../../../apis/TribeApis";
+import { API_GET_ALL_TRIBES } from "../../../apis/TribeApis";
 import { useSelector } from "react-redux";
 import NavbarMain from "../../../components/Navbar/NavbarMain";
 import Footer from "../../../components/Footer/Footer";

@@ -6,7 +6,6 @@ import Footer from "../../components/Footer/Footer";
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import UserProfile from "./UserProfile";
 import SimilarProfiles from "./SimilarProfiles";
-import { SINGLE_USER_DATA } from "../../data/ProfileData";
 import { useSelector } from "react-redux";
 import { API_GET_USER_ATTRIBUTE } from "../../apis/CoreApis";
 import { API_GET_USER_INFO } from "../../apis/LeaderBoardApis";

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Tag, Pagination, Rate } from "antd";
 import MyButton from "../../components/Button/Button";
-import { COURSE_DATA } from "../../data/CoursesData";
 import { useNavigate } from "react-router-dom";
 import './styles/RecommendedCourses.css'
 import { GET_PAGINATION_DETAILS } from "../../utils/ReusableFunctionalities";
-import { EXTRACT_COURSES_FROM_RESPONSE } from "./CoursesFunctionality";
 import { IMAGES } from "../../data/ImageData";
 import AutoTextCropper from "../../components/AutoTextCropper/AutoTextCropper";
 import { ICONS } from "../../data/IconData";
 
 const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
-  const [Courses, setCourses] = useState(CoursesData);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const pageSize = 16;
-  const [displayedCourses, setdisplayedCourses] = useState([]);
+  const [displayedCourses, setDisplayedCourses] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -24,7 +21,7 @@ const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
   useEffect(() => {
     if (CoursesData?.length > 0) {
       const pagination_details = GET_PAGINATION_DETAILS(currentPage, pageSize, CoursesData);
-      setdisplayedCourses(pagination_details);
+      setDisplayedCourses(pagination_details);
     }
   }, [currentPage, CoursesData]);
   

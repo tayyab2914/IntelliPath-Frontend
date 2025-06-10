@@ -1,11 +1,9 @@
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import React, { useEffect, useState } from "react";
-import { Collapse, Card, Typography, Row, Col, List } from "antd";
+import { Card, Typography, Row, Col, List } from "antd";
 import { MANUAL_FEATURES } from "../../data/ManualData";
 import TitleMain from "../../components/Title/TitleMain";
 import "./styles/Manual.css";
-
-const { Panel } = Collapse;
 
 const ManualMain = () => {
   const [selectedFeature, setSelectedFeature] = useState(MANUAL_FEATURES[0]);
