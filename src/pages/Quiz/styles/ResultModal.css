@@ -19,6 +19,14 @@
     overflow-y: auto;
     scrollbar-width: none;
 }
+.result-score{
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .result-main{
     display: flex;
     align-items: center;

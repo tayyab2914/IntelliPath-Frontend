@@ -35,6 +35,9 @@ const ResultModal = ({ visible, onClose, onProceed, quizData, result,answers }) 
          <ResultDetailsModal answers={answers} quizData={quizData} result={result} isVisible={showResult} onClose={()=>setShowResult(false)}/>
  
       </div>
+        <div className="result-score">
+            <span>{result?.correct_answers * 5} Points Earned!</span>
+        </div>
     </Modal>
   );
 };

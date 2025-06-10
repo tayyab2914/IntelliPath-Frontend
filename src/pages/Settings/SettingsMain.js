@@ -75,7 +75,7 @@ const [ShowSpinner, setShowSpinner] = useState(false);
                 <SettingsBasicInfo form={form} setSettingsData={setSettingsData} SettingsData={SettingsData} />
 
                 <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} fetchSettings={fetchSettings} />
 
                 <div id="settings-buttons">
                   <Row style={{width:"100%"}} gutter={[10,10]}>

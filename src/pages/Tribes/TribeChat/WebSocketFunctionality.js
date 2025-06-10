@@ -1,8 +1,8 @@
 import { message } from "antd";
-import { setRerenderTribePage } from "../../../redux/AuthToken/Action";
+import { refetchTribeMembers, setRerenderTribePage } from "../../../redux/AuthToken/Action";
 import { WEB_SOCKET_DOMAIN_NAME } from "../../../utils/GlobalSettings";
 
-export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose,setOnlineMembers,user_attributes,dispatch,rerender_tribe_page) => {
+export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, onOpen, onClose,setOnlineMembers,user_attributes,dispatch,rerender_tribe_page,refetch_tribe_members) => {
     const socketUrl = `${WEB_SOCKET_DOMAIN_NAME}/ws/tribe/${tribe_id}/thread/${thread_id}/?token=${token}`;
   
     const chatSocket = new WebSocket(socketUrl);
@@ -24,6 +24,7 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
       if (data.type === 'message') {
         if(data?.is_banned )
         {
+            dispatch(refetchTribeMembers(!refetch_tribe_members))
             if(user_attributes?.email == data?.user)
              {
                 message.error("You are currently banned from this tribe due to messaging against community guidelines.");

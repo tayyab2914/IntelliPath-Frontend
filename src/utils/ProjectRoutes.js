@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import FeaturesMain from '../pages/Features/FeaturesMain';
 import DashboardMain from '../pages/Dashboard/DashboardMain';
 import ProfileMain from '../pages/Profile/ProfileMain';
@@ -25,7 +25,7 @@ import AssessmentLanding from '../pages/Assessment/AssessmentLanding';
 import HomeMain from '../pages/Home/HomeMain';
 
 const ProjectRoutes = () => {
-    const {  isLoggedIn } = useSelector((state) => state.authToken);
+    const { isLoggedIn } = useSelector((state) => state.authToken);
   return (
     <BrowserRouter>
       <Routes>
@@ -52,7 +52,6 @@ const ProjectRoutes = () => {
         <Route path="/course/:course_id" element={<CoursePage />} />
         <Route path="/tribes/:tribe_id" element={isLoggedIn ? <TribePage />: <AccountMain/>} />
         <Route path="/tribes/explore" element={isLoggedIn ? <TribesExplore />: <AccountMain/>} />
-
       </Routes>
     </BrowserRouter>
   );

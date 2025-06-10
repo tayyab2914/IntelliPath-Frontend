@@ -1,6 +1,6 @@
 // src/redux/actions.js
 
-import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN, RERENDER_TRIBE_PAGE, SET_BLIND_MODE, SET_USER_ATTRIBUTES, RERENDER_APP } from "./Types";
+import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN, RERENDER_TRIBE_PAGE, SET_BLIND_MODE, SET_USER_ATTRIBUTES, RERENDER_APP, REFETCH_TRIBE_MEMBERS } from "./Types";
 
 export const setAuthToken = (token) => {
   return {
@@ -8,7 +8,12 @@ export const setAuthToken = (token) => {
     payload: token,
   };
 };
-
+export const refetchTribeMembers = (refetch_tribe_members) => {
+  return {
+    type: REFETCH_TRIBE_MEMBERS,
+    payload: refetch_tribe_members,
+  };
+};
 export const removeAuthToken = () => {
   return {
     type: REMOVE_AUTH_TOKEN,

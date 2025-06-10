@@ -4,7 +4,7 @@ import { Col, Divider, Row, Badge } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import GithubAuth from "../../utils/GithubAuth";
 
-const SettingsLinked = ({ setSettingsData, SettingsData }) => {
+const SettingsLinked = ({ setSettingsData, SettingsData, fetchSettings }) => {
   const handleUnlink = () => {
     setSettingsData({ ...SettingsData, github: "" });
   };
@@ -26,7 +26,7 @@ const SettingsLinked = ({ setSettingsData, SettingsData }) => {
 
             </span>
           ) : (
-            <GithubAuth />
+            <GithubAuth fetchSettings={fetchSettings} />
           )}
         </Col>
       </Row>

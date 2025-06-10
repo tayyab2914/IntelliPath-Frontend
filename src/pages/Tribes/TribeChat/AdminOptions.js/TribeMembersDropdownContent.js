@@ -1,4 +1,4 @@
-import { Avatar, Divider, Popover } from "antd";
+import { Avatar, Divider, Popover, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { API_GET_TRIBE_MEMBERS } from "../../../../apis/TribeApis";
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import './../../styles/TribeThread.css'
 import { useNavigate } from "react-router-dom";
 
 const TribeMembersDropdownContent = ({ tribeId }) => {
-  const { token } = useSelector((state) => state.authToken);
+  const { token, refetch_tribe_members } = useSelector((state) => state.authToken);
   const [tribeMembers, setTribeMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
@@ -19,6 +19,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
     try {
       const response = await API_GET_TRIBE_MEMBERS(token, tribeId);
       setTribeMembers(response.members || []);
+      console.log(response.members)
     } catch (err) {
       console.error("Failed to fetch tribe members", err);
     } finally {
@@ -28,7 +29,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
 
   useEffect(() => {
     getTribeMembers();
-  }, [tribeId]);
+  }, [tribeId, refetch_tribe_members]);
 
 
   const memberClickHandler = (member_id)=>{
@@ -47,7 +48,7 @@ const TribeMembersDropdownContent = ({ tribeId }) => {
               size="small"
             />
             <span style={{ marginLeft: "10px" }}>{member?.first_name} {member?.last_name}</span>
-            
+            {member?.is_banned && <Tag color="red" style={{fontSize:"8px",marginLeft:"5px"}}>Banned</Tag>}
           </div>
           </>
         ))}

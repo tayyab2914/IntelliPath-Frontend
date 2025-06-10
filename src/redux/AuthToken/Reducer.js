@@ -1,13 +1,14 @@
 // src/redux/reducer.js
 
-import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN, RERENDER_TRIBE_PAGE, SET_BLIND_MODE, SET_USER_ATTRIBUTES, RERENDER_APP } from "./Types";
+import { SET_AUTH_TOKEN, REMOVE_AUTH_TOKEN, SET_LOGGED_IN, RERENDER_TRIBE_PAGE, SET_BLIND_MODE, SET_USER_ATTRIBUTES, RERENDER_APP, REFETCH_TRIBE_MEMBERS } from "./Types";
 
 const initialState = {
   token: null,
   isLoggedIn: false,
   blind_mode: false,
   user_attributes:{},
-  rerender_app:false
+  rerender_app:false,
+  refetch_tribe_members:false
 };
 
 export default function authReducer(state = initialState, action) {
@@ -21,7 +22,13 @@ export default function authReducer(state = initialState, action) {
       ...state,
       token: null,
     };
-  } else if (action.type == SET_LOGGED_IN) {
+  } else if (action.type == REFETCH_TRIBE_MEMBERS) {
+    return {
+      ...state,
+      refetch_tribe_members: action.payload,
+    }
+  }
+  else if (action.type == SET_LOGGED_IN) {
     return {
       ...state,
       isLoggedIn: action.payload,

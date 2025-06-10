@@ -13,6 +13,7 @@ const OnlineMembersList = ({ OnlineMembers }) => {
     const windowWidth = useWindowWidth()
     const navigate = useNavigate()
   useEffect(() => {
+    console.log(OnlineMembers)
   }, [OnlineMembers]);
 
 
