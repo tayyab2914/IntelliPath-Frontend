@@ -4,7 +4,7 @@ import "./styles/Features.css";
 import MyButton from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import useWindowWidth from "../../hooks/useWindowWidth";
-import { IMAGES } from "../../data/ImageData";
+
 
 const Feature = ({data,}) => {
     const {textWhite,textAccent,description,image,path,orientation} = data

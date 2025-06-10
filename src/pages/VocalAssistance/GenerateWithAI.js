@@ -6,12 +6,15 @@ import { API_GENERATE_ON_DEMAND_CONTENT } from "../../apis/ContentGenApis";
 import { useSelector } from "react-redux";
 import useSpeech from "../../utils/WebSpeech.js/functionalities/useSpeech";
 import CustomSpinner from "../../components/Loader/CustomSpinner";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
   const { token } = useSelector((state) => state.authToken);
   const { speakWord } = useSpeech({ isInSpeechMode: true });
   const [text, setText] = useState("");
-  const [AIResponse, setAIResponse] = useState("");
+  const [AIResponse, setAIResponse] = useState(``);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const handleTextChange = (e) => {
@@ -55,7 +58,9 @@ const cleanText = (text) => {
       {!loading && AIResponse && (
         <div className="vocal-assistance-response">
           <Divider />
-          <p>{AIResponse}</p>
+          {/* <p>{AIResponse}</p> */}
+          
+    <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{AIResponse}</Markdown>
         </div>
       )}
       <Input

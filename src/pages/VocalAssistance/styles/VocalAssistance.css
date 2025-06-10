@@ -15,6 +15,9 @@
     align-items: center;
 justify-content: center;
 }
+.vocal-assistance-response{
+word-wrap: break-word;
+}
 .generate-with-ai-btn img{
     margin-right: 10px;
 }
