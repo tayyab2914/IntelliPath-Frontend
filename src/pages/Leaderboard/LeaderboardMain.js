@@ -41,8 +41,13 @@ const LeaderboardMain = () => {
           <CustomSpinner />
         </div>
       ) : (
-        <div className="generic-container">
+        <div className="generic-container" style={{display: "flex", justifyContent: "center"}}>
+            <div className="leaderboard-main">
           <div className="leaderboard-select">
+            
+          <p className="leaderboard-title" onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)}>
+            Goal : {selectedCategory}
+          </p>
             <Select defaultValue={selectedCategory} onChange={handleSelectChange} onMouseEnter={() => speakWord(LB__SELECT)} >
               <Option value="All" onMouseEnter={() => speakWord("All")}>
                 All
@@ -65,9 +70,6 @@ const LeaderboardMain = () => {
             />
           )}
 
-          <p className="leaderboard-title" onMouseEnter={() => speakWord(`Goal : ${selectedCategory}`)}>
-            Goal : {selectedCategory}
-          </p>
 
           <LeaderboardTable
             dataSource={otherUsersScoreCards}
@@ -83,8 +85,9 @@ const LeaderboardMain = () => {
               },
               position: ["bottomRight"],
             }}
-            className="leaderboard-table"
-          />
+              className="leaderboard-table"
+            />
+          </div>
         </div>
       )}
 
