@@ -1,0 +1,77 @@
+.gamification-title {
+  text-align: start;
+  color: var(--color-accent);
+  font-size: 24px;
+  margin: 0px;
+  font-weight: 600;
+}
+.gamification-description {
+    text-align: start;
+  color: var(--color-muted);
+  font-size: 12px;
+  margin: 0px;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+.gamification-col{
+    margin-bottom: 10px;
+}
+.gamification-badge-col {
+  text-align: center;
+}
+.gamification-badge-name {
+  text-align: center;
+  color: var(--color-dark);
+  font-size: 14px;
+  margin: 0px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.gamification-badge-description {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 10px;
+  margin: 0px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 0px) {
+  .gamification-badge-image {
+    height: 60px;
+    margin-top: 10px;
+  }
+  .gamification-badge-name {
+    font-size: 12px;
+  }
+  .gamification-badge-description {
+    font-size: 8px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+    .gamification-badge-image {
+      height: 100px;
+    }
+    .gamification-badge-name {
+      font-size: 14px;
+    }
+    .gamification-badge-description {
+      font-size: 10px;
+    }
+  }
+  
+
+  @media screen and (min-width: 1200px) {
+    .gamification-badge-image {
+      height: 100px;
+      margin-top: 0px;
+    }
+    .gamification-badge-name {
+      font-size: 16px;
+    }
+    .gamification-badge-description {
+      font-size: 12px;
+    }
+  }
+  
