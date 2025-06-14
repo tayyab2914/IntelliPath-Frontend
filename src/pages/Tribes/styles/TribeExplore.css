@@ -22,3 +22,16 @@
     font-weight: 600;
     color: var(--color-accent);
 }
+.tribe-explore-spinner-wrapper{
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tribe-row-empty{
+    height: 250px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

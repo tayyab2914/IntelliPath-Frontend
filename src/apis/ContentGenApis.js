@@ -1,6 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
-import { DOMAIN_NAME } from "../utils/GlobalSettings";
+import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 
 
 export const API_GENERATE_ON_DEMAND_CONTENT = async (token,query) => {
@@ -18,7 +18,7 @@ export const API_GENERATE_ON_DEMAND_CONTENT = async (token,query) => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+        {SHOW_API_ERRORS && console.log(error);}
 
     // message.error(error.response?.data?.message);
     return false;

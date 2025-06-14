@@ -21,8 +21,8 @@ const SettingsAccessibility = ({ setSettingsData, SettingsData }) => {
 
   return (
     <div>
-      <p className="settings-heading">Accessibility</p>
-      <Divider />
+    <p className="settings-heading">Accessibility</p>
+    <Divider />
       <div className="setting-item">
         <Switch checked={currentBlindMode} onChange={handleBlindModeChange} className="blind-mode-switch"/>
         <span className="setting-label">Blind Mode</span>

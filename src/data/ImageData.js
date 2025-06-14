@@ -20,10 +20,16 @@ import TitleImage from '../assets/images/title.svg';
 import TribesImage from '../assets/images/tribes.svg';
 import TribesWBGImage from '../assets/images/tribes_wbg.svg';
 import course_placeholder from '../assets/images/course_placeholder.svg';
+import muhaman from '../assets/images/muhaman.jpeg';
+import tayyab from '../assets/images/tayyab.jpeg';
+import abdullah from '../assets/images/abdullah.jpeg';
 
 // Exporting images in an object
 export const IMAGES = {
     authentication: AuthenticationImage,
+    abdullah: abdullah,
+    muhaman: muhaman,
+    tayyab: tayyab,
     course_placeholder: course_placeholder,
     blindMode: BlindModeImage,
     courseRecommendation: CourseRecommendationImage,

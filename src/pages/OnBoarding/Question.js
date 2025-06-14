@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+
 import { Tag } from "antd";
-import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 
 const Question = ({ data, selectedGoal, onSelect, questionNum,handlePreviousStep }) => {

@@ -8,20 +8,24 @@ import SettingsProfile from "./SettingsProfile";
 import SettingsLinked from "./SettingsLinked";
 import { useDispatch, useSelector } from "react-redux";
 import { API_GET_USER_ATTRIBUTE, API_UPDATE_USER_ATTRIBUTE } from "../../apis/CoreApis";
-import MyButton from "../../components/Button/Button";
 import { setRerenderApp } from "../../redux/AuthToken/Action";
-import { Col, message, Row } from "antd";
+import { Col, Form, message, Row } from "antd";
 import { DEFAULT_BUTTON_HEIGHT } from "../../utils/GlobalSettings";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
 
 const SettingsMain = () => {
-  const { token, isLoggedIn, user_attributes, rerender_app } = useSelector( (state) => state.authToken );
+  const { token, isLoggedIn, rerender_app } = useSelector( (state) => state.authToken );
   const dispatch = useDispatch();
   const [SettingsData, setSettingsData] = useState({});
+  const [form] = Form.useForm(); 
+const [ShowSpinner, setShowSpinner] = useState(false);
 
   const fetchSettings = async () => {
+    setShowSpinner(true)
     const response = await API_GET_USER_ATTRIBUTE(token);
     setSettingsData(response);
     dispatch(setRerenderApp(!rerender_app));
+    setShowSpinner(false)
   };
 
   useEffect(() => {
@@ -30,9 +34,12 @@ const SettingsMain = () => {
   }, []);
 
   const handleSave = async () => {
+  try {
+    await form.validateFields();    
+
     const formData = new FormData();
     Object.keys(SettingsData).forEach((key) => {
-      let value = SettingsData[key] ?? "0";
+      let value = SettingsData[key] ?? "";
 
       if (key === "profile_picture" && value instanceof File) {
         formData.append(key, value);
@@ -45,24 +52,37 @@ const SettingsMain = () => {
 
     await API_UPDATE_USER_ATTRIBUTE(token, formData, null);
     fetchSettings();
-  };
+  } catch (error) {
+    message.error("Please fix validation errors before saving.");
+  }
+};
 
-  const handleDiscard = () => {
-    fetchSettings();
+
+  const handleDiscard = () => {     
+    fetchSettings();        
   };
-  return (
-    <>
-      <NavbarMain />
+  return (  
+    <>  
+      <NavbarMain />    
+      {ShowSpinner && <CustomSpinner fullscreen={true}/>}       
       <div className="generic-container">
         <div className="settings-wrapper">
           <div className="settings-main">
             <TitleMain title="Settings" description="Manage your preferences and update your account details!" />
-            <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} />
+            
             {isLoggedIn && (
               <>
-                <SettingsBasicInfo setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
-                <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} />
+              <Row>
+                <Col xs={24} md={12}>
+                  <SettingsBasicInfo form={form} setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                </Col>
+                <Col xs={24} md={12}>
+                  <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} /> 
+                  <SettingsProfile setSettingsData={setSettingsData} SettingsData={SettingsData} />
+                  <SettingsLinked setSettingsData={setSettingsData} SettingsData={SettingsData} fetchSettings={fetchSettings} />
+                </Col>
+              </Row>
+                
 
                 <div id="settings-buttons">
                   <Row style={{width:"100%"}} gutter={[10,10]}>

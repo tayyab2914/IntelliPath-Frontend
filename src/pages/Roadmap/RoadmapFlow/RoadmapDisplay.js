@@ -62,9 +62,10 @@ const RoadmapDisplay = ({ RoadmapData,regenerateRoadmapHandler,deleteRoadmapHand
                                     onNodesChange={onNodesChange}
                                     onEdgesChange={onEdgesChange}
                                     onConnect={onConnect}
-                                    zoomOnScroll={false}
-                                    zoomOnPinch={false}
+                                    zoomOnScroll={true}
+                                    zoomOnPinch={true}
                                     fitView
+                                    nodesDraggable={false}      
                                 />
                             </div>
                         </Col>

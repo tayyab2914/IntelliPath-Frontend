@@ -7,6 +7,7 @@ import useQuizLogic from "./useQuizLogic";
 const QuizMain = () => {
   const quizProps = useQuizLogic();
 
+  
   return (
     <div>
       <NavbarMain />

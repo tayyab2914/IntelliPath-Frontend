@@ -4,7 +4,7 @@ import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 import { useSelector } from "react-redux";
 import { API_GET_SIMILAR_USERS_TRIBE } from "../../apis/LeaderBoardApis";
-import { DOMAIN_NAME } from "../../utils/GlobalSettings";
+import {  MEDIA_URL } from "../../utils/GlobalSettings";
 import { ICONS } from "../../data/IconData";
 import { useNavigate } from "react-router-dom";
 import './styles/SuggestedUsers.css'
@@ -21,9 +21,11 @@ const SuggestedUsersBtn = ({ tribeGoalDomain }) => {
       const response = await API_GET_SIMILAR_USERS_TRIBE(
         token,
         user_attributes?.id,
-        tribeGoalDomain
+        tribeGoalDomain,
+        true //is_tribe
       );
       setSuggestedUsers(response?.similar_users || []);
+      console.log(response)
     } catch (error) {
       console.error("Error fetching suggested users:", error);
     } finally {
@@ -38,7 +40,7 @@ const SuggestedUsersBtn = ({ tribeGoalDomain }) => {
   }, [visible]);
 
   const popoverContent = (
-    <div style={{ maxHeight: "300px", overflowY: "auto", minWidth: "250px" }}>
+    <div style={{ maxHeight: "300px", overflowY: "auto", minWidth: "300px" }}>
       {loading ? (
         <div className="text-center">
           <Spin />
@@ -51,28 +53,25 @@ const SuggestedUsersBtn = ({ tribeGoalDomain }) => {
           dataSource={suggestedUsers}
           renderItem={(user) => (
             <List.Item
-              key={user.user_id}
+              key={user?.user_id}
               onClick={() => {
                 setVisible(false);
-                navigate(`/profile/${user.user_id}`);
+                navigate(`/profile/${user?.user_id}`);
               }}
               style={{ cursor: "pointer" }}
             >
               <List.Item.Meta
                 avatar={
-                  <Avatar
-                    src={
-                      user?.profile_picture_url
-                        ? `${DOMAIN_NAME}${user.profile_picture_url}`
-                        : ICONS.avatar
-                    }
-                    size="small"
-                  />
+                  <Avatar>
+                          <img src={`${MEDIA_URL}${user?.profile_picture_url}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}/>
+    
+                  </Avatar>
                 }
-                title={user.full_name}
+                title={user?.full_name}
                 description={<div>
-                    <div>{user.email}</div>
-                    <Tag color="cyan" style={{marginTop:"5px"}}>{user.goal_domain}</Tag>
+                    <div>{user?.email}</div>
+                    <Tag color="cyan" style={{marginTop:"5px"}}>{user?.goal_domain}</Tag>
+                    <Tag color="green" style={{marginTop:"5px"}}>Engagement Score : {user?.engagement_score}</Tag>
                 </div>}
               />
             </List.Item>

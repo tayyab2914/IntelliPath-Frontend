@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <div className='generic-container'>
         <div className='hero-main '>
-            <img src={IMAGES.newEraOfLearning} className='hero-new-era-img blink-1'/>
+            <img src={IMAGES.newEraOfLearning} className='hero-new-era-img'/>
             <p className='hero-new-era-text tracking-in-expand'>PERSONALIZED LEARNING <br />FOR SUCCESS</p>
             <div className=' tracking-in-expand'><MyButton text={'Explore Features'}  variant='outlined' w='200px' onClick={()=>navigate('/features')}/></div>
             <img src={IMAGES.empoweringLearners} className='hero-empowering-img'/>

@@ -14,7 +14,7 @@ const TribesMain = () => {
     const navigate = useNavigate()
     const [ShowSpinner, setShowSpinner] = useState(false);
     const { token, rerender_tribe_page} = useSelector((state) => state.authToken);
-    const [HasAlreadyJoinedTribes, setAlreadyHasJoinedTribes] = useState(false);
+    const [HasAlreadyJoinedTribes, setAlreadyHasJoinedTribes] = useState(true);
 
     const fetchJoinedTribes = async()=>{
         const response = await API_GET_JOINED_TRIBES(token,setShowSpinner)
@@ -31,7 +31,7 @@ const TribesMain = () => {
     });
   return (
     <div>
-    {ShowSpinner && <Spin fullscreen/>}
+    {/* {ShowSpinner && <Spin fullscreen/>} */}
       <NavbarMain/>
       <div className="generic-container">
         <div className="tribes-main">

@@ -21,9 +21,8 @@ const OnBoardingMain = () => {
   const [ShowQuestionnaire, setShowQuestionnaire] = useState(true);
   const [ShowSpinner, setShowSpinner] = useState(false);
   const navigate = useNavigate()
-  const { token, blind_mode, isLoggedIn, user_attributes, rerender_app } =
-    useSelector((state) => state.authToken);
-console.log(user_attributes)
+  const { token, blind_mode, isLoggedIn, user_attributes, rerender_app } = useSelector((state) => state.authToken);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
@@ -52,6 +51,10 @@ console.log(user_attributes)
     }
   };
   useEffect(() => {
+    if(user_attributes?.is_roadmap_generated)
+    {
+        navigate('/roadmap')
+    }
     verifyCompletion();
   }, [UserSelections]);
 
@@ -73,7 +76,6 @@ console.log(user_attributes)
           handlePreviousStep={handlePreviousStep}
         />
       )}
-      <Footer />
     </>
   );
 };

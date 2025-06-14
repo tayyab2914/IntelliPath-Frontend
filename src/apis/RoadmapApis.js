@@ -1,17 +1,21 @@
 import axios from "axios";
 import { message } from "antd";
-import { DOMAIN_NAME } from "../utils/GlobalSettings";
+import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
 
-export const API_GENERATE_ROADMAP = async (token,UserSelections,is_regenerate,setShowSpinner) => {
+export const API_GENERATE_ROADMAP = async (
+  token,
+  UserSelections,
+  is_regenerate,
+  setShowSpinner
+) => {
   setShowSpinner(true);
   let OnboardingData = {};
   if (is_regenerate) {
     OnboardingData = {
-        is_regenerate: is_regenerate
-     }
-  }
-  else{
-      OnboardingData = {
+      is_regenerate: is_regenerate,
+    };
+  } else {
+    OnboardingData = {
       education: UserSelections[0],
       goal_domain: UserSelections[1],
       goal_skill: UserSelections[2],
@@ -42,15 +46,16 @@ export const API_GENERATE_ROADMAP = async (token,UserSelections,is_regenerate,se
     return response.data;
   } catch (error) {
     message.error(error.response?.data?.message);
-    console.log(error.response);
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     return null;
   } finally {
     setShowSpinner(false);
   }
 };
 
-export const API_GET_ROADMAP = async (token) => {
-  // setShowSpinner(true);
+export const API_GET_ROADMAP = async (token, setShowSpinner) => {
   try {
     const response = await axios.get(`${DOMAIN_NAME}/roadmap/get_roadmap/`, {
       headers: {
@@ -60,12 +65,12 @@ export const API_GET_ROADMAP = async (token) => {
 
     return response.data;
   } catch (error) {
-    console.log(error);
-    // message.error(error.response?.data?.message);
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
+   
     return false;
-  } finally {
-    //   setShowSpinner(false);
-  }
+  } 
 };
 
 export const API_DELETE_ROADMAP = async (token, setShowSpinner, navigate) => {
@@ -74,7 +79,7 @@ export const API_DELETE_ROADMAP = async (token, setShowSpinner, navigate) => {
   try {
     const response = await axios.post(
       `${DOMAIN_NAME}/roadmap/delete_roadmap/`,
-      {}, // Empty object since it's a POST request with no body
+      {}, 
       {
         headers: {
           Authorization: `${token}`,
@@ -86,7 +91,9 @@ export const API_DELETE_ROADMAP = async (token, setShowSpinner, navigate) => {
     navigate("/onboarding");
     return response.data;
   } catch (error) {
-    console.error("Error deleting roadmap:", error);
+    {
+      SHOW_API_ERRORS && console.log(error);
+    }
     message.error(
       error.response?.data?.error ||
         "Failed to delete roadmap. Please try again."

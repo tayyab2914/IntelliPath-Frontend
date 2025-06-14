@@ -19,12 +19,29 @@
     overflow-y: auto;
     scrollbar-width: none;
 }
+.result-score{
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .result-main{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 30px;
     margin-bottom: 20px;
+}
+.option-item.correct {
+  background-color: #d4eded; /* Green background */
+  color: #22968e; /* Dark green text */
+}
+
+.option-item.incorrect {
+  background-color: #f8d7da; /* Red background */
+  color: #721c24; /* Dark red text */
 }
 
 @media screen and (max-width:568px){

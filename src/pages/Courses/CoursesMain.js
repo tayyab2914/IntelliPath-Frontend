@@ -65,7 +65,9 @@ const CoursesMain = () => {
             size="medium"
             onSearch={onSearch}
             className="courses-seach-bar"
-          />
+            maxLength={25}
+            />
+
           {windowWidth <= 568 && <p className="courses-current-tech">Showing results for : {CAPITALIZE_STRING(CourseName)}</p>}
         </div>
         <RecommendedCourses CoursesData={CoursesData} CurrentQueryName={CourseName}/>

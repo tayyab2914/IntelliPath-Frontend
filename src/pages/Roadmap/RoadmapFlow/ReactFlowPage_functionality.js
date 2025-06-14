@@ -60,7 +60,7 @@ const GLOBAL_SETTINGS_MOBILE = {
     minorNodeWidth: 100, // Width of each minor node
     minorNodeHeight: 50, // Height of each minor node
     maxRowWidth: 800, // Maximum width before shifting nodes to the next line
-    leftMargin: 20, // Margin from the left edge
+    leftMargin: 0, // Margin from the left edge
     rightMargin: 100, // Margin from the right edge
     rowHeight: 100, // Height of each row
     minorRowHeight: 50, // Height of each row for minor nodes
@@ -87,12 +87,10 @@ export const GET_STROKE_COLOR = (roadmapData, category)=>{
 export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
 
     if (!roadmapData || typeof roadmapData !== "object") {
-        console.error("Invalid roadmapData:", roadmapData);
         return { nodes: [], edges: [] };
     }
 
     if (!roadmapData.roadmap || typeof roadmapData.roadmap !== "object") {
-        console.error("Invalid roadmap structure:", roadmapData.roadmap);
         return { nodes: [], edges: [] };
     }
 
@@ -115,10 +113,10 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
         } else {
             majorX = prevMajorNode.x;
             // majorY = prevMajorNode.y + GLOBAL_SETTINGS.rowHeight;
-            majorY = prevMajorNode.y + 210;
+            majorY = prevMajorNode.y ;
         }
 
-        prevMajorNode = { x: majorX, y: majorY };
+        prevMajorNode = { x: majorX, y: majorY + Object.entries(roadmapData.roadmap[category]).length * 70 };
         majorNodePositions[majorNodeId] = prevMajorNode;
         
         GET_BORDER_COLOR(roadmapData,category)
@@ -145,7 +143,7 @@ export const generateNodesAndEdges = (roadmapData, onNodeClick) => {
                     ...GLOBAL_SETTINGS.edgeStyle,
                     stroke: GET_STROKE_COLOR(roadmapData, category),
                 },
-                type: 'step',
+                // type: 'step',
             });
         }
 

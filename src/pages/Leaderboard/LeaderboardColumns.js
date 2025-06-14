@@ -1,7 +1,5 @@
-import React from "react";
 import MyIcon from "../../components/Icon/MyIcon";
-import MyBadge from "../../components/Badge/MyBadge";
-import { DOMAIN_NAME } from "../../utils/GlobalSettings";
+import {  MEDIA_URL } from "../../utils/GlobalSettings";
 import { ICONS } from "../../data/IconData";
 
 export const leaderboardColumns = (windowWidth) =>
@@ -35,6 +33,7 @@ export const leaderboardColumns = (windowWidth) =>
         </span>
       ),
       width: windowWidth < 850 ? "20%" : "10%",
+      sorter: (a, b) => a.position - b.position,
     },
     {
       title: "Learner",
@@ -42,26 +41,26 @@ export const leaderboardColumns = (windowWidth) =>
       key: "name",
       render: (_, record) => (
         <span className="leaderboard-name">
-            <img src={`${DOMAIN_NAME}${record.profile_picture}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }} className="leaderboard-avatar"/>
-       
+          <img
+            src={`${MEDIA_URL}${record.profile_picture}` || ICONS?.avatar}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = ICONS?.avatar;
+            }}
+            className="leaderboard-avatar"
+          />
           {record.name}
         </span>
       ),
       width: "60%",
+      sorter: (a, b) => a.name.localeCompare(b.name), 
     },
-    // windowWidth > 500 && {
-    //   title: "Masteries",
-    //   dataIndex: "masteries",
-    //   key: "masteries",
-    //   render: (masteries) =>
-    //     masteries?.map((item) => <MyBadge key={item} type={item} />),
-    //   width: windowWidth < 850 ? "20%" : "10%",
-    // },
     {
       title: "Points",
       dataIndex: "points",
       key: "points",
       align: "center",
       width: "10%",
+      sorter: (a, b) => a.points - b.points,
     },
   ].filter(Boolean);

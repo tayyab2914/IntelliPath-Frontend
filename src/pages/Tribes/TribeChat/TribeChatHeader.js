@@ -44,7 +44,6 @@ const TribeChatHeader = ({
         >
           {threads?.map((thread) => (
             <Option key={thread.id} value={thread.id}>
-              {" "}
               {thread.name}{" "}
             </Option>
           ))}

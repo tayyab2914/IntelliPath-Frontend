@@ -2,15 +2,18 @@ import React, { useEffect } from "react";
 import { Collapse, Avatar, List } from "antd";
 import MyIcon from "../../../components/Icon/MyIcon";
 import "./../styles/OnlineMembers.css";
-import { DOMAIN_NAME } from "../../../utils/GlobalSettings";
+import {  MEDIA_URL } from "../../../utils/GlobalSettings";
 import { ICONS } from "../../../data/IconData";
 import { useNavigate } from "react-router-dom";
+import useWindowWidth from "../../../hooks/useWindowWidth";
 
 const { Panel } = Collapse;
 
 const OnlineMembersList = ({ OnlineMembers }) => {
+    const windowWidth = useWindowWidth()
     const navigate = useNavigate()
   useEffect(() => {
+    console.log(OnlineMembers)
   }, [OnlineMembers]);
 
 
@@ -19,7 +22,7 @@ const OnlineMembersList = ({ OnlineMembers }) => {
   }
   return (
     <Collapse 
-      defaultActiveKey={['1']} 
+      defaultActiveKey={[windowWidth > 992 ?"1":'0']} 
       expandIconPosition="end" 
       className="online-member-collapse" 
       expandIcon={({ isActive }) => ( <MyIcon type="expand_icon" className={`collapse-arrow ${isActive ? 'expanded' : ''}`} /> )}
@@ -41,7 +44,7 @@ const OnlineMembersList = ({ OnlineMembers }) => {
             <List.Item className="online-member-item" onClick={()=>memberClickHandler(OnlineMembers?.ids?.[index] )}>
               <List.Item.Meta
                 avatar={
-                  <Avatar  src={ OnlineMembers?.profile_pictures?.[index]  ? `${DOMAIN_NAME}${OnlineMembers.profile_pictures[index]}`  : ICONS.avatar }  />
+                  <Avatar  src={ OnlineMembers?.profile_pictures?.[index] ? `${MEDIA_URL}${OnlineMembers.profile_pictures[index]}`  : ICONS.avatar }  />
                 }
                 title={<span className="email">{OnlineMembers?.names?.[index]}</span>}
               />

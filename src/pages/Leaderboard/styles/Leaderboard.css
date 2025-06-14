@@ -12,6 +12,15 @@
   padding: 10px !important;
   cursor: pointer;
 }
+.leaderboard-main {
+  max-width: 1200px;
+  width: 100%;
+  background-color: white;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.074));
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 /* styles/Leaderboard.css */
 .leaderboard-table .ant-table-row:nth-child(odd) {
   background-color: #f9f9f9; /* Light gray background for odd rows */
@@ -42,6 +51,9 @@
 .leaderboard-select {
   margin-bottom: 20px;
   text-align: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .leaderboard-select .ant-select-selector {
   width: 250px !important;

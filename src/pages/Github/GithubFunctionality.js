@@ -1,5 +1,4 @@
 export const isEligibleForGithubRepo = (user_attributes) => {
-    console.log(user_attributes);
   
     const githubBasedSkills = [
       "Ember",

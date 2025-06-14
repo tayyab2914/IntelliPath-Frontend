@@ -45,7 +45,7 @@ const NewThreadModal = ({ visible, onClose }) => {
       >
         <Form form={form} layout="vertical">
           <Form.Item name="name" label="Thread Title" rules={[{ required: true, message: 'Please enter a title for the thread!' }]}>
-            <Input placeholder="Enter thread title" />
+            <Input placeholder="Enter thread title" maxLength={50} />
           </Form.Item>
 
           <Form.Item name="description" label="Description" rules={DESCRIPTION_RULES_REQUIRED}>

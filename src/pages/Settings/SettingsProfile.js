@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles/Settings.css';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Divider, message, Upload } from 'antd';
-import { DOMAIN_NAME } from '../../utils/GlobalSettings';
+import {  MEDIA_URL } from '../../utils/GlobalSettings';
+import { ICONS } from '../../data/IconData';
 
 const SettingsProfile = ({ setSettingsData, SettingsData }) => {
   const [previewImage, setPreviewImage] = useState(null);
@@ -12,31 +13,41 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
     if (!isImage) {
       message.error('You can only upload image files!');
     }
-    return isImage;
+    return isImage || Upload.LIST_IGNORE; // prevent invalid files from triggering `customRequest`
   };
 
   const handlePreview = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setPreviewImage(reader.result); // Show instant preview
-      setSettingsData({ ...SettingsData, profile_picture: file }); // Update state with the new file
+      setPreviewImage(reader.result);
+      setSettingsData({ ...SettingsData, profile_picture: file });
     };
     reader.readAsDataURL(file);
   };
 
-  const profileImageUrl = previewImage || (SettingsData?.profile_picture instanceof File 
-    ? URL.createObjectURL(SettingsData?.profile_picture) 
-    : `${DOMAIN_NAME}${SettingsData?.profile_picture}`);
+  // Sync preview when `SettingsData.profile_picture` changes
+  useEffect(() => {
+    if (!SettingsData?.profile_picture) {
+      setPreviewImage(null);
+    } else if (SettingsData.profile_picture instanceof File) {
+      const objectUrl = URL.createObjectURL(SettingsData.profile_picture);
+      setPreviewImage(objectUrl);
+
+      return () => URL.revokeObjectURL(objectUrl); // cleanup
+    } else {
+      setPreviewImage(`${MEDIA_URL}${SettingsData.profile_picture}`);
+    }
+  }, [SettingsData?.profile_picture]);
 
   return (
     <div>
       <p className='settings-heading'>Profile</p>
       <Divider />
       <div className="profile-image-container">
-        {profileImageUrl ? (
-          <img src={profileImageUrl} alt="Profile" className="settings-profile-image" />
+        {previewImage ? (
+          <img src={previewImage} alt={ICONS.avatar} className="settings-profile-image" />
         ) : (
-          <span className="setting-label">Display Image</span>
+          <img src={ICONS.avatar}  className="settings-profile-image" />
         )}
 
         <Upload
@@ -45,7 +56,7 @@ const SettingsProfile = ({ setSettingsData, SettingsData }) => {
           beforeUpload={beforeUpload}
           customRequest={({ file, onSuccess }) => {
             handlePreview(file);
-            onSuccess(); 
+            onSuccess(); // instantly trigger success (no server)
           }}
         >
           <Button icon={<UploadOutlined />}>Click to Upload</Button>

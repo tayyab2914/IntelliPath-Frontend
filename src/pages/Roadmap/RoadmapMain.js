@@ -29,8 +29,10 @@ const RoadmapMain = () => {
   });
 
   const getRoadmap = async()=>{
+    
     const response = await API_GET_ROADMAP(token)
     setRoadmapData(response?.roadmap_data)
+    console.log(response)
     if(response?.roadmap_data?.error)
     {
         message.error("Roadmap Generation Failed! Please try again later.")
@@ -48,7 +50,6 @@ const RoadmapMain = () => {
   const regenerateRoadmapHandler = async() => {
     await API_GENERATE_ROADMAP(token, null, true, setShowSpinner);
     API_RECOMMEND_COURSES(token)
-    message.success("Roadmap Regenerated Successfully!");
     getRoadmap()
 };
 const deleteRoadmapHandler = async()=>{

@@ -19,11 +19,9 @@ const EditTribeModal = ({ visible, onClose }) => {
   const [TribeInfo, setTribeInfo] = useState(null);
 
   const fetchTribeDetails = async () => {
-    setShowSpinner(true);
-    const response = await API_GET_JOINED_TRIBES(token);
+    const response = await API_GET_JOINED_TRIBES(token,setShowSpinner);
     const tribe = response.find((tribe) => tribe.id == tribe_id);
     setTribeInfo(tribe);
-    setShowSpinner(false);
   };
 
   useEffect(() => {
@@ -57,7 +55,7 @@ const EditTribeModal = ({ visible, onClose }) => {
 
   return (
     <>
-      {ShowSpinner && <Spin fullscreen />}
+      {/* {ShowSpinner && <Spin fullscreen />} */}
       <Modal
         title="Edit Tribe"
         visible={visible}

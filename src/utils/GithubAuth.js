@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 import axios from "axios";
+import {
+  DOMAIN_NAME,
+  GITHUB_CLIENT_ID,
+  GITHUB_REDIRECT_URI,
+} from "./GlobalSettings";
 
-const GithubAuth = () => {
+const GithubAuth = ({ fetchSettings }) => {
   const { token } = useSelector((state) => state.authToken);
-  const CLIENT_ID = "Ov23libNcKCi2HnB4ix4";
-  const REDIRECT_URI = `http://localhost:3000/settings/`;
   const SCOPE = "user:email repo"; // Request access to the user's email address
-  const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`;
+  const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${GITHUB_REDIRECT_URI}&scope=${SCOPE}`;
 
   const handleGithubLogin = () => {
     window.location.href = GITHUB_AUTH_URL;
@@ -22,27 +25,24 @@ const GithubAuth = () => {
         console.error("Authorization code is missing in the URL.");
         return;
       }
-
-      const bodyData = {
-        code: code,
-      };
-
       const response = await axios.post(
-        "http://localhost:8000/github/auth_callback/",
-        bodyData,
+        `${DOMAIN_NAME}/github/auth_callback/`,
+        {
+            code: code,
+          },
         {
           headers: {
-            "Content-Type": "application/json", 
-            Authorization: token, 
+            "Content-Type": "application/json",
+            Authorization: token,
           },
         }
       );
-
+      fetchSettings();
     } catch (error) {
-      console.error(
-        "Error fetching email:",
-        error.response ? error.response.data : error.message
-      );
+      console.error(error);
+    }
+    finally{
+        window.history.replaceState({}, "", window.location.pathname);
     }
   };
 
@@ -51,7 +51,7 @@ const GithubAuth = () => {
     if (code) {
       fetchEmail();
     }
-  });
+  }, []);
   return (
     <div className="setting-item">
       <span
@@ -64,7 +64,7 @@ const GithubAuth = () => {
           cursor: "pointer",
         }}
       >
-        Login with Github
+        Connect Github
       </span>
     </div>
   );

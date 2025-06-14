@@ -1,8 +1,6 @@
 import "./styles/Quiz.css";
-import { QUIZ_DATA } from "../../data/QuizData";
-import { CheckCircleOutlined,LoadingOutlined,LockOutlined, TaobaoOutlined   } from "@ant-design/icons";
+import { CheckCircleOutlined,LoadingOutlined,LockOutlined } from "@ant-design/icons";
 import { message, Tag } from "antd";
-import { useEffect } from "react";
 import './styles/Quiz.css'
 export const GetTags = ({ level }) => {
   return (

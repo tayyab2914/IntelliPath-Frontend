@@ -13,14 +13,12 @@ export const FORMAT_TIMESTAMP = (timestamp) => {
     const minutes = date.getMinutes();
     const ampm = hours >= 12 ? "PM" : "AM";
   
-    // Convert 24-hour format to 12-hour format
     const formattedHours = hours % 12 || 12;
     const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
   
-    // Format date as day/month/year
     const day = date.getDate();
-    const month = date.getMonth() + 1; // Months are zero-based
-    const year = date.getFullYear().toString().slice(-2); // Get last two digits of the year
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear().toString().slice(-2);
   
     return `${formattedHours}:${formattedMinutes} ${ampm} ${day}/${month}/${year}`;
   };

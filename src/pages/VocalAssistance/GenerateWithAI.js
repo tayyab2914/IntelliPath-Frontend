@@ -1,26 +1,22 @@
 import { Divider, Input } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MyButton from "../../components/Button/Button";
 import MyIcon from "../../components/Icon/MyIcon";
 import { API_GENERATE_ON_DEMAND_CONTENT } from "../../apis/ContentGenApis";
 import { useSelector } from "react-redux";
 import useSpeech from "../../utils/WebSpeech.js/functionalities/useSpeech";
 import CustomSpinner from "../../components/Loader/CustomSpinner";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
-  // Redux token
   const { token } = useSelector((state) => state.authToken);
-
-  // Hooks
   const { speakWord } = useSpeech({ isInSpeechMode: true });
-
-  // State
   const [text, setText] = useState("");
-  const [AIResponse, setAIResponse] = useState("");
+  const [AIResponse, setAIResponse] = useState(``);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // Handlers
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
@@ -40,9 +36,11 @@ const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
     }
   };
 
-  const cleanText = (text) => {
-    return text.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").trim();
-  };
+const cleanText = (text) => {
+  return text.replace(/[^\w\s.]/g, "").replace(/\s+/g, " ").trim(); // Keep the period (.)
+};
+
+
   const speakHandler = () => {
     if (AIResponse) speakWord(cleanText(AIResponse));
   };
@@ -55,15 +53,14 @@ const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
         </span>
       </p>
       {loading && (
-        // <span style={{ display: "flex" }}>
-        //   <span className="chat-loader"></span>
-        // </span>
         <CustomSpinner />
       )}
       {!loading && AIResponse && (
         <div className="vocal-assistance-response">
           <Divider />
-          <p>{AIResponse}</p>
+          {/* <p>{AIResponse}</p> */}
+          
+    <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{AIResponse}</Markdown>
         </div>
       )}
       <Input
@@ -71,7 +68,6 @@ const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
         className="vocal-assistance-text-input"
         value={text}
         onChange={handleTextChange}
-        //   suffix={<MyIcon type="shineAccent" className="suggested-user-icon" />}
         addonAfter={
           <button
             className="inline-generate-btn"
@@ -104,13 +100,6 @@ const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
           style={{ marginBottom: "5px" }}
         />
 
-        {/* <MyButton
-          text={loading ? "Generating..." : "Generate"}
-          variant="outlined-dark"
-          onClick={generateHandler}
-          className="vocal-assistance-ai-button"
-          disabled={loading}
-        /> */}
       </div>
     </div>
   );
