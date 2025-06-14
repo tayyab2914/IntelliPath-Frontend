@@ -70,7 +70,7 @@ const [ShowSpinner, setShowSpinner] = useState(false);
           <div className="settings-main">
             <TitleMain title="Settings" description="Manage your preferences and update your account details!" />
             
-            {isLoggedIn && (
+            {isLoggedIn ? (
               <>
               <Row>
                 <Col xs={24} md={12}>
@@ -95,7 +95,11 @@ const [ShowSpinner, setShowSpinner] = useState(false);
                   </Row>
                 </div>
               </>
-            )}
+            ):<Row>
+                <Col xs={24} md={12}>
+                  <SettingsAccessibility setSettingsData={setSettingsData} SettingsData={SettingsData} /> 
+                </Col>
+              </Row>}
           </div>
         </div>
       </div>

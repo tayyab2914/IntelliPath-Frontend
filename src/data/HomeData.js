@@ -12,7 +12,7 @@ export const INNOVATIVE_TOOLS_DATA = [
     icon: "feature_quiz",
     description:
       "Receive real-time feedback on quizzes to refine your skills as you learn.",
-  }, 
+  },
   {
     name: "Github Integration",
     path: "/github-integration",
