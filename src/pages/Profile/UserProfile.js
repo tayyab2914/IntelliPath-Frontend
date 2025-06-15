@@ -54,10 +54,10 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
       <Col xs={24} lg={12}  className="user-profile-career-goals">
         <Card title="🎯 Career Goal" >
           <Descriptions column={1} layout="horizontal">
-            <Descriptions.Item label="Domain">{UserInfo?.goal_domain || " "}</Descriptions.Item>
-            <Descriptions.Item label="Skill">{UserInfo?.goal_skill || " "}</Descriptions.Item>
-            <Descriptions.Item label="Completion Time">{UserInfo?.goal_completion_time || " "}</Descriptions.Item>
-            <Descriptions.Item label="Weekly Hours">{UserInfo?.time_dedication_per_week || " "}</Descriptions.Item>
+            <Descriptions.Item label="Domain">{UserInfo?.goal_domain || "-"}</Descriptions.Item>
+            <Descriptions.Item label="Skill">{UserInfo?.goal_skill || "-"}</Descriptions.Item>
+            <Descriptions.Item label="Completion Time">{UserInfo?.goal_completion_time || "-"}</Descriptions.Item>
+            <Descriptions.Item label="Weekly Hours">{UserInfo?.time_dedication_per_week || "-"}</Descriptions.Item>
           </Descriptions>
         </Card>
       </Col>
@@ -67,20 +67,23 @@ const UserProfile = ({ UserInfo, isUsersOwnProfile}) => {
         <Card title="📊 Stats" >
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={8}>
-              <Statistic title="Current Level" value={UserInfo?.current_skill_level || " "} />
+              <Statistic title="Current Level" value={UserInfo?.current_skill_level || "-"} />
             </Col>
             <Col xs={24} sm={8}>
-              <Statistic title="Age" value={UserInfo?.age || " "} />
+              <Statistic title="Age" value={UserInfo?.age || "-"} />
             </Col>
             <Col xs={24} sm={8}>
-              <Statistic title="Education" value={UserInfo?.education || " "} />
+              <Statistic title="Education" value={UserInfo?.education || "-"} />
             </Col>
-          {UserInfo?.linkedin && (
+            {UserInfo?.linkedin ? (
               <Col xs={24} sm={8} onClick={() => { window.open( `https://www.linkedin.com/in/${UserInfo.linkedin}`, "_blank" ); }} >
-                <Statistic title="LinkedIn" value={UserInfo?.linkedin || "N/A"} style={{ cursor: "pointer", }} />
+                <Statistic title="LinkedIn" value={UserInfo.linkedin} style={{ cursor: "pointer" }} />
+              </Col>
+            ) : (
+              <Col xs={24} sm={8}>
+                <Statistic title="LinkedIn" value="-" />
               </Col>
             )}
-
           </Row>
         </Card>
       </Col>
