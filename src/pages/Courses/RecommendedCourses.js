@@ -7,6 +7,7 @@ import { GET_PAGINATION_DETAILS } from "../../utils/ReusableFunctionalities";
 import { IMAGES } from "../../data/ImageData";
 import AutoTextCropper from "../../components/AutoTextCropper/AutoTextCropper";
 import { ICONS } from "../../data/IconData";
+import CustomSpinner from "../../components/Loader/CustomSpinner";
 
 const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +29,7 @@ const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
 
   return  <>
   <Row gutter={[15, 15]} className="recommended-courses-container">
-    {displayedCourses?.map((course, index) => (
+    {displayedCourses?.length > 0 ? displayedCourses?.map((course, index) => (
       <Col xs={24} sm={12} md={8} lg={6} key={index} onClick={()=>navigate(`/course/${course.id}?current-query-name=${CurrentQueryName}`)}>
         <div className="recommended-course-container">
           <div className="recommended-courses-data">
@@ -52,7 +53,9 @@ const RecommendedCourses = ({ CoursesData,CurrentQueryName }) => {
           <MyButton text={"View Course"} variant="outlined-dark" onClick={()=>navigate(`/course/${course.id}`)} className="recommended-courses-button" />
         </div>
       </Col>
-    ))}
+    )) : <div className="recommended-courses-empty">
+      <CustomSpinner/>
+    </div>}
   </Row>
   
   <Pagination current={currentPage} pageSize={pageSize} total={CoursesData?.length} onChange={(page)=>setCurrentPage(page)} showSizeChanger={false} className="recommended-courses-pagination"/>

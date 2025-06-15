@@ -14,6 +14,13 @@
       
     filter: var(--drop-shadow);
   }
+  .recommended-courses-empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
   .recommended-courses-container {
     margin-bottom: 20px;
   }

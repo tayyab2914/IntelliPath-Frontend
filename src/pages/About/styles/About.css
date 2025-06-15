@@ -2,7 +2,9 @@
   min-height: 100vh;
   background-color: #f9f9f9;
 }
-
+.about-navbar{
+    background-color: #ffffff;
+}
 .about-content {
   padding: 40px 20px;
   max-width: 1200px;
