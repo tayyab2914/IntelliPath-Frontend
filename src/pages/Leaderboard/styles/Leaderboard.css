@@ -49,7 +49,7 @@
   color: var(--color-dark) !important;
 }
 .leaderboard-select {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   text-align: end;
   display: flex;
   justify-content: space-between;

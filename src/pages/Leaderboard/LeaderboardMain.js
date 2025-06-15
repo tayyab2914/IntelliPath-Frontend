@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select } from "antd";
+import { Select, Input } from "antd";
 import NavbarMain from "../../components/Navbar/NavbarMain";
 import TitleMain from "../../components/Title/TitleMain";
 import Footer from "../../components/Footer/Footer";
@@ -24,12 +24,25 @@ const LeaderboardMain = () => {
   const columns = leaderboardColumns(windowWidth);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchText, setSearchText] = useState("");
 
   const { isLoading, userScoreCard, otherUsersScoreCards, selectedCategory, setSelectedCategory, } = useLeaderboard(token);
 
   const handleSelectChange = (value) => {
     setSelectedCategory(value);
   };
+
+  const handleSearch = (value) => {
+    setSearchText(value);
+  };
+
+  const filteredUserScoreCard = userScoreCard.filter(user => 
+    user.name?.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const filteredOtherUsersScoreCards = otherUsersScoreCards.filter(user => 
+    user.name?.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <>
@@ -59,10 +72,18 @@ const LeaderboardMain = () => {
               ))}
             </Select>
           </div>
-
-          {isLoggedIn && userScoreCard.length > 0 && (
+              <div className="leaderboard-search">
+                <Input.Search
+                  placeholder="Search by name..."
+                  allowClear
+                  onSearch={handleSearch}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  style={{ width: "100%", marginBottom: 16 }}
+                />
+              </div>
+          {isLoggedIn && filteredUserScoreCard.length > 0 && (
             <LeaderboardTable
-              dataSource={userScoreCard}
+              dataSource={filteredUserScoreCard}
               columns={columns}
               pagination={false}
               className="leaderboard-table-single"
@@ -70,9 +91,8 @@ const LeaderboardMain = () => {
             />
           )}
 
-
           <LeaderboardTable
-            dataSource={otherUsersScoreCards}
+            dataSource={filteredOtherUsersScoreCards}
             columns={columns}
             pagination={{
               current: currentPage,

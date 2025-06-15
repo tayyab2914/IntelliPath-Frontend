@@ -16,6 +16,12 @@
 .ant-form-item{
     margin-bottom: 5px !important;
 }
+.tribe-filters{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+}
 .tribe-explore-heading{
     margin: 0px;
     font-size: 20px;
