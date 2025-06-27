@@ -220,7 +220,7 @@ export const API_DELETE_THREAD = async (token, id, setShowSpinner) => {
       }
     );
 
-    message.success("Tribe Deleted Successfully");
+    message.success("Thread Deleted Successfully");
     return response.data;
   } catch (error) {
     {
