@@ -44,6 +44,7 @@ const TribeChatMain = () => {
   };
 
   useEffect(() => {
+    console.log("HELLO")
     fetchThreadList();
   }, [tribe_id, rerender_tribe_page]);
 

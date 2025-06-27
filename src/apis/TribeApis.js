@@ -153,7 +153,7 @@ export const API_CREATE_THREAD = async (token, newThread, setShowSpinner) => {
         },
       }
     );
-    message.success("Tribe created successfully!");
+    message.success("Thread created successfully!");
     return response.data;
   } catch (error) {
     message.error(error.response?.data?.message);
