@@ -36,10 +36,9 @@ const GenerateWithAI = ({ setGenerateWithAI_Enabled }) => {
     }
   };
 
-const cleanText = (text) => {
-  return text.replace(/[^\w\s.]/g, "").replace(/\s+/g, " ").trim(); // Keep the period (.)
-};
-
+  const cleanText = (text) => {
+    return text.replace(/[^\w\s.]/g, "").replace(/\s+/g, " ").trim();
+  };
 
   const speakHandler = () => {
     if (AIResponse) speakWord(cleanText(AIResponse));
@@ -52,15 +51,15 @@ const cleanText = (text) => {
           <MyIcon type="shineAccent" /> Generate Using AI
         </span>
       </p>
-      {loading && (
-        <CustomSpinner />
-      )}
+      {loading && <CustomSpinner />}
       {!loading && AIResponse && (
         <div className="vocal-assistance-response">
           <Divider />
           {/* <p>{AIResponse}</p> */}
-          
-    <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{AIResponse}</Markdown>
+
+          <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+            {AIResponse}
+          </Markdown>
         </div>
       )}
       <Input
@@ -73,7 +72,6 @@ const cleanText = (text) => {
             className="inline-generate-btn"
             onClick={generateHandler}
             disabled={loading}
-            
           >
             {loading ? <span className="chat-loader"></span> : "Generate"}
           </button>
@@ -82,12 +80,12 @@ const cleanText = (text) => {
 
       {error && <p className="error-message">{error}</p>}
 
-        <MyButton
-          text="Start Speaking"
-          onClick={speakHandler}
-          className="vocal-assistance-speak-button"
-          disabled={!AIResponse}
-        />
+      <MyButton
+        text="Start Speaking"
+        onClick={speakHandler}
+        className="vocal-assistance-speak-button"
+        disabled={!AIResponse}
+      />
       <Divider className="vocal-assistance-divider">
         <p>or</p>
       </Divider>
@@ -99,7 +97,6 @@ const cleanText = (text) => {
           onClick={() => setGenerateWithAI_Enabled(false)}
           style={{ marginBottom: "5px" }}
         />
-
       </div>
     </div>
   );

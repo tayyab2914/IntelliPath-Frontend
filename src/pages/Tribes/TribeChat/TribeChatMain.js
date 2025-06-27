@@ -9,9 +9,14 @@ import { API_GET_THREADS_LIST } from "../../../apis/TribeApis";
 import { useSelector } from "react-redux";
 import { Col, Row, Spin } from "antd";
 import CustomSpinner from "../../../components/Loader/CustomSpinner";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 
 const TribeChatMain = () => {
   const [ShowSpinner, setShowSpinner] = useState(false);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
   const { token, rerender_tribe_page } = useSelector(
     (state) => state.authToken
   );
@@ -24,13 +29,29 @@ const TribeChatMain = () => {
   const fetchThreadList = async () => {
     const response = await API_GET_THREADS_LIST( token, tribe_id, setShowSpinner );
     setAvailableThreads(response);
-    const firstThread = response.threads[0];
-    setSelectedThread(firstThread);
+    console.log(response)
+    if(searchParams.get("thread_id"))
+    {
+        console.log(searchParams.get("thread_id"))
+        const thread = response?.threads?.find(thread => thread.id == searchParams.get("thread_id"));
+        setSelectedThread(thread);
+    }
+    else{   
+        const firstThread = response.threads[0];
+        setSelectedThread(firstThread);
+    }
   };
 
   useEffect(() => {
     fetchThreadList();
   }, [tribe_id, rerender_tribe_page]);
+
+  useEffect(() => {
+    if (SelectedThread?.id) {
+      navigate(`?thread_id=${SelectedThread.id}`, { replace: true });
+    }
+  }, [SelectedThread, searchParams]);
+  
 
   return (
     <div>
