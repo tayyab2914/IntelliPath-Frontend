@@ -8,19 +8,19 @@ export const initializeWebSocket = (tribe_id, thread_id, token, setThreadData, o
     const chatSocket = new WebSocket(socketUrl);
   
     chatSocket.onopen = () => {
-      console.log("WebSocket Connected");
+    //   console.log("WebSocket Connected");
       onOpen(chatSocket);
     };
   
     chatSocket.onclose = () => {
-      console.log("WebSocket Disconnected");
+    //   console.log("WebSocket Disconnected");
       onClose();
     };
   
     chatSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log("WebSocket Message Received:", data);
-      console.log(user_attributes)
+    //   console.log("WebSocket Message Received:", data);
+    //   console.log(user_attributes)
       if (data.type === 'message') {
         if(data?.is_banned )
         {

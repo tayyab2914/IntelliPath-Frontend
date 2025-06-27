@@ -19,9 +19,9 @@ import TribesMain from '../pages/Tribes/TribeNavigation/TribesMain';
 import { useSelector } from 'react-redux';
 import CoursePage from '../pages/Courses/CoursePage';
 import TribesExplore from '../pages/Tribes/TribeNavigation/TribesExplore';
-import TribePage from '../pages/Tribes/TribeChat/TribeChatMain';
 import AssessmentLanding from '../pages/Assessment/AssessmentLanding';
 import HomeMain from '../pages/Home/HomeMain';
+import TribeChatMain from '../pages/Tribes/TribeChat/TribeChatMain';
 
 const ProjectRoutes = () => {
     const { isLoggedIn } = useSelector((state) => state.authToken);
@@ -48,7 +48,7 @@ const ProjectRoutes = () => {
         <Route path="/settings" element={<SettingsMain />} />
         <Route path="/profile/:user_id" element={<ProfileMain />} />
         <Route path="/course/:course_id" element={<CoursePage />} />
-        <Route path="/tribes/:tribe_id" element={isLoggedIn ? <TribePage />: <AccountMain/>} />
+        <Route path="/tribes/:tribe_id" element={isLoggedIn ? <TribeChatMain />: <AccountMain/>} />
         <Route path="/tribes/explore" element={isLoggedIn ? <TribesExplore />: <AccountMain/>} />
       </Routes>
     </BrowserRouter>

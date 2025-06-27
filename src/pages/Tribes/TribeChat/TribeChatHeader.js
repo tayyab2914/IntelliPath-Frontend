@@ -17,7 +17,6 @@ const TribeChatHeader = ({
   OnlineMembers
 }) => {
   const { tribe, threads } = availableThreads;
-  const [defaultThread, setDefaultThread] = useState(null);
   const navigate = useNavigate();
   const windowWidth = useWindowWidth();
   const handleThreadChange = (threadId) => {

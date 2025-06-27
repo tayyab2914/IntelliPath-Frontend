@@ -1,5 +1,5 @@
 export const DEFAULT_BUTTON_HEIGHT = '40px'
-export const SHOW_API_ERRORS = true;
+export const SHOW_API_ERRORS = false;
 export const PRODUCTION = false;
 export const TESTING = true
 

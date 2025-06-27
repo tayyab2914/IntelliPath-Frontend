@@ -35,8 +35,13 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
     if (socketRef.current) {
       socketRef.current.close();
     }
-    const chatSocket = initializeWebSocket( tribe_id, SelectedThread?.id, token, setThreadData, (socket) => { setSocket(socket); socketRef.current = socket; },  () => { setSocket(null); socketRef.current = null; }, setOnlineMembers, user_attributes, dispatch, rerender_tribe_page, refetch_tribe_members );
-    return chatSocket;
+    if(SelectedThread?.id)
+    {
+        console.log('SelectedThread,',SelectedThread)
+        const chatSocket = initializeWebSocket( tribe_id, SelectedThread?.id, token, setThreadData, (socket) => { setSocket(socket); socketRef.current = socket; },  () => { setSocket(null); socketRef.current = null; }, setOnlineMembers, user_attributes, dispatch, rerender_tribe_page, refetch_tribe_members );
+        return chatSocket;
+    }
+    return null;
   };
 
   useEffect(() => {
