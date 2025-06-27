@@ -34,7 +34,7 @@ const TribeChatHeader = ({
       <Col xs={24}>
         <Select
           className="tribes-chat-select"
-          value={SelectedThread?.id || "No threads available"}
+          value={SelectedThread?.id || ""}
           onChange={handleThreadChange}
           size="medium"
         >

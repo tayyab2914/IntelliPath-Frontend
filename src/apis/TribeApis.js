@@ -1,6 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 import { DOMAIN_NAME, SHOW_API_ERRORS } from "../utils/GlobalSettings";
+import { setRerenderTribePage } from "../redux/AuthToken/Action";
 
 export const API_GET_JOINED_TRIBES = async (token, setShowSpinner) => {
   setShowSpinner(true);
@@ -205,7 +206,7 @@ export const API_DELETE_TRIBE = async (token, id, setShowSpinner) => {
     }
   }
 };
-export const API_DELETE_THREAD = async (token, id, setShowSpinner) => {
+export const API_DELETE_THREAD = async (token, id, navigate, dispatch,location,rerender_tribe_page,setSelectedThread) => {
   //   setShowSpinner(true);
   try {
     const response = await axios.delete(
@@ -219,8 +220,12 @@ export const API_DELETE_THREAD = async (token, id, setShowSpinner) => {
         },
       }
     );
-
+    console.log("THREAD DELETED")
     message.success("Thread Deleted Successfully");
+    console.log(location.pathname)
+    navigate(location.pathname);
+    setSelectedThread(null);
+    dispatch(setRerenderTribePage(!rerender_tribe_page));
     return response.data;
   } catch (error) {
     {

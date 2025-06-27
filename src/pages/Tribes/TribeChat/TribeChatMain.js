@@ -33,11 +33,13 @@ const TribeChatMain = () => {
     console.log(response)
     if(searchParams.get("thread_id"))
     {
+        console.log("ONE")
         console.log(searchParams.get("thread_id"))
         const thread = response?.threads?.find(thread => thread.id == searchParams.get("thread_id"));
         setSelectedThread(thread);
     }
     else{   
+        console.log("TWP")
         const firstThread = response.threads[0];
         setSelectedThread(firstThread);
     }
@@ -46,7 +48,7 @@ const TribeChatMain = () => {
   useEffect(() => {
     console.log("HELLO")
     fetchThreadList();
-  }, [tribe_id, rerender_tribe_page]);
+  }, [tribe_id, rerender_tribe_page,searchParams]);
 
   useEffect(() => {
     if (SelectedThread?.id) {
@@ -58,7 +60,7 @@ const TribeChatMain = () => {
   return (
     <div>
       <NavbarMain />
-      {ShowSpinner && <CustomSpinner fullscreen={true} />}
+      {/* {ShowSpinner && <CustomSpinner fullscreen={true} />} */}
       <div className="generic-container">
         <div className="tribe-chat-main">
           <Row gutter={[10,10]}>
@@ -76,6 +78,7 @@ const TribeChatMain = () => {
                   SelectedThread={SelectedThread}
                   tribeInfo={availableThreads?.tribe}
                   setOnlineMembers={setOnlineMembers}
+                  setSelectedThread={setSelectedThread}
                 />
               )}
             </Col>

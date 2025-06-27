@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import '../styles/TribeThread.css';
 import { Col, Row, Input, Popconfirm, Tag } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { setRerenderTribePage } from '../../../redux/AuthToken/Action';
 import { API_DELETE_THREAD, API_GET_MESSAGES } from '../../../apis/TribeApis';
 import TribeMessage from './TribeMessage';
@@ -12,14 +12,16 @@ import { initializeWebSocket, handleSendMessage } from './WebSocketFunctionality
 import TribeMembersDropdownContent from './AdminOptions.js/TribeMembersDropdownContent';
 import AutoTextCropper from '../../../components/AutoTextCropper/AutoTextCropper';
 
-const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
+const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers, setSelectedThread }) => {
   const [ThreadData, setThreadData] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const location = useLocation();
   const [socket, setSocket] = useState(null);
   const messagesEndRef = useRef(null);
   const { tribe_id } = useParams();
   const { token, rerender_tribe_page, user_attributes, refetch_tribe_members } = useSelector((state) => state.authToken);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const socketRef = useRef(null);
 
   const bannedUntil = tribeInfo?.banned_upto_time ? new Date(tribeInfo.banned_upto_time) : null;
@@ -75,8 +77,7 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers }) => {
 
   const handleDeleteThread = async () => {
     try {
-      await API_DELETE_THREAD(token, SelectedThread?.id);
-      dispatch(setRerenderTribePage(!rerender_tribe_page));
+      await API_DELETE_THREAD(token, SelectedThread?.id, navigate,dispatch,location,rerender_tribe_page,setSelectedThread);
     } catch (error) {
       console.error('Error deleting thread:', error);
     }
