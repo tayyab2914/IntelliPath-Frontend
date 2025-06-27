@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row, Select } from "antd";
-import MyIcon from "../../../components/Icon/MyIcon";
-import MyButton from "../../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import useWindowWidth from "../../../hooks/useWindowWidth";
 import "../styles/TribeChat.css";
@@ -20,7 +18,7 @@ const TribeChatHeader = ({
   const navigate = useNavigate();
   const windowWidth = useWindowWidth();
   const handleThreadChange = (threadId) => {
-    const selectedThread = threads.find((thread) => thread.id === threadId);
+    const selectedThread = threads?.find((thread) => thread.id === threadId);
     setSelectedThread(selectedThread);
   };
 
@@ -39,7 +37,6 @@ const TribeChatHeader = ({
           value={SelectedThread?.id || "No threads available"}
           onChange={handleThreadChange}
           size="medium"
-          
         >
           {threads?.map((thread) => (
             <Option key={thread.id} value={thread.id}>

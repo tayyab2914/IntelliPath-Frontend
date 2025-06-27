@@ -28,6 +28,7 @@ const TribeChatMain = () => {
 
   const fetchThreadList = async () => {
     const response = await API_GET_THREADS_LIST( token, tribe_id, setShowSpinner );
+    if(!response) return;
     setAvailableThreads(response);
     console.log(response)
     if(searchParams.get("thread_id"))

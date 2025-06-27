@@ -12,14 +12,13 @@ const { Panel } = Collapse;
 const OnlineMembersList = ({ OnlineMembers }) => {
     const windowWidth = useWindowWidth()
     const navigate = useNavigate()
-  useEffect(() => {
-    console.log(OnlineMembers)
-  }, [OnlineMembers]);
-
 
   const memberClickHandler = (member_id)=>{
     navigate(`/profile/${member_id}`)
   }
+  useEffect(() => {
+    console.log(OnlineMembers)
+  }, [OnlineMembers]);
   return (
     <Collapse 
       defaultActiveKey={[windowWidth > 992 ?"1":'0']} 
@@ -43,11 +42,12 @@ const OnlineMembersList = ({ OnlineMembers }) => {
           renderItem={(userEmail, index) => (
             <List.Item className="online-member-item" onClick={()=>memberClickHandler(OnlineMembers?.ids?.[index] )}>
               <List.Item.Meta
-                avatar={
-                  <Avatar  src={ OnlineMembers?.profile_pictures?.[index] ? `${MEDIA_URL}${OnlineMembers.profile_pictures[index]}`  : ICONS.avatar }  />
-                }
-                title={<span className="email">{OnlineMembers?.names?.[index]}</span>}
+              
+                title={<span className="email">
+                     <img src={`${MEDIA_URL}${OnlineMembers.profile_pictures[index]}` || ICONS?.avatar} onError={(e) => { e.target.onerror = null; e.target.src = ICONS?.avatar }}  className="online-member-image"/>
+                    {OnlineMembers?.names?.[index]}</span>}
               />
+
             </List.Item>
           )}
         />
