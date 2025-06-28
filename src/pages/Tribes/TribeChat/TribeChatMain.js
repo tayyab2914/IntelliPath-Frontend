@@ -30,7 +30,6 @@ const TribeChatMain = () => {
     const response = await API_GET_THREADS_LIST( token, tribe_id, setShowSpinner );
     if(!response) return;
     setAvailableThreads(response);
-    console.log("PUSH REACHED")
     if(searchParams.get("thread_id"))
     {
         console.log("ONE")

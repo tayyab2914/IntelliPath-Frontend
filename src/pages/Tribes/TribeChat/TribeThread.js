@@ -117,7 +117,7 @@ const TribeThread = ({ SelectedThread, tribeInfo, setOnlineMembers, setSelectedT
       </Col>:
       <Col xs={24} className="t-t-input-row">
         <Input value={newMessage} onChange={(e) => setNewMessage(e.target.value)} placeholder="Type a message..." className="t-t-input" 
-        // onPressEnter={() =>  handleSendMessage(socket, user_attributes, newMessage, setNewMessage) } 
+        onPressEnter={() =>  handleSendMessage(socket, user_attributes, newMessage, setNewMessage) } 
         />
 
         <MyButton onClick={() => handleSendMessage(socket, user_attributes, newMessage, setNewMessage) } text="Send" w="150px" h="40px" />
