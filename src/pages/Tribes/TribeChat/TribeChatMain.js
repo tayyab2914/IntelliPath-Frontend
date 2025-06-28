@@ -30,7 +30,7 @@ const TribeChatMain = () => {
     const response = await API_GET_THREADS_LIST( token, tribe_id, setShowSpinner );
     if(!response) return;
     setAvailableThreads(response);
-    console.log(response)
+    console.log("PUSH REACHED")
     if(searchParams.get("thread_id"))
     {
         console.log("ONE")
@@ -60,7 +60,7 @@ const TribeChatMain = () => {
   return (
     <div>
       <NavbarMain />
-      {/* {ShowSpinner && <CustomSpinner fullscreen={true} />} */}
+      {ShowSpinner && <CustomSpinner fullscreen={true} />}
       <div className="generic-container">
         <div className="tribe-chat-main">
           <Row gutter={[10,10]}>
